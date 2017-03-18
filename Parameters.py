@@ -12,7 +12,6 @@ class Parameters:
     MaxMagnituteOfTechChange = 8
     RateOfTechChange = 0.1
     PeriodStartOfTechChange = 3000
-    Test = 1
 
     # System parameters
     DataPath = "/Users/jdimas/GitHub/ACEModel/data"
