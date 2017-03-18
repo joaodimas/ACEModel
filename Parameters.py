@@ -8,10 +8,10 @@ class Parameters:
     StartupWealth = 0
     MinimumWealthForSurvival = 0 
     NumberOfPotentialEntrants = 40
-    NumberOfPeriods = 1000
+    NumberOfPeriods = 10000
     MaxMagnituteOfTechChange = 8
     RateOfTechChange = 0.1
-    PeriodStartOfTechChange = 100
+    PeriodStartOfTechChange = 3000
 
     # System parameters
     DataPath = "./data"
