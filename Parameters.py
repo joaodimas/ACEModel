@@ -14,7 +14,7 @@ class Parameters:
     PeriodStartOfTechChange = 3000
 
     # System parameters
-    DataPath = "/Users/jdimas/GitHub/ACEModel/data"
+    DataPath = "./data"
 
     @classmethod
     def describe(cls):
