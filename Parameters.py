@@ -12,9 +12,10 @@ class Parameters:
     MaxMagnituteOfTechChange = 8
     RateOfTechChange = 0.1
     PeriodStartOfTechChange = 3000
+    Test = 0
 
     # System parameters
-    DataPath = "/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/data"
+    DataPath = "/Users/jdimas/GitHub/ACEModel/data"
 
     @classmethod
     def describe(cls):
