@@ -8,8 +8,12 @@ class Logger:
     
     @classmethod
     def log(cls, message):
-        cls.messages
         cls.messages += "\n" + str(message)
+        #print(message)
+
+    @classmethod
+    def debug(cls, message):
+        cls.messages
         #print(message)
 
     @classmethod

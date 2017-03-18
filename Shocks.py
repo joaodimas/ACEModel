@@ -7,7 +7,7 @@ class Shocks:
 
     @classmethod
     def processShocks(cls, industry):
-        print("External shocks: Processing...")
+        Logger.debug("External shocks: Processing...")
         # Shock 1: Every period the optimal technology changes with a probability = Parameters.RateOfTechChange.
         # The new optimal will have a maximum hamming distance from previous optimum = Parameters.MaxMagnituteOfTechChange.
         if(Parameters.RateOfTechChange > 0 and industry.currentPeriod >= Parameters.PeriodStartOfTechChange):
@@ -34,4 +34,4 @@ class Shocks:
         #     industry.potentialEntrants = []
         #     for x in range(Parameters.NumberOfPotentialEntrants):
         #         industry.potentialEntrants.append(Firm(industry.newFirmId(), industry, industry.currentOptimalTech.generateRandomWithMaxDistance(40)))
-        print("External shocks: OK!")
+        Logger.debug("External shocks: OK!")

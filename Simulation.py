@@ -23,10 +23,10 @@ endTime = time.time()
 Logger.log("Simulation completed in {:.2f} seconds".format(endTime - startTime))
 
 # Save log
-print("Saving log...")
+Logger.debug("Saving log...")
 Logger.saveLog()
 
 # Save data
-print("Saving data...")
+Logger.debug("Saving data...")
 ExportToCSV.export(industry.data)
 
