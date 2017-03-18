@@ -114,9 +114,10 @@ class Industry:
             self.demand.updateEqPrice() 
 
             # Get the least efficient firm and see if it leaves the market.
-            leastEfficient = self.activeIncumbentFirms[0]
-            if leastEfficient.decideIfDeactivates():
-                self.deactivateFirm(leastEfficient)
+            if(len(self.activeIncumbentFirms) > 0):
+                leastEfficient = self.activeIncumbentFirms[0]
+                if leastEfficient.decideIfDeactivates():
+                    self.deactivateFirm(leastEfficient)
 
             loops += 1
         print("Shutdown decisions: OK! %d loops" % loops)
