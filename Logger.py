@@ -18,6 +18,7 @@ class Logger:
 
     @classmethod
     def saveLog(cls):
-        text_file = open(os.path.join(Parameters.DataPath, "ACEModel."+cls.timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss"))+".log", "w")
+        THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        text_file = open(os.path.join(THIS_FOLDER, "./data/ACEModel."+cls.timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss"))+".log", "w")
         text_file.write(cls.messages)
         text_file.close()
