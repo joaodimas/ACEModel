@@ -2,7 +2,7 @@ from Parameters import Parameters
 
 class Description:
     @classmethod
-    def describeIndustry(cls, industry):
+    def describeAggregate(cls, industry):
         desc = (
                     "\n---------------------\n"
                     "RESULTS OF PERIOD {:d}:\n\n"
@@ -40,9 +40,13 @@ class Description:
                             industry.industryOutput / len(industry.activeIncumbentFirms) if len(industry.activeIncumbentFirms) != 0 else 0
                         )
 
+        return desc
+
+    @classmethod
+    def describeIncumbentFirms(cls, industry):
+        desc = ""
         desc += cls.describeActiveIncumbentFirms(industry)
         desc += cls.describeInactiveIncumbentFirms(industry)
-
         return desc
 
     @classmethod

@@ -61,21 +61,21 @@ class Firm :
         
         if(self.status == FirmStatus.POTENTIAL_ENTRANT and self.expWealth > Parameters.MinimumWealthForSurvival):
             self.entering = True
-            Logger.log("Firm {:d} decided to ENTER. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Current wealth: {:.2f}; Exp. Wealth: {:.2f}.".format(self.firmId, self.expPrice, self.MC, self.expOutput, self.expProfits, self.wealth, self.expWealth))
+            Logger.trace("Firm {:d} decided to ENTER. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Current wealth: {:.2f}; Exp. Wealth: {:.2f}.".format(self.firmId, self.expPrice, self.MC, self.expOutput, self.expProfits, self.wealth, self.expWealth))
   
         return self.entering
 
     def decideIfExits(self):
         if(self.wealth < Parameters.MinimumWealthForSurvival):
             self.exiting = True
-            Logger.log("Firm {:d} decided to EXIT. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Output: {:.2f}; Exp. Profits: {:.2f}; Profits: {:.2f}; Wealth: {:.2f}.".format(self.firmId, self.expPrice, self.MC, self.expOutput, self.output, self.expProfits, self.profits, self.wealth))
+            Logger.trace("Firm {:d} decided to EXIT. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Output: {:.2f}; Exp. Profits: {:.2f}; Profits: {:.2f}; Wealth: {:.2f}.".format(self.firmId, self.expPrice, self.MC, self.expOutput, self.output, self.expProfits, self.profits, self.wealth))
         return self.exiting
 
     def decideIfDeactivates(self):
         self.updateOutput()
         if(self.output <= 0): # Yes. This firm doesn't want to produce. It will be deactivated.
             self.deactivating = True
-            Logger.log("Firm {:d} decided to DEACTIVATE. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Output: {:.2f}; Exp. Profits: {:.2f}; Profits: {:.2f}; Wealth: {:.2f}.".format(self.firmId, self.expPrice, self.MC, self.expOutput, self.output, self.expProfits, self.profits, self.wealth))
+            Logger.trace("Firm {:d} decided to DEACTIVATE. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Output: {:.2f}; Exp. Profits: {:.2f}; Profits: {:.2f}; Wealth: {:.2f}.".format(self.firmId, self.expPrice, self.MC, self.expOutput, self.output, self.expProfits, self.profits, self.wealth))
         else:
             self.deactivating = False
         return self.deactivating

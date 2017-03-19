@@ -11,7 +11,10 @@ class Parameters:
     NumberOfPeriods = 500
     MaxMagnituteOfTechChange = 8
     RateOfTechChange = 0.1
-    PeriodStartOfTechChange = 3000
+    PeriodStartOfTechChange = 20
+
+    # System parameters
+    LogLevel = {"Console": ["INFO"], "File": ["DEBUG","TRACE"]}
 
 
     @classmethod
