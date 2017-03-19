@@ -1,5 +1,5 @@
 clear
 
-import delimited "/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/data/ACEModel.LATEST.csv"
+import delimited "/Users/jdimas/GitHub/ACEModel/data/ACEModel.LATEST.csv"
 
 tsset period
