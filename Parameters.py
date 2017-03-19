@@ -8,13 +8,14 @@ class Parameters:
     StartupWealth = 0
     MinimumWealthForSurvival = 0 
     NumberOfPotentialEntrants = 40
-    NumberOfPeriods = 500
+    NumberOfPeriods = 10000
     MaxMagnituteOfTechChange = 8
     RateOfTechChange = 0.1
-    PeriodStartOfTechChange = 20
+    PeriodStartOfTechChange = 3000
 
     # System parameters
-    LogLevel = {"Console": ["INFO"], "File": ["DEBUG","TRACE"]}
+    LogLevel = {"Console": ["INFO"], "File": ["INFO", "DEBUG", "TRACE"]}
+    EnableProfiling = False
 
 
     @classmethod

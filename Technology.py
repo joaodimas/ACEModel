@@ -1,5 +1,5 @@
-from Parameters import Parameters
 import random
+from Parameters import Parameters
 
 
 class Technology:

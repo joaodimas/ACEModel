@@ -1,9 +1,9 @@
+import logging
 from Firm import Firm, FirmStatus
 from Technology import Technology
 from Demand import Demand
 from AggregateData import AggregateData
 from Parameters import Parameters
-from Logger import Logger
 from Shocks import Shocks
 
 class Industry:
@@ -19,6 +19,7 @@ class Industry:
         self.deadFirms = []
         self.data = AggregateData(self)
         self.currentOptimalTech = Technology.generateRandomTechnology()
+        self.logger = logging.getLogger("ACEModel")
 
     # Prepare a fresh new period. Surviving firms from t-1 are still incumbents.
     def nextPeriod(self):
@@ -36,8 +37,8 @@ class Industry:
         self.refreshPoolOfPotentialEntrants()
 
     def processCurrentPeriod(self):
-        Logger.debug("----------------------------------")
-        Logger.info("PROCESSING PERIOD {:d}".format(self.currentPeriod))
+        self.logger.debug("----------------------------------")
+        self.logger.info("PROCESSING PERIOD {:d}".format(self.currentPeriod))
         
         # Process all external shocks that were added to the file Shocks.py.
         Shocks.processShocks(self)
@@ -81,21 +82,21 @@ class Industry:
         self.updateAgesOfSurvivors()
 
     def processFirmsEntering(self):
-        Logger.trace("Entry decisions: Processing...")
-        Logger.trace("Active survivors of prev. period: {:d}\n"
+        self.logger.trace("Entry decisions: Processing...")
+        self.logger.trace("Active survivors of prev. period: {:d}\n"
                    "Sum of MC of active survivors of prev. period : {:.2f}"
                    .format(len(self.activeSurvivorsOfPreviousPeriod), self.sumOfActiveSurvivorsMC))
         for firm in self.potentialEntrants:
             if firm.decideIfEnters():
                 self.incumbentFirms.append(firm)
                 self.nmbEnteringFirms += 1
-        Logger.trace("Entry decisions: OK!")
+        self.logger.trace("Entry decisions: OK!")
 
     def processShutdownDecisions(self):
         # If there are too many active incumbents, the price will be low. In this case, some active incumbents might decide to not produce. 
         # However, as the least efficient active incumbent is deactivated, the price will increase and some inactive incumbents might change their decision.
         # Repeat the loop until the new active incumbents are the same as before (no more deactivations)
-        Logger.trace("Shutdown decisions: Processing...")
+        self.logger.trace("Shutdown decisions: Processing...")
         loops = 0
         prevActiveIncumbents = []
         # Sort from the least to the most efficient firm.
@@ -119,18 +120,18 @@ class Industry:
                     self.deactivateFirm(leastEfficient)
 
             loops += 1
-        Logger.trace("Shutdown decisions: OK! %d loops" % loops)
+        self.logger.trace("Shutdown decisions: OK! %d loops" % loops)
 
     def processExitDecisions(self):
-        Logger.trace("Exit decisions: Processing...")
+        self.logger.trace("Exit decisions: Processing...")
         for firm in self.incumbentFirms:
             firm.decideIfExits()
             if(firm.exiting):
                 self.nmbExitingFirms += 1
-        Logger.trace("Exit decisions: OK!")
+        self.logger.trace("Exit decisions: OK!")
 
     def processFirmsExiting(self):
-        Logger.trace("Firms exiting: Processing...")
+        self.logger.trace("Firms exiting: Processing...")
         # Two things are done here:
         # (1) The list of active survivors is updated to allow potential new entrants to estimate profits in the next period.
         # (2) The list of survivors irrespective to their status is updated for data collection.
@@ -142,7 +143,7 @@ class Industry:
             firm.status = FirmStatus.DEAD
             self.deadFirms.append(self)
             self.survivorsOfCurrentPeriod.remove(firm)
-        Logger.trace("Firms exiting: OK!")
+        self.logger.trace("Firms exiting: OK!")
 
     def activateAllIncumbents(self):
         self.activeIncumbentFirms = self.incumbentFirms
@@ -172,7 +173,7 @@ class Industry:
         for firm in self.activeIncumbentFirms:
             self.currentActiveSumOfMC += firm.MC
 
-        Logger.trace("Current active incumbents: {:d}\n"
+        self.logger.trace("Current active incumbents: {:d}\n"
                    "Sum of MC of current active incumbents : {:.2f}"
                    .format(len(self.activeIncumbentFirms), self.currentActiveSumOfMC))
 
@@ -204,20 +205,20 @@ class Industry:
         self.averageAge = sumOfAges / len(self.incumbentFirms) if len(self.incumbentFirms) > 0 else 0
 
     def updateActiveIncumbents(self):
-        Logger.trace("Updating %d active firms: Processing..." % len(self.activeIncumbentFirms))
+        self.logger.trace("Updating %d active firms: Processing..." % len(self.activeIncumbentFirms))
         for firm in self.activeIncumbentFirms:
             firm.updateOutput() # Calculate new equilibrium output after all inactive firms were taken out of the equation
             firm.updateProfits()
             firm.updateWealth()
             self.industryOutput += firm.output
-        Logger.trace("Updating %d active firms: OK!" % len(self.activeIncumbentFirms))
+        self.logger.trace("Updating %d active firms: OK!" % len(self.activeIncumbentFirms))
 
     def updateInactiveIncumbents(self):
-        Logger.trace("Updating %d inactive firms: Processing..." % len(self.inactiveIncumbentFirms))
+        self.logger.trace("Updating %d inactive firms: Processing..." % len(self.inactiveIncumbentFirms))
         for firm in self.inactiveIncumbentFirms:
             firm.updateProfits()
             firm.updateWealth()
-        Logger.trace("Updating %d inactive firms: OK!" % len(self.inactiveIncumbentFirms))  
+        self.logger.trace("Updating %d inactive firms: OK!" % len(self.inactiveIncumbentFirms))  
 
     def refreshPoolOfPotentialEntrants(self):
         self.potentialEntrants = []

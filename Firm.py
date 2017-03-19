@@ -1,6 +1,6 @@
+import logging
 from Parameters import Parameters
 from enum import Enum
-from Logger import Logger
 
 
 class Firm :
@@ -20,6 +20,7 @@ class Firm :
         self.entering = False
         self.exiting = False
         self.age = 0
+        self.logger = logging.getLogger("ACEModel")
 
     def getDescription(self):
         return "id: " + str(self.firmId)
@@ -61,21 +62,21 @@ class Firm :
         
         if(self.status == FirmStatus.POTENTIAL_ENTRANT and self.expWealth > Parameters.MinimumWealthForSurvival):
             self.entering = True
-            Logger.trace("Firm {:d} decided to ENTER. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Current wealth: {:.2f}; Exp. Wealth: {:.2f}.".format(self.firmId, self.expPrice, self.MC, self.expOutput, self.expProfits, self.wealth, self.expWealth))
+            self.logger.trace("Firm {:d} decided to ENTER. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Current wealth: {:.2f}; Exp. Wealth: {:.2f}.".format(self.firmId, self.expPrice, self.MC, self.expOutput, self.expProfits, self.wealth, self.expWealth))
   
         return self.entering
 
     def decideIfExits(self):
         if(self.wealth < Parameters.MinimumWealthForSurvival):
             self.exiting = True
-            Logger.trace("Firm {:d} decided to EXIT. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Output: {:.2f}; Exp. Profits: {:.2f}; Profits: {:.2f}; Wealth: {:.2f}.".format(self.firmId, self.expPrice, self.MC, self.expOutput, self.output, self.expProfits, self.profits, self.wealth))
+            self.logger.trace("Firm {:d} decided to EXIT. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Output: {:.2f}; Exp. Profits: {:.2f}; Profits: {:.2f}; Wealth: {:.2f}.".format(self.firmId, self.expPrice, self.MC, self.expOutput, self.output, self.expProfits, self.profits, self.wealth))
         return self.exiting
 
     def decideIfDeactivates(self):
         self.updateOutput()
         if(self.output <= 0): # Yes. This firm doesn't want to produce. It will be deactivated.
             self.deactivating = True
-            Logger.trace("Firm {:d} decided to DEACTIVATE. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Output: {:.2f}; Exp. Profits: {:.2f}; Profits: {:.2f}; Wealth: {:.2f}.".format(self.firmId, self.expPrice, self.MC, self.expOutput, self.output, self.expProfits, self.profits, self.wealth))
+            self.logger.trace("Firm {:d} decided to DEACTIVATE. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Output: {:.2f}; Exp. Profits: {:.2f}; Profits: {:.2f}; Wealth: {:.2f}.".format(self.firmId, self.expPrice, self.MC, self.expOutput, self.output, self.expProfits, self.profits, self.wealth))
         else:
             self.deactivating = False
         return self.deactivating
