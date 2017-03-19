@@ -2,3 +2,5 @@
 /data/*
 
 /__pycache__/*
+
+/data/ACEModel.LATEST.csv
