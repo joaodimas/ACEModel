@@ -10,16 +10,21 @@ class Logger:
     
     @classmethod
     def info(cls, message):
-        cls.messagesInfo += "\n" + str(message)
-        cls.messagesDebug += "\n" + str(message)
-        cls.messagesTrace += "\n" + str(message)
+        if("INFO" in Parameters.LogLevel["File"]):
+            cls.messagesInfo += "\n" + str(message)
+        if("DEBUG" in Parameters.LogLevel["File"]): 
+            cls.messagesDebug += "\n" + str(message)
+        if("TRACE" in Parameters.LogLevel["File"]):
+            cls.messagesTrace += "\n" + str(message)
         if("INFO" in Parameters.LogLevel["Console"]):
             print(message)
 
     @classmethod
     def debug(cls, message):
-        cls.messagesDebug += "\n" + str(message)
-        cls.messagesTrace += "\n" + str(message)
+        if("DEBUG" in Parameters.LogLevel["File"]): 
+            cls.messagesDebug += "\n" + str(message)
+        if("TRACE" in Parameters.LogLevel["File"]):
+            cls.messagesTrace += "\n" + str(message)
         if("DEBUG" in Parameters.LogLevel["Console"]):
             print(message)
 
