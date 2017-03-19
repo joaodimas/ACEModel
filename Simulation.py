@@ -96,5 +96,5 @@ if(Parameters.EnableProfiling):
     with io.StringIO() as s:
         ps = pstats.Stats(pr, stream=s).sort_stats('tottime')
         ps.print_stats()
-        print(s.getvalue())
+        logger.info(s.getvalue())
 

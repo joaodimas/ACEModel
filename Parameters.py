@@ -8,7 +8,7 @@ class Parameters:
     StartupWealth = 0
     MinimumWealthForSurvival = 0 
     NumberOfPotentialEntrants = 40
-    NumberOfPeriods = 100000
+    NumberOfPeriods = 5000
     MaxMagnituteOfTechChange = 8
     RateOfTechChange = 0.1
     PeriodStartOfTechChange = 3000

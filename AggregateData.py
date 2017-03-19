@@ -12,7 +12,7 @@ class AggregateData:
     def getFlatData(self):
         result = [
                     # header
-                    ["period", "entries", "exits", "firms", "maxage", "minage", "avgage", "actfirms", "inactfirms", "surviv", "wmc", "avgproxopt", "price", "totoutput", "avgoutput", "magtechshock"]
+                    ["period", "entries", "exits", "surviv", "entryrate", "exitrate", "survivrate", "firms", "hindex", "div", "maxage", "minage", "avgage", "actfirms", "inactfirms", "wmc", "avgproxopt", "price", "totoutput", "avgoutput", "magtechshock"]
                  ]
         for period in self.periods:
             result.append(period.getFlatData())
@@ -24,14 +24,19 @@ class PeriodData:
     def __init__(self, industry):
         self.period = industry.currentPeriod
         self.entries = industry.nmbEnteringFirms
-        self.exits = industry.nmbExitingFirms       
+        self.exits = industry.nmbExitingFirms   
+        self.survivorsFromThisPeriod = len(industry.incumbentFirms) - industry.nmbExitingFirms
+        self.entryRate = industry.entryRate
+        self.exitRate = industry.exitRate
+        self.survivRate = 1 - industry.exitRate
         self.incumbents = len(industry.incumbentFirms)
+        self.hIndex = industry.hIndex
+        self.div = industry.degreeOfTechDiv
         self.oldestAge = industry.oldestAge
         self.youngestAge = industry.youngestAge
         self.averageAge = industry.averageAge
         self.activeIncumbents = len(industry.activeIncumbentFirms)
         self.inactiveIncumbents = len(industry.inactiveIncumbentFirms)
-        self.survivorsFromThisPeriod = self.incumbents - industry.nmbExitingFirms
         self.weightedMC = industry.weightedMC
         self.averageProximityToOptimalTech = 1 - (industry.currentActiveSumOfMC / self.activeIncumbents / 100) if self.activeIncumbents != 0 else 0
         self.price = industry.demand.eqPrice
@@ -44,13 +49,18 @@ class PeriodData:
                     self.period,
                     self.entries,
                     self.exits,
+                    self.survivorsFromThisPeriod,
+                    self.entryRate,
+                    self.exitRate,
+                    self.survivRate,
                     self.incumbents,
+                    self.hIndex,
+                    self.div,
                     self.oldestAge,
                     self.youngestAge,
                     self.averageAge,
                     self.activeIncumbents,
                     self.inactiveIncumbents,
-                    self.survivorsFromThisPeriod,
                     self.weightedMC,
                     self.averageProximityToOptimalTech,
                     self.price,

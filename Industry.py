@@ -61,6 +61,12 @@ class Industry:
         # Update weighted MC (used for posterior analysis)
         self.updateWeightedMC()
 
+        # Calculate Herfindahl-Hirschmann Index
+        self.updateHIndex()
+
+        # Calculate the degree of technological diversity
+        self.updateDegreeOfTechDiv()
+
         # Update wealth of inactive firms (they'll lose the fixed cost)
         self.updateInactiveIncumbents()
         
@@ -90,6 +96,7 @@ class Industry:
             if firm.decideIfEnters():
                 self.incumbentFirms.append(firm)
                 self.nmbEnteringFirms += 1
+        self.entryRate = self.nmbEnteringFirms / len(self.incumbentFirms) if len(self.incumbentFirms) > 0 else 0
         self.logger.trace("Entry decisions: OK!")
 
     def processShutdownDecisions(self):
@@ -128,6 +135,7 @@ class Industry:
             firm.decideIfExits()
             if(firm.exiting):
                 self.nmbExitingFirms += 1
+        self.exitRate = self.nmbExitingFirms / len(self.incumbentFirms) if len(self.incumbentFirms) > 0 else 0
         self.logger.trace("Exit decisions: OK!")
 
     def processFirmsExiting(self):
@@ -219,6 +227,21 @@ class Industry:
             firm.updateProfits()
             firm.updateWealth()
         self.logger.trace("Updating %d inactive firms: OK!" % len(self.inactiveIncumbentFirms))  
+
+    # Herfindahl-Hirschmann Index
+    def updateHIndex(self):
+        self.hIndex = 0
+        for firm in self.activeIncumbentFirms:
+            self.hIndex += (firm.output * 100 / self.industryOutput) ** 2
+
+    def updateDegreeOfTechDiv(self):
+        # (2 / (Parameters.NumberOfTasks * len(self.incumbentFirms * (len(self.incumbentFirms) - 1))*sum of hamming distances of all incumbents
+        sumOfHammingDist = 0
+        for firmA in self.incumbentFirms:
+            for firmB in [firm for firm in self.incumbentFirms if firm.firmId != firmA.firmId]:
+                sumOfHammingDist += firmA.technology.calculateHammingDistance(firmB.technology)
+
+        self.degreeOfTechDiv = (2 / (Parameters.NumberOfTasks * len(self.incumbentFirms) * (len(self.incumbentFirms) - 1))) * sumOfHammingDist
 
     def refreshPoolOfPotentialEntrants(self):
         self.potentialEntrants = []
