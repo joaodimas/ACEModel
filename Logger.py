@@ -1,6 +1,5 @@
 import datetime
 import os
-from Parameters import Parameters
 
 class Logger:
     messages = ""
@@ -9,12 +8,12 @@ class Logger:
     @classmethod
     def log(cls, message):
         cls.messages += "\n" + str(message)
-        #print(message)
+        print(message)
 
     @classmethod
     def debug(cls, message):
         cls.messages
-        #print(message)
+        print(message)
 
     @classmethod
     def saveLog(cls):

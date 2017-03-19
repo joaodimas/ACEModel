@@ -8,13 +8,11 @@ class Parameters:
     StartupWealth = 0
     MinimumWealthForSurvival = 0 
     NumberOfPotentialEntrants = 40
-    NumberOfPeriods = 10000
+    NumberOfPeriods = 500
     MaxMagnituteOfTechChange = 8
     RateOfTechChange = 0.1
     PeriodStartOfTechChange = 3000
 
-    # System parameters
-    DataPath = "./data"
 
     @classmethod
     def describe(cls):

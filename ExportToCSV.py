@@ -1,7 +1,6 @@
 import csv
 import os
 from Logger import Logger
-from Parameters import Parameters
 
 class ExportToCSV:
 
