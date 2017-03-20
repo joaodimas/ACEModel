@@ -1,0 +1,1118 @@
+
+sys.version_info(major=3, minor=6, micro=0, releaselevel='final', serial=0)
+----- PARAMETERS -----
+DemandIntercept: 300
+FixedCost: 200
+InitialMarketSize: 4
+LogLevel: {'Console': ['INFO'], 'File': ['DEBUG', 'TRACE']}
+MaxMagnituteOfTechChange: 8
+MinimumWealthForSurvival: 0
+NumberOfPeriods: 50
+NumberOfPotentialEntrants: 40
+NumberOfTasks: 96
+PeriodStartOfTechChange: 20
+RateOfTechChange: 0.1
+StartupWealth: 0
+
+----------------------------------
+PROCESSING PERIOD 1
+
+---------------------
+RESULTS OF PERIOD 1:
+
+Survivors from previous period: 0
+New entrants in this period: 40
+Firms in the market: 40
+Age of oldest firm: 0
+Age of youngest firm: 0
+Average age: 0.0
+Active firms: 32
+Inactive firms: 8
+Exiting firms after this period: 24
+Survivors from this period: 16
+Weighted marginal cost: 46.27
+Average proximity to optimal tech: 51.14%
+Price: 56.47
+Industry output: 974.12
+Average output: 30.44
+
+----------------------------------
+PROCESSING PERIOD 2
+
+---------------------
+RESULTS OF PERIOD 2:
+
+Survivors from previous period: 16
+New entrants in this period: 36
+Firms in the market: 52
+Age of oldest firm: 1
+Age of youngest firm: 0
+Average age: 0.3
+Active firms: 45
+Inactive firms: 7
+Exiting firms after this period: 33
+Survivors from this period: 19
+Weighted marginal cost: 44.79
+Average proximity to optimal tech: 53.38%
+Price: 52.13
+Industry output: 991.49
+Average output: 22.03
+
+----------------------------------
+PROCESSING PERIOD 3
+
+---------------------
+RESULTS OF PERIOD 3:
+
+Survivors from previous period: 19
+New entrants in this period: 25
+Firms in the market: 44
+Age of oldest firm: 2
+Age of youngest firm: 0
+Average age: 0.7
+Active firms: 44
+Inactive firms: 0
+Exiting firms after this period: 22
+Survivors from this period: 22
+Weighted marginal cost: 43.65
+Average proximity to optimal tech: 54.47%
+Price: 51.18
+Industry output: 995.28
+Average output: 22.62
+
+----------------------------------
+PROCESSING PERIOD 4
+
+---------------------
+RESULTS OF PERIOD 4:
+
+Survivors from previous period: 22
+New entrants in this period: 23
+Firms in the market: 45
+Age of oldest firm: 3
+Age of youngest firm: 0
+Average age: 1.1
+Active firms: 45
+Inactive firms: 0
+Exiting firms after this period: 21
+Survivors from this period: 24
+Weighted marginal cost: 43.19
+Average proximity to optimal tech: 55.37%
+Price: 50.18
+Industry output: 999.28
+Average output: 22.21
+
+----------------------------------
+PROCESSING PERIOD 5
+
+---------------------
+RESULTS OF PERIOD 5:
+
+Survivors from previous period: 24
+New entrants in this period: 12
+Firms in the market: 36
+Age of oldest firm: 4
+Age of youngest firm: 0
+Average age: 2.0
+Active firms: 36
+Inactive firms: 0
+Exiting firms after this period: 10
+Survivors from this period: 26
+Weighted marginal cost: 42.36
+Average proximity to optimal tech: 57.00%
+Price: 49.94
+Industry output: 1000.23
+Average output: 27.78
+
+----------------------------------
+PROCESSING PERIOD 6
+
+---------------------
+RESULTS OF PERIOD 6:
+
+Survivors from previous period: 26
+New entrants in this period: 10
+Firms in the market: 36
+Age of oldest firm: 5
+Age of youngest firm: 0
+Average age: 2.2
+Active firms: 36
+Inactive firms: 0
+Exiting firms after this period: 14
+Survivors from this period: 22
+Weighted marginal cost: 42.06
+Average proximity to optimal tech: 57.35%
+Price: 49.61
+Industry output: 1001.58
+Average output: 27.82
+
+----------------------------------
+PROCESSING PERIOD 7
+
+---------------------
+RESULTS OF PERIOD 7:
+
+Survivors from previous period: 22
+New entrants in this period: 15
+Firms in the market: 37
+Age of oldest firm: 6
+Age of youngest firm: 0
+Average age: 2.5
+Active firms: 37
+Inactive firms: 0
+Exiting firms after this period: 16
+Survivors from this period: 21
+Weighted marginal cost: 41.25
+Average proximity to optimal tech: 57.69%
+Price: 49.10
+Industry output: 1003.62
+Average output: 27.12
+
+----------------------------------
+PROCESSING PERIOD 8
+
+---------------------
+RESULTS OF PERIOD 8:
+
+Survivors from previous period: 21
+New entrants in this period: 9
+Firms in the market: 30
+Age of oldest firm: 7
+Age of youngest firm: 0
+Average age: 3.1
+Active firms: 30
+Inactive firms: 0
+Exiting firms after this period: 6
+Survivors from this period: 24
+Weighted marginal cost: 40.62
+Average proximity to optimal tech: 58.65%
+Price: 49.70
+Industry output: 1001.21
+Average output: 33.37
+
+----------------------------------
+PROCESSING PERIOD 9
+
+---------------------
+RESULTS OF PERIOD 9:
+
+Survivors from previous period: 24
+New entrants in this period: 11
+Firms in the market: 35
+Age of oldest firm: 8
+Age of youngest firm: 0
+Average age: 3.3
+Active firms: 35
+Inactive firms: 0
+Exiting firms after this period: 7
+Survivors from this period: 28
+Weighted marginal cost: 39.83
+Average proximity to optimal tech: 59.38%
+Price: 47.83
+Industry output: 1008.68
+Average output: 28.82
+
+----------------------------------
+PROCESSING PERIOD 10
+
+---------------------
+RESULTS OF PERIOD 10:
+
+Survivors from previous period: 28
+New entrants in this period: 2
+Firms in the market: 30
+Age of oldest firm: 9
+Age of youngest firm: 0
+Average age: 4.6
+Active firms: 30
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 30
+Weighted marginal cost: 39.39
+Average proximity to optimal tech: 60.03%
+Price: 48.35
+Industry output: 1006.59
+Average output: 33.55
+
+----------------------------------
+PROCESSING PERIOD 11
+
+---------------------
+RESULTS OF PERIOD 11:
+
+Survivors from previous period: 30
+New entrants in this period: 4
+Firms in the market: 34
+Age of oldest firm: 10
+Age of youngest firm: 0
+Average age: 4.9
+Active firms: 34
+Inactive firms: 0
+Exiting firms after this period: 5
+Survivors from this period: 29
+Weighted marginal cost: 39.31
+Average proximity to optimal tech: 60.08%
+Price: 47.35
+Industry output: 1010.60
+Average output: 29.72
+
+----------------------------------
+PROCESSING PERIOD 12
+
+---------------------
+RESULTS OF PERIOD 12:
+
+Survivors from previous period: 29
+New entrants in this period: 1
+Firms in the market: 30
+Age of oldest firm: 11
+Age of youngest firm: 0
+Average age: 5.7
+Active firms: 30
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 30
+Weighted marginal cost: 39.05
+Average proximity to optimal tech: 60.49%
+Price: 47.92
+Industry output: 1008.33
+Average output: 33.61
+
+----------------------------------
+PROCESSING PERIOD 13
+
+---------------------
+RESULTS OF PERIOD 13:
+
+Survivors from previous period: 30
+New entrants in this period: 2
+Firms in the market: 32
+Age of oldest firm: 12
+Age of youngest firm: 0
+Average age: 6.2
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 30
+Weighted marginal cost: 39.02
+Average proximity to optimal tech: 60.48%
+Price: 47.41
+Industry output: 1010.35
+Average output: 31.57
+
+----------------------------------
+PROCESSING PERIOD 14
+
+---------------------
+RESULTS OF PERIOD 14:
+
+Survivors from previous period: 30
+New entrants in this period: 3
+Firms in the market: 33
+Age of oldest firm: 13
+Age of youngest firm: 0
+Average age: 6.7
+Active firms: 33
+Inactive firms: 0
+Exiting firms after this period: 4
+Survivors from this period: 29
+Weighted marginal cost: 38.88
+Average proximity to optimal tech: 60.61%
+Price: 47.06
+Industry output: 1011.76
+Average output: 30.66
+
+----------------------------------
+PROCESSING PERIOD 15
+
+---------------------
+RESULTS OF PERIOD 15:
+
+Survivors from previous period: 29
+New entrants in this period: 3
+Firms in the market: 32
+Age of oldest firm: 14
+Age of youngest firm: 0
+Average age: 7.4
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 32
+Weighted marginal cost: 38.62
+Average proximity to optimal tech: 60.90%
+Price: 47.00
+Industry output: 1011.99
+Average output: 31.62
+
+----------------------------------
+PROCESSING PERIOD 16
+
+---------------------
+RESULTS OF PERIOD 16:
+
+Survivors from previous period: 32
+New entrants in this period: 0
+Firms in the market: 32
+Age of oldest firm: 15
+Age of youngest firm: 1
+Average age: 8.4
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 30
+Weighted marginal cost: 38.62
+Average proximity to optimal tech: 60.90%
+Price: 47.00
+Industry output: 1011.99
+Average output: 31.62
+
+----------------------------------
+PROCESSING PERIOD 17
+
+---------------------
+RESULTS OF PERIOD 17:
+
+Survivors from previous period: 30
+New entrants in this period: 1
+Firms in the market: 31
+Age of oldest firm: 16
+Age of youngest firm: 0
+Average age: 8.8
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 30
+Weighted marginal cost: 38.55
+Average proximity to optimal tech: 61.02%
+Price: 47.14
+Industry output: 1011.46
+Average output: 32.63
+
+----------------------------------
+PROCESSING PERIOD 18
+
+---------------------
+RESULTS OF PERIOD 18:
+
+Survivors from previous period: 30
+New entrants in this period: 3
+Firms in the market: 33
+Age of oldest firm: 17
+Age of youngest firm: 0
+Average age: 9.2
+Active firms: 33
+Inactive firms: 0
+Exiting firms after this period: 3
+Survivors from this period: 30
+Weighted marginal cost: 38.59
+Average proximity to optimal tech: 60.98%
+Price: 46.69
+Industry output: 1013.24
+Average output: 30.70
+
+----------------------------------
+PROCESSING PERIOD 19
+
+---------------------
+RESULTS OF PERIOD 19:
+
+Survivors from previous period: 30
+New entrants in this period: 1
+Firms in the market: 31
+Age of oldest firm: 18
+Age of youngest firm: 0
+Average age: 10.1
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 31
+Weighted marginal cost: 38.48
+Average proximity to optimal tech: 61.12%
+Price: 47.04
+Industry output: 1011.85
+Average output: 32.64
+
+----------------------------------
+PROCESSING PERIOD 20
+
+---------------------
+RESULTS OF PERIOD 20:
+
+Survivors from previous period: 31
+New entrants in this period: 1
+Firms in the market: 32
+Age of oldest firm: 19
+Age of youngest firm: 0
+Average age: 10.7
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 31
+Weighted marginal cost: 38.52
+Average proximity to optimal tech: 61.07%
+Price: 46.84
+Industry output: 1012.63
+Average output: 31.64
+
+----------------------------------
+PROCESSING PERIOD 21
+
+---------------------
+RESULTS OF PERIOD 21:
+
+Survivors from previous period: 31
+New entrants in this period: 0
+Firms in the market: 31
+Age of oldest firm: 20
+Age of youngest firm: 2
+Average age: 12.1
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 31
+Weighted marginal cost: 38.48
+Average proximity to optimal tech: 61.12%
+Price: 47.04
+Industry output: 1011.85
+Average output: 32.64
+
+----------------------------------
+PROCESSING PERIOD 22
+
+---------------------
+RESULTS OF PERIOD 22:
+
+Survivors from previous period: 31
+New entrants in this period: 4
+Firms in the market: 35
+Age of oldest firm: 21
+Age of youngest firm: 0
+Average age: 11.6
+Active firms: 35
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 33
+Weighted marginal cost: 38.54
+Average proximity to optimal tech: 61.04%
+Price: 46.21
+Industry output: 1015.16
+Average output: 29.00
+
+----------------------------------
+PROCESSING PERIOD 23
+
+---------------------
+RESULTS OF PERIOD 23:
+
+Survivors from previous period: 33
+New entrants in this period: 2
+Firms in the market: 35
+Age of oldest firm: 22
+Age of youngest firm: 0
+Average age: 12.5
+Active firms: 35
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 33
+Weighted marginal cost: 38.50
+Average proximity to optimal tech: 61.10%
+Price: 46.15
+Industry output: 1015.39
+Average output: 29.01
+
+----------------------------------
+PROCESSING PERIOD 24
+
+---------------------
+RESULTS OF PERIOD 24:
+
+Survivors from previous period: 33
+New entrants in this period: 1
+Firms in the market: 34
+Age of oldest firm: 23
+Age of youngest firm: 0
+Average age: 13.9
+Active firms: 34
+Inactive firms: 0
+Exiting firms after this period: 4
+Survivors from this period: 30
+Weighted marginal cost: 38.41
+Average proximity to optimal tech: 61.18%
+Price: 46.28
+Industry output: 1014.88
+Average output: 29.85
+
+----------------------------------
+PROCESSING PERIOD 25
+
+---------------------
+RESULTS OF PERIOD 25:
+
+Survivors from previous period: 30
+New entrants in this period: 1
+Firms in the market: 31
+Age of oldest firm: 24
+Age of youngest firm: 0
+Average age: 15.0
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 29
+Weighted marginal cost: 38.15
+Average proximity to optimal tech: 61.42%
+Price: 46.74
+Industry output: 1013.02
+Average output: 32.68
+
+----------------------------------
+PROCESSING PERIOD 26
+
+---------------------
+RESULTS OF PERIOD 26:
+
+Survivors from previous period: 29
+New entrants in this period: 0
+Firms in the market: 29
+Age of oldest firm: 25
+Age of youngest firm: 1
+Average age: 15.4
+Active firms: 29
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 29
+Weighted marginal cost: 38.02
+Average proximity to optimal tech: 61.64%
+Price: 47.08
+Industry output: 1011.67
+Average output: 34.89
+
+----------------------------------
+PROCESSING PERIOD 27
+
+---------------------
+RESULTS OF PERIOD 27:
+
+Survivors from previous period: 29
+New entrants in this period: 0
+Firms in the market: 29
+Age of oldest firm: 26
+Age of youngest firm: 2
+Average age: 16.4
+Active firms: 29
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 29
+Weighted marginal cost: 38.02
+Average proximity to optimal tech: 61.64%
+Price: 47.08
+Industry output: 1011.67
+Average output: 34.89
+
+----------------------------------
+PROCESSING PERIOD 28
+
+---------------------
+RESULTS OF PERIOD 28:
+
+Survivors from previous period: 29
+New entrants in this period: 0
+Firms in the market: 29
+Age of oldest firm: 27
+Age of youngest firm: 3
+Average age: 17.4
+Active firms: 29
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 29
+Weighted marginal cost: 38.02
+Average proximity to optimal tech: 61.64%
+Price: 47.08
+Industry output: 1011.67
+Average output: 34.89
+
+----------------------------------
+PROCESSING PERIOD 29
+
+---------------------
+RESULTS OF PERIOD 29:
+
+Survivors from previous period: 29
+New entrants in this period: 1
+Firms in the market: 30
+Age of oldest firm: 28
+Age of youngest firm: 0
+Average age: 17.8
+Active firms: 30
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 29
+Weighted marginal cost: 38.07
+Average proximity to optimal tech: 61.56%
+Price: 46.87
+Industry output: 1012.50
+Average output: 33.75
+
+----------------------------------
+PROCESSING PERIOD 30
+
+---------------------
+RESULTS OF PERIOD 30:
+
+Survivors from previous period: 29
+New entrants in this period: 3
+Firms in the market: 32
+Age of oldest firm: 29
+Age of youngest firm: 0
+Average age: 17.6
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 30
+Weighted marginal cost: 38.05
+Average proximity to optimal tech: 61.59%
+Price: 46.34
+Industry output: 1014.65
+Average output: 31.71
+
+----------------------------------
+PROCESSING PERIOD 31
+
+---------------------
+RESULTS OF PERIOD 31:
+
+Survivors from previous period: 30
+New entrants in this period: 5
+Firms in the market: 35
+Age of oldest firm: 30
+Age of youngest firm: 0
+Average age: 16.9
+Active firms: 35
+Inactive firms: 0
+Exiting firms after this period: 4
+Survivors from this period: 31
+Weighted marginal cost: 38.13
+Average proximity to optimal tech: 61.46%
+Price: 45.80
+Industry output: 1016.78
+Average output: 29.05
+
+----------------------------------
+PROCESSING PERIOD 32
+
+---------------------
+RESULTS OF PERIOD 32:
+
+Survivors from previous period: 31
+New entrants in this period: 0
+Firms in the market: 31
+Age of oldest firm: 31
+Age of youngest firm: 1
+Average age: 20.1
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 31
+Weighted marginal cost: 37.96
+Average proximity to optimal tech: 61.69%
+Price: 46.48
+Industry output: 1014.06
+Average output: 32.71
+
+----------------------------------
+PROCESSING PERIOD 33
+
+---------------------
+RESULTS OF PERIOD 33:
+
+Survivors from previous period: 31
+New entrants in this period: 4
+Firms in the market: 35
+Age of oldest firm: 32
+Age of youngest firm: 0
+Average age: 18.7
+Active firms: 35
+Inactive firms: 0
+Exiting firms after this period: 3
+Survivors from this period: 32
+Weighted marginal cost: 38.06
+Average proximity to optimal tech: 61.55%
+Price: 45.72
+Industry output: 1017.13
+Average output: 29.06
+
+----------------------------------
+PROCESSING PERIOD 34
+
+---------------------
+RESULTS OF PERIOD 34:
+
+Survivors from previous period: 32
+New entrants in this period: 2
+Firms in the market: 34
+Age of oldest firm: 33
+Age of youngest firm: 0
+Average age: 20.2
+Active firms: 34
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 33
+Weighted marginal cost: 37.95
+Average proximity to optimal tech: 61.70%
+Price: 45.77
+Industry output: 1016.90
+Average output: 29.91
+
+----------------------------------
+PROCESSING PERIOD 35
+
+---------------------
+RESULTS OF PERIOD 35:
+
+Survivors from previous period: 33
+New entrants in this period: 4
+Firms in the market: 37
+Age of oldest firm: 34
+Age of youngest firm: 0
+Average age: 18.9
+Active firms: 37
+Inactive firms: 0
+Exiting firms after this period: 5
+Survivors from this period: 32
+Weighted marginal cost: 37.82
+Average proximity to optimal tech: 61.80%
+Price: 45.09
+Industry output: 1019.63
+Average output: 27.56
+
+----------------------------------
+PROCESSING PERIOD 36
+
+---------------------
+RESULTS OF PERIOD 36:
+
+Survivors from previous period: 32
+New entrants in this period: 1
+Firms in the market: 33
+Age of oldest firm: 35
+Age of youngest firm: 0
+Average age: 21.1
+Active firms: 33
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 32
+Weighted marginal cost: 37.72
+Average proximity to optimal tech: 61.93%
+Price: 45.77
+Industry output: 1016.91
+Average output: 30.82
+
+----------------------------------
+PROCESSING PERIOD 37
+
+---------------------
+RESULTS OF PERIOD 37:
+
+Survivors from previous period: 32
+New entrants in this period: 2
+Firms in the market: 34
+Age of oldest firm: 36
+Age of youngest firm: 0
+Average age: 20.7
+Active firms: 34
+Inactive firms: 0
+Exiting firms after this period: 4
+Survivors from this period: 30
+Weighted marginal cost: 37.73
+Average proximity to optimal tech: 61.92%
+Price: 45.57
+Industry output: 1017.74
+Average output: 29.93
+
+----------------------------------
+PROCESSING PERIOD 38
+
+---------------------
+RESULTS OF PERIOD 38:
+
+Survivors from previous period: 30
+New entrants in this period: 1
+Firms in the market: 31
+Age of oldest firm: 37
+Age of youngest firm: 0
+Average age: 22.0
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 30
+Weighted marginal cost: 38.60
+Average proximity to optimal tech: 60.35%
+Price: 47.79
+Industry output: 1008.85
+Average output: 32.54
+
+----------------------------------
+PROCESSING PERIOD 39
+
+---------------------
+RESULTS OF PERIOD 39:
+
+Survivors from previous period: 30
+New entrants in this period: 0
+Firms in the market: 30
+Age of oldest firm: 38
+Age of youngest firm: 1
+Average age: 22.8
+Active firms: 30
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 30
+Weighted marginal cost: 38.55
+Average proximity to optimal tech: 60.56%
+Price: 47.85
+Industry output: 1008.60
+Average output: 33.62
+
+----------------------------------
+PROCESSING PERIOD 40
+
+---------------------
+RESULTS OF PERIOD 40:
+
+Survivors from previous period: 30
+New entrants in this period: 3
+Firms in the market: 33
+Age of oldest firm: 39
+Age of youngest firm: 0
+Average age: 21.7
+Active firms: 33
+Inactive firms: 0
+Exiting firms after this period: 3
+Survivors from this period: 30
+Weighted marginal cost: 38.64
+Average proximity to optimal tech: 60.45%
+Price: 47.21
+Industry output: 1011.15
+Average output: 30.64
+
+----------------------------------
+PROCESSING PERIOD 41
+
+---------------------
+RESULTS OF PERIOD 41:
+
+Survivors from previous period: 30
+New entrants in this period: 3
+Firms in the market: 33
+Age of oldest firm: 40
+Age of youngest firm: 0
+Average age: 22.4
+Active firms: 33
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 31
+Weighted marginal cost: 38.48
+Average proximity to optimal tech: 60.67%
+Price: 47.00
+Industry output: 1012.01
+Average output: 30.67
+
+----------------------------------
+PROCESSING PERIOD 42
+
+---------------------
+RESULTS OF PERIOD 42:
+
+Survivors from previous period: 31
+New entrants in this period: 1
+Firms in the market: 32
+Age of oldest firm: 41
+Age of youngest firm: 0
+Average age: 22.8
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 32
+Weighted marginal cost: 38.36
+Average proximity to optimal tech: 60.94%
+Price: 46.97
+Industry output: 1012.12
+Average output: 31.63
+
+----------------------------------
+PROCESSING PERIOD 43
+
+---------------------
+RESULTS OF PERIOD 43:
+
+Survivors from previous period: 32
+New entrants in this period: 1
+Firms in the market: 33
+Age of oldest firm: 42
+Age of youngest firm: 0
+Average age: 23.1
+Active firms: 33
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 32
+Weighted marginal cost: 38.06
+Average proximity to optimal tech: 61.11%
+Price: 46.57
+Industry output: 1013.73
+Average output: 30.72
+
+----------------------------------
+PROCESSING PERIOD 44
+
+---------------------
+RESULTS OF PERIOD 44:
+
+Survivors from previous period: 32
+New entrants in this period: 1
+Firms in the market: 33
+Age of oldest firm: 42
+Age of youngest firm: 0
+Average age: 22.8
+Active firms: 33
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 32
+Weighted marginal cost: 38.04
+Average proximity to optimal tech: 61.17%
+Price: 46.51
+Industry output: 1013.97
+Average output: 30.73
+
+----------------------------------
+PROCESSING PERIOD 45
+
+---------------------
+RESULTS OF PERIOD 45:
+
+Survivors from previous period: 32
+New entrants in this period: 1
+Firms in the market: 33
+Age of oldest firm: 43
+Age of youngest firm: 0
+Average age: 23.7
+Active firms: 33
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 32
+Weighted marginal cost: 38.04
+Average proximity to optimal tech: 61.17%
+Price: 46.51
+Industry output: 1013.97
+Average output: 30.73
+
+----------------------------------
+PROCESSING PERIOD 46
+
+---------------------
+RESULTS OF PERIOD 46:
+
+Survivors from previous period: 32
+New entrants in this period: 0
+Firms in the market: 32
+Age of oldest firm: 44
+Age of youngest firm: 3
+Average age: 25.5
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 31
+Weighted marginal cost: 38.86
+Average proximity to optimal tech: 60.19%
+Price: 47.70
+Industry output: 1009.22
+Average output: 31.54
+
+----------------------------------
+PROCESSING PERIOD 47
+
+---------------------
+RESULTS OF PERIOD 47:
+
+Survivors from previous period: 31
+New entrants in this period: 3
+Firms in the market: 34
+Age of oldest firm: 45
+Age of youngest firm: 0
+Average age: 24.7
+Active firms: 34
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 32
+Weighted marginal cost: 38.89
+Average proximity to optimal tech: 60.14%
+Price: 47.29
+Industry output: 1010.83
+Average output: 29.73
+
+----------------------------------
+PROCESSING PERIOD 48
+
+---------------------
+RESULTS OF PERIOD 48:
+
+Survivors from previous period: 32
+New entrants in this period: 1
+Firms in the market: 33
+Age of oldest firm: 46
+Age of youngest firm: 0
+Average age: 26.4
+Active firms: 33
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 32
+Weighted marginal cost: 38.83
+Average proximity to optimal tech: 60.23%
+Price: 47.43
+Industry output: 1010.29
+Average output: 30.61
+
+----------------------------------
+PROCESSING PERIOD 49
+
+---------------------
+RESULTS OF PERIOD 49:
+
+Survivors from previous period: 32
+New entrants in this period: 1
+Firms in the market: 33
+Age of oldest firm: 47
+Age of youngest firm: 0
+Average age: 27.4
+Active firms: 32
+Inactive firms: 1
+Exiting firms after this period: 3
+Survivors from this period: 30
+Weighted marginal cost: 39.22
+Average proximity to optimal tech: 59.57%
+Price: 48.30
+Industry output: 1006.82
+Average output: 31.46
+
+----------------------------------
+PROCESSING PERIOD 50
+
+---------------------
+RESULTS OF PERIOD 50:
+
+Survivors from previous period: 30
+New entrants in this period: 3
+Firms in the market: 33
+Age of oldest firm: 47
+Age of youngest firm: 0
+Average age: 26.1
+Active firms: 32
+Inactive firms: 1
+Exiting firms after this period: 1
+Survivors from this period: 32
+Weighted marginal cost: 39.20
+Average proximity to optimal tech: 59.83%
+Price: 48.04
+Industry output: 1007.83
+Average output: 31.49
+
+Simulation completed in 0.15 seconds
+Saving log...

@@ -1,0 +1,1818 @@
+
+sys.version_info(major=3, minor=6, micro=0, releaselevel='final', serial=0)
+----- PARAMETERS -----
+DemandIntercept: 300
+FixedCost: 200
+InitialMarketSize: 4
+LogLevel: {'Console': ['INFO'], 'File': ['DEBUG', 'TRACE']}
+MaxMagnituteOfTechChange: 8
+MinimumWealthForSurvival: 0
+NumberOfPeriods: 50
+NumberOfPotentialEntrants: 40
+NumberOfTasks: 96
+PeriodStartOfTechChange: 20
+RateOfTechChange: 0.1
+StartupWealth: 0
+
+----------------------------------
+PROCESSING PERIOD 1
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 4 loops
+Updating 37 active firms: Processing...
+Updating 37 active firms: OK!
+Updating 3 inactive firms: Processing...
+Updating 3 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 1:
+
+Survivors from previous period: 0
+New entrants in this period: 40
+Firms in the market: 40
+Age of oldest firm: 0
+Age of youngest firm: 0
+Average age: 0.0
+Active firms: 37
+Inactive firms: 3
+Exiting firms after this period: 25
+Survivors from this period: 15
+Weighted marginal cost: 46.56
+Average proximity to optimal tech: 51.04%
+Price: 55.56
+Industry output: 977.74
+Average output: 26.43
+
+----------------------------------
+PROCESSING PERIOD 2
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 13 loops
+Updating 41 active firms: Processing...
+Updating 41 active firms: OK!
+Updating 12 inactive firms: Processing...
+Updating 12 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 2:
+
+Survivors from previous period: 15
+New entrants in this period: 38
+Firms in the market: 53
+Age of oldest firm: 1
+Age of youngest firm: 0
+Average age: 0.3
+Active firms: 41
+Inactive firms: 12
+Exiting firms after this period: 34
+Survivors from this period: 19
+Weighted marginal cost: 43.76
+Average proximity to optimal tech: 54.22%
+Price: 51.84
+Industry output: 992.66
+Average output: 24.21
+
+----------------------------------
+PROCESSING PERIOD 3
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 41 active firms: Processing...
+Updating 41 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 3:
+
+Survivors from previous period: 19
+New entrants in this period: 22
+Firms in the market: 41
+Age of oldest firm: 2
+Age of youngest firm: 0
+Average age: 0.8
+Active firms: 41
+Inactive firms: 0
+Exiting firms after this period: 20
+Survivors from this period: 21
+Weighted marginal cost: 43.11
+Average proximity to optimal tech: 54.98%
+Price: 51.09
+Industry output: 995.63
+Average output: 24.28
+
+----------------------------------
+PROCESSING PERIOD 4
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 38 active firms: Processing...
+Updating 38 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 4:
+
+Survivors from previous period: 21
+New entrants in this period: 17
+Firms in the market: 38
+Age of oldest firm: 3
+Age of youngest firm: 0
+Average age: 1.3
+Active firms: 38
+Inactive firms: 0
+Exiting firms after this period: 18
+Survivors from this period: 20
+Weighted marginal cost: 42.21
+Average proximity to optimal tech: 56.14%
+Price: 50.43
+Industry output: 998.29
+Average output: 26.27
+
+----------------------------------
+PROCESSING PERIOD 5
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 39 active firms: Processing...
+Updating 39 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 5:
+
+Survivors from previous period: 20
+New entrants in this period: 19
+Firms in the market: 39
+Age of oldest firm: 4
+Age of youngest firm: 0
+Average age: 1.4
+Active firms: 39
+Inactive firms: 0
+Exiting firms after this period: 16
+Survivors from this period: 23
+Weighted marginal cost: 41.44
+Average proximity to optimal tech: 56.73%
+Price: 49.69
+Industry output: 1001.25
+Average output: 25.67
+
+----------------------------------
+PROCESSING PERIOD 6
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 34 active firms: Processing...
+Updating 34 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 6:
+
+Survivors from previous period: 23
+New entrants in this period: 11
+Firms in the market: 34
+Age of oldest firm: 5
+Age of youngest firm: 0
+Average age: 2.2
+Active firms: 34
+Inactive firms: 0
+Exiting firms after this period: 8
+Survivors from this period: 26
+Weighted marginal cost: 40.97
+Average proximity to optimal tech: 58.09%
+Price: 49.29
+Industry output: 1002.86
+Average output: 29.50
+
+----------------------------------
+PROCESSING PERIOD 7
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 31 active firms: Processing...
+Updating 31 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 7:
+
+Survivors from previous period: 26
+New entrants in this period: 5
+Firms in the market: 31
+Age of oldest firm: 6
+Age of youngest firm: 0
+Average age: 3.1
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 4
+Survivors from this period: 27
+Weighted marginal cost: 40.35
+Average proximity to optimal tech: 58.90%
+Price: 49.19
+Industry output: 1003.26
+Average output: 32.36
+
+----------------------------------
+PROCESSING PERIOD 8
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 29 active firms: Processing...
+Updating 29 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 8:
+
+Survivors from previous period: 27
+New entrants in this period: 2
+Firms in the market: 29
+Age of oldest firm: 7
+Age of youngest firm: 0
+Average age: 4.0
+Active firms: 29
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 28
+Weighted marginal cost: 40.07
+Average proximity to optimal tech: 59.30%
+Price: 49.34
+Industry output: 1002.64
+Average output: 34.57
+
+----------------------------------
+PROCESSING PERIOD 9
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 31 active firms: Processing...
+Updating 31 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 9:
+
+Survivors from previous period: 28
+New entrants in this period: 3
+Firms in the market: 31
+Age of oldest firm: 8
+Age of youngest firm: 0
+Average age: 4.7
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 30
+Weighted marginal cost: 39.80
+Average proximity to optimal tech: 59.44%
+Price: 48.67
+Industry output: 1005.34
+Average output: 32.43
+
+----------------------------------
+PROCESSING PERIOD 10
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 32 active firms: Processing...
+Updating 32 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 10:
+
+Survivors from previous period: 30
+New entrants in this period: 2
+Firms in the market: 32
+Age of oldest firm: 9
+Age of youngest firm: 0
+Average age: 5.5
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 31
+Weighted marginal cost: 39.68
+Average proximity to optimal tech: 59.60%
+Price: 48.26
+Industry output: 1006.94
+Average output: 31.47
+
+----------------------------------
+PROCESSING PERIOD 11
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 35 active firms: Processing...
+Updating 35 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 11:
+
+Survivors from previous period: 31
+New entrants in this period: 4
+Firms in the market: 35
+Age of oldest firm: 10
+Age of youngest firm: 0
+Average age: 5.6
+Active firms: 35
+Inactive firms: 0
+Exiting firms after this period: 8
+Survivors from this period: 27
+Weighted marginal cost: 39.68
+Average proximity to optimal tech: 59.64%
+Price: 47.57
+Industry output: 1009.72
+Average output: 28.85
+
+----------------------------------
+PROCESSING PERIOD 12
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 31 active firms: Processing...
+Updating 31 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 12:
+
+Survivors from previous period: 27
+New entrants in this period: 4
+Firms in the market: 31
+Age of oldest firm: 11
+Age of youngest firm: 0
+Average age: 6.2
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 7
+Survivors from this period: 24
+Weighted marginal cost: 39.55
+Average proximity to optimal tech: 59.81%
+Price: 48.31
+Industry output: 1006.77
+Average output: 32.48
+
+----------------------------------
+PROCESSING PERIOD 13
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 33 active firms: Processing...
+Updating 33 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 13:
+
+Survivors from previous period: 24
+New entrants in this period: 9
+Firms in the market: 33
+Age of oldest firm: 12
+Age of youngest firm: 0
+Average age: 5.8
+Active firms: 33
+Inactive firms: 0
+Exiting firms after this period: 9
+Survivors from this period: 24
+Weighted marginal cost: 39.79
+Average proximity to optimal tech: 59.28%
+Price: 48.35
+Industry output: 1006.62
+Average output: 30.50
+
+----------------------------------
+PROCESSING PERIOD 14
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 32 active firms: Processing...
+Updating 32 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 14:
+
+Survivors from previous period: 24
+New entrants in this period: 8
+Firms in the market: 32
+Age of oldest firm: 13
+Age of youngest firm: 0
+Average age: 6.8
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 5
+Survivors from this period: 27
+Weighted marginal cost: 39.27
+Average proximity to optimal tech: 59.90%
+Price: 47.98
+Industry output: 1008.08
+Average output: 31.50
+
+----------------------------------
+PROCESSING PERIOD 15
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 30 active firms: Processing...
+Updating 30 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 15:
+
+Survivors from previous period: 27
+New entrants in this period: 3
+Firms in the market: 30
+Age of oldest firm: 14
+Age of youngest firm: 0
+Average age: 7.5
+Active firms: 30
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 29
+Weighted marginal cost: 38.96
+Average proximity to optimal tech: 60.45%
+Price: 47.95
+Industry output: 1008.20
+Average output: 33.61
+
+----------------------------------
+PROCESSING PERIOD 16
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 30 active firms: Processing...
+Updating 30 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 16:
+
+Survivors from previous period: 29
+New entrants in this period: 1
+Firms in the market: 30
+Age of oldest firm: 15
+Age of youngest firm: 0
+Average age: 8.5
+Active firms: 30
+Inactive firms: 0
+Exiting firms after this period: 4
+Survivors from this period: 26
+Weighted marginal cost: 38.96
+Average proximity to optimal tech: 60.45%
+Price: 47.95
+Industry output: 1008.20
+Average output: 33.61
+
+----------------------------------
+PROCESSING PERIOD 17
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 27 active firms: Processing...
+Updating 27 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 17:
+
+Survivors from previous period: 26
+New entrants in this period: 1
+Firms in the market: 27
+Age of oldest firm: 16
+Age of youngest firm: 0
+Average age: 8.9
+Active firms: 27
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 27
+Weighted marginal cost: 38.66
+Average proximity to optimal tech: 60.88%
+Price: 48.44
+Industry output: 1006.25
+Average output: 37.27
+
+----------------------------------
+PROCESSING PERIOD 18
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 31 active firms: Processing...
+Updating 31 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 18:
+
+Survivors from previous period: 27
+New entrants in this period: 4
+Firms in the market: 31
+Age of oldest firm: 17
+Age of youngest firm: 0
+Average age: 8.6
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 3
+Survivors from this period: 28
+Weighted marginal cost: 38.82
+Average proximity to optimal tech: 60.62%
+Price: 47.53
+Industry output: 1009.90
+Average output: 32.58
+
+----------------------------------
+PROCESSING PERIOD 19
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 30 active firms: Processing...
+Updating 30 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 19:
+
+Survivors from previous period: 28
+New entrants in this period: 2
+Firms in the market: 30
+Age of oldest firm: 18
+Age of youngest firm: 0
+Average age: 9.8
+Active firms: 30
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 29
+Weighted marginal cost: 38.57
+Average proximity to optimal tech: 60.94%
+Price: 47.48
+Industry output: 1010.08
+Average output: 33.67
+
+----------------------------------
+PROCESSING PERIOD 20
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 33 active firms: Processing...
+Updating 33 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 20:
+
+Survivors from previous period: 29
+New entrants in this period: 4
+Firms in the market: 33
+Age of oldest firm: 19
+Age of youngest firm: 0
+Average age: 9.8
+Active firms: 33
+Inactive firms: 0
+Exiting firms after this period: 4
+Survivors from this period: 29
+Weighted marginal cost: 38.35
+Average proximity to optimal tech: 61.08%
+Price: 46.60
+Industry output: 1013.60
+Average output: 30.72
+
+----------------------------------
+PROCESSING PERIOD 21
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 30 active firms: Processing...
+Updating 30 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 21:
+
+Survivors from previous period: 29
+New entrants in this period: 1
+Firms in the market: 30
+Age of oldest firm: 20
+Age of youngest firm: 0
+Average age: 10.4
+Active firms: 30
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 28
+Weighted marginal cost: 38.15
+Average proximity to optimal tech: 61.39%
+Price: 47.04
+Industry output: 1011.83
+Average output: 33.73
+
+----------------------------------
+PROCESSING PERIOD 22
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 33 active firms: Processing...
+Updating 33 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 22:
+
+Survivors from previous period: 28
+New entrants in this period: 5
+Firms in the market: 33
+Age of oldest firm: 21
+Age of youngest firm: 0
+Average age: 9.9
+Active firms: 33
+Inactive firms: 0
+Exiting firms after this period: 7
+Survivors from this period: 26
+Weighted marginal cost: 38.25
+Average proximity to optimal tech: 61.24%
+Price: 46.45
+Industry output: 1014.22
+Average output: 30.73
+
+----------------------------------
+PROCESSING PERIOD 23
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 31 active firms: Processing...
+Updating 31 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 23:
+
+Survivors from previous period: 26
+New entrants in this period: 5
+Firms in the market: 31
+Age of oldest firm: 22
+Age of youngest firm: 0
+Average age: 9.8
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 3
+Survivors from this period: 28
+Weighted marginal cost: 37.93
+Average proximity to optimal tech: 61.63%
+Price: 46.55
+Industry output: 1013.80
+Average output: 32.70
+
+----------------------------------
+PROCESSING PERIOD 24
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 30 active firms: Processing...
+Updating 30 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 24:
+
+Survivors from previous period: 28
+New entrants in this period: 2
+Firms in the market: 30
+Age of oldest firm: 23
+Age of youngest firm: 0
+Average age: 11.0
+Active firms: 30
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 28
+Weighted marginal cost: 37.80
+Average proximity to optimal tech: 61.84%
+Price: 46.61
+Industry output: 1013.58
+Average output: 33.79
+
+----------------------------------
+PROCESSING PERIOD 25
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 29 active firms: Processing...
+Updating 29 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 25:
+
+Survivors from previous period: 28
+New entrants in this period: 1
+Firms in the market: 29
+Age of oldest firm: 24
+Age of youngest firm: 0
+Average age: 11.9
+Active firms: 29
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 28
+Weighted marginal cost: 37.74
+Average proximity to optimal tech: 61.93%
+Price: 46.81
+Industry output: 1012.78
+Average output: 34.92
+
+----------------------------------
+PROCESSING PERIOD 26
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 29 active firms: Processing...
+Updating 29 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 26:
+
+Survivors from previous period: 28
+New entrants in this period: 1
+Firms in the market: 29
+Age of oldest firm: 25
+Age of youngest firm: 0
+Average age: 12.8
+Active firms: 29
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 28
+Weighted marginal cost: 37.74
+Average proximity to optimal tech: 61.93%
+Price: 46.81
+Industry output: 1012.78
+Average output: 34.92
+
+----------------------------------
+PROCESSING PERIOD 27
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 28 active firms: Processing...
+Updating 28 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 27:
+
+Survivors from previous period: 28
+New entrants in this period: 0
+Firms in the market: 28
+Age of oldest firm: 26
+Age of youngest firm: 3
+Average age: 14.3
+Active firms: 28
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 28
+Weighted marginal cost: 37.68
+Average proximity to optimal tech: 62.02%
+Price: 47.02
+Industry output: 1011.93
+Average output: 36.14
+
+----------------------------------
+PROCESSING PERIOD 28
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 29 active firms: Processing...
+Updating 29 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 28:
+
+Survivors from previous period: 28
+New entrants in this period: 1
+Firms in the market: 29
+Age of oldest firm: 27
+Age of youngest firm: 0
+Average age: 14.8
+Active firms: 29
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 29
+Weighted marginal cost: 37.72
+Average proximity to optimal tech: 61.96%
+Price: 46.77
+Industry output: 1012.92
+Average output: 34.93
+
+----------------------------------
+PROCESSING PERIOD 29
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 30 active firms: Processing...
+Updating 30 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 29:
+
+Survivors from previous period: 29
+New entrants in this period: 1
+Firms in the market: 30
+Age of oldest firm: 28
+Age of youngest firm: 0
+Average age: 15.2
+Active firms: 30
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 29
+Weighted marginal cost: 37.74
+Average proximity to optimal tech: 61.94%
+Price: 46.51
+Industry output: 1013.98
+Average output: 33.80
+
+----------------------------------
+PROCESSING PERIOD 30
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 31 active firms: Processing...
+Updating 31 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 30:
+
+Survivors from previous period: 29
+New entrants in this period: 2
+Firms in the market: 31
+Age of oldest firm: 29
+Age of youngest firm: 0
+Average age: 15.6
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 30
+Weighted marginal cost: 37.63
+Average proximity to optimal tech: 62.03%
+Price: 46.16
+Industry output: 1015.36
+Average output: 32.75
+
+----------------------------------
+PROCESSING PERIOD 31
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 31 active firms: Processing...
+Updating 31 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 31:
+
+Survivors from previous period: 30
+New entrants in this period: 1
+Firms in the market: 31
+Age of oldest firm: 30
+Age of youngest firm: 0
+Average age: 16.6
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 29
+Weighted marginal cost: 37.63
+Average proximity to optimal tech: 62.03%
+Price: 46.16
+Industry output: 1015.36
+Average output: 32.75
+
+----------------------------------
+PROCESSING PERIOD 32
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 31 active firms: Processing...
+Updating 31 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 32:
+
+Survivors from previous period: 29
+New entrants in this period: 2
+Firms in the market: 31
+Age of oldest firm: 31
+Age of youngest firm: 0
+Average age: 17.2
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 30
+Weighted marginal cost: 37.13
+Average proximity to optimal tech: 62.30%
+Price: 45.90
+Industry output: 1016.41
+Average output: 32.79
+
+----------------------------------
+PROCESSING PERIOD 33
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 31 active firms: Processing...
+Updating 31 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 33:
+
+Survivors from previous period: 30
+New entrants in this period: 1
+Firms in the market: 31
+Age of oldest firm: 32
+Age of youngest firm: 0
+Average age: 18.2
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 31
+Weighted marginal cost: 36.97
+Average proximity to optimal tech: 62.47%
+Price: 45.74
+Industry output: 1017.06
+Average output: 32.81
+
+----------------------------------
+PROCESSING PERIOD 34
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 32 active firms: Processing...
+Updating 32 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 34:
+
+Survivors from previous period: 31
+New entrants in this period: 1
+Firms in the market: 32
+Age of oldest firm: 33
+Age of youngest firm: 0
+Average age: 18.6
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 32
+Weighted marginal cost: 36.94
+Average proximity to optimal tech: 62.50%
+Price: 45.45
+Industry output: 1018.18
+Average output: 31.82
+
+----------------------------------
+PROCESSING PERIOD 35
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 32 active firms: Processing...
+Updating 32 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 35:
+
+Survivors from previous period: 32
+New entrants in this period: 0
+Firms in the market: 32
+Age of oldest firm: 34
+Age of youngest firm: 1
+Average age: 19.6
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 32
+Weighted marginal cost: 36.94
+Average proximity to optimal tech: 62.50%
+Price: 45.45
+Industry output: 1018.18
+Average output: 31.82
+
+----------------------------------
+PROCESSING PERIOD 36
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 32 active firms: Processing...
+Updating 32 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 36:
+
+Survivors from previous period: 32
+New entrants in this period: 0
+Firms in the market: 32
+Age of oldest firm: 35
+Age of youngest firm: 2
+Average age: 20.6
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 32
+Weighted marginal cost: 36.94
+Average proximity to optimal tech: 62.50%
+Price: 45.45
+Industry output: 1018.18
+Average output: 31.82
+
+----------------------------------
+PROCESSING PERIOD 37
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 35 active firms: Processing...
+Updating 35 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 37:
+
+Survivors from previous period: 32
+New entrants in this period: 3
+Firms in the market: 35
+Age of oldest firm: 36
+Age of youngest firm: 0
+Average age: 19.7
+Active firms: 35
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 34
+Weighted marginal cost: 36.64
+Average proximity to optimal tech: 62.68%
+Price: 44.62
+Industry output: 1021.53
+Average output: 29.19
+
+----------------------------------
+PROCESSING PERIOD 38
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 34 active firms: Processing...
+Updating 34 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 38:
+
+Survivors from previous period: 34
+New entrants in this period: 0
+Firms in the market: 34
+Age of oldest firm: 37
+Age of youngest firm: 1
+Average age: 21.3
+Active firms: 34
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 32
+Weighted marginal cost: 36.61
+Average proximity to optimal tech: 62.71%
+Price: 44.79
+Industry output: 1020.83
+Average output: 30.02
+
+----------------------------------
+PROCESSING PERIOD 39
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 32 active firms: Processing...
+Updating 32 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 39:
+
+Survivors from previous period: 32
+New entrants in this period: 0
+Firms in the market: 32
+Age of oldest firm: 38
+Age of youngest firm: 2
+Average age: 22.2
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 31
+Weighted marginal cost: 36.51
+Average proximity to optimal tech: 62.86%
+Price: 45.11
+Industry output: 1019.57
+Average output: 31.86
+
+----------------------------------
+PROCESSING PERIOD 40
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 33 active firms: Processing...
+Updating 33 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 40:
+
+Survivors from previous period: 31
+New entrants in this period: 2
+Firms in the market: 33
+Age of oldest firm: 39
+Age of youngest firm: 0
+Average age: 22.1
+Active firms: 33
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 31
+Weighted marginal cost: 36.54
+Average proximity to optimal tech: 62.82%
+Price: 44.91
+Industry output: 1020.34
+Average output: 30.92
+
+----------------------------------
+PROCESSING PERIOD 41
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 31 active firms: Processing...
+Updating 31 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 41:
+
+Survivors from previous period: 31
+New entrants in this period: 0
+Firms in the market: 31
+Age of oldest firm: 40
+Age of youngest firm: 4
+Average age: 24.5
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 31
+Weighted marginal cost: 36.47
+Average proximity to optimal tech: 62.90%
+Price: 45.31
+Industry output: 1018.75
+Average output: 32.86
+
+----------------------------------
+PROCESSING PERIOD 42
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 32 active firms: Processing...
+Updating 32 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 42:
+
+Survivors from previous period: 31
+New entrants in this period: 1
+Firms in the market: 32
+Age of oldest firm: 41
+Age of youngest firm: 0
+Average age: 24.8
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 1
+Survivors from this period: 31
+Weighted marginal cost: 36.51
+Average proximity to optimal tech: 62.86%
+Price: 45.11
+Industry output: 1019.57
+Average output: 31.86
+
+----------------------------------
+PROCESSING PERIOD 43
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 32 active firms: Processing...
+Updating 32 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 43:
+
+Survivors from previous period: 31
+New entrants in this period: 1
+Firms in the market: 32
+Age of oldest firm: 42
+Age of youngest firm: 0
+Average age: 25.7
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 30
+Weighted marginal cost: 36.45
+Average proximity to optimal tech: 62.92%
+Price: 45.04
+Industry output: 1019.82
+Average output: 31.87
+
+----------------------------------
+PROCESSING PERIOD 44
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 31 active firms: Processing...
+Updating 31 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 44:
+
+Survivors from previous period: 30
+New entrants in this period: 1
+Firms in the market: 31
+Age of oldest firm: 43
+Age of youngest firm: 0
+Average age: 25.4
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 2
+Survivors from this period: 29
+Weighted marginal cost: 36.32
+Average proximity to optimal tech: 63.10%
+Price: 45.12
+Industry output: 1019.53
+Average output: 32.89
+
+----------------------------------
+PROCESSING PERIOD 45
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 29 active firms: Processing...
+Updating 29 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 45:
+
+Survivors from previous period: 29
+New entrants in this period: 0
+Firms in the market: 29
+Age of oldest firm: 43
+Age of youngest firm: 1
+Average age: 25.2
+Active firms: 29
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 29
+Weighted marginal cost: 36.18
+Average proximity to optimal tech: 63.36%
+Price: 45.42
+Industry output: 1018.33
+Average output: 35.11
+
+----------------------------------
+PROCESSING PERIOD 46
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 29 active firms: Processing...
+Updating 29 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 46:
+
+Survivors from previous period: 29
+New entrants in this period: 0
+Firms in the market: 29
+Age of oldest firm: 44
+Age of youngest firm: 2
+Average age: 26.2
+Active firms: 29
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 29
+Weighted marginal cost: 36.18
+Average proximity to optimal tech: 63.36%
+Price: 45.42
+Industry output: 1018.33
+Average output: 35.11
+
+----------------------------------
+PROCESSING PERIOD 47
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 30 active firms: Processing...
+Updating 30 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 47:
+
+Survivors from previous period: 29
+New entrants in this period: 1
+Firms in the market: 30
+Age of oldest firm: 45
+Age of youngest firm: 0
+Average age: 26.3
+Active firms: 30
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 30
+Weighted marginal cost: 36.13
+Average proximity to optimal tech: 63.40%
+Price: 45.09
+Industry output: 1019.62
+Average output: 33.99
+
+----------------------------------
+PROCESSING PERIOD 48
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 31 active firms: Processing...
+Updating 31 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 48:
+
+Survivors from previous period: 30
+New entrants in this period: 1
+Firms in the market: 31
+Age of oldest firm: 46
+Age of youngest firm: 0
+Average age: 26.4
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 31
+Weighted marginal cost: 36.09
+Average proximity to optimal tech: 63.44%
+Price: 44.79
+Industry output: 1020.83
+Average output: 32.93
+
+----------------------------------
+PROCESSING PERIOD 49
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 31 active firms: Processing...
+Updating 31 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 49:
+
+Survivors from previous period: 31
+New entrants in this period: 0
+Firms in the market: 31
+Age of oldest firm: 47
+Age of youngest firm: 1
+Average age: 27.4
+Active firms: 31
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 31
+Weighted marginal cost: 36.09
+Average proximity to optimal tech: 63.44%
+Price: 44.79
+Industry output: 1020.83
+Average output: 32.93
+
+----------------------------------
+PROCESSING PERIOD 50
+External shocks: Processing...
+External shocks: OK!
+Entry decisions: Processing...
+Entry decisions: OK!
+Shutdown decisions: Processing...
+Shutdown decisions: OK! 1 loops
+Updating 32 active firms: Processing...
+Updating 32 active firms: OK!
+Updating 0 inactive firms: Processing...
+Updating 0 inactive firms: OK!
+Exit decisions: Processing...
+Exit decisions: OK!
+Firms exiting: Processing...
+Firms exiting: OK!
+
+---------------------
+RESULTS OF PERIOD 50:
+
+Survivors from previous period: 31
+New entrants in this period: 1
+Firms in the market: 32
+Age of oldest firm: 48
+Age of youngest firm: 0
+Average age: 27.5
+Active firms: 32
+Inactive firms: 0
+Exiting firms after this period: 0
+Survivors from this period: 32
+Weighted marginal cost: 37.51
+Average proximity to optimal tech: 61.78%
+Price: 46.15
+Industry output: 1015.40
+Average output: 31.73
+
+Simulation completed in 0.31 seconds
+Saving log...
