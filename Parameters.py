@@ -4,14 +4,24 @@ class Parameters:
     NumberOfTasks = 96
     FixedCost = 200
     DemandIntercept = 300
-    InitialMarketSize = 4
+    MeanMarketSize = 4
+    RateOfPersistenceInDemand = 0.97
+    PeriodStartOfDemandChange = 2000
+    MinMarketSize = 0.1
     StartupWealth = 0
     MinimumWealthForSurvival = 0 
     NumberOfPotentialEntrants = 40
-    NumberOfPeriods = 5000
+    NumberOfPeriods = 500
     MaxMagnituteOfTechChange = 8
     RateOfTechChange = 0.1
-    PeriodStartOfTechChange = 3000
+    PeriodStartOfTechChange = 0
+    InnovationCost = 100.0
+    ImitationCost = 50.0
+    InitialAttractionForResearch = 10
+    InitialAttractionForNoResearch = 10
+    InitialAttractionForInnovation = 10
+    InitialAttractionForImitation = 10
+
 
     # System parameters
     LogLevel = {"Console": ["INFO"], "File": ["INFO", "DEBUG", "TRACE"]}
@@ -40,7 +50,7 @@ class Parameters:
                     "NumberOfTasks: " + self.NumberOfTasks + ", "
                     "FixedCost: " + self.FixedCost + ", "
                     "DemandIntercept: " + self.DemandIntercept + ", "
-                    "InitialMarketSize: " + self.InitialMarketSize + ", "
+                    "MeanMarketSize: " + self.MeanMarketSize + ", "
                     "MinimumWealthForSurvival: " + self.MinimumWealthForSurvival + ", "
                     "NumberOfFirms: " + self.NumberOfFirms + ", "
                     "NumberOfPeriods: " + self.NumberOfPeriods + "}"                   

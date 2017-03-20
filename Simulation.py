@@ -75,21 +75,26 @@ startTime = time.time()
 
 logger.info(sys.version_info)
 logger.info(Parameters.describe())
-industry = Industry()
 
-# Simulate
-for x in range(Parameters.NumberOfPeriods):
-    industry.nextPeriod()
-    industry.processCurrentPeriod()
-    logger.debug(Description.describeAggregate(industry))
-    logger.trace(Description.describeIncumbentFirms(industry))
+try:
+    industry = Industry()
 
-endTime = time.time()
-logger.info("Simulation completed in {:.2f} seconds".format(endTime - startTime))
+    # Simulate
+    for x in range(Parameters.NumberOfPeriods):
+        industry.processPeriod()
+        logger.debug(Description.describeAggregate(industry))
+        logger.trace(Description.describeIncumbentFirms(industry))
 
-# Save data
-logger.info("Saving data...")
-ExportToCSV.export(industry.data, timestamp)
+    endTime = time.time()
+
+    logger.info("Simulation completed in {:.2f} seconds".format(endTime - startTime))
+
+    # Save data
+    logger.info("Saving data...")
+    ExportToCSV.export(industry.data, timestamp)
+
+except:
+    logger.exception("Error")
 
 if(Parameters.EnableProfiling):
     pr.disable()

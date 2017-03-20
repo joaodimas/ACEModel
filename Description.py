@@ -19,6 +19,7 @@ class Description:
                     "Weighted marginal cost: {:.2f}\n"
                     "Average proximity to optimal tech: {:.2%}\n"
                     "Price: {:.2f}\n"
+                    "Total investment in R&D: {:.2f}\n"
                     "Industry output: {:.2f}\n"
                     "Average output: {:.2f}\n"
                 ).format(
@@ -36,6 +37,7 @@ class Description:
                             industry.weightedMC, 
                             1 - (industry.currentActiveSumOfMC / len(industry.activeIncumbentFirms) / 100) if len(industry.activeIncumbentFirms) != 0 else 0, 
                             industry.demand.eqPrice, 
+                            industry.totalInvestmentInResearch,
                             industry.industryOutput, 
                             industry.industryOutput / len(industry.activeIncumbentFirms) if len(industry.activeIncumbentFirms) != 0 else 0
                         )
@@ -75,8 +77,10 @@ class Description:
                 "Proximity to optimal: {:.2%}\n"
                 "MC: {:.2f}\n"
                 "Output: {:.2f}\n"
+                "Market share: {:.2%}\n"
+                "Investment in R&D: {:.2f}\n"
                 "Realized profits: {:.2f}\n"
                 "Expected profits in this period: {:.2f}\n"
                 "Expected wealth after this period: {:.2f}\n"
-                ).format(firm.firmId, firm.age, firm.status.name, firm.prevWealth, firm.wealth, firm.techDistToOptimal, 1 - (firm.techDistToOptimal / Parameters.NumberOfTasks), firm.MC, firm.output, firm.profits, firm.expProfits, firm.prevWealth + firm.expProfits)
+                ).format(firm.firmId, firm.age, firm.status.name, firm.prevWealth, firm.wealth, firm.techDistToOptimal, 1 - (firm.techDistToOptimal / Parameters.NumberOfTasks), firm.MC, firm.output, firm.marketShare, firm.investmentInResearch, firm.profits, firm.expProfits, firm.prevWealth + firm.expProfits)
         return desc
