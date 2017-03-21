@@ -90,6 +90,9 @@ class Firm :
     def processResearch(self):
         self.logger.trace("Firm {:d} will make a decision regarding R&D. Wealth: {:.2f}; Attraction to R&D: {:.2f}; Attraction to Not-R&D: {:.2f}; Attraction to Innovation: {:.2f}; Attraction to Imitation: {:.2f}.".format(self.firmId, self.wealth, self.attractionForResearch, self.attractionForNoResearch, self.attractionForInnovation, self.attractionForImitation))
         investmentInResearch = 0
+        researching = False
+        innovating = False
+        imitating = False
         # Only consider R&D if we have enough wealth
         if self.wealth >= max(Parameters.ImitationCost, Parameters.InnovationCost):
             # Decide if it will do R&D
@@ -98,12 +101,15 @@ class Firm :
                 if(random.random() < self.getProbOfInnovation()):
                     self.logger.trace("Firm {:d} decided to INNOVATE. Prob of R&D: {:.2f}; Prob of Innovation: {:.2f}.".format(self.firmId, self.getProbOfResearch(), self.getProbOfInnovation()))
                     investmentInResearch = self.processInnovation()
+                    innovating = True
                 # Instead of innovating, we will imitate
                 else:
                     self.logger.trace("Firm {:d} decided to IMITATE. Prob of R&D: {:.2f}; Prob of Imitation: {:.2f}.".format(self.firmId, self.getProbOfResearch(), 1 - self.getProbOfInnovation()))
                     investmentInResearch = self.processImitation()
+                    imitating = True
 
                 self.wealth -= investmentInResearch
+                researching = True
                 self.logger.trace("Firm {:d} completed R&D. Wealth: {:.2f}; Attraction to R&D: {:.2f}; Attraction to Not-R&D: {:.2f}; Attraction to Innovation: {:.2f}; Attraction to Imitation: {:.2f}.".format(self.firmId, self.wealth, self.attractionForResearch, self.attractionForNoResearch, self.attractionForInnovation, self.attractionForImitation))
 
             # No R&D in this period
@@ -114,7 +120,7 @@ class Firm :
             self.logger.trace("Firm {:d} has no wealth to pursue R&D. Wealth: {:.2f}".format(self.firmId, self.wealth))
 
         self.investmentInResearch = investmentInResearch
-        return investmentInResearch
+        return investmentInResearch, researching, innovating, imitating
 
     def processInnovation(self):
         oldTechnology = Technology(self.technology.tasks)
@@ -139,8 +145,13 @@ class Firm :
     def processImitation(self):
         oldTechnology = Technology(self.technology.tasks)
         oldMC = self.MC
-        self.imitate(self.selectFirmToImitate())
-        self.updateMarginalCost()
+        firmToImitate = self.selectFirmToImitate()
+        
+        if(firmToImitate != None):
+            self.imitate(firmToImitate)
+            self.updateMarginalCost()
+        else:
+            self.logger.trace("Found NO PROFITABLE FIRM to immitate.")
 
         # If new tehnology is more efficient, adopt it.
         if(self.MC < oldMC):
@@ -164,6 +175,11 @@ class Firm :
     def selectFirmToImitate(self):
         self.logger.trace("Selecting a firm to imitage...")
         otherFirms = [firm for firm in self.industry.profitableFirmsPrevPeriod if firm.firmId != self.firmId]
+
+        # Really bad previous period. No profitable firms.
+        if(len(otherFirms) == 0):
+            return None
+
         # The point in the CDF from which we select a firm to be observed
         selection = random.random()
         self.logger.trace("Point in CDF: {:.3f}".format(selection))

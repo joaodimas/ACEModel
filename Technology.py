@@ -20,41 +20,50 @@ class Technology:
     def getTasksStr(self):
         return format(self.tasks, '0' + str(Parameters.NumberOfTasks) + 'b')
     
-    def generateRandomWithMaxDistance(self, distance):
-        newTasks = self.tasks
+    def transformRandomlyWithMaxDistance(self, maxDistance):
+        self.logger.trace("Previous technology:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))
 
         # From 0 to the distance, choose randomly the magnitude of change (hamming distance between the current and the next technology)
-        magnitudeOfChange = random.randint(0,distance)
+        magnitudeOfChange = random.randint(0, maxDistance)
         # Put all tasks in a list to be sorted out randomly
-        allTasks = range(0,Parameters.NumberOfTasks - 1)
-        for bitToFlip in random.sample(allTasks, magnitudeOfChange):
-            self.logger.trace("Task changed: {:d}".format(Parameters.NumberOfPeriods - bitToFlip))
-            newTasks = self.flipBit(newTasks, bitToFlip)
+        allTasks = range(1,Parameters.NumberOfTasks)
+        for taskToFlip in random.sample(allTasks, magnitudeOfChange):
+            self.flipTask(taskToFlip)
+            # self.logger.trace("Task changed: {:d}".format(taskToFlip))
 
-        newTech = Technology(newTasks)
-        newTech.magnitudeOfChange = magnitudeOfChange
+        self.magnitudeOfChange = magnitudeOfChange
 
-        self.logger.trace("Previous technology:\n{:b}".format(self.tasks))
-        self.logger.trace("New technology:\n{:b}".format(newTasks))
+        self.logger.trace("New technology:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))
 
-        return newTech
-
-    def flipBit(self, binary, bitToFlip):
-        mask = 2 ** bitToFlip
-        return binary ^ mask
-
+    # TODO: inconsitent
     def flipRandomTask(self):
-        bitToFlip = random.randint(0, Parameters.NumberOfTasks - 1)
-        self.logger.trace("Task to change: {:d}".format(Parameters.NumberOfTasks - bitToFlip))
-        self.logger.trace("Current technology:\n{:b}".format(self.tasks))
-        self.tasks = self.flipBit(self.tasks, bitToFlip)
-        self.logger.trace("New technology:\n{:b}".format(self.tasks))
+        taskToFlip = random.randint(1, Parameters.NumberOfTasks)
+        self.flipTask(taskToFlip)
+
+    def flipTask(self, task):
+        bitToFlip = Parameters.NumberOfTasks - task
+        mask = 2 ** bitToFlip
+        newTasks = self.tasks ^ mask
+
+        self.logger.trace("Modifying task {:d}".format(task))
+        # self.logger.trace("Bit to flip: {:d}".format(bitToFlip))
+        # self.logger.trace("Number of Tasks: {:d}".format(Parameters.NumberOfTasks))
+        self.logger.trace("Before:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))
+        self.logger.trace("After: \n{0:0{1}b}".format(newTasks, Parameters.NumberOfTasks))
+        # assert("{0:0{1}b}".format(newTasks, Parameters.NumberOfTasks)[task-1] != "{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks)[task-1])
+        self.tasks = newTasks
+
 
     def copyOneRandomTask(self, otherTech):
-        bitToCopy = random.randint(0, Parameters.NumberOfTasks - 1)
-        self.logger.trace("Task to copy: {:d}".format(Parameters.NumberOfTasks - bitToCopy))
-        self.logger.trace("Technology to imitate:\n{:b}".format(otherTech.tasks))
-        self.logger.trace("Current technology:\n{:b}".format(self.tasks))
+        taskToCopy = random.randint(1, Parameters.NumberOfTasks)
+        self.copyTask(otherTech, taskToCopy)
+
+    # TODO: inconsitent
+    def copyTask(self, otherTech, task):
+        bitToCopy = Parameters.NumberOfTasks - task
+        self.logger.trace("Task to copy: {:d}".format(task))
+        self.logger.trace("Technology to imitate:\n{0:0{1}b}".format(otherTech.tasks, Parameters.NumberOfTasks))
+        self.logger.trace("Current technology:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))
         mask = 2 ** bitToCopy
         
         # Example: bitToCopy = 2
@@ -89,7 +98,6 @@ class Technology:
         if(mask & self.tasks != mask & otherTech.tasks):
             self.tasks = self.tasks ^ mask
         else:
-            self.logger.trace("Task {:d} is the same in both firms. No change.".format(Parameters.NumberOfTasks - bitToCopy))
+            self.logger.trace("Task {:d} is the same in both firms. No change.".format(task))
 
-        self.logger.trace("New technology:\n{:b}".format(self.tasks))
-
+        self.logger.trace("New technology:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))

@@ -22,6 +22,10 @@ class AggregateData:
                         "exitrate",
                         "survivrate",
                         "firms",
+                        "totresinv",
+                        "firmsres",
+                        "firmsinn",
+                        "firmsimi",
                         "hindex",
                         "div",
                         "gini",
@@ -59,6 +63,10 @@ class PeriodData:
         self.exitRate = industry.exitRate
         self.survivRate = 1 - industry.exitRate
         self.incumbents = len(industry.incumbentFirms)
+        self.totalResearchInvestment = industry.totalInvestmentInResearch
+        self.firmsResearching = industry.nmbResearching
+        self.firmsInnovating = industry.nmbInnovating
+        self.firmsImitating = industry.nmbImitating
         self.HIndex = industry.HIndex
         self.div = industry.degreeOfTechDiv
         self.gini = industry.gini
@@ -90,6 +98,10 @@ class PeriodData:
                     self.exitRate,
                     self.survivRate,
                     self.incumbents,
+                    self.totalResearchInvestment,
+                    self.firmsResearching,
+                    self.firmsInnovating,
+                    self.firmsImitating,
                     self.HIndex,
                     self.div,
                     self.gini,

@@ -1,6 +1,7 @@
 import random, logging
 from Parameters import Parameters
 from Firm import Firm
+from Technology import Technology
 
 class Shocks:
 
@@ -14,8 +15,8 @@ class Shocks:
         if(Parameters.RateOfTechChange > 0 and industry.currentPeriod >= Parameters.PeriodStartOfTechChange):
             if(random.random() < Parameters.RateOfTechChange):
                 cls.logger.trace("HIT BY A TECHNOLOGICAL SHOCK!")
-                previousOptimal = industry.currentOptimalTech
-                industry.currentOptimalTech = industry.currentOptimalTech.generateRandomWithMaxDistance(Parameters.MaxMagnituteOfTechChange)
+                previousOptimal = Technology(industry.currentOptimalTech.tasks)
+                industry.currentOptimalTech.transformRandomlyWithMaxDistance(Parameters.MaxMagnituteOfTechChange)
                 assert previousOptimal.calculateHammingDistance(industry.currentOptimalTech) == industry.currentOptimalTech.magnitudeOfChange
                 cls.logger.trace("Magnitude of change: {:d}".format(industry.currentOptimalTech.magnitudeOfChange))
             else:

@@ -3,6 +3,7 @@ from Industry import Industry
 from Parameters import Parameters
 from ExportToCSV import ExportToCSV
 from Description import Description
+from Technology import Technology
 
 pr = None
 if(Parameters.EnableProfiling):
@@ -75,6 +76,12 @@ startTime = time.time()
 
 logger.info(sys.version_info)
 logger.info(Parameters.describe())
+
+# for i in range(1,94):
+#     techA = Technology(0b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000)
+#     techB = Technology(0b1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111)
+#     techA.copyTask(techB, i)
+
 
 try:
     industry = Industry()

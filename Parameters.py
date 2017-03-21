@@ -1,7 +1,7 @@
 class Parameters:
 
     # Model parameters
-    NumberOfTasks = 96
+    NumberOfTasks = 94
     FixedCost = 200
     DemandIntercept = 300
     MeanMarketSize = 4
@@ -11,7 +11,7 @@ class Parameters:
     StartupWealth = 0
     MinimumWealthForSurvival = 0 
     NumberOfPotentialEntrants = 40
-    NumberOfPeriods = 5000
+    NumberOfPeriods = 30000
     MaxMagnituteOfTechChange = 8
     RateOfTechChange = 0.1
     PeriodStartOfTechChange = 0

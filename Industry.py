@@ -105,13 +105,23 @@ class Industry:
 
     def processResearch(self):
         self.totalInvestmentInResearch = 0
+        self.nmbResearching = 0
+        self.nmbInnovating = 0
+        self.nmbImitating = 0
         for firm in self.survivorsOfPreviousPeriod:
-            self.totalInvestmentInResearch += firm.processResearch()
+            result = firm.processResearch()
+            self.totalInvestmentInResearch += result[0]
+            if(result[1]):
+                self.nmbResearching += 1
+            if(result[2]):
+                self.nmbInnovating += 1
+            if(result[3]):
+                self.nmbImitating += 1
 
 
     def processFirmsEntering(self):
         self.logger.trace("Entry decisions: Processing...")
-        self.logger.trace("Active survivors of prev. period: {:d}\n"
+        self.logger.trace("Activem survivors of prev. period: {:d}\n"
                    "Sum of MC of active survivors of prev. period : {:.2f}"
                    .format(len(self.activeSurvivorsOfPreviousPeriod), self.sumOfActiveSurvivorsMC))
         for firm in self.potentialEntrants:
