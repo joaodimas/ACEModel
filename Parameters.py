@@ -6,12 +6,12 @@ class Parameters:
     DemandIntercept = 300
     MeanMarketSize = 4
     RateOfPersistenceInDemand = 0.97
-    PeriodStartOfDemandChange = 2000
+    PeriodStartOfDemandCycles = 2001
     MinMarketSize = 0.1
     StartupWealth = 0
     MinimumWealthForSurvival = 0 
     NumberOfPotentialEntrants = 40
-    NumberOfPeriods = 30000
+    NumberOfPeriods = 10000
     MaxMagnituteOfTechChange = 8
     RateOfTechChange = 0.1
     PeriodStartOfTechChange = 0
@@ -24,7 +24,7 @@ class Parameters:
 
 
     # System parameters
-    LogLevel = {"Console": ["INFO"], "File": ["INFO", "DEBUG", "TRACE"]}
+    LogLevel = {"Console": ["INFO"], "File": ["INFO", "DEBUG","TRACE"]}
     EnableProfiling = False
 
 

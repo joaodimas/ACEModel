@@ -1,4 +1,5 @@
-import random, logging
+import random
+from Logger import Logger
 from Parameters import Parameters
 
 
@@ -7,7 +8,6 @@ class Technology:
     def __init__(self, tasks):
         self.tasks = tasks
         self.magnitudeOfChange = 0
-        self.logger = logging.getLogger("ACEModel")
 
     @classmethod
     def generateRandomTechnology(cls):
@@ -21,7 +21,7 @@ class Technology:
         return format(self.tasks, '0' + str(Parameters.NumberOfTasks) + 'b')
     
     def transformRandomlyWithMaxDistance(self, maxDistance):
-        self.logger.trace("Previous technology:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))
+        Logger.trace("Previous technology:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))
 
         # From 0 to the distance, choose randomly the magnitude of change (hamming distance between the current and the next technology)
         magnitudeOfChange = random.randint(0, maxDistance)
@@ -29,11 +29,11 @@ class Technology:
         allTasks = range(1,Parameters.NumberOfTasks)
         for taskToFlip in random.sample(allTasks, magnitudeOfChange):
             self.flipTask(taskToFlip)
-            # self.logger.trace("Task changed: {:d}".format(taskToFlip))
+            # Logger.trace("Task changed: {:d}".format(taskToFlip))
 
         self.magnitudeOfChange = magnitudeOfChange
 
-        self.logger.trace("New technology:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))
+        Logger.trace("New technology:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))
 
     # TODO: inconsitent
     def flipRandomTask(self):
@@ -45,11 +45,11 @@ class Technology:
         mask = 2 ** bitToFlip
         newTasks = self.tasks ^ mask
 
-        self.logger.trace("Modifying task {:d}".format(task))
-        # self.logger.trace("Bit to flip: {:d}".format(bitToFlip))
-        # self.logger.trace("Number of Tasks: {:d}".format(Parameters.NumberOfTasks))
-        self.logger.trace("Before:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))
-        self.logger.trace("After: \n{0:0{1}b}".format(newTasks, Parameters.NumberOfTasks))
+        Logger.trace("Modifying task {:d}".format(task))
+        # Logger.trace("Bit to flip: {:d}".format(bitToFlip))
+        # Logger.trace("Number of Tasks: {:d}".format(Parameters.NumberOfTasks))
+        Logger.trace("Before:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))
+        Logger.trace("After: \n{0:0{1}b}".format(newTasks, Parameters.NumberOfTasks))
         # assert("{0:0{1}b}".format(newTasks, Parameters.NumberOfTasks)[task-1] != "{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks)[task-1])
         self.tasks = newTasks
 
@@ -61,9 +61,9 @@ class Technology:
     # TODO: inconsitent
     def copyTask(self, otherTech, task):
         bitToCopy = Parameters.NumberOfTasks - task
-        self.logger.trace("Task to copy: {:d}".format(task))
-        self.logger.trace("Technology to imitate:\n{0:0{1}b}".format(otherTech.tasks, Parameters.NumberOfTasks))
-        self.logger.trace("Current technology:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))
+        Logger.trace("Task to copy: {:d}".format(task))
+        Logger.trace("Technology to imitate:\n{0:0{1}b}".format(otherTech.tasks, Parameters.NumberOfTasks))
+        Logger.trace("Current technology:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))
         mask = 2 ** bitToCopy
         
         # Example: bitToCopy = 2
@@ -98,6 +98,6 @@ class Technology:
         if(mask & self.tasks != mask & otherTech.tasks):
             self.tasks = self.tasks ^ mask
         else:
-            self.logger.trace("Task {:d} is the same in both firms. No change.".format(task))
+            Logger.trace("Task {:d} is the same in both firms. No change.".format(task))
 
-        self.logger.trace("New technology:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))
+        Logger.trace("New technology:\n{0:0{1}b}".format(self.tasks, Parameters.NumberOfTasks))

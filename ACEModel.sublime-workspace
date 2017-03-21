@@ -4,6 +4,146 @@
 		"selected_items":
 		[
 			[
+				"Tech",
+				"Technology"
+			],
+			[
+				"taskTo",
+				"taskToCopy"
+			],
+			[
+				"Num",
+				"NumberOfTasks"
+			],
+			[
+				"flip",
+				"flipRandomTask"
+			],
+			[
+				"exitin",
+				"exitingFirms\tstatement"
+			],
+			[
+				"total",
+				"totalInvestmentInResearch\tstatement"
+			],
+			[
+				"sur",
+				"survivorsOfPreviousPeriod\tstatement"
+			],
+			[
+				"prob",
+				"probOfBeingObserved\tstatement"
+			],
+			[
+				"av",
+				"averageProximityToOptimalTech"
+			],
+			[
+				"indu",
+				"industry\tparam"
+			],
+			[
+				"activeSurviv",
+				"activeSurvivorsOfPreviousPeriod\tstatement"
+			],
+			[
+				"Imi",
+				"ImitationCost\tstatement"
+			],
+			[
+				"attrac",
+				"attractionForImitation\tstatement"
+			],
+			[
+				"attraction",
+				"attractionForNoResearch\tstatement"
+			],
+			[
+				"we",
+				"wealth\tstatement"
+			],
+			[
+				"attract",
+				"attractionForInnovation\tstatement"
+			],
+			[
+				"Cost",
+				"InnovationCost\tstatement"
+			],
+			[
+				"old",
+				"oldTechnology\tstatement"
+			],
+			[
+				"getProbOf",
+				"getProbOfInnovation"
+			],
+			[
+				"getProb",
+				"getProbOfResearch\tfunction"
+			],
+			[
+				"firm",
+				"firmId\tstatement"
+			],
+			[
+				"Inno",
+				"InnovationCost\tstatement"
+			],
+			[
+				"att",
+				"attractionForNoRD\tstatement"
+			],
+			[
+				"attr",
+				"attractionForRD\tstatement"
+			],
+			[
+				"Initial",
+				"InitialAttractionForImitation\tstatement"
+			],
+			[
+				"market",
+				"marketSize"
+			],
+			[
+				"RateO",
+				"RateOfPersistenceInDemand"
+			],
+			[
+				"out",
+				"output"
+			],
+			[
+				"in",
+				"incumbentFirms"
+			],
+			[
+				"incumbe",
+				"incumbentFirms"
+			],
+			[
+				"calcu",
+				"calculateHIndex"
+			],
+			[
+				"active",
+				"activeIncumbentFirms"
+			],
+			[
+				"Lo",
+				"LogLevel\tstatement"
+			],
+			[
+				"consol",
+				"consoleTrace\tstatement"
+			],
+			[
+				"process",
+				"processCurrentPeriod\tfunction"
+			],
+			[
 				"tech",
 				"currentOptimalTech\tstatement"
 			],
@@ -30,10 +170,6 @@
 			[
 				"youngest",
 				"youngestAge\tstatement"
-			],
-			[
-				"Num",
-				"NumberOfPeriods\tstatement"
 			],
 			[
 				"currentSum",
@@ -92,10 +228,6 @@
 				"survivorsOfPreviousPeriod\tstatement"
 			],
 			[
-				"sur",
-				"survivorsOfCurrentPeriod\tstatement"
-			],
-			[
 				"previ",
 				"previousPeriodSurvivors\tstatement"
 			],
@@ -152,24 +284,12 @@
 				"outsiderFirms"
 			],
 			[
-				"out",
-				"outsideFirms\tstatement"
-			],
-			[
 				"e",
 				"exitingFirms"
 			],
 			[
-				"process",
-				"processExitDecisions\tfunction"
-			],
-			[
 				"decide",
 				"decideIfLeaves\tfunction"
-			],
-			[
-				"in",
-				"incumbentFirms\tstatement"
 			],
 			[
 				"deci",
@@ -239,78 +359,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "Simulation.py",
-			"settings":
-			{
-				"buffer_size": 727,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Logger.py",
-			"settings":
-			{
-				"buffer_size": 503,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "ExportToCSV.py",
-			"settings":
-			{
-				"buffer_size": 608,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "AggregateData.py",
-			"settings":
-			{
-				"buffer_size": 2573,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Industry.py",
-			"settings":
-			{
-				"buffer_size": 9528,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Technology.py",
-			"settings":
-			{
-				"buffer_size": 1288,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Parameters.py",
-			"settings":
-			{
-				"buffer_size": 1558,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Shocks.py",
-			"settings":
-			{
-				"buffer_size": 1642,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -351,10 +399,138 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 267.0,
-		"last_filter": "insta",
+		"height": 107.0,
+		"last_filter": "git pull",
 		"selected_items":
 		[
+			[
+				"git pull",
+				"git: pull"
+			],
+			[
+				"pull",
+				"git: pull"
+			],
+			[
+				"status",
+				"git: status"
+			],
+			[
+				"stage",
+				"git: quick stage"
+			],
+			[
+				"pus",
+				"git: push"
+			],
+			[
+				"git status",
+				"git: status"
+			],
+			[
+				"git",
+				"git: rebase"
+			],
+			[
+				"push",
+				"git: push"
+			],
+			[
+				"git reset",
+				"git: reset"
+			],
+			[
+				"commit",
+				"git: quick commit"
+			],
+			[
+				"reset",
+				"git: reset"
+			],
+			[
+				"STAGE",
+				"git: quick stage"
+			],
+			[
+				"anaconda",
+				"Anaconda: Enable linting on this file"
+			],
+			[
+				"show all",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"nex",
+				"Anaconda: Next lint error"
+			],
+			[
+				"next",
+				"SublimeLinter: Next Error"
+			],
+			[
+				"next error",
+				"SublimeLinter: Next Error"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git ",
+				"git: remote remove"
+			],
+			[
+				"git igno",
+				"git: ignore current file"
+			],
+			[
+				"quick st",
+				"git: quick stage"
+			],
+			[
+				"ST",
+				"git: quick stage"
+			],
+			[
+				"pu",
+				"git: push"
+			],
+			[
+				"stage and",
+				"git: quick stage current file and commit"
+			],
+			[
+				"git:stage",
+				"git: quick stage"
+			],
+			[
+				"git:qui",
+				"git: quick commit"
+			],
+			[
+				"git:push",
+				"git: push"
+			],
+			[
+				"git: commit",
+				"git: quick commit"
+			],
+			[
+				"gitbut",
+				"github: create pull request"
+			],
+			[
+				"git:",
+				"git: commit"
+			],
+			[
+				"git: ",
+				"github: open repo"
+			],
+			[
+				"git: quick s",
+				"git: quick stage current file and commit"
+			],
 			[
 				"insta",
 				"Package Control: Install Package"
@@ -370,10 +546,6 @@
 			[
 				"pac",
 				"Package Control: Remove Package"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"package control",
@@ -392,7 +564,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 467.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -412,11 +584,37 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel",
-		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/data"
+		"/Users/jdimas/GitHub/ACEModel",
+		"/Users/jdimas/GitHub/ACEModel/data"
 	],
 	"file_history":
 	[
+		"/Users/jdimas/GitHub/ACEModel/Logger.py",
+		"/Users/jdimas/GitHub/ACEModel/Firm.py",
+		"/Users/jdimas/GitHub/ACEModel/Industry.py",
+		"/Users/jdimas/GitHub/ACEModel/Demand.py",
+		"/Users/jdimas/GitHub/ACEModel/Simulation.py",
+		"/Users/jdimas/GitHub/ACEModel/ExportToCSV.py",
+		"/Users/jdimas/GitHub/ACEModel/Technology.py",
+		"/Users/jdimas/GitHub/ACEModel/Shocks.py",
+		"/Users/jdimas/GitHub/ACEModel/Parameters.py",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-21T19h39m59s.INFO.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-21T17h05m07s.INFO.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-21T17h05m07s.AGGREGATE.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-21T17h05m07s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-20T19h35m43s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-21T16h10m48s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-21T16h05m51s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/Description.py",
+		"/Users/jdimas/GitHub/ACEModel/AggregateData.py",
+		"/Users/jdimas/GitHub/ACEModel/.gitignore",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-20T17h36m04s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-20T17h39m32s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/untitled.py",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-19T18h36m32s.AGGREGATE.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-19T18h36m32s.INFO.log",
+		"/Users/jdimas/GitHub/ACEModel/UpdateAndRun.sh",
+		"/Users/jdimas/GitHub/ACEModel/PerformanceTests.py",
 		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/Testes.py",
 		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/ExportToDTA.py",
 		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/Parameters.py",
@@ -500,15 +698,68 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/Users/jdimas/GitHub/ACEModel,-*/data/*",
+			"/Users/jdimas/GitHub/ACEModel",
+			"/Users/jdimas/GitHub/ACEModel,-*/backup/*",
 			"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel",
 			""
 		]
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"logger",
+			"self.logger.",
+			"cls.logger.",
+			"self.logger.",
+			"self.logger",
+			"Technology.logger.",
+			"self.logger",
+			"Firm(",
+			"{:b}",
+			"New technology:",
+			"0",
+			"generateRandomWithMaxDistance",
+			"flipBit",
+			"Task to change: 1\\n",
+			"Task to change: 1",
+			"width",
+			"Task to change",
+			"ound NO PROFITABLE FIRM to immitate",
+			"nmbProfitableFirms",
+			"industryOutput",
+			"getExpEqPrice",
+			"clear",
+			"survivorsOfCurrentPeriod",
+			"updateSumOfActiveSurvivorsMC",
+			"sumOfActiveSurvivorsMC",
+			"activeIncumbents",
+			"sumOfActiveSurvivorsMC",
+			"deadFirms",
+			"RD",
+			"\", \"",
+			"\", ",
+			"Previous market size",
+			"getPrice",
+			"InitialMarketSize",
+			"self.logger",
+			" logger.",
+			"logging.getLogger().trace(",
+			"logging.debug(",
+			"logging.info(",
+			"Logger.trace(",
+			"Logger.debug(",
+			"Logger.info(",
+			"file",
+			"info",
+			"Logger.debug",
+			"Logger.",
+			"Logger.log",
+			"debug",
+			"print",
+			"print(",
 			"PROCESSING PERIOD 200",
 			"currentOptimalTech",
 			"NO TECHNO",
@@ -586,32 +837,7 @@
 			"\"}\"",
 			"currentProfits",
 			"getMarginalCost()",
-			"firm",
-			"build",
-			"ftpnout",
-			"pi",
-			"qTrial",
-			"minCost",
-			" R ",
-			"R",
-			"TRT",
-			"shift",
-			"gPrev",
-			"gCurr",
-			"aCurr",
-			"S",
-			"mktSize",
-			"sMode",
-			"TS",
-			"\\n",
-			" \\n",
-			"\\n ",
-			"\\n",
-			"\\r\\n",
-			"minutos",
-			"mendeley",
-			"path",
-			"skim"
+			"firm"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -619,6 +845,28 @@
 		"regex": true,
 		"replace_history":
 		[
+			"Logger.",
+			"Technology.logger",
+			"1",
+			"Research",
+			"\",\\n\"",
+			"\",\\n",
+			"MeanMarketSize",
+			"cls.logger",
+			" self.logger.",
+			"logger.trace(",
+			"logger.debug(",
+			"logger.info(",
+			"logging.getLogger().trace(",
+			"logging.debug(",
+			"logging.info(",
+			"console",
+			"trace",
+			"debug",
+			"Logger.trace",
+			"trace",
+			"Logger.debug",
+			"Logger.debug(",
 			" ",
 			"",
 			"\",\\n\"",
@@ -648,363 +896,8 @@
 	"groups":
 	[
 		{
-			"selected": 3,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "Simulation.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 727,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								125,
-								125
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": "<",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								}
-							],
-							"bs_sintax": "python",
-							"buffer_scroll_name": "24900c7a",
-							"spell_check": false,
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "Logger.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 503,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								309,
-								309
-							]
-						],
-						"settings":
-						{
-							"bs_sintax": "python",
-							"buffer_scroll_name": "01ea80f7",
-							"spell_check": false,
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "ExportToCSV.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 608,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								608,
-								608
-							]
-						],
-						"settings":
-						{
-							"bs_sintax": "python",
-							"buffer_scroll_name": "f4a9addc",
-							"spell_check": false,
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "AggregateData.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2573,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								446,
-								446
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.python - string - comment - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								}
-							],
-							"bs_sintax": "python",
-							"buffer_scroll_name": "406f3e03",
-							"spell_check": false,
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Industry.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9528,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1462,
-								1462
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.python - string - comment - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								}
-							],
-							"bs_sintax": "python",
-							"buffer_scroll_name": "f7ca7101",
-							"spell_check": false,
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 255.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "Technology.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1288,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								161,
-								161
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.python - string - comment - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								}
-							],
-							"bs_sintax": "python",
-							"buffer_scroll_name": "e6db34fa",
-							"spell_check": false,
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "Parameters.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1558,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								989,
-								989
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.python - string - comment - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								}
-							],
-							"bs_sintax": "python",
-							"buffer_scroll_name": "d2b6c3ec",
-							"spell_check": false,
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "Shocks.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1642,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1520,
-								1520
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.python - string - comment - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								}
-							],
-							"bs_sintax": "python",
-							"buffer_scroll_name": "57f9c6fa",
-							"spell_check": false,
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1039,15 +932,23 @@
 		]
 	},
 	"menu_visible": true,
+	"output.GitSavvy":
+	{
+		"height": 112.0
+	},
 	"output.exec":
 	{
-		"height": 151.0
+		"height": 221.0
 	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "Anaconda Python Builder",
+	"output.show_commit_info":
+	{
+		"height": 112.0
+	},
+	"pinned_build_system": "Packages/User/ACEModel.sublime-build",
 	"project": "ACEModel.sublime-project",
 	"replace":
 	{
@@ -1089,7 +990,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 337.0,
+	"side_bar_width": 389.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

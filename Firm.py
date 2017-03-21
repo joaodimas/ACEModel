@@ -1,4 +1,5 @@
-import logging, random
+import random
+from Logger import Logger
 from Parameters import Parameters
 from Technology import Technology
 from enum import Enum
@@ -26,7 +27,6 @@ class Firm :
         self.attractionForNoResearch = Parameters.InitialAttractionForNoResearch
         self.attractionForInnovation = Parameters.InitialAttractionForInnovation
         self.attractionForImitation = Parameters.InitialAttractionForImitation
-        self.logger = logging.getLogger("ACEModel")
 
     def getDescription(self):
         return "id: " + str(self.firmId)
@@ -68,27 +68,27 @@ class Firm :
         
         if(self.status == FirmStatus.POTENTIAL_ENTRANT and self.expWealth > Parameters.MinimumWealthForSurvival):
             self.entering = True
-            self.logger.trace("Firm {:d} decided to ENTER. Expected price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Current wealth: {:.2f}; Exp. Wealth: {:.2f}.".format(self.firmId, self.expPrice, self.MC, self.expOutput, self.expProfits, self.wealth, self.expWealth))
+            Logger.trace("Firm {:d} decided to ENTER. Expected price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Current wealth: {:.2f}; Exp. Wealth: {:.2f}.".format(self.firmId, self.expPrice, self.MC, self.expOutput, self.expProfits, self.wealth, self.expWealth))
   
         return self.entering
 
     def decideIfExits(self):
         if(self.wealth < Parameters.MinimumWealthForSurvival):
             self.exiting = True
-            self.logger.trace("Firm {:d} decided to EXIT. Price: {:.2f}; Exp. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Output: {:.2f}; Exp. Profits: {:.2f}; Profits: {:.2f}; Wealth: {:.2f}.".format(self.firmId, self.industry.demand.eqPrice, self.expPrice, self.MC, self.expOutput, self.output, self.expProfits, self.profits, self.wealth))
+            Logger.trace("Firm {:d} decided to EXIT. Price: {:.2f}; Exp. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Output: {:.2f}; Exp. Profits: {:.2f}; Profits: {:.2f}; Wealth: {:.2f}.".format(self.firmId, self.industry.demand.eqPrice, self.expPrice, self.MC, self.expOutput, self.output, self.expProfits, self.profits, self.wealth))
         return self.exiting
 
     def decideIfDeactivates(self):
         self.updateOutput()
         if(self.output <= 0): # Yes. This firm doesn't want to produce. It will be deactivated.
             self.deactivating = True
-            self.logger.trace("Firm {:d} decided to DEACTIVATE. Price: {:.2f}; MC: {:.2f}; Exp. Price: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Wealth: {:.2f}.".format(self.firmId, self.industry.demand.eqPrice, self.MC, self.expPrice, self.expOutput, self.expProfits, self.wealth))
+            Logger.trace("Firm {:d} decided to DEACTIVATE. Price: {:.2f}; MC: {:.2f}; Exp. Price: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Wealth: {:.2f}.".format(self.firmId, self.industry.demand.eqPrice, self.MC, self.expPrice, self.expOutput, self.expProfits, self.wealth))
         else:
             self.deactivating = False
         return self.deactivating
 
     def processResearch(self):
-        self.logger.trace("Firm {:d} will make a decision regarding R&D. Wealth: {:.2f}; Attraction to R&D: {:.2f}; Attraction to Not-R&D: {:.2f}; Attraction to Innovation: {:.2f}; Attraction to Imitation: {:.2f}.".format(self.firmId, self.wealth, self.attractionForResearch, self.attractionForNoResearch, self.attractionForInnovation, self.attractionForImitation))
+        Logger.trace("Firm {:d} will make a decision regarding R&D. Wealth: {:.2f}; Attraction to R&D: {:.2f}; Attraction to Not-R&D: {:.2f}; Attraction to Innovation: {:.2f}; Attraction to Imitation: {:.2f}.".format(self.firmId, self.wealth, self.attractionForResearch, self.attractionForNoResearch, self.attractionForInnovation, self.attractionForImitation))
         investmentInResearch = 0
         researching = False
         innovating = False
@@ -99,25 +99,25 @@ class Firm :
             if(random.random() < self.getProbOfResearch()):
                 # Decide if it will innovate
                 if(random.random() < self.getProbOfInnovation()):
-                    self.logger.trace("Firm {:d} decided to INNOVATE. Prob of R&D: {:.2f}; Prob of Innovation: {:.2f}.".format(self.firmId, self.getProbOfResearch(), self.getProbOfInnovation()))
+                    Logger.trace("Firm {:d} decided to INNOVATE. Prob of R&D: {:.2f}; Prob of Innovation: {:.2f}.".format(self.firmId, self.getProbOfResearch(), self.getProbOfInnovation()))
                     investmentInResearch = self.processInnovation()
                     innovating = True
                 # Instead of innovating, we will imitate
                 else:
-                    self.logger.trace("Firm {:d} decided to IMITATE. Prob of R&D: {:.2f}; Prob of Imitation: {:.2f}.".format(self.firmId, self.getProbOfResearch(), 1 - self.getProbOfInnovation()))
+                    Logger.trace("Firm {:d} decided to IMITATE. Prob of R&D: {:.2f}; Prob of Imitation: {:.2f}.".format(self.firmId, self.getProbOfResearch(), 1 - self.getProbOfInnovation()))
                     investmentInResearch = self.processImitation()
                     imitating = True
 
                 self.wealth -= investmentInResearch
                 researching = True
-                self.logger.trace("Firm {:d} completed R&D. Wealth: {:.2f}; Attraction to R&D: {:.2f}; Attraction to Not-R&D: {:.2f}; Attraction to Innovation: {:.2f}; Attraction to Imitation: {:.2f}.".format(self.firmId, self.wealth, self.attractionForResearch, self.attractionForNoResearch, self.attractionForInnovation, self.attractionForImitation))
+                Logger.trace("Firm {:d} completed R&D. Wealth: {:.2f}; Attraction to R&D: {:.2f}; Attraction to Not-R&D: {:.2f}; Attraction to Innovation: {:.2f}; Attraction to Imitation: {:.2f}.".format(self.firmId, self.wealth, self.attractionForResearch, self.attractionForNoResearch, self.attractionForInnovation, self.attractionForImitation))
 
             # No R&D in this period
             else:
-                self.logger.trace("Firm {:d} decided to NOT pursue R&D. Prob of R&D: {:.2f}.".format(self.firmId, self.getProbOfResearch()))                
+                Logger.trace("Firm {:d} decided to NOT pursue R&D. Prob of R&D: {:.2f}.".format(self.firmId, self.getProbOfResearch()))                
         # We're too poor to do R&D
         else:
-            self.logger.trace("Firm {:d} has no wealth to pursue R&D. Wealth: {:.2f}".format(self.firmId, self.wealth))
+            Logger.trace("Firm {:d} has no wealth to pursue R&D. Wealth: {:.2f}".format(self.firmId, self.wealth))
 
         self.investmentInResearch = investmentInResearch
         return investmentInResearch, researching, innovating, imitating
@@ -130,11 +130,11 @@ class Firm :
 
         # If new tehnology is more efficient, adopt it.
         if(self.MC < oldMC):
-            self.logger.trace("Firm {:d} lowered its marginal cost through INNOVATION. Previous MC: {:.2f}; New MC: {:.2f}".format(self.firmId, oldMC, self.MC))
+            Logger.trace("Firm {:d} lowered its marginal cost through INNOVATION. Previous MC: {:.2f}; New MC: {:.2f}".format(self.firmId, oldMC, self.MC))
             self.attractionForResearch += 1
             self.attractionForInnovation += 1
         else:
-            self.logger.trace("Firm {:d} failed to reduce its marginal cost through INNOVATION. Previous MC: {:.2f}, Experimental MC: {:.2f}".format(self.firmId, oldMC, self.MC))
+            Logger.trace("Firm {:d} failed to reduce its marginal cost through INNOVATION. Previous MC: {:.2f}, Experimental MC: {:.2f}".format(self.firmId, oldMC, self.MC))
             self.technology = oldTechnology
             self.updateMarginalCost()
             self.attractionForNoResearch += 1
@@ -151,15 +151,15 @@ class Firm :
             self.imitate(firmToImitate)
             self.updateMarginalCost()
         else:
-            self.logger.trace("Found NO PROFITABLE FIRM to immitate.")
+            Logger.trace("Found NO PROFITABLE FIRM to immitate.")
 
         # If new tehnology is more efficient, adopt it.
         if(self.MC < oldMC):
-            self.logger.trace("Firm {:d} lowered its marginal cost through IMMITATION. Previous MC: {:.2f}; New MC: {:.2f}".format(self.firmId, oldMC, self.MC))
+            Logger.trace("Firm {:d} lowered its marginal cost through IMMITATION. Previous MC: {:.2f}; New MC: {:.2f}".format(self.firmId, oldMC, self.MC))
             self.attractionForResearch += 1
             self.attractionForImitation += 1
         else:
-            self.logger.trace("Firm {:d} failed to reduce its marginal cost through IMMITATION. Previous MC: {:.2f}, Experimental MC: {:.2f}".format(self.firmId, oldMC, self.MC))
+            Logger.trace("Firm {:d} failed to reduce its marginal cost through IMMITATION. Previous MC: {:.2f}, Experimental MC: {:.2f}".format(self.firmId, oldMC, self.MC))
             self.technology = oldTechnology
             self.updateMarginalCost()
             self.attractionForNoResearch += 1
@@ -173,7 +173,7 @@ class Firm :
     # More profitable competitors have a higher likelihood of being observed by this firm.
     # This function uses the Roulette Wheel Algorithm (more info: http://geneticalgorithms.ai-depot.com/Tutorial/Overview.html)
     def selectFirmToImitate(self):
-        self.logger.trace("Selecting a firm to imitage...")
+        Logger.trace("Selecting a firm to imitage...")
         otherFirms = [firm for firm in self.industry.profitableFirmsPrevPeriod if firm.firmId != self.firmId]
 
         # Really bad previous period. No profitable firms.
@@ -182,13 +182,13 @@ class Firm :
 
         # The point in the CDF from which we select a firm to be observed
         selection = random.random()
-        self.logger.trace("Point in CDF: {:.3f}".format(selection))
+        Logger.trace("Point in CDF: {:.3f}".format(selection))
 
         # Sum the profits 
         sumOfProfits = 0.0
         for firm in otherFirms:
             sumOfProfits += firm.profits
-        self.logger.trace("Sum of profits of competitors: {:.2f}".format(sumOfProfits))
+        Logger.trace("Sum of profits of competitors: {:.2f}".format(sumOfProfits))
 
         # Since we already have a random selection from 0 to 1, 
         # the firm for which the range of probability in the CDF contains the selection will be the observed one.
@@ -196,9 +196,9 @@ class Firm :
         cdf = 0.0
         for firm in otherFirms:
             probOfBeingObserved = firm.profits / sumOfProfits
-            self.logger.trace("Competitor {:d} has a {:.2%} probability of being observed. Its range in the CDF is from {:.3f} to {:.3f}".format(firm.firmId, probOfBeingObserved, cdf, cdf + probOfBeingObserved))
+            Logger.trace("Competitor {:d} has a {:.2%} probability of being observed. Its range in the CDF is from {:.3f} to {:.3f}".format(firm.firmId, probOfBeingObserved, cdf, cdf + probOfBeingObserved))
             if(cdf < selection <= cdf + probOfBeingObserved):
-                self.logger.trace("Competitor {:d} was observed. Point in CDF: {:.3f}".format(firm.firmId, selection))
+                Logger.trace("Competitor {:d} was observed. Point in CDF: {:.3f}".format(firm.firmId, selection))
                 return firm
             cdf = cdf + probOfBeingObserved
             assert 0 <= cdf <= 1        
