@@ -23,6 +23,9 @@ class AggregateData:
                         "survivrate",
                         "firms",
                         "totresinv",
+                        "totinninv",
+                        "totimiinv",
+                        "costshareinn",
                         "firmsres",
                         "firmsinn",
                         "firmsimi",
@@ -32,7 +35,8 @@ class AggregateData:
                         "pcm",
                         "cs",
                         "totprofits",
-                        "ts","maxage",
+                        "ts",
+                        "maxage",
                         "minage",
                         "avgage",
                         "actfirms",
@@ -64,6 +68,9 @@ class PeriodData:
         self.survivRate = 1 - industry.exitRate
         self.incumbents = len(industry.incumbentFirms)
         self.totalResearchInvestment = industry.totalInvestmentInResearch
+        self.totalInnovationInvestment = industry.totalInvestmentInInnovation
+        self.totalImitationInvestment = industry.totalInvestmentInImitation
+        self.costShareOfInnovation = (industry.totalInvestmentInInnovation / industry.totalInvestmentInResearch) if industry.totalInvestmentInResearch > 0 else 0
         self.firmsResearching = industry.nmbResearching
         self.firmsInnovating = industry.nmbInnovating
         self.firmsImitating = industry.nmbImitating
@@ -99,6 +106,9 @@ class PeriodData:
                     self.survivRate,
                     self.incumbents,
                     self.totalResearchInvestment,
+                    self.totalInnovationInvestment,
+                    self.totalImitationInvestment,
+                    self.costShareOfInnovation,
                     self.firmsResearching,
                     self.firmsInnovating,
                     self.firmsImitating,

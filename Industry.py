@@ -108,6 +108,8 @@ class Industry:
         self.nmbResearching = 0
         self.nmbInnovating = 0
         self.nmbImitating = 0
+        self.totalInvestmentInInnovation = 0
+        self.totalInvestmentInImitation = 0
         for firm in self.survivorsOfPreviousPeriod:
             result = firm.processResearch()
             self.totalInvestmentInResearch += result[0]
@@ -115,8 +117,10 @@ class Industry:
                 self.nmbResearching += 1
             if(result[2]):
                 self.nmbInnovating += 1
+                self.totalInvestmentInInnovation += result[0]
             if(result[3]):
                 self.nmbImitating += 1
+                self.totalInvestmentInImitation += result[0]
 
 
     def processFirmsEntering(self):
@@ -208,12 +212,14 @@ class Industry:
             self.HIndex += (firm.marketShare * 100) ** 2 
 
     def updateDegreeOfTechDiv(self):
+        self.degreeOfTechDiv = 0
         sumOfHammingDist = 0
         for firmA in self.incumbentFirms:
             for firmB in [firm for firm in self.incumbentFirms if firm.firmId != firmA.firmId]:
                 sumOfHammingDist += firmA.technology.calculateHammingDistance(firmB.technology)
 
-        self.degreeOfTechDiv = (2 / (Parameters.NumberOfTasks * len(self.incumbentFirms) * (len(self.incumbentFirms) - 1))) * sumOfHammingDist
+        if(len(self.incumbentFirms) >= 2):
+            self.degreeOfTechDiv = (2 / (Parameters.NumberOfTasks * len(self.incumbentFirms) * (len(self.incumbentFirms) - 1))) * sumOfHammingDist
 
     def updateGiniCoefficient(self):
         a = 0

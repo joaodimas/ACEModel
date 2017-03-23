@@ -4,9 +4,10 @@ class Parameters:
     NumberOfTasks = 94
     FixedCost = 200
     DemandIntercept = 300
-    MeanMarketSize = 4
+    MeanMarketSize = 20
+    RateOfMeanMarketSizeGrowth = 0
     RateOfPersistenceInDemand = 0.97
-    PeriodStartOfDemandCycles = 2001
+    PeriodStartOfDemandCycles = 5000000
     MinMarketSize = 0.1
     StartupWealth = 0
     MinimumWealthForSurvival = 0 
@@ -14,7 +15,7 @@ class Parameters:
     NumberOfPeriods = 10000
     MaxMagnituteOfTechChange = 8
     RateOfTechChange = 0.1
-    PeriodStartOfTechChange = 0
+    PeriodStartOfTechChange = 2000
     InnovationCost = 100.0
     ImitationCost = 50.0
     InitialAttractionForResearch = 10

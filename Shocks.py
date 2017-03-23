@@ -22,12 +22,17 @@ class Shocks:
                 Logger.trace("NO TECHNOLOGICAL SHOCK.")
 
 
+        # Average market size growths at a constant rate
+        Parameters.MeanMarketSize *= (1 + Parameters.RateOfMeanMarketSizeGrowth)
+
         # Demand shock: every period there is a change in the market size
         if(industry.currentPeriod >= Parameters.PeriodStartOfDemandCycles):
             Logger.trace("HIT BY A DEMAND SHOCK!")
             prevMktSize = industry.demand.marketSize
             industry.demand.marketSize = max(Parameters.MinMarketSize, (1 - Parameters.RateOfPersistenceInDemand) * Parameters.MeanMarketSize + Parameters.RateOfPersistenceInDemand * industry.demand.marketSize + random.uniform(-0.5, 0.5))
             Logger.trace("Previous market size: {:.2f}; New market size: {:.2f}".format(prevMktSize, industry.demand.marketSize))
+        else:
+            industry.demand.marketSize = Parameters.MeanMarketSize
 
 
         # Shock 2: No potential entrants after period 100.

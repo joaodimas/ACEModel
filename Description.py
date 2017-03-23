@@ -20,7 +20,12 @@ class Description:
                     "Average proximity to optimal tech: {:.2%}\n"
                     "Price: {:.2f}\n"
                     "Total investment in R&D: {:.2f}\n"
+                    "Total investment in Innovation: {:.2f}\n"
+                    "Total investment in Imitation: {:.2f}\n"
+                    "Cost share of innovation: {:.2%}\n"
                     "Profitable firms: {:d}\n"
+                    "Avg PCM: {:.2f}\n"
+                    "Market size: {:.2f}\n"
                     "Industry output: {:.2f}\n"
                     "Average output: {:.2f}\n"
                 ).format(
@@ -39,7 +44,12 @@ class Description:
                             1 - (industry.currentActiveSumOfMC / len(industry.activeIncumbentFirms) / 100) if len(industry.activeIncumbentFirms) != 0 else 0, 
                             industry.demand.eqPrice, 
                             industry.totalInvestmentInResearch,
+                            industry.totalInvestmentInInnovation,
+                            industry.totalInvestmentInImitation,
+                            (industry.totalInvestmentInInnovation / industry.totalInvestmentInResearch) if industry.totalInvestmentInResearch > 0 else 0,
                             industry.nmbProfitableFirms,
+                            industry.PCM,
+                            industry.demand.marketSize,
                             industry.industryOutput, 
                             industry.industryOutput / len(industry.activeIncumbentFirms) if len(industry.activeIncumbentFirms) != 0 else 0
                         )
