@@ -29,11 +29,11 @@ class Shocks:
         Parameters.MeanMarketSize *= (1 + Parameters.RateOfMeanMarketSizeGrowth)
 
         # Demand shock: every period there is a change in the market size
-        if(industry.currentPeriod >= Parameters.PeriodsOfConstantDemand):
+        if(industry.currentPeriod > Parameters.PeriodsOfConstantDemand):
             if(Parameters.TypeOfCycle == Parameters.STOCHASTIC):
                 BusinessCycles.generateStochasticCycle(industry)
-            if(Parameters.TypeOfCycle == Parameters.SINUSOIDAL):
-                BusinessCycles.generateSinusoidalCycle(industry)
+            if(Parameters.TypeOfCycle == Parameters.DETERMINISTIC):
+                BusinessCycles.generateDeterministicCycle(industry)
 
         else:
             industry.demand.marketSize = Parameters.MeanMarketSize

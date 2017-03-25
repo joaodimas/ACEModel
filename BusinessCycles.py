@@ -1,4 +1,4 @@
-import random
+import random, math
 from Logger import Logger
 from Parameters import Parameters
 
@@ -12,5 +12,9 @@ class BusinessCycles:
         Logger.trace("[PERIOD {:d}] Previous market size: {:.2f}; New market size: {:.2f}", (industry.currentPeriod, prevMktSize, industry.demand.marketSize))
 
     @classmethod
-    def generateSinusoidalCycle(cls, industry):
-        print('')
+    def generateDeterministicCycle(cls, industry):
+        Logger.trace("[PERIOD {:d}] DETERMINISTIC BUSINESS CYCLE", industry.currentPeriod)
+        prevMktSize = industry.demand.marketSize
+        industry.demand.marketSize = Parameters.MeanMarketSize + Parameters.WaveAmplitude * math.sin(math.pi / Parameters.PeriodOfHalfTurn * industry.currentPeriod)
+        Logger.trace("[PERIOD {:d}] Previous market size: {:.2f}; New market size: {:.2f}", (industry.currentPeriod, prevMktSize, industry.demand.marketSize))
+

@@ -1,5 +1,3 @@
-import threading
-from Atomic import AtomicCounter, AtomicSum
 from Logger import Logger
 from Firm import Firm, FirmStatus
 from Technology import Technology

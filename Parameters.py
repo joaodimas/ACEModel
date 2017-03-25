@@ -1,16 +1,10 @@
-from enum import Enum
-
-class CycleType(Enum):
-    STOCHASTIC = 0
-    SINUSOIDAL = 1
-
 class Parameters:
 
     # SYSTEM CONFIG
     LogLevel = {"Console": ["INFO"], "File": ["INFO", "DEBUG"]}
     EnableProfiling = False
     STOCHASTIC = 0
-    SINUSOIDAL = 1
+    DETERMINISTIC = 1
 
     # MODEL PARAMETERS
 
@@ -24,10 +18,16 @@ class Parameters:
     RateOfMeanMarketSizeGrowth = 0
 
     # Business Cycles
-    TypeOfCycle = STOCHASTIC  # Other: SINUSOIDAL
+    PeriodsOfConstantDemand = 2000
+    TypeOfCycle = STOCHASTIC  # Other: DETERMINISTIC
+
+    # Business Cycles - STOCHASTIC
     MinMarketSize = 0.1
     RateOfPersistenceInDemand = 0.97
-    PeriodsOfConstantDemand = 2000
+
+    # Business Cycles - DETERMINISTIC
+    WaveAmplitude = 2
+    PeriodOfHalfTurn = 500
 
     # Firms
     StartupWealth = 0
