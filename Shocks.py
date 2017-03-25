@@ -3,34 +3,38 @@ from Logger import Logger
 from Parameters import Parameters
 from Firm import Firm
 from Technology import Technology
+from BusinessCycles import BusinessCycles
 
 class Shocks:
 
     @classmethod
     def processShocks(cls, industry):
-        Logger.trace("External shocks: Processing...")
+        Logger.trace("[PERIOD {:d}] External shocks: Processing...", industry.currentPeriod)
         # Technological shock: Every period the optimal technology changes with a probability = Parameters.RateOfTechChange.
         # The new optimal will have a maximum hamming distance from previous optimum = Parameters.MaxMagnituteOfTechChange.
         if(Parameters.RateOfTechChange > 0 and industry.currentPeriod >= Parameters.PeriodStartOfTechChange):
             if(random.random() < Parameters.RateOfTechChange):
-                Logger.trace("HIT BY A TECHNOLOGICAL SHOCK!")
+                Logger.trace("[PERIOD {:d}] HIT BY A TECHNOLOGICAL SHOCK!", industry.currentPeriod)
                 previousOptimal = Technology(industry.currentOptimalTech.tasks)
+                Logger.trace("[PERIOD {0:0d}] Previous technology:{1:0{2}b}", (industry.currentPeriod, previousOptimal.tasks, Parameters.NumberOfTasks))
                 industry.currentOptimalTech.transformRandomlyWithMaxDistance(Parameters.MaxMagnituteOfTechChange)
+                Logger.trace("[PERIOD {0:0d}] New technology:{1:0{2}b}", (industry.currentPeriod, industry.currentOptimalTech.tasks, Parameters.NumberOfTasks))
                 assert previousOptimal.calculateHammingDistance(industry.currentOptimalTech) == industry.currentOptimalTech.magnitudeOfChange
-                Logger.trace("Magnitude of change: {:d}".format(industry.currentOptimalTech.magnitudeOfChange))
+                Logger.trace("[PERIOD {:d}] Magnitude of change: {:d}", (industry.currentPeriod, industry.currentOptimalTech.magnitudeOfChange))
             else:
-                Logger.trace("NO TECHNOLOGICAL SHOCK.")
+                Logger.trace("[PERIOD {:d}] NO TECHNOLOGICAL SHOCK.", industry.currentPeriod)
 
 
         # Average market size growths at a constant rate
         Parameters.MeanMarketSize *= (1 + Parameters.RateOfMeanMarketSizeGrowth)
 
         # Demand shock: every period there is a change in the market size
-        if(industry.currentPeriod >= Parameters.PeriodStartOfDemandCycles):
-            Logger.trace("HIT BY A DEMAND SHOCK!")
-            prevMktSize = industry.demand.marketSize
-            industry.demand.marketSize = max(Parameters.MinMarketSize, (1 - Parameters.RateOfPersistenceInDemand) * Parameters.MeanMarketSize + Parameters.RateOfPersistenceInDemand * industry.demand.marketSize + random.uniform(-0.5, 0.5))
-            Logger.trace("Previous market size: {:.2f}; New market size: {:.2f}".format(prevMktSize, industry.demand.marketSize))
+        if(industry.currentPeriod >= Parameters.PeriodsOfConstantDemand):
+            if(Parameters.TypeOfCycle == Parameters.STOCHASTIC):
+                BusinessCycles.generateStochasticCycle(industry)
+            if(Parameters.TypeOfCycle == Parameters.SINUSOIDAL):
+                BusinessCycles.generateSinusoidalCycle(industry)
+
         else:
             industry.demand.marketSize = Parameters.MeanMarketSize
 
@@ -46,4 +50,4 @@ class Shocks:
         #     industry.potentialEntrants = []
         #     for x in range(Parameters.NumberOfPotentialEntrants):
         #         industry.potentialEntrants.append(Firm(industry.newFirmId(), industry, industry.currentOptimalTech.generateRandomWithMaxDistance(40)))
-        Logger.trace("External shocks: OK!")
+        Logger.trace("[PERIOD {:d}] External shocks: OK!", industry.currentPeriod)

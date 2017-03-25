@@ -1,32 +1,52 @@
+from enum import Enum
+
+class CycleType(Enum):
+    STOCHASTIC = 0
+    SINUSOIDAL = 1
+
 class Parameters:
 
-    # Model parameters
-    NumberOfTasks = 94
+    # SYSTEM CONFIG
+    LogLevel = {"Console": ["INFO"], "File": ["INFO", "DEBUG"]}
+    EnableProfiling = False
+    STOCHASTIC = 0
+    SINUSOIDAL = 1
+
+    # MODEL PARAMETERS
+
+    # Basic
+    NumberOfPeriods = 10000
     FixedCost = 200
     DemandIntercept = 300
-    MeanMarketSize = 20
+    MeanMarketSize = 4
+
+    # Growth
     RateOfMeanMarketSizeGrowth = 0
-    RateOfPersistenceInDemand = 0.97
-    PeriodStartOfDemandCycles = 5000000
+
+    # Business Cycles
+    TypeOfCycle = STOCHASTIC  # Other: SINUSOIDAL
     MinMarketSize = 0.1
+    RateOfPersistenceInDemand = 0.97
+    PeriodsOfConstantDemand = 2000
+
+    # Firms
     StartupWealth = 0
     MinimumWealthForSurvival = 0 
     NumberOfPotentialEntrants = 40
-    NumberOfPeriods = 10000
+
+    # Optimal Technology
+    NumberOfTasks = 94
     MaxMagnituteOfTechChange = 8
     RateOfTechChange = 0.1
-    PeriodStartOfTechChange = 2000
+    PeriodStartOfTechChange = 0
+
+    # R&D
     InnovationCost = 100.0
     ImitationCost = 50.0
     InitialAttractionForResearch = 10
     InitialAttractionForNoResearch = 10
     InitialAttractionForInnovation = 10
     InitialAttractionForImitation = 10
-
-
-    # System parameters
-    LogLevel = {"Console": ["INFO"], "File": ["INFO", "DEBUG","TRACE"]}
-    EnableProfiling = False
 
 
     @classmethod

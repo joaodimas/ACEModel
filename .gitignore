@@ -1,5 +1,6 @@
 /__pycache__/*
 
 /data/ACEModel.LATEST.csv
+/data/ACEModel.*.DETAILED.log
 
 *.pyc
