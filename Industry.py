@@ -106,12 +106,12 @@ class Industry:
         self.refreshPoolOfPotentialEntrants()
 
     def processResearch(self):
-        self.nmbResearching = AtomicCounter()
-        self.nmbInnovating = AtomicCounter()
-        self.nmbImitating = AtomicCounter()
-        self.totalInvestmentInResearch = AtomicSum()
-        self.totalInvestmentInInnovation = AtomicSum()
-        self.totalInvestmentInImitation = AtomicSum()
+        self.nmbResearching = 0
+        self.nmbInnovating = 0
+        self.nmbImitating = 0
+        self.totalInvestmentInResearch = 0
+        self.totalInvestmentInInnovation = 0
+        self.totalInvestmentInImitation = 0
 
         for firm in self.survivorsOfPreviousPeriod:
             firm.processResearch()

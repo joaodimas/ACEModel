@@ -99,18 +99,18 @@ class Firm :
                 if(random.random() < self.getProbOfInnovation()):
                     Logger.trace("[FIRM {:d}] Decided to INNOVATE. Prob of R&D: {:.2f}; Prob of Innovation: {:.2f}.", (self.firmId, self.getProbOfResearch(), self.getProbOfInnovation()))
                     self.investmentInResearch = self.processInnovation()
-                    self.industry.nmbInnovating.increment()
-                    self.industry.totalInvestmentInInnovation.add(self.investmentInResearch)
+                    self.industry.nmbInnovating += 1
+                    self.industry.totalInvestmentInInnovation += self.investmentInResearch
                 # Instead of innovating, we will imitate
                 else:
                     Logger.trace("[FIRM {:d}] Decided to IMITATE. Prob of R&D: {:.2f}; Prob of Imitation: {:.2f}.", (self.firmId, self.getProbOfResearch(), 1 - self.getProbOfInnovation()))
                     self.investmentInResearch = self.processImitation()
-                    self.industry.nmbImitating.increment()
-                    self.industry.totalInvestmentInImitation.add(self.investmentInResearch)
+                    self.industry.nmbImitating += 1
+                    self.industry.totalInvestmentInImitation += self.investmentInResearch
 
                 self.wealth -= self.investmentInResearch
-                self.industry.totalInvestmentInResearch.add(self.investmentInResearch)
-                self.industry.nmbResearching.increment()
+                self.industry.totalInvestmentInResearch += self.investmentInResearch
+                self.industry.nmbResearching += 1
                 Logger.trace("[FIRM {:d}] Completed R&D. Wealth: {:.2f}; Attraction to R&D: {:.2f}; Attraction to Not-R&D: {:.2f}; Attraction to Innovation: {:.2f}; Attraction to Imitation: {:.2f}.", (self.firmId, self.wealth, self.attractionForResearch, self.attractionForNoResearch, self.attractionForInnovation, self.attractionForImitation))
 
             # No R&D in this period
