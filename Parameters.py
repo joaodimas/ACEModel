@@ -8,7 +8,7 @@ class Parameters:
     
 
     # MODEL PARAMETERS
-    NumberOfSimulations = 500
+    NumberOfSimulations = 5
 
     # Basic
     NumberOfTasks = 96
@@ -23,7 +23,7 @@ class Parameters:
     InitialAttractionForNoResearch = 10
     InitialAttractionForInnovation = 10
     InitialAttractionForImitation = 10
-    TimeHorizon = 5000
+    TimeHorizon = 30
     MeanMarketSize = 4
     RateOfChangeInTechEnv = 0.1
     MaxMagnituteOfChangeInTechEnv = 8

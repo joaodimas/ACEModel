@@ -1,10 +1,36 @@
-import sys, time, cProfile, io, pstats, datetime
+import sys, time, cProfile, io, pstats, datetime, threading
 from Logger import Logger
 from Industry import Industry
 from Parameters import Parameters
 from ExportToCSV import ExportToCSV
 from Description import Description
 from AggregateData import MultiAggregateData
+
+class IndustrySimulation:
+
+    @classmethod
+    def simulate(cls, number):
+        global multiAggregateData
+        global timestamp
+        Logger.info("[SIM {:d}] STARTING SIMULATION", number)
+        simulationStartTime = time.time()
+
+        industry = Industry(number)
+
+        # Simulate
+        for p in range(Parameters.TimeHorizon):
+            industry.processPeriod()
+            if(Logger.isEnabledForDebug()):
+                Logger.debug(Description.describeAggregate(industry))
+            if(Logger.isEnabledForTrace()):
+                Logger.trace(Description.describeIncumbentFirms(industry))  
+        
+        simulationEndTime = time.time()
+
+        Logger.info("[SIM {:d}] Simulation completed in {:.2f} seconds", (number, simulationEndTime - simulationStartTime))
+        Logger.info("[SIM {:d}] Saving...\n", number)
+        ExportToCSV.export(industry.data, timestamp, number)
+        multiAggregateData.addData(industry.data)
 
 pr = None
 if(Parameters.EnableProfiling):
@@ -20,25 +46,16 @@ Logger.info(Parameters.describe())
 try:
     multiAggregateData = MultiAggregateData()
     Logger.info("Executing {:d} simulations\n", Parameters.NumberOfSimulations)
+    
+    threads = []
     for x in range(Parameters.NumberOfSimulations):
-        Logger.info("STARTING SIMULATION {:d}", x + 1)
-        simulationStartTime = time.time()
-        industry = Industry()
+        threads.append(threading.Thread(target=IndustrySimulation.simulate, args=[x + 1]))
 
-        # Simulate
-        for p in range(Parameters.TimeHorizon):
-            industry.processPeriod()
-            if(Logger.isEnabledForDebug()):
-                Logger.debug(Description.describeAggregate(industry))
-            if(Logger.isEnabledForTrace()):
-                Logger.trace(Description.describeIncumbentFirms(industry))
+    for t in threads:
+        t.start()
 
-        simulationEndTime = time.time()
-
-        Logger.info("Simulation {:d} completed in {:.2f} seconds", (x + 1, simulationEndTime - simulationStartTime))
-        Logger.info("Saving...\n")
-        ExportToCSV.export(industry.data, timestamp, x + 1)
-        multiAggregateData.addData(industry.data)
+    for t in threads:
+        t.join()
 
     aggregateEndTime = time.time()
     Logger.info("All {:d} simulations completed in {:.2f} seconds", (x + 1, aggregateEndTime - aggregateStartTime))
@@ -55,4 +72,5 @@ if(Parameters.EnableProfiling):
         ps = pstats.Stats(pr, stream=s).sort_stats('tottime')
         ps.print_stats()
         Logger.info(s.getvalue())
+      
 

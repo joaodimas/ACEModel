@@ -4,8 +4,8 @@ class Description:
     @classmethod
     def describeAggregate(cls, industry):
         desc = (
-                    "\n---------------------\n"
-                    "RESULTS OF PERIOD {:d}:\n\n"
+                    "\n[SIMULATION {:d}][PERIOD {:d}]\n"
+                    "INDUSTRY RESULTS\n"
                     "Survivors from previous period: {:d}\n"
                     "New entrants in this period: {:d}\n"
                     "Firms in the market: {:d}\n"
@@ -29,6 +29,7 @@ class Description:
                     "Industry output: {:.2f}\n"
                     "Average output: {:.2f}\n"
                 ).format(
+                            industry.simulation,
                             industry.currentPeriod, 
                             len(industry.survivorsOfPreviousPeriod), 
                             industry.nmbEnteringFirms, 
@@ -79,8 +80,8 @@ class Description:
 
     @classmethod
     def describeFirm(cls, firm):
-        desc = ("--------\n"
-                "FIRM {:d}\n\n"
+        desc = ("[SIMULATION {:d}][PERIOD{:d}]\n"
+                "FIRM {:d}\n"
                 "Age: {:d}\n"
                 "Status after this period: {}\n"
                 "Wealth before this period: {:.2f}\n"
@@ -94,5 +95,5 @@ class Description:
                 "Realized profits: {:.2f}\n"
                 "Expected profits in this period: {:.2f}\n"
                 "Expected wealth after this period: {:.2f}\n"
-                ).format(firm.firmId, firm.age, firm.status.name, firm.prevWealth, firm.wealth, firm.techDistToOptimal, 1 - (firm.techDistToOptimal / Parameters.NumberOfTasks), firm.MC, firm.output, firm.marketShare, firm.investmentInResearch, firm.profits, firm.expProfits, firm.prevWealth + firm.expProfits)
+                ).format(firm.industry.simulation, firm.industry.currentPeriod, firm.firmId, firm.age, firm.status.name, firm.prevWealth, firm.wealth, firm.techDistToOptimal, 1 - (firm.techDistToOptimal / Parameters.NumberOfTasks), firm.MC, firm.output, firm.marketShare, firm.investmentInResearch, firm.profits, firm.expProfits, firm.prevWealth + firm.expProfits)
         return desc

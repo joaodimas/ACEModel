@@ -27,7 +27,7 @@ class Technology:
         allTasks = range(1,Parameters.NumberOfTasks)
         for taskToFlip in random.sample(allTasks, magnitudeOfChange):
             self.flipTask(taskToFlip)
-            # Logger.trace("Task changed: {:d}".format(taskToFlip))
+            # Logger.trace("[SIM {:d}]Task changed: {:d}".format(taskToFlip))
 
         self.magnitudeOfChange = magnitudeOfChange
 
