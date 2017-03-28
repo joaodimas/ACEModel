@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys, time, cProfile, io, pstats, datetime, threading
 from Logger import Logger
 from Industry import Industry
