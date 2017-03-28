@@ -98,14 +98,14 @@ class Logger:
 
         # create a DEBUG file handler
         if("DEBUG" in Parameters.LogLevel["File"]):
-            handler = logging.FileHandler(os.path.join(THIS_FOLDER, "./data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+".AGGREGATE.log"))
+            handler = logging.FileHandler(os.path.join(THIS_FOLDER, "./data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+".DEBUG.log"))
             handler.setLevel(logging.DEBUG)
             handler.setFormatter(formatter)
             cls.logger.addHandler(handler)
 
         # create a TRACE file handler
         if("TRACE" in Parameters.LogLevel["File"]):
-            handler = logging.FileHandler(os.path.join(THIS_FOLDER, "./data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+".DETAILED.log"))
+            handler = logging.FileHandler(os.path.join(THIS_FOLDER, "./data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+".TRACE.log"))
             handler.setLevel(logging.TRACE)
             handler.setFormatter(formatter)
             cls.logger.addHandler(handler)

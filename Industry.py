@@ -272,7 +272,7 @@ class Industry:
 
     def updateAgeStats(self):
         self.oldestAge = 0
-        self.youngestAge = Parameters.NumberOfPeriods
+        self.youngestAge = Parameters.TimeHorizon
         sumOfAges = 0
         for firm in self.incumbentFirms:
             sumOfAges += firm.age

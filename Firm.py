@@ -38,7 +38,7 @@ class Firm :
         self.MC = 100 * self.techDistToOptimal / Parameters.NumberOfTasks
 
     def getTotalCost(self, quantity):
-        return Parameters.FixedCost + quantity * self.MC
+        return Parameters.FixedProductionCost + quantity * self.MC
 
     # Derived from the FOC
     def updateOutput(self):
@@ -46,7 +46,7 @@ class Firm :
 
     # Derived from the FOC
     def updateProfits(self):
-        self.profits = self.output ** 2 / self.industry.demand.marketSize - Parameters.FixedCost
+        self.profits = self.output ** 2 / self.industry.demand.marketSize - Parameters.FixedProductionCost
         return self.profits
 
     # Derived from the FOC
@@ -57,7 +57,7 @@ class Firm :
         if(self.expOutput < 0):
             self.expOutput = 0
 
-        self.expProfits = self.expOutput ** 2 / self.industry.demand.marketSize - Parameters.FixedCost
+        self.expProfits = self.expOutput ** 2 / self.industry.demand.marketSize - Parameters.FixedProductionCost
         self.expWealth = self.wealth + self.expProfits
 
     def updateWealth(self):
@@ -68,14 +68,14 @@ class Firm :
         self.updateMarginalCost()
         self.updateExpWealthAfterThisPeriod()
         
-        if(self.status == FirmStatus.POTENTIAL_ENTRANT and self.expWealth > Parameters.MinimumWealthForSurvival):
+        if(self.status == FirmStatus.POTENTIAL_ENTRANT and self.expWealth > Parameters.ThresholdNetWealthForSurvival):
             self.entering = True
             Logger.trace("[FIRM {:d}] Decided to ENTER. Expected price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Current wealth: {:.2f}; Exp. Wealth: {:.2f}.", (self.firmId, self.expPrice, self.MC, self.expOutput, self.expProfits, self.wealth, self.expWealth))
   
         return self.entering
 
     def decideIfExits(self):
-        if(self.wealth < Parameters.MinimumWealthForSurvival):
+        if(self.wealth < Parameters.ThresholdNetWealthForSurvival):
             self.exiting = True
             Logger.trace("[FIRM {:d}] Decided to EXIT. Price: {:.2f}; Exp. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Output: {:.2f}; Exp. Profits: {:.2f}; Profits: {:.2f}; Wealth: {:.2f}.", (self.firmId, self.industry.demand.eqPrice, self.expPrice, self.MC, self.expOutput, self.output, self.expProfits, self.profits, self.wealth))
         return self.exiting
@@ -92,7 +92,7 @@ class Firm :
     def processResearch(self):
         Logger.trace("[FIRM {:d}] Deciding about R&D. Wealth: {:.2f}; Attraction to R&D: {:.2f}; Attraction to Not-R&D: {:.2f}; Attraction to Innovation: {:.2f}; Attraction to Imitation: {:.2f}.", (self.firmId, self.wealth, self.attractionForResearch, self.attractionForNoResearch, self.attractionForInnovation, self.attractionForImitation))
         # Only consider R&D if we have enough wealth
-        if self.wealth >= max(Parameters.ImitationCost, Parameters.InnovationCost):
+        if self.wealth >= max(Parameters.FixedCostOfImitation, Parameters.FixedCostOfInnovation):
             # Decide if it will do R&D
             if(random.random() < self.getProbOfResearch()):
                 # Decide if it will innovate
@@ -143,7 +143,7 @@ class Firm :
             self.attractionForNoResearch += 1
             self.attractionForImitation += 1
 
-        return Parameters.InnovationCost
+        return Parameters.FixedCostOfInnovation
 
     def processImitation(self):
         oldTechnology = Technology(self.technology.tasks)
@@ -168,7 +168,7 @@ class Firm :
             self.attractionForNoResearch += 1
             self.attractionForInnovation += 1
 
-        return Parameters.ImitationCost
+        return Parameters.FixedCostOfImitation
 
     def imitate(self, otherFirm):
         Logger.trace("[FIRM {0:d}] Current technology: {1:0{2}b}", (self.firmId, self.technology.tasks, Parameters.NumberOfTasks))

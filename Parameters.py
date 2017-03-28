@@ -1,25 +1,40 @@
 class Parameters:
 
     # SYSTEM CONFIG
-    LogLevel = {"Console": ["INFO"], "File": ["INFO", "DEBUG"]}
+    LogLevel = {"Console": ["INFO"], "File": ["INFO"]}
     EnableProfiling = False
     STOCHASTIC = 0
     DETERMINISTIC = 1
+    
 
     # MODEL PARAMETERS
+    NumberOfSimulations = 500
 
     # Basic
-    NumberOfPeriods = 10000
-    FixedCost = 200
+    NumberOfTasks = 96
+    NumberOfPotentialEntrants = 40
+    StartupWealth = 0
+    ThresholdNetWealthForSurvival = 0 
     DemandIntercept = 300
+    FixedProductionCost = 200
+    FixedCostOfInnovation = 100
+    FixedCostOfImitation = 50
+    InitialAttractionForResearch = 10
+    InitialAttractionForNoResearch = 10
+    InitialAttractionForInnovation = 10
+    InitialAttractionForImitation = 10
+    TimeHorizon = 5000
     MeanMarketSize = 4
+    RateOfChangeInTechEnv = 0.1
+    MaxMagnituteOfChangeInTechEnv = 8
 
-    # Growth
+
+    PeriodStartOfTechChange = 0
     RateOfMeanMarketSizeGrowth = 0
 
     # Business Cycles
+    TypeOfCycle = None  # Options: None, DETERMINISTIC, STOCHASTIC. None implies a constant Market Size
     PeriodsOfConstantDemand = 2000
-    TypeOfCycle = STOCHASTIC  # Other: DETERMINISTIC
 
     # Business Cycles - STOCHASTIC
     MinMarketSize = 0.1
@@ -28,25 +43,25 @@ class Parameters:
     # Business Cycles - DETERMINISTIC
     WaveAmplitude = 2
     PeriodOfHalfTurn = 500
+    
 
-    # Firms
-    StartupWealth = 0
-    MinimumWealthForSurvival = 0 
-    NumberOfPotentialEntrants = 40
-
-    # Optimal Technology
-    NumberOfTasks = 94
-    MaxMagnituteOfTechChange = 8
-    RateOfTechChange = 0.1
-    PeriodStartOfTechChange = 0
-
-    # R&D
-    InnovationCost = 100.0
-    ImitationCost = 50.0
-    InitialAttractionForResearch = 10
-    InitialAttractionForNoResearch = 10
-    InitialAttractionForInnovation = 10
-    InitialAttractionForImitation = 10
+    # BASELINE PARAMETERS - Chapter 4 of Chang's book
+    # NumberOfTasks = 96
+    # NumberOfPotentialEntrants = 40
+    # StartupWealth = 0
+    # ThresholdNetWealthForSurvival = 0 
+    # DemandIntercept = 300
+    # FixedProductionCost = 200
+    # FixedCostOfInnovation = 100
+    # FixedCostOfImitation = 50
+    # InitialAttractionForResearch = 10
+    # InitialAttractionForNoResearch = 10
+    # InitialAttractionForInnovation = 10
+    # InitialAttractionForImitation = 10
+    # TimeHorizon = 5000
+    # MeanMarketSize = 4
+    # RateOfChangeInTechEnv = 0.1
+    # MaxMagnituteOfChangeInTechEnv = 8
 
 
     @classmethod
@@ -69,10 +84,10 @@ class Parameters:
     def toJSON(self):
         return ("{"
                     "NumberOfTasks: " + self.NumberOfTasks + ", "
-                    "FixedCost: " + self.FixedCost + ", "
+                    "FixedProductionCost: " + self.FixedProductionCost + ", "
                     "DemandIntercept: " + self.DemandIntercept + ", "
                     "MeanMarketSize: " + self.MeanMarketSize + ", "
-                    "MinimumWealthForSurvival: " + self.MinimumWealthForSurvival + ", "
+                    "ThresholdNetWealthForSurvival: " + self.ThresholdNetWealthForSurvival + ", "
                     "NumberOfFirms: " + self.NumberOfFirms + ", "
-                    "NumberOfPeriods: " + self.NumberOfPeriods + "}"                   
+                    "TimeHorizon: " + self.TimeHorizon + "}"                   
                )

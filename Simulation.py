@@ -4,6 +4,7 @@ from Industry import Industry
 from Parameters import Parameters
 from ExportToCSV import ExportToCSV
 from Description import Description
+from AggregateData import MultiAggregateData
 
 pr = None
 if(Parameters.EnableProfiling):
@@ -11,30 +12,39 @@ if(Parameters.EnableProfiling):
     pr.enable()
 
 timestamp = datetime.datetime.now()
-startTime = time.time()
-
+aggregateStartTime = time.time()
 Logger.initialize(timestamp)
 Logger.info(sys.version_info)
 Logger.info(Parameters.describe())
 
 try:
-    industry = Industry()
+    multiAggregateData = MultiAggregateData()
+    Logger.info("Executing {:d} simulations\n", Parameters.NumberOfSimulations)
+    for x in range(Parameters.NumberOfSimulations):
+        Logger.info("STARTING SIMULATION {:d}", x + 1)
+        simulationStartTime = time.time()
+        industry = Industry()
 
-    # Simulate
-    for x in range(Parameters.NumberOfPeriods):
-        industry.processPeriod()
-        if(Logger.isEnabledForDebug()):
-            Logger.debug(Description.describeAggregate(industry))
-        if(Logger.isEnabledForTrace()):
-            Logger.trace(Description.describeIncumbentFirms(industry))
+        # Simulate
+        for p in range(Parameters.TimeHorizon):
+            industry.processPeriod()
+            if(Logger.isEnabledForDebug()):
+                Logger.debug(Description.describeAggregate(industry))
+            if(Logger.isEnabledForTrace()):
+                Logger.trace(Description.describeIncumbentFirms(industry))
 
-    endTime = time.time()
+        simulationEndTime = time.time()
 
-    Logger.info("Simulation completed in {:.2f} seconds", endTime - startTime)
+        Logger.info("Simulation {:d} completed in {:.2f} seconds", (x + 1, simulationEndTime - simulationStartTime))
+        Logger.info("Saving...\n")
+        ExportToCSV.export(industry.data, timestamp, x + 1)
+        multiAggregateData.addData(industry.data)
 
+    aggregateEndTime = time.time()
+    Logger.info("All {:d} simulations completed in {:.2f} seconds", (x + 1, aggregateEndTime - aggregateStartTime))
     # Save data
     Logger.info("Saving data...")
-    ExportToCSV.export(industry.data, timestamp)
+    ExportToCSV.export(multiAggregateData, timestamp)
 
 except:
     Logger.logger.exception("Error")

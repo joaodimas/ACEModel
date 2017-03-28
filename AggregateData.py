@@ -9,50 +9,52 @@ class AggregateData:
     def storeCurrentPeriod(self):
         self.periods.append(PeriodData(self.industry)) 
 
+    def getHeader(self):
+        return [
+                    "period",
+                    "mktsize",
+                    "entries",
+                    "exits",
+                    "surviv",
+                    "entryrate",
+                    "exitrate",
+                    "survivrate",
+                    "firms",
+                    "totresinv",
+                    "totinninv",
+                    "totimiinv",
+                    "costshareinn",
+                    "firmsres",
+                    "firmsinn",
+                    "firmsimi",
+                    "hindex",
+                    "div",
+                    "gini",
+                    "pcm",
+                    "cs",
+                    "totprofits",
+                    "ts",
+                    "maxage",
+                    "minage",
+                    "avgage",
+                    "actfirms",
+                    "inactfirms",
+                    "profitablefirms",
+                    "wmc",
+                    "avgproxopt",
+                    "price",
+                    "totoutput",
+                    "avgoutput",
+                    "magtechshock"
+                ]
+
     def getFlatData(self):
-        result = [
-                    # header
-                    [
-                        "period",
-                        "mktsize",
-                        "entries",
-                        "exits",
-                        "surviv",
-                        "entryrate",
-                        "exitrate",
-                        "survivrate",
-                        "firms",
-                        "totresinv",
-                        "totinninv",
-                        "totimiinv",
-                        "costshareinn",
-                        "firmsres",
-                        "firmsinn",
-                        "firmsimi",
-                        "hindex",
-                        "div",
-                        "gini",
-                        "pcm",
-                        "cs",
-                        "totprofits",
-                        "ts",
-                        "maxage",
-                        "minage",
-                        "avgage",
-                        "actfirms",
-                        "inactfirms",
-                        "profitablefirms",
-                        "wmc",
-                        "avgproxopt",
-                        "price",
-                        "totoutput",
-                        "avgoutput",
-                        "magtechshock"
-                    ]
-                 ]
+        result = []
+        result.append(self.getHeader())
         for period in self.periods:
             result.append(period.getFlatData())
 
+        self.flatData = result
         return result
 
 class PeriodData:
@@ -133,5 +135,34 @@ class PeriodData:
                     self.magtechshock
                  ]
 
+class MultiAggregateData:
+    def __init__(self):
+        self.listOfSimulations = []
+        self.nmbSimulations = 0
 
+    def addData(self, data):
+        self.listOfSimulations.append(data.flatData)
+        self.nmbSimulations += 1
+
+    def getFlatData(self):
+        result = []
+        header = self.listOfSimulations[0][0]
+        nmbVariables = len(header)
+        result.append(header)
+        for p in range(1, Parameters.TimeHorizon + 1): # Periods
+            period = []
+            for v in range(nmbVariables): # Variables
+                period.append(self.getAverage(p, v))
+            result.append(period)
+
+        return result
+
+    def getAverage(self, period, variable):    
+        sum = 0
+
+        for simulation in self.listOfSimulations:
+            sum += simulation[period][variable]
+
+        return sum / self.nmbSimulations
+        
 
