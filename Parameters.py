@@ -1,7 +1,7 @@
 class Parameters:
 
     # SYSTEM CONFIG
-    LogLevel = {"Console": [], "File": ["INFO"]}
+    LogLevel = {"Console": [], "File": []}
     EnableProfiling = False
     STOCHASTIC = 0
     DETERMINISTIC = 1

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import sys, time, cProfile, io, pstats, datetime, threading
+import sys, time, cProfile, io, pstats, datetime, multiprocessing
 from Logger import Logger
 from Industry import Industry
 from Parameters import Parameters
@@ -51,7 +51,7 @@ try:
     
     threads = []
     for x in range(Parameters.NumberOfSimulations):
-        threads.append(threading.Thread(target=IndustrySimulation.simulate, args=[x + 1]))
+        threads.append(multiprocessing.Process(target=IndustrySimulation.simulate, args=[x + 1]))
 
     for t in threads:
         t.start()
