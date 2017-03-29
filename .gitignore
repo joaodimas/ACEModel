@@ -2,5 +2,5 @@
 
 /data/ACEModel.LATEST.csv
 /data/ACEModel.*.DETAILED.log
-
+*.DS_Store
 *.pyc
