@@ -28,9 +28,10 @@ class IndustrySimulation:
         simulationEndTime = time.time()
 
         Logger.info("[SIM {:d}] Simulation completed in {:.2f} seconds", (number, simulationEndTime - simulationStartTime))
-        Logger.info("[SIM {:d}] Saving...\n", number)
+        Logger.info("[SIM {:d}] Saving...", number)
         ExportToCSV.export(industry.data, timestamp, number)
-        child_conn.send(industry.data.flatData)
+        child_conn.send((number, industry.data.flatData))
+        Logger.info("[SIM {:d}] Result sent to pipe.\n", number)
 
 pr = None
 if(Parameters.EnableProfiling):
@@ -58,7 +59,9 @@ try:
         t.start()
 
     for parent_conn in pipes:
-        multiAggregateData.addFlatData(parent_conn.recv())
+        result = parent_conn.recv()
+        Logger.info("[SIM {:d}] Result received from pipe by main process.", result[0])
+        multiAggregateData.addFlatData(result[1])
 
     for t in threads:
         t.join()
