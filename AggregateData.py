@@ -144,6 +144,10 @@ class MultiAggregateData:
         self.listOfSimulations.append(data.flatData)
         self.nmbSimulations += 1
 
+    def addFlatData(self, flatData):
+        self.listOfSimulations.append(flatData)
+        self.nmbSimulations += 1
+
     def getFlatData(self):
         result = []
         header = self.listOfSimulations[0][0]

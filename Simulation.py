@@ -11,9 +11,7 @@ from AggregateData import MultiAggregateData
 class IndustrySimulation:
 
     @classmethod
-    def simulate(cls, number):
-        global multiAggregateData
-        global timestamp
+    def simulate(cls, timestamp, number, child_conn):
         Logger.info("[SIM {:d}] STARTING SIMULATION", number)
         simulationStartTime = time.time()
 
@@ -32,7 +30,7 @@ class IndustrySimulation:
         Logger.info("[SIM {:d}] Simulation completed in {:.2f} seconds", (number, simulationEndTime - simulationStartTime))
         Logger.info("[SIM {:d}] Saving...\n", number)
         ExportToCSV.export(industry.data, timestamp, number)
-        multiAggregateData.addData(industry.data)
+        child_conn.send(industry.data.flatData)
 
 pr = None
 if(Parameters.EnableProfiling):
@@ -50,11 +48,17 @@ try:
     Logger.info("Executing {:d} simulations\n", Parameters.NumberOfSimulations)
     
     threads = []
+    pipes = []
     for x in range(Parameters.NumberOfSimulations):
-        threads.append(multiprocessing.Process(target=IndustrySimulation.simulate, args=[x + 1]))
+        parent_conn, child_conn = multiprocessing.Pipe()
+        pipes.append(parent_conn)
+        threads.append(multiprocessing.Process(target=IndustrySimulation.simulate, args=(timestamp, x + 1, child_conn)))
 
     for t in threads:
         t.start()
+
+    for parent_conn in pipes:
+        multiAggregateData.addFlatData(parent_conn.recv())
 
     for t in threads:
         t.join()
