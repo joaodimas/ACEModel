@@ -50,11 +50,15 @@ if __name__ == '__main__':
         multiAggregateData = MultiAggregateData()
         Logger.info("Executing {:d} simulations\n", Parameters.NumberOfSimulations)
         
+        if(Parameters.NumberOfWorkers > Parameters.NumberOfSimulations):
+            Parameters.NumberOfWorkers = Parameters.NumberOfSimulations
+
         processes = []
         pool = multiprocessing.Pool(Parameters.NumberOfWorkers)
-        partial_runSimulation = functools.partial(runSimulation, timestamp=timestamp)
-        listOfResults = pool.imap_unordered(partial_runSimulation, range(Parameters.NumberOfSimulations))
-        multiAggregateData.addListOfResults(listOfResults)
+        partial_runSimulation = functools.partial(runSimulation, timestamp=timestamp) # Run simulations
+        listOfResults = pool.imap_unordered(partial_runSimulation, range(Parameters.NumberOfSimulations)) # Obtain results
+
+        multiAggregateData.addListOfResults(listOfResults) # Add result to the aggregate list (this will be used to calculate the means)
  
         aggregateEndTime = time.time()
         Logger.info("All {:d} simulations completed in {:.2f} seconds", (Parameters.NumberOfSimulations, aggregateEndTime - aggregateStartTime))

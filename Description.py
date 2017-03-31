@@ -18,6 +18,7 @@ class Description:
                     "Survivors from this period: {:d}\n"
                     "Weighted marginal cost: {:.2f}\n"
                     "Average proximity to optimal tech: {:.2%}\n"
+                    "DIV: {:.2f}\n"
                     "Price: {:.2f}\n"
                     "Total investment in R&D: {:.2f}\n"
                     "Total investment in Innovation: {:.2f}\n"
@@ -43,6 +44,7 @@ class Description:
                             len(industry.incumbentFirms) - industry.nmbExitingFirms, 
                             industry.weightedMC, 
                             1 - (industry.currentActiveSumOfMC / len(industry.activeIncumbentFirms) / 100) if len(industry.activeIncumbentFirms) != 0 else 0, 
+                            industry.degreeOfTechDiv,
                             industry.demand.eqPrice, 
                             industry.totalInvestmentInResearch,
                             industry.totalInvestmentInInnovation,

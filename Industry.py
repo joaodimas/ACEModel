@@ -1,3 +1,4 @@
+import itertools
 from Logger import Logger
 from Firm import Firm, FirmStatus
 from Technology import Technology
@@ -214,14 +215,22 @@ class Industry:
             self.HIndex += (firm.marketShare * 100) ** 2 
 
     def updateDegreeOfTechDiv(self):
-        self.degreeOfTechDiv = 0
-        sumOfHammingDist = 0
-        for firmA in self.incumbentFirms:
-            for firmB in [firm for firm in self.incumbentFirms if firm.firmId != firmA.firmId]:
+        nmbFirms = len(self.incumbentFirms)
+        if(nmbFirms >= 2):
+            sumOfHammingDist = 0
+            pairs = list(itertools.combinations(self.incumbentFirms, 2))
+            assert len(pairs) == nmbFirms * (nmbFirms - 1) / 2
+            for firmA, firmB in pairs:
                 sumOfHammingDist += firmA.technology.calculateHammingDistance(firmB.technology)
 
-        if(len(self.incumbentFirms) >= 2):
-            self.degreeOfTechDiv = (2 / (Parameters.NumberOfTasks * len(self.incumbentFirms) * (len(self.incumbentFirms) - 1))) * sumOfHammingDist
+            # for firmA in self.incumbentFirms:
+            #     for firmB in [firm for firm in self.incumbentFirms if firm.firmId != firmA.firmId]:
+            #         sumOfHammingDist += firmA.technology.calculateHammingDistance(firmB.technology)
+
+            meanHammingDist = sumOfHammingDist / len(pairs)
+            self.degreeOfTechDiv = meanHammingDist / Parameters.NumberOfTasks
+        else:
+            self.degreeOfTechDiv = 0    
 
     def updateGiniCoefficient(self):
         a = 0

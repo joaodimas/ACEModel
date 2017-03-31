@@ -224,6 +224,9 @@ class Firm :
         self.exiting = False
         self.deactivating = False
 
+    def __str__(self):
+        return str(self.firmId)
+
 class FirmStatus(Enum):
     POTENTIAL_ENTRANT = 1
     INACTIVE_INCUMBENT = 2
