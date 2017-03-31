@@ -10,27 +10,31 @@ from AggregateData import MultiAggregateData
 
 
 def runSimulation(index, timestamp):
-    number = index + 1
-    Logger.info("[SIM {:d}] STARTING SIMULATION", number)
-    simulationStartTime = time.time()
+    try:
+        number = index + 1
+        Logger.info("[SIM {:d}] STARTING SIMULATION", number)
+        simulationStartTime = time.time()
 
-    industry = Industry(number)
+        industry = Industry(number)
 
-    # Simulate
-    for p in range(Parameters.TimeHorizon):
-        industry.processPeriod()
-        if(Logger.isEnabledForDebug()):
-            Logger.debug(Description.describeAggregate(industry))
-        if(Logger.isEnabledForTrace()):
-            Logger.trace(Description.describeIncumbentFirms(industry))  
-    
-    simulationEndTime = time.time()
+        # Simulate
+        for p in range(Parameters.TimeHorizon):
+            industry.processPeriod()
+            if(Logger.isEnabledForDebug()):
+                Logger.debug(Description.describeAggregate(industry))
+            if(Logger.isEnabledForTrace()):
+                Logger.trace(Description.describeIncumbentFirms(industry))  
+        
+        simulationEndTime = time.time()
 
-    Logger.info("[SIM {:d}] Simulation completed in {:.2f} seconds", (number, simulationEndTime - simulationStartTime))
-    Logger.info("[SIM {:d}] Saving...", number)
-    ExportToCSV.export(industry.data, timestamp, number)
-    Logger.info("[SIM {:d}] Returning results to main thread...", number)
-    return industry.data.getFlatData()
+        Logger.info("[SIM {:d}] Simulation completed in {:.2f} seconds", (number, simulationEndTime - simulationStartTime))
+        Logger.info("[SIM {:d}] Saving...", number)
+        ExportToCSV.export(industry.data, timestamp, number)
+        Logger.info("[SIM {:d}] Returning results to main thread...", number)
+        return industry.data.getFlatData()
+    except Exception as e:
+        Logger.logger.exception("Error")
+        raise e
 
 
 if __name__ == '__main__':
@@ -65,9 +69,11 @@ if __name__ == '__main__':
         # Save data
         Logger.info("Saving data...")
         ExportToCSV.export(multiAggregateData, timestamp)
+        Logger.info("ALL PROCESSES FINISHED!")
 
-    except:
+    except Exception as e:
         Logger.logger.exception("Error")
+        raise e
 
     if(Parameters.EnableProfiling):
         pr.disable()
