@@ -8,30 +8,28 @@ from ExportToCSV import ExportToCSV
 from Description import Description
 from AggregateData import MultiAggregateData
 
-class IndustrySimulation:
 
-    @classmethod
-    def simulate(cls, timestamp, number, child_conn):
-        Logger.info("[SIM {:d}] STARTING SIMULATION", number)
-        simulationStartTime = time.time()
+def worker(resultQueue, timestamp, number):
+    Logger.info("[SIM {:d}] STARTING SIMULATION", number)
+    simulationStartTime = time.time()
 
-        industry = Industry(number)
+    industry = Industry(number)
 
-        # Simulate
-        for p in range(Parameters.TimeHorizon):
-            industry.processPeriod()
-            if(Logger.isEnabledForDebug()):
-                Logger.debug(Description.describeAggregate(industry))
-            if(Logger.isEnabledForTrace()):
-                Logger.trace(Description.describeIncumbentFirms(industry))  
-        
-        simulationEndTime = time.time()
+    # Simulate
+    for p in range(Parameters.TimeHorizon):
+        industry.processPeriod()
+        if(Logger.isEnabledForDebug()):
+            Logger.debug(Description.describeAggregate(industry))
+        if(Logger.isEnabledForTrace()):
+            Logger.trace(Description.describeIncumbentFirms(industry))  
+    
+    simulationEndTime = time.time()
 
-        Logger.info("[SIM {:d}] Simulation completed in {:.2f} seconds", (number, simulationEndTime - simulationStartTime))
-        Logger.info("[SIM {:d}] Saving...", number)
-        ExportToCSV.export(industry.data, timestamp, number)
-        child_conn.send((number, industry.data.flatData))
-        Logger.info("[SIM {:d}] Result sent to pipe.\n", number)
+    Logger.info("[SIM {:d}] Simulation completed in {:.2f} seconds", (number, simulationEndTime - simulationStartTime))
+    Logger.info("[SIM {:d}] Saving...", number)
+    ExportToCSV.export(industry.data, timestamp, number)
+    resultQueue.put((number, industry.data.flatData))
+    Logger.info("[SIM {:d}] Result sent to pipe.\n", number)
 
 pr = None
 if(Parameters.EnableProfiling):
@@ -48,23 +46,20 @@ try:
     multiAggregateData = MultiAggregateData()
     Logger.info("Executing {:d} simulations\n", Parameters.NumberOfSimulations)
     
-    threads = []
-    pipes = []
+    processes = []
+    resultQueue = multiprocessing.Queue()
     for x in range(Parameters.NumberOfSimulations):
-        parent_conn, child_conn = multiprocessing.Pipe()
-        pipes.append(parent_conn)
-        threads.append(multiprocessing.Process(target=IndustrySimulation.simulate, args=(timestamp, x + 1, child_conn)))
+        process = multiprocessing.Process(target=worker, args=(resultQueue, timestamp, x + 1))
+        processes.append(process)
+        process.start()
 
-    for t in threads:
-        t.start()
-
-    for parent_conn in pipes:
-        result = parent_conn.recv()
-        Logger.info("[SIM {:d}] Result received from pipe by main process.", result[0])
+    for x in range(Parameters.NumberOfSimulations):
+        result = resultQueue.get()
+        Logger.info("[SIM {:d}] Result received from queue by main process.", result[0])
         multiAggregateData.addFlatData(result[1])
 
-    for t in threads:
-        t.join()
+    for p in processes:
+        p.join()
 
     aggregateEndTime = time.time()
     Logger.info("All {:d} simulations completed in {:.2f} seconds", (x + 1, aggregateEndTime - aggregateStartTime))
