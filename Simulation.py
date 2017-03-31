@@ -53,7 +53,7 @@ if __name__ == '__main__':
         processes = []
         pool = multiprocessing.Pool(Parameters.NumberOfWorkers)
         partial_runSimulation = functools.partial(runSimulation, timestamp=timestamp)
-        listOfResults = pool.map(partial_runSimulation, range(Parameters.NumberOfSimulations))
+        listOfResults = pool.imap_unordered(partial_runSimulation, range(Parameters.NumberOfSimulations))
         multiAggregateData.addListOfResults(listOfResults)
  
         aggregateEndTime = time.time()
