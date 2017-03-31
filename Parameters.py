@@ -1,14 +1,15 @@
 class Parameters:
 
     # SYSTEM CONFIG
-    LogLevel = {"Console": [], "File": ["INFO"]}
+    LogLevel = {"Console": ["INFO"], "File": ["INFO"]}
     EnableProfiling = False
+    NumberOfWorkers = 24
     STOCHASTIC = 0
     DETERMINISTIC = 1
     
 
     # MODEL PARAMETERS
-    NumberOfSimulations = 5
+    NumberOfSimulations = 500
 
     # Basic
     NumberOfTasks = 96
@@ -23,7 +24,7 @@ class Parameters:
     InitialAttractionForNoResearch = 10
     InitialAttractionForInnovation = 10
     InitialAttractionForImitation = 10
-    TimeHorizon = 30
+    TimeHorizon = 200
     MeanMarketSize = 4
     RateOfChangeInTechEnv = 0.1
     MaxMagnituteOfChangeInTechEnv = 8

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import sys, time, cProfile, io, pstats, datetime, multiprocessing
+import sys, time, cProfile, io, pstats, datetime, multiprocessing, functools
 from Logger import Logger
 from Industry import Industry
 from Parameters import Parameters
@@ -9,7 +9,8 @@ from Description import Description
 from AggregateData import MultiAggregateData
 
 
-def worker(resultQueue, timestamp, number):
+def runSimulation(index, timestamp):
+    number = index + 1
     Logger.info("[SIM {:d}] STARTING SIMULATION", number)
     simulationStartTime = time.time()
 
@@ -28,53 +29,47 @@ def worker(resultQueue, timestamp, number):
     Logger.info("[SIM {:d}] Simulation completed in {:.2f} seconds", (number, simulationEndTime - simulationStartTime))
     Logger.info("[SIM {:d}] Saving...", number)
     ExportToCSV.export(industry.data, timestamp, number)
-    resultQueue.put((number, industry.data.flatData))
-    Logger.info("[SIM {:d}] Result sent to pipe.\n", number)
+    Logger.info("[SIM {:d}] Returning results to main thread...", number)
+    return industry.data.getFlatData()
 
-pr = None
-if(Parameters.EnableProfiling):
-    pr = cProfile.Profile()
-    pr.enable()
 
-timestamp = datetime.datetime.now()
-aggregateStartTime = time.time()
-Logger.initialize(timestamp)
-Logger.info(sys.version_info)
-Logger.info(Parameters.describe())
+if __name__ == '__main__':
 
-try:
-    multiAggregateData = MultiAggregateData()
-    Logger.info("Executing {:d} simulations\n", Parameters.NumberOfSimulations)
-    
-    processes = []
-    resultQueue = multiprocessing.Queue()
-    for x in range(Parameters.NumberOfSimulations):
-        process = multiprocessing.Process(target=worker, args=(resultQueue, timestamp, x + 1))
-        processes.append(process)
-        process.start()
+    pr = None
+    if(Parameters.EnableProfiling):
+        pr = cProfile.Profile()
+        pr.enable()
 
-    for x in range(Parameters.NumberOfSimulations):
-        result = resultQueue.get()
-        Logger.info("[SIM {:d}] Result received from queue by main process.", result[0])
-        multiAggregateData.addFlatData(result[1])
+    timestamp = datetime.datetime.now()
+    aggregateStartTime = time.time()
+    Logger.initialize(timestamp)
+    Logger.info(sys.version_info)
+    Logger.info(Parameters.describe())
 
-    for p in processes:
-        p.join()
+    try:
+        multiAggregateData = MultiAggregateData()
+        Logger.info("Executing {:d} simulations\n", Parameters.NumberOfSimulations)
+        
+        processes = []
+        pool = multiprocessing.Pool(Parameters.NumberOfWorkers)
+        partial_runSimulation = functools.partial(runSimulation, timestamp=timestamp)
+        listOfResults = pool.map(partial_runSimulation, range(Parameters.NumberOfSimulations))
+        multiAggregateData.addListOfResults(listOfResults)
+ 
+        aggregateEndTime = time.time()
+        Logger.info("All {:d} simulations completed in {:.2f} seconds", (Parameters.NumberOfSimulations, aggregateEndTime - aggregateStartTime))
+        # Save data
+        Logger.info("Saving data...")
+        ExportToCSV.export(multiAggregateData, timestamp)
 
-    aggregateEndTime = time.time()
-    Logger.info("All {:d} simulations completed in {:.2f} seconds", (x + 1, aggregateEndTime - aggregateStartTime))
-    # Save data
-    Logger.info("Saving data...")
-    ExportToCSV.export(multiAggregateData, timestamp)
+    except:
+        Logger.logger.exception("Error")
 
-except:
-    Logger.logger.exception("Error")
-
-if(Parameters.EnableProfiling):
-    pr.disable()
-    with io.StringIO() as s:
-        ps = pstats.Stats(pr, stream=s).sort_stats('tottime')
-        ps.print_stats()
-        Logger.info(s.getvalue())
+    if(Parameters.EnableProfiling):
+        pr.disable()
+        with io.StringIO() as s:
+            ps = pstats.Stats(pr, stream=s).sort_stats('tottime')
+            ps.print_stats()
+            Logger.info(s.getvalue())
       
 

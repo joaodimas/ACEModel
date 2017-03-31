@@ -49,6 +49,9 @@ class AggregateData:
                 ]
 
     def getFlatData(self):
+        if hasattr(self, "flatData") and len(self.flatData) > 0:
+            return self.flatData
+
         result = []
         result.append(self.getHeader())
         for period in self.periods:
@@ -139,6 +142,10 @@ class MultiAggregateData:
     def __init__(self):
         self.listOfSimulations = []
         self.nmbSimulations = 0
+
+    def addListOfResults(self, listOfResults):
+        for result in listOfResults:
+            self.addFlatData(result)
 
     def addData(self, data):
         self.listOfSimulations.append(data.flatData)
