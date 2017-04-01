@@ -20,10 +20,7 @@ def runSimulation(index, timestamp):
         # Simulate
         for p in range(Parameters.TimeHorizon):
             industry.processPeriod()
-            if(Logger.isEnabledForDebug()):
-                Logger.debug(Description.describeAggregate(industry))
-            if(Logger.isEnabledForTrace()):
-                Logger.trace(Description.describeIncumbentFirms(industry))  
+            Description.describe(industry)
         
         simulationEndTime = time.time()
 

@@ -7,31 +7,19 @@ class Logger:
     logger = None
 
     @classmethod
-    def info(cls, message, args=None):
-      if(cls.logger.isEnabledFor(logging.INFO)):
-            if(isinstance(args, tuple)):
-                message = message.format(*args)
-            elif(isinstance(args, numbers.Number)):
-                message = message.format(args)
-            cls.logger.info(message)
+    def info(cls, message, args=None, industry=None):
+        if(cls.logger.isEnabledFor(logging.INFO)):
+            cls.logger.info(cls.format(message, args, industry))
 
     @classmethod   
-    def debug(cls, message, args=None):
+    def debug(cls, message, args=None, industry=None):
         if(cls.logger.isEnabledFor(logging.DEBUG)):
-            if(isinstance(args, tuple)):
-                message = message.format(*args)
-            elif(isinstance(args, numbers.Number)):
-                message = message.format(args)
-            cls.logger.debug(message)
+            cls.logger.debug(cls.format(message, args, industry))
 
     @classmethod
-    def trace(cls, message, args=None):
+    def trace(cls, message, args=None, industry=None):
         if(cls.logger.isEnabledFor(logging.TRACE)):
-            if(isinstance(args, tuple)):
-                message = message.format(*args)
-            elif(isinstance(args, numbers.Number)):
-                message = message.format(args)
-            cls.logger.trace(message)
+            cls.logger.trace(cls.format(message, args, industry))
 
     @classmethod
     def isEnabledForTrace(cls):
@@ -40,6 +28,23 @@ class Logger:
     @classmethod
     def isEnabledForDebug(cls):
         return cls.logger.isEnabledFor(logging.DEBUG)
+
+    @classmethod
+    def format(cls, message, args, industry):
+        if(industry != None):
+            message = "[SIM {:d}][PERIOD {:d}] " + message
+            if(isinstance(args, tuple)):
+                args = (industry.simulation, industry.currentPeriod) + args
+            elif(args != None):
+                args = (industry.simulation, industry.currentPeriod, args)
+            else:
+                args = (industry.simulation, industry.currentPeriod)
+        if(isinstance(args, tuple)):
+            message = message.format(*args)
+        elif(isinstance(args, numbers.Number)):
+            message = message.format(args)
+
+        return message
 
     @classmethod
     def initialize(cls, timestamp):
@@ -68,26 +73,19 @@ class Logger:
         # create a logging format
         formatter = logging.Formatter('%(message)s')
 
-        # create an INFO console handler
-        if("INFO" in Parameters.LogLevel["Console"]):
+        if len(Parameters.LogLevel["Console"]) > 0:
             handler = logging.StreamHandler()
-            handler.setLevel(logging.INFO)
             handler.setFormatter(formatter)
             cls.logger.addHandler(handler)
-
-        # create a DEBUG console handler
-        if("DEBUG" in Parameters.LogLevel["Console"]):
-            handler = logging.StreamHandler()
-            handler.setLevel(logging.DEBUG)
-            handler.setFormatter(formatter)
-            cls.logger.addHandler(handler)
-
-        # create a TRACE console handler
-        if("TRACE" in Parameters.LogLevel["Console"]):
-            handler = logging.StreamHandler()
-            handler.setLevel(logging.TRACE)
-            handler.setFormatter(formatter)
-            cls.logger.addHandler(handler)
+            # create a TRACE console handler
+            if"TRACE" in Parameters.LogLevel["Console"]:
+                handler.setLevel(logging.TRACE)
+            elif "DEBUG" in Parameters.LogLevel["Console"]:
+                handler.setLevel(logging.DEBUG)
+            elif "INFO" in Parameters.LogLevel["Console"]:
+                handler.setLevel(logging.INFO)
+            else:
+                handler.setLevel(logging.WARNING)
 
         # create an INFO file handler
         if("INFO" in Parameters.LogLevel["File"]):

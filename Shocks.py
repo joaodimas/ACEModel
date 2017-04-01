@@ -9,20 +9,20 @@ class Shocks:
 
     @classmethod
     def processShocks(cls, industry):
-        Logger.trace("[SIM {:d}][PERIOD {:d}] External shocks: Processing...", (industry.simulation, industry.currentPeriod))
+        Logger.trace("External shocks: Processing...", industry=industry)
         # Technological shock: Every period the optimal technology changes with a probability = Parameters.RateOfChangeInTechEnv.
         # The new optimal will have a maximum hamming distance from previous optimum = Parameters.MaxMagnituteOfChangeInTechEnv.
         if(Parameters.RateOfChangeInTechEnv > 0 and industry.currentPeriod >= Parameters.PeriodStartOfTechChange):
             if(random.random() < Parameters.RateOfChangeInTechEnv):
-                Logger.trace("[SIM {:d}][PERIOD {:d}] HIT BY A TECHNOLOGICAL SHOCK!", (industry.simulation, industry.currentPeriod))
+                Logger.trace("HIT BY A TECHNOLOGICAL SHOCK!", industry=industry)
                 previousOptimal = Technology(industry.currentOptimalTech.tasks)
-                Logger.trace("[SIM {:d}][PERIOD {0:0d}] Previous technology:{1:0{2}b}", (industry.simulation, industry.currentPeriod, previousOptimal.tasks, Parameters.NumberOfTasks))
+                Logger.trace("Previous technology:{:0{:d}b}", (previousOptimal.tasks, Parameters.NumberOfTasks), industry=industry)
                 industry.currentOptimalTech.transformRandomlyWithMaxDistance(Parameters.MaxMagnituteOfChangeInTechEnv)
-                Logger.trace("[SIM {:d}][PERIOD {0:0d}] New technology:{1:0{2}b}", (industry.simulation, industry.currentPeriod, industry.currentOptimalTech.tasks, Parameters.NumberOfTasks))
+                Logger.trace("New technology:{:0{:d}b}", (industry.currentOptimalTech.tasks, Parameters.NumberOfTasks), industry=industry)
                 assert previousOptimal.calculateHammingDistance(industry.currentOptimalTech) == industry.currentOptimalTech.magnitudeOfChange
-                Logger.trace("[SIM {:d}][PERIOD {:d}] Magnitude of change: {:d}", (industry.simulation, industry.currentPeriod, industry.currentOptimalTech.magnitudeOfChange))
+                Logger.trace("Magnitude of change: {:d}", (industry.currentOptimalTech.magnitudeOfChange), industry=industry)
             else:
-                Logger.trace("[SIM {:d}][PERIOD {:d}] NO TECHNOLOGICAL SHOCK.", (industry.simulation, industry.currentPeriod))
+                Logger.trace("NO TECHNOLOGICAL SHOCK.", industry=industry)
 
 
         # Average market size growths at a constant rate
@@ -50,4 +50,5 @@ class Shocks:
         #     industry.potentialEntrants = []
         #     for x in range(Parameters.NumberOfPotentialEntrants):
         #         industry.potentialEntrants.append(Firm(industry.newFirmId(), industry, industry.currentOptimalTech.generateRandomWithMaxDistance(40)))
-        Logger.trace("[SIM {:d}][PERIOD {:d}] External shocks: OK!", (industry.simulation, industry.currentPeriod))
+        Logger.trace("External shocks: OK!", industry=industry)
+

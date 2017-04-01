@@ -1,101 +1,74 @@
 from Parameters import Parameters    
+from Logger import Logger
 
 class Description:
+
+    @classmethod
+    def describe(cls, industry):
+        cls.describeAggregate(industry)
+        cls.describeActiveIncumbentFirms(industry)
+        cls.describeInactiveIncumbentFirms(industry)
+
     @classmethod
     def describeAggregate(cls, industry):
-        desc = (
-                    "\n[SIMULATION {:d}][PERIOD {:d}]\n"
-                    "INDUSTRY RESULTS\n"
-                    "Survivors from previous period: {:d}\n"
-                    "New entrants in this period: {:d}\n"
-                    "Firms in the market: {:d}\n"
-                    "Age of oldest firm: {:d}\n"
-                    "Age of youngest firm: {:d}\n"
-                    "Average age: {:.1f}\n"
-                    "Active firms: {:d}\n"
-                    "Inactive firms: {:d}\n"
-                    "Exiting firms after this period: {:d}\n"
-                    "Survivors from this period: {:d}\n"
-                    "Weighted marginal cost: {:.2f}\n"
-                    "Average proximity to optimal tech: {:.2%}\n"
-                    "DIV: {:.2f}\n"
-                    "Price: {:.2f}\n"
-                    "Total investment in R&D: {:.2f}\n"
-                    "Total investment in Innovation: {:.2f}\n"
-                    "Total investment in Imitation: {:.2f}\n"
-                    "Cost share of innovation: {:.2%}\n"
-                    "Profitable firms: {:d}\n"
-                    "Avg PCM: {:.2f}\n"
-                    "Market size: {:.2f}\n"
-                    "Industry output: {:.2f}\n"
-                    "Average output: {:.2f}\n"
-                ).format(
-                            industry.simulation,
-                            industry.currentPeriod, 
-                            len(industry.survivorsOfPreviousPeriod), 
-                            industry.nmbEnteringFirms, 
-                            len(industry.incumbentFirms), 
-                            industry.oldestAge, 
-                            industry.youngestAge, 
-                            industry.averageAge, 
-                            len(industry.activeIncumbentFirms), 
-                            len(industry.incumbentFirms) - len(industry.activeIncumbentFirms), 
-                            industry.nmbExitingFirms, 
-                            len(industry.incumbentFirms) - industry.nmbExitingFirms, 
-                            industry.weightedMC, 
-                            1 - (industry.currentActiveSumOfMC / len(industry.activeIncumbentFirms) / 100) if len(industry.activeIncumbentFirms) != 0 else 0, 
-                            industry.degreeOfTechDiv,
-                            industry.demand.eqPrice, 
-                            industry.totalInvestmentInResearch,
-                            industry.totalInvestmentInInnovation,
-                            industry.totalInvestmentInImitation,
-                            (industry.totalInvestmentInInnovation / industry.totalInvestmentInResearch) if industry.totalInvestmentInResearch > 0 else 0,
-                            industry.nmbProfitableFirms,
-                            industry.PCM,
-                            industry.demand.marketSize,
-                            industry.industryOutput, 
-                            industry.industryOutput / len(industry.activeIncumbentFirms) if len(industry.activeIncumbentFirms) != 0 else 0
-                        )
-
-        return desc
-
-    @classmethod
-    def describeIncumbentFirms(cls, industry):
-        desc = ""
-        desc += cls.describeActiveIncumbentFirms(industry)
-        desc += cls.describeInactiveIncumbentFirms(industry)
-        return desc
+        Logger.trace("", industry=industry)
+        Logger.debug("--------------------- PERIOD RESULTS ---------------------", industry=industry)
+        Logger.debug("Survivors from previous period: {:d}", (len(industry.survivorsOfPreviousPeriod)), industry=industry)
+        Logger.debug("New entrants in this period: {:d}", (industry.nmbEnteringFirms), industry=industry)
+        Logger.debug("Firms in the market: {:d}", (len(industry.incumbentFirms)), industry=industry)
+        Logger.debug("Age of oldest firm: {:d}", (industry.oldestAge), industry=industry)
+        Logger.debug("Age of youngest firm: {:d}", (industry.youngestAge), industry=industry)
+        Logger.debug("Average age: {:.1f}", (industry.averageAge), industry=industry)
+        Logger.debug("Active firms: {:d}", (len(industry.activeIncumbentFirms)), industry=industry)
+        Logger.debug("Inactive firms: {:d}", (len(industry.incumbentFirms) - len(industry.activeIncumbentFirms)), industry=industry)
+        Logger.debug("Exiting firms after this period: {:d}", (industry.nmbExitingFirms), industry=industry)
+        Logger.debug("Survivors after this period: {:d}", (len(industry.incumbentFirms) - industry.nmbExitingFirms), industry=industry)
+        Logger.debug("Weighted marginal cost: {:.2f}", (industry.weightedMC), industry=industry)
+        Logger.debug("Average proximity to optimal tech: {:.2%}", (1 - (industry.currentActiveSumOfMC / len(industry.activeIncumbentFirms) / 100) if len(industry.activeIncumbentFirms) != 0 else 0), industry=industry)
+        Logger.debug("DIV: {:.2f}", (industry.degreeOfTechDiv), industry=industry)
+        Logger.debug("Price: {:.2f}", (industry.demand.eqPrice), industry=industry)
+        Logger.debug("Total investment in R&D: {:.2f}", (industry.totalInvestmentInResearch), industry=industry)
+        Logger.debug("Total investment in Innovation: {:.2f}", (industry.totalInvestmentInInnovation), industry=industry)
+        Logger.debug("Total investment in Imitation: {:.2f}", (industry.totalInvestmentInImitation), industry=industry)
+        Logger.debug("Cost share of innovation: {:.2%}", ((industry.totalInvestmentInInnovation / industry.totalInvestmentInResearch) if industry.totalInvestmentInResearch > 0 else 0), industry=industry)
+        Logger.debug("Profitable firms: {:d}", (industry.nmbProfitableFirms), industry=industry)
+        Logger.debug("Avg PCM: {:.2f}", (industry.PCM), industry=industry)
+        Logger.debug("Market size: {:.2f}", (industry.demand.marketSize), industry=industry)
+        Logger.debug("Industry output: {:.2f}", (industry.industryOutput), industry=industry)
+        Logger.debug("Average output: {:.2f}", (industry.industryOutput / len(industry.activeIncumbentFirms) if len(industry.activeIncumbentFirms) != 0 else 0), industry=industry)
 
     @classmethod
     def describeActiveIncumbentFirms(cls, industry):
-        desc = "---------------------\nACTIVE FIRMS IN PERIOD {:d}:\n".format(industry.currentPeriod)
+        Logger.trace("", industry=industry)
+        Logger.trace("------- Begin: ACTIVE FIRMS -------", industry=industry)
         for firm in sorted(industry.activeIncumbentFirms, key=lambda firm: firm.wealth, reverse= True):
-            desc += cls.describeFirm(firm)
-        return desc
+            cls.describeFirm(firm)
+        Logger.trace("", industry=industry)
+        Logger.trace("------- End: ACTIVE FIRMS -------", industry=industry)
 
     @classmethod
     def describeInactiveIncumbentFirms(cls, industry):
-        desc = "---------------------\nINACTIVE FIRMS IN PERIOD {:d}:\n".format(industry.currentPeriod)
+        Logger.trace("", industry=industry)
+        Logger.trace("------- Begin: INACTIVE FIRMS -------", industry=industry)
         for firm in sorted(industry.inactiveIncumbentFirms, key=lambda firm: firm.wealth, reverse= True):
-            desc += cls.describeFirm(firm)
-        return desc    
+            cls.describeFirm(firm)
+        Logger.trace("", industry=industry)            
+        Logger.trace("------- End: INACTIVE FIRMS -------", industry=industry)
 
     @classmethod
     def describeFirm(cls, firm):
-        desc = ("[SIMULATION {:d}][PERIOD{:d}]\n"
-                "FIRM {:d}\n"
-                "Age: {:d}\n"
-                "Status after this period: {}\n"
-                "Wealth before this period: {:.2f}\n"
-                "Wealth after this period: {:.2f}\n"
-                "Hamming dist. to optimal: {:d}\n"
-                "Proximity to optimal: {:.2%}\n"
-                "MC: {:.2f}\n"
-                "Output: {:.2f}\n"
-                "Market share: {:.2%}\n"
-                "Investment in R&D: {:.2f}\n"
-                "Realized profits: {:.2f}\n"
-                "Expected profits in this period: {:.2f}\n"
-                "Expected wealth after this period: {:.2f}\n"
-                ).format(firm.industry.simulation, firm.industry.currentPeriod, firm.firmId, firm.age, firm.status.name, firm.prevWealth, firm.wealth, firm.techDistToOptimal, 1 - (firm.techDistToOptimal / Parameters.NumberOfTasks), firm.MC, firm.output, firm.marketShare, firm.investmentInResearch, firm.profits, firm.expProfits, firm.prevWealth + firm.expProfits)
-        return desc
+        Logger.trace("", industry=firm.industry)
+        Logger.trace("FIRM {:d}", (firm.firmId), industry=firm.industry)
+        Logger.trace("Age: {:d}", (firm.age), industry=firm.industry)
+        Logger.trace("Status after this period: {}", (firm.status.name), industry=firm.industry)
+        Logger.trace("Wealth before this period: {:.2f}", (firm.prevWealth), industry=firm.industry)
+        Logger.trace("Wealth after this period: {:.2f}", (firm.wealth), industry=firm.industry)
+        Logger.trace("Hamming dist. to optimal: {:d}", (firm.techDistToOptimal), industry=firm.industry)
+        Logger.trace("Proximity to optimal: {:.2%}", (1 - (firm.techDistToOptimal / Parameters.NumberOfTasks)), industry=firm.industry)
+        Logger.trace("MC: {:.2f}", (firm.MC), industry=firm.industry)
+        Logger.trace("Output: {:.2f}", (firm.output), industry=firm.industry)
+        Logger.trace("Market share: {:.2%}", (firm.marketShare), industry=firm.industry)
+        Logger.trace("Investment in R&D: {:.2f}", (firm.investmentInResearch), industry=firm.industry)
+        Logger.trace("Realized profits: {:.2f}", (firm.profits), industry=firm.industry)
+        Logger.trace("Expected profits in this period: {:.2f}", (firm.expProfits), industry=firm.industry)
+        Logger.trace("Expected wealth after this period: {:.2f}", (firm.prevWealth + firm.expProfits), industry=firm.industry)
