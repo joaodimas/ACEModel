@@ -70,5 +70,6 @@ class Description:
         Logger.trace("Market share: {:.2%}", (firm.marketShare), industry=firm.industry)
         Logger.trace("Investment in R&D: {:.2f}", (firm.investmentInResearch), industry=firm.industry)
         Logger.trace("Realized profits: {:.2f}", (firm.profits), industry=firm.industry)
+        Logger.trace("PCM: {:.2f}", ((firm.industry.demand.eqPrice - firm.MC) / firm.industry.demand.eqPrice), industry=firm.industry)
         Logger.trace("Expected profits in this period: {:.2f}", (firm.expProfits), industry=firm.industry)
         Logger.trace("Expected wealth after this period: {:.2f}", (firm.prevWealth + firm.expProfits), industry=firm.industry)

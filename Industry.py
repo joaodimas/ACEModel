@@ -25,11 +25,11 @@ class Industry:
         # Each survivor will decide by doing or not R&D
         self.processResearch()
 
+        # Activate survivors
+        self.activateAllIncumbents()
+        
         # See which potential entrants will enter the market (i.e. become an incumbent)
         self.processFirmsEntering()
-
-        # Activate all incumbents
-        self.activateAllIncumbents()
 
         # Some firms might decide to not produce
         self.processShutdownDecisions()
@@ -133,17 +133,18 @@ class Industry:
         for firm in self.potentialEntrants:
             if firm.decideIfEnters():
                 self.incumbentFirms.append(firm)
+                self.activeIncumbentFirms.append(firm)
                 self.nmbEnteringFirms += 1
         self.entryRate = self.nmbEnteringFirms / len(self.incumbentFirms) if len(self.incumbentFirms) > 0 else 0
         Logger.trace("Entry decisions: OK!", industry=self)
 
     def activateAllIncumbents(self):
-        self.activeIncumbentFirms = self.incumbentFirms
+        self.activeIncumbentFirms = list(self.incumbentFirms)
         self.inactiveIncumbentFirms = []
         for firm in self.activeIncumbentFirms:
             firm.status = FirmStatus.ACTIVE_INCUMBENT
             firm.updateMarginalCost()
-            firm.updateExpWealthAfterThisPeriod()
+            #firm.updateExpWealthAfterThisPeriod()
 
     def processShutdownDecisions(self):
         # If there are too many active incumbents, the price will be low. In this case, some active incumbents might decide to not produce. 
@@ -155,8 +156,8 @@ class Industry:
         self.activeIncumbentFirms = sorted(self.activeIncumbentFirms, key=lambda firm: firm.MC, reverse= True)
         # Check least efficient firms and process deactivations.
         while len(prevActiveIncumbents) != len(self.activeIncumbentFirms):
+            Logger.trace("Checking if some firm will deactivate.", industry=self)
             prevActiveIncumbents = list(self.activeIncumbentFirms)
-
 
             # The actual sum of MC is necessary to find the equilibrium price. 
             # Therefore, it needs to be recalculated after each deactivation.
@@ -169,6 +170,7 @@ class Industry:
 
             # Get the least efficient firm and see if it leaves the market.
             if(len(self.activeIncumbentFirms) > 0):
+                Logger.trace("Checking if the least efficient firm will deactivate.", industry=self)
                 leastEfficient = self.activeIncumbentFirms[0]
                 if leastEfficient.decideIfDeactivates():
                     self.deactivateFirm(leastEfficient)
@@ -204,7 +206,11 @@ class Industry:
                 self.weightedMC += firm.MC * firm.output / self.industryOutput
 
     def updateAvgProximityToOptTech(self):
-        self.averageProximityToOptimalTech = 1 - (self.currentActiveSumOfMC / len(self.activeIncumbentFirms) / 100) if len(self.activeIncumbentFirms) != 0 else 0
+        self.totalDistanceOfOptimalTech = 0
+        for firm in self.activeIncumbentFirms:
+            self.totalDistanceOfOptimalTech += firm.techDistToOptimal 
+            
+        self.averageProximityToOptimalTech = 1 - (self.totalDistanceOfOptimalTech / (len(self.activeIncumbentFirms) * Parameters.NumberOfTasks))
 
     def updateMarketShares(self):
         for firm in self.incumbentFirms:
@@ -218,7 +224,7 @@ class Industry:
 
     def updateDegreeOfTechDiv(self):
         nmbFirms = len(self.incumbentFirms)
-        if(nmbFirms >= 2):
+        if nmbFirms >= 2:
             sumOfHammingDist = 0
             pairs = list(itertools.combinations(self.incumbentFirms, 2))
             assert len(pairs) == nmbFirms * (nmbFirms - 1) / 2
@@ -272,8 +278,7 @@ class Industry:
     def processExitDecisions(self):
         Logger.trace("Exit decisions: Processing...", industry=self)
         for firm in self.incumbentFirms:
-            firm.decideIfExits()
-            if(firm.exiting):
+            if firm.decideIfExits():
                 self.nmbExitingFirms += 1
         self.exitRate = self.nmbExitingFirms / len(self.incumbentFirms) if len(self.incumbentFirms) > 0 else 0
         Logger.trace("Exit decisions: OK!", industry=self)
