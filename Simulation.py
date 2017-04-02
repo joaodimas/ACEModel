@@ -51,11 +51,11 @@ if __name__ == '__main__':
         multiAggregateData = MultiAggregateData()
         Logger.info("Executing {:d} simulations\n", Parameters.NumberOfSimulations)
         
-        if(Parameters.NumberOfWorkers > Parameters.NumberOfSimulations):
-            Parameters.NumberOfWorkers = Parameters.NumberOfSimulations
+        if(Parameters.NumberOfParallelProcesses > Parameters.NumberOfSimulations):
+            Parameters.NumberOfParallelProcesses = Parameters.NumberOfSimulations
 
         processes = []
-        pool = multiprocessing.Pool(Parameters.NumberOfWorkers)
+        pool = multiprocessing.Pool(Parameters.NumberOfParallelProcesses)
         partial_runSimulation = functools.partial(runSimulation, timestamp=timestamp) # Run simulations
         listOfResults = pool.imap_unordered(partial_runSimulation, range(Parameters.NumberOfSimulations)) # Obtain results
 

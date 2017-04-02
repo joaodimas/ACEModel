@@ -4,13 +4,13 @@ class Parameters:
     LogLevel = {"Console": [], "File": ["INFO"]}
     # LogLevel = {"Console": ["INFO", "DEBUG", "TRACE"], "File": ["INFO", "DEBUG", "TRACE"]}
     EnableProfiling = False
-    NumberOfWorkers = 72
+    NumberOfParallelProcesses = 72 # Set this to 3x the number of CPUs.
     STOCHASTIC = 0
     DETERMINISTIC = 1
     
 
     # MODEL PARAMETERS
-    NumberOfSimulations = 5
+    NumberOfSimulations = 50
 
     # Basic
     NumberOfTasks = 96
@@ -25,7 +25,7 @@ class Parameters:
     InitialAttractionForNoResearch = 10
     InitialAttractionForInnovation = 10
     InitialAttractionForImitation = 10
-    TimeHorizon = 30
+    TimeHorizon = 5000
     MeanMarketSize = 4
     RateOfChangeInTechEnv = 0.1
     MaxMagnituteOfChangeInTechEnv = 8
