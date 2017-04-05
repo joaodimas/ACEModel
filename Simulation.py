@@ -1,12 +1,8 @@
 #!/usr/bin/env python3
 
 import sys, time, cProfile, io, pstats, datetime, multiprocessing, functools
-from Logger import Logger
-from Industry import Industry
-from Parameters import Parameters
-from ExportToCSV import ExportToCSV
-from Description import Description
-from AggregateData import MultiAggregateData
+from model import MultiAggregateData, Industry, Description, Parameters
+from model.util import Logger, ExportToCSV
 
 
 def runSimulation(index, timestamp):
