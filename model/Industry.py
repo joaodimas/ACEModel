@@ -330,9 +330,6 @@ class Industry:
         for firm in self.incumbentFirms:
             firm.clearStatus()
 
-    def getActiveIncumbents(self):
-        return [firm for firm in self.incumbentFirms if firm.status == FirmStatus.ACTIVE_INCUMBENT]
-
     def refreshPoolOfPotentialEntrants(self):
         self.potentialEntrants = []
         for x in range(Parameters.NumberOfPotentialEntrants):

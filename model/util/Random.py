@@ -11,39 +11,35 @@ class Random:
 
     @classmethod
     def random(cls):
-        if(cls.fakeRandom is not None):
+        if cls.fakeRandom is not None and len(cls.fakeRandom) > 0:
             return cls.fakeRandom.pop(0)
 
         return random.random()
 
     @classmethod
     def randint(cls, min, max):
-        if(cls.fakeRandInt is not None):
+        if cls.fakeRandInt is not None and len(cls.fakeRandInt) > 0:
             return cls.fakeRandInt.pop(0)
 
         return random.randint(min, max)
 
     @classmethod
     def getrandbits(cls, bits):
-        if(cls.fakeGetRandBits is not None):
+        if cls.fakeGetRandBits is not None and len(cls.fakeGetRandBits) > 0:
             return cls.fakeGetRandBits.pop(0)
 
         return random.getrandbits(bits)
 
     @classmethod
     def sample(cls, population, k):
-        if cls.fakeSample is not None:
-            sample = cls.fakeSample.pop(0)
-            #print("Fake Sample: {}".format(sample))
-        else:
-            sample = random.sample(population, k)
-            #print("Real Sample: {}".format(sample))
-
-        return sample
+        if cls.fakeSample is not None and len(cls.fakeSample) > 0:
+            return cls.fakeSample.pop(0)
+        
+        return random.sample(population, k)
 
     @classmethod
     def uniform(cls, a, b):
-        if(cls.fakeUniform is not None):
+        if cls.fakeUniform is not None and len(cls.fakeUniform) > 0:
             return cls.fakeUniform.pop(0)
 
         return random.uniform(a, b)

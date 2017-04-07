@@ -1,4 +1,4 @@
-# Command: python3.6 -m unittest tests.TestRandom
+# Command: python3.6 -m unittest tests.TestCombinatorics
 
 import unittest
 from model.util.Combinatorics import Combinatorics

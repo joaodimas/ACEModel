@@ -7,7 +7,7 @@ from model.Parameters import Parameters
 
 class TestTechnology(unittest.TestCase):
 
-    def test_if_a_task_is_correctly_copied(self):
+    def test_copyTask(self):
         techA = Technology(2 ** Parameters.NumberOfTasks - 1)
         for taskToCopy in range(1, Parameters.NumberOfTasks + 1):
             techB = Technology(0)
@@ -85,22 +85,22 @@ class TestTechnology(unittest.TestCase):
         # 3 draws: 10! / ((10 - 3)! * 3!) = 120 (prob: 0.681; cumulative: 0.681)
         cumul3 = 1
 
-        selectionPoint = cumul0 - 0.0000001
+        selectionPoint = cumul0 / 2
         selection = technology.selectMagnitudeFromUniformDist(selectionPoint)
         self.assertIsNotNone(selection)
         self.assertEqual(selection, 0)
 
-        selectionPoint = cumul1 - 0.0000001
+        selectionPoint = (cumul1 - cumul0) / 2
         selection = technology.selectMagnitudeFromUniformDist(selectionPoint)
         self.assertIsNotNone(selection)
         self.assertEqual(selection, 1)
         
-        selectionPoint = cumul2 - 0.0000001
+        selectionPoint = (cumul2 - cumul1) / 2
         selection = technology.selectMagnitudeFromUniformDist(selectionPoint)
         self.assertIsNotNone(selection)
         self.assertEqual(selection, 2)
        
-        selectionPoint = cumul3 - 0.0000001
+        selectionPoint = (cumul3 - cumul2) / 2
         selection = technology.selectMagnitudeFromUniformDist(selectionPoint)
         self.assertIsNotNone(selection)
         self.assertEqual(selection, 3)

@@ -31,7 +31,7 @@ class Shocks:
         if(industry.currentPeriod > Parameters.PeriodsOfConstantDemand):
             if(Parameters.TypeOfCycle == Parameters.STOCHASTIC):
                 BusinessCycles.generateStochasticCycle(industry)
-            if(Parameters.TypeOfCycle == Parameters.DETERMINISTIC):
+            elif(Parameters.TypeOfCycle == Parameters.DETERMINISTIC):
                 BusinessCycles.generateDeterministicCycle(industry)
 
         # else:

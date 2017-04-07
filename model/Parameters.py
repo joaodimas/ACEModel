@@ -2,7 +2,7 @@ class Parameters:
 
     # SYSTEM CONFIG
     # LogLevel = {"Console": [], "File": ["INFO"]}
-    LogLevel = {"Console": [""], "File": ["INFO"]}
+    LogLevel = {"Console": ["INFO"], "File": ["INFO"]}
     EnableProfiling = False
     NumberOfParallelProcesses = 72 # Set this to 3x the number of CPUs. Parallelism is only used if multiple simulations are performaed (NumberOfSimulations > 1). Otherwise, only 1 process will be started.
     STOCHASTIC = 0
@@ -10,7 +10,7 @@ class Parameters:
     
 
     # MODEL PARAMETERS
-    NumberOfSimulations = 500 # Number of independent replications. A dataset with the means for each period and variable will be saved.
+    NumberOfSimulations = 1 # Number of independent replications. A dataset with the means for each period and variable will be saved.
 
     # Basic
     NumberOfTasks = 96
