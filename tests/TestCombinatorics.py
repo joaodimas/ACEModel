@@ -1,35 +1,9 @@
 # Command: python3.6 -m unittest tests.TestRandom
 
-import unittest, math
+import unittest
 from model.util.Combinatorics import Combinatorics
 
 class TestCombinatorics(unittest.TestCase):
-
-    def test_all_combinations(self):
-        numberOfTasks = 96
-        maxMagnitudeOfTechChange = 2
-        iterable = range(1, numberOfTasks+1)
-
-        # print('Calling: Random.all_combinations')
-        allCombinationsInRange = Combinatorics.all_combinations(iterable, 0, maxMagnitudeOfTechChange)
-        # print("Length of allCombinationsInRange: {:d}".format(len(allCombinationsInRange)))
-        self.assertIsInstance(allCombinationsInRange, list)
-
-        for magnitude in range(0, maxMagnitudeOfTechChange+1):
-            allCombinations = list(combinations for combinations in allCombinationsInRange if len(combinations) == magnitude)
-            numberOfCombinations = len(allCombinations)
-            # print("{:d} combinations with magnitude {:d}".format(len(allCombinations), magnitude))
-
-            # Magnitude: combinations
-            # 0: 96! / ((96 - 0)! * 0!)
-            # 1: 96! / ((96 - 1)! * 1!)
-            # 2: 96! / ((96 - 2)! * 2!) 
-            # 3: 96! / ((96 - 3)! * 3!)
-            # ...
-            # 8: 96! / ((96 - 8)! * 8!)
-            trueNumberOfCombinations = math.factorial(numberOfTasks) / (math.factorial(numberOfTasks - magnitude) * math.factorial(magnitude))
-            # print("True number of combinations with magnitude {:d}: {:f}".format(magnitude, trueNumberOfCombinations))
-            self.assertEqual(numberOfCombinations, trueNumberOfCombinations)
 
     def test_getProbabilitiesOfDrawingSize(self):
         numberOfTasks = 10

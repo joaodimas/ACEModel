@@ -67,32 +67,3 @@ class Combinatorics:
         numer = functools.reduce(op.mul, range(n, n-r, -1))
         denom = functools.reduce(op.mul, range(1, r+1))
         return numer//denom
-
-    @classmethod
-    def random_combination(cls, iterable, r):
-        pool = tuple(iterable)
-        n = len(pool)
-        indices = sorted(Random.sample(range(n), r))
-        return tuple(pool[i] for i in indices)
-
-    @classmethod
-    def all_combinations(cls, iterable, minR, maxR):
-        allCombinations = []
-        for r in range(minR, maxR+1):
-            # print("Obtaining combinations for magnitude {:d}".format(r))
-            combinations = itertools.combinations(iterable, r)
-            # print("Obtained. Transforming to list and appending to aggregate list.")
-            allCombinations.extend(combinations)
-
-        return allCombinations
-
-    @classmethod
-    def select_weighted_choice(choices):
-       total = sum(w for c, w in choices)
-       r = Random.uniform(0, total)
-       upto = 0
-       for c, w in choices:
-          if upto + w >= r:
-             return c
-          upto += w
-       assert False, "Shouldn't get here"
