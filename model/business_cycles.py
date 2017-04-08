@@ -1,7 +1,7 @@
 import math
-from model.util.Random import Random
-from model.util.Logger import Logger
-from model.Parameters import Parameters
+from model.util.random import Random
+from model.util.logger import Logger
+from model.parameters import Parameters
 
 class BusinessCycles:
 

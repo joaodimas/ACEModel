@@ -1,4 +1,4 @@
-from model.Parameters import Parameters
+from model.parameters import Parameters
 
 class AggregateData:
     def __init__(self, industry):
@@ -89,8 +89,8 @@ class PeriodData:
         self.oldestAge = industry.oldestAge
         self.youngestAge = industry.youngestAge
         self.averageAge = industry.averageAge
-        self.activeIncumbents = len(industry.activeIncumbentFirms)
-        self.inactiveIncumbents = len(industry.inactiveIncumbentFirms)
+        self.activeIncumbents = len(industry.activeFirms)
+        self.inactiveIncumbents = len(industry.inactiveFirms)
         self.profitableFirms = industry.nmbProfitableFirms 
         self.weightedMC = industry.weightedMC
         self.averageProximityToOptimalTech = industry.averageProximityToOptimalTech

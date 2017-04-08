@@ -27,8 +27,8 @@ class Parameters:
     InitialAttractionForImitation = 10
     TimeHorizon = 5000
     MeanMarketSize = 4
-    RateOfChangeInTechEnv = 0.1
-    MaxMagnituteOfChangeInTechEnv = 8 # Don't try a number too close to NumberOfTasks because there is not enough decimal precision to handle the shocks.
+    RateOfChangeInTechEnv = 0.2
+    MaxMagnituteOfChangeInTechEnv = 16 # Don't try a number too close to NumberOfTasks because there is not enough decimal precision to handle the shocks.
 
 
     PeriodStartOfTechChange = 0

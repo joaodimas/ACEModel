@@ -1,8 +1,8 @@
-from model.util.Random import Random
-from model.util.Logger import Logger
-from model.Parameters import Parameters
-from model.Technology import Technology
-from model.BusinessCycles import BusinessCycles
+from model.util.random import Random
+from model.util.logger import Logger
+from model.parameters import Parameters
+from model.technology import Technology
+from model.business_cycles import BusinessCycles
 
 class Shocks:
 

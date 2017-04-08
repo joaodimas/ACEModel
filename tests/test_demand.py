@@ -1,10 +1,10 @@
 import unittest, datetime
-from model.util.Random import Random
-from model.util.Logger import Logger
-from model.Firm import Firm
-from model.Technology import Technology
-from model.Industry import Industry
-from model.Parameters import Parameters
+from model.util.random import Random
+from model.util.logger import Logger
+from model.firm import Firm
+from model.technology import Technology
+from model.industry import Industry
+from model.parameters import Parameters
 
 class TestDemand(unittest.TestCase):
 
@@ -20,22 +20,18 @@ class TestDemand(unittest.TestCase):
         self.assertEqual(industry.currentOptimalTech.tasks, optimalTech)
         
         firm1 = Firm(1, industry, Technology(0b00000)) # Dist = 3
-        firm1.updateMarginalCost()
-        industry.activeIncumbentFirms.append(firm1)
-        self.assertEqual(firm1.MC, 60)
+        industry.activeFirms.append(firm1)
+        self.assertEqual(firm1.updateMarginalCost(), 60)
 
         firm2 = Firm(2, industry, Technology(0b10000)) # Dist = 2
-        firm2.updateMarginalCost()
-        self.assertEqual(firm2.MC, 40)
-        industry.activeIncumbentFirms.append(firm2)
+        self.assertEqual(firm2.updateMarginalCost(), 40)
+        industry.activeFirms.append(firm2)
         
         firm3 = Firm(3, industry, Technology(0b10100)) # Dist = 1
-        firm3.updateMarginalCost()
-        self.assertEqual(firm3.MC, 20)
-        industry.activeIncumbentFirms.append(firm3)
+        self.assertEqual(firm3.updateMarginalCost(), 20)
+        industry.activeFirms.append(firm3)
 
-        industry.updateSumOfMC()
-        self.assertEqual(industry.currentActiveSumOfMC, 120)
+        self.assertEqual(industry.updateSumOfActiveFirmsMC(), 120)
         
         # P = 1 / (m + 1) * (a + sumOfMC) = 1 / (3 + 1) * (300 + 120) = 105
         industry.demand.updateEqPrice()

@@ -1,5 +1,5 @@
-from model.Parameters import Parameters
-from model.util.Logger import Logger
+from model.parameters import Parameters
+from model.util.logger import Logger
 
 class Description:
 
@@ -7,7 +7,7 @@ class Description:
     def describe(cls, industry):
         cls.describeAggregate(industry)
         cls.describeActiveIncumbentFirms(industry)
-        cls.describeInactiveIncumbentFirms(industry)
+        cls.describeInactiveFirms(industry)
 
     @classmethod
     def describeAggregate(cls, industry):
@@ -19,12 +19,12 @@ class Description:
         Logger.debug("Age of oldest firm: {:d}", (industry.oldestAge), industry=industry)
         Logger.debug("Age of youngest firm: {:d}", (industry.youngestAge), industry=industry)
         Logger.debug("Average age: {:.1f}", (industry.averageAge), industry=industry)
-        Logger.debug("Active firms: {:d}", (len(industry.activeIncumbentFirms)), industry=industry)
-        Logger.debug("Inactive firms: {:d}", (len(industry.incumbentFirms) - len(industry.activeIncumbentFirms)), industry=industry)
+        Logger.debug("Active firms: {:d}", (len(industry.activeFirms)), industry=industry)
+        Logger.debug("Inactive firms: {:d}", (len(industry.incumbentFirms) - len(industry.activeFirms)), industry=industry)
         Logger.debug("Exiting firms after this period: {:d}", (industry.nmbExitingFirms), industry=industry)
         Logger.debug("Survivors after this period: {:d}", (len(industry.incumbentFirms) - industry.nmbExitingFirms), industry=industry)
         Logger.debug("Weighted marginal cost: {:.2f}", (industry.weightedMC), industry=industry)
-        Logger.debug("Average proximity to optimal tech: {:.2%}", (1 - (industry.currentActiveSumOfMC / len(industry.activeIncumbentFirms) / 100) if len(industry.activeIncumbentFirms) != 0 else 0), industry=industry)
+        Logger.debug("Average proximity to optimal tech: {:.2%}", (1 - (industry.sumOfActiveFirmsMC / len(industry.activeFirms) / 100) if len(industry.activeFirms) != 0 else 0), industry=industry)
         Logger.debug("DIV: {:.2f}", (industry.degreeOfTechDiv), industry=industry)
         Logger.debug("Price: {:.2f}", (industry.demand.eqPrice), industry=industry)
         Logger.debug("Total investment in R&D: {:.2f}", (industry.totalInvestmentInResearch), industry=industry)
@@ -35,22 +35,22 @@ class Description:
         Logger.debug("Avg PCM: {:.2f}", (industry.PCM), industry=industry)
         Logger.debug("Market size: {:.2f}", (industry.demand.marketSize), industry=industry)
         Logger.debug("Industry output: {:.2f}", (industry.industryOutput), industry=industry)
-        Logger.debug("Average output: {:.2f}", (industry.industryOutput / len(industry.activeIncumbentFirms) if len(industry.activeIncumbentFirms) != 0 else 0), industry=industry)
+        Logger.debug("Average output: {:.2f}", (industry.industryOutput / len(industry.activeFirms) if len(industry.activeFirms) != 0 else 0), industry=industry)
 
     @classmethod
     def describeActiveIncumbentFirms(cls, industry):
         Logger.trace("", industry=industry)
         Logger.trace("------- Begin: ACTIVE FIRMS -------", industry=industry)
-        for firm in sorted(industry.activeIncumbentFirms, key=lambda firm: firm.wealth, reverse= True):
+        for firm in sorted(industry.activeFirms, key=lambda firm: firm.wealth, reverse= True):
             cls.describeFirm(firm)
         Logger.trace("", industry=industry)
         Logger.trace("------- End: ACTIVE FIRMS -------", industry=industry)
 
     @classmethod
-    def describeInactiveIncumbentFirms(cls, industry):
+    def describeInactiveFirms(cls, industry):
         Logger.trace("", industry=industry)
         Logger.trace("------- Begin: INACTIVE FIRMS -------", industry=industry)
-        for firm in sorted(industry.inactiveIncumbentFirms, key=lambda firm: firm.wealth, reverse= True):
+        for firm in sorted(industry.inactiveFirms, key=lambda firm: firm.wealth, reverse= True):
             cls.describeFirm(firm)
         Logger.trace("", industry=industry)            
         Logger.trace("------- End: INACTIVE FIRMS -------", industry=industry)

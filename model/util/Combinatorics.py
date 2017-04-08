@@ -1,6 +1,5 @@
-import functools, itertools
+import functools, math
 import operator as op
-from model.util.Random import Random
 
 
 class Combinatorics:
@@ -60,10 +59,36 @@ class Combinatorics:
         return probs
 
     # Returns the number of combinations when drawing 'r' elements from a population of size 'n'.
+    # @classmethod
+    # def nCr(cls, n, r):
+    #     r = min(r, n-r)
+    #     if r == 0: return 1
+    #     print(range(n, n-r, -1))
+    #     numer = functools.reduce(op.mul, range(n, n-r, -1))
+    #     print(range(1, r+1))
+    #     denom = functools.reduce(op.mul, range(1, r+1))
+    #     return numer//denom
+
+    # @classmethod
+    # def nCr(cls, N, k): # from scipy.comb(), but MODIFIED!
+    #     if (k > N) or (N < 0) or (k < 0):
+    #         return 0
+    #     N,k = map(long,(N,k))
+    #     top = N
+    #     val = 1
+    #     while (top > (N-k)):
+    #         val *= top
+    #         top -= 1
+    #     n = 1
+    #     while (n < k+1):
+    #         val /= n
+    #         n += 1
+    #     return val
+
     @classmethod
     def nCr(cls, n, r):
-        r = min(r, n-r)
-        if r == 0: return 1
-        numer = functools.reduce(op.mul, range(n, n-r, -1))
-        denom = functools.reduce(op.mul, range(1, r+1))
-        return numer//denom
+        if(n<r):
+            return 0
+        return math.factorial(n) // math.factorial(r) // math.factorial(n-r)
+
+

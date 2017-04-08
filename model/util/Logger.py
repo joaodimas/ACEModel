@@ -1,5 +1,5 @@
 import logging, os, numbers
-from model.Parameters import Parameters
+from model.parameters import Parameters
 
 class Logger:
 

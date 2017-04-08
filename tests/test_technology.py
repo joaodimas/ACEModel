@@ -1,9 +1,9 @@
 import unittest, datetime
-from model.util.Logger import Logger
-from model.util.Random import Random
-from model.util.Combinatorics import Combinatorics
-from model.Technology import Technology
-from model.Parameters import Parameters
+from model.util.logger import Logger
+from model.util.random import Random
+from model.util.combinatorics import Combinatorics
+from model.technology import Technology
+from model.parameters import Parameters
 
 class TestTechnology(unittest.TestCase):
 

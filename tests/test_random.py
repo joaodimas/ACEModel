@@ -1,5 +1,5 @@
 import unittest
-from model.util.Random import Random
+from model.util.random import Random
 
 class TestRandom(unittest.TestCase):
 

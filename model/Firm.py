@@ -1,8 +1,9 @@
 from enum import Enum
-from model.util.Random import Random
-from model.util.Logger import Logger
-from model.Parameters import Parameters
-from model.Technology import Technology
+from model.util.random import Random
+from model.util.logger import Logger
+from model.util.math import Math
+from model.parameters import Parameters
+from model.technology import Technology
 
 
 class Firm :
@@ -35,6 +36,8 @@ class Firm :
         self.techDistToOptimal = self.technology.calculateHammingDistance(self.industry.currentOptimalTech)
         self.MC = 100 * self.techDistToOptimal / Parameters.NumberOfTasks
 
+        return self.MC
+
     def getTotalCost(self, quantity):
         return Parameters.FixedProductionCost + quantity * self.MC
 
@@ -42,9 +45,15 @@ class Firm :
     def updateOutput(self):
         self.output = self.industry.demand.marketSize * (self.industry.demand.eqPrice - self.MC)
 
-    # Derived from the FOC
+        # Assert that the result is the same as in the Chang's book
+        assert Math.isEquivalent(self.output, self.industry.demand.marketSize * (1 / (len(self.industry.activeFirms) + 1) * (Parameters.DemandIntercept + self.industry.sumOfActiveFirmsMC) - self.MC))
+
+        return self.output
+
     def updateProfits(self):
         self.profits = self.output * (self.industry.demand.eqPrice - self.MC) - Parameters.FixedProductionCost
+        assert Math.isEquivalent(self.profits, (self.output ** 2 / self.industry.demand.marketSize - Parameters.FixedProductionCost))
+
         return self.profits
 
     # Derived from the FOC
@@ -82,8 +91,8 @@ class Firm :
         return self.exiting
 
     def decideIfDeactivates(self):
-        self.updateOutput()
-        if(self.output <= 0): # Yes. This firm doesn't want to produce. It will be deactivated.
+        
+        if(self.updateOutput() <= 0): # Yes. This firm doesn't want to produce. It will be deactivated.
             self.deactivating = True
             Logger.trace("[FIRM {:d}] Decided to DEACTIVATE. Price: {:.2f}; MC: {:.2f}; Exp. Price: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Wealth: {:.2f}.", (self.firmId, self.industry.demand.eqPrice, self.MC, self.expPrice, self.expOutput, self.expProfits, self.wealth), industry=self.industry)
         else:
@@ -133,8 +142,7 @@ class Firm :
         Logger.trace("[FIRM {:d}] After: {:0{:d}b}", (self.firmId, self.technology.tasks, Parameters.NumberOfTasks), industry=self.industry)
         
         # If new tehnology is more efficient, adopt it.
-        self.updateMarginalCost()
-        if(self.MC < oldMC):
+        if(self.updateMarginalCost() < oldMC):
             Logger.trace("[FIRM {:d}] Lowered marginal cost through INNOVATION. Previous MC: {:.2f}; New MC: {:.2f}", (self.firmId, oldMC, self.MC), industry=self.industry)
             self.attractionForResearch += 1
             self.attractionForInnovation += 1

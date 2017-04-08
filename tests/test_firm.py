@@ -3,12 +3,12 @@
 # Command: python3.6 -m unittest tests.TestFirm
 
 import unittest, datetime
-from model.Firm import Firm
-from model.Industry import Industry
-from model.Technology import Technology
-from model.Parameters import Parameters
-from model.util.Random import Random
-from model.util.Logger import Logger
+from model.firm import Firm
+from model.industry import Industry
+from model.technology import Technology
+from model.parameters import Parameters
+from model.util.random import Random
+from model.util.logger import Logger
 
 class TestFirm(unittest.TestCase):
 
@@ -48,33 +48,26 @@ class TestFirm(unittest.TestCase):
         self.assertEqual(industry.currentOptimalTech.tasks, optimalTech)
         
         firm1 = Firm(1, industry, Technology(0b00000)) # Dist = 3
-        firm1.updateMarginalCost()
-        industry.activeIncumbentFirms.append(firm1)
-        self.assertEqual(firm1.MC, 60)
+        self.assertEqual(firm1.updateMarginalCost(), 60)
+        industry.activeFirms.append(firm1)
 
         firm2 = Firm(2, industry, Technology(0b10000)) # Dist = 2
-        firm2.updateMarginalCost()
-        self.assertEqual(firm2.MC, 40)
-        industry.activeIncumbentFirms.append(firm2)
+        self.assertEqual(firm2.updateMarginalCost(), 40)
+        industry.activeFirms.append(firm2)
         
         firm3 = Firm(3, industry, Technology(0b10100)) # Dist = 1
-        firm3.updateMarginalCost()
-        self.assertEqual(firm3.MC, 20)
-        industry.activeIncumbentFirms.append(firm3)
+        self.assertEqual(firm3.updateMarginalCost(), 20)
+        industry.activeFirms.append(firm3)
 
-        industry.updateSumOfMC()
-        self.assertEqual(industry.currentActiveSumOfMC, 120)
+        self.assertEqual(industry.updateSumOfActiveFirmsMC(), 120)
         
         # q = s * ((1 / (m + 1)) * (a + sumOfMC) - c)
-        industry.demand.updateEqPrice()
-        self.assertEqual(industry.demand.eqPrice, 105)
+        self.assertEqual(industry.demand.updateEqPrice(), 105)
 
-        firm1.updateOutput()
-        self.assertEqual(firm1.output, 180)
-        firm2.updateOutput()
-        self.assertEqual(firm2.output, 260)
-        firm3.updateOutput()
-        self.assertEqual(firm3.output, 340)
+        
+        self.assertEqual(firm1.updateOutput(), 180)
+        self.assertEqual(firm2.updateOutput(), 260)
+        self.assertEqual(firm3.updateOutput(), 340)
 
     def test_selectCompetitorFromRouletteWheel(self):
         # Parameters

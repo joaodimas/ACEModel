@@ -1,0 +1,204 @@
+sys.version_info(major=3, minor=6, micro=0, releaselevel='final', serial=0)
+----- PARAMETERS -----
+DETERMINISTIC: 1
+DemandIntercept: 300
+EnableProfiling: False
+FixedCostOfImitation: 50
+FixedCostOfInnovation: 100
+FixedProductionCost: 200
+InitialAttractionForImitation: 10
+InitialAttractionForInnovation: 10
+InitialAttractionForNoResearch: 10
+InitialAttractionForResearch: 10
+LogLevel: {'Console': ['INFO'], 'File': ['INFO']}
+MaxMagnituteOfChangeInTechEnv: 16
+MeanMarketSize: 4
+MinMarketSize: 0.1
+NumberOfParallelProcesses: 72
+NumberOfPotentialEntrants: 40
+NumberOfSimulations: 1
+NumberOfTasks: 96
+PeriodOfHalfTurn: 500
+PeriodStartOfTechChange: 0
+PeriodsOfConstantDemand: 2000
+RateOfChangeInTechEnv: 0.2
+RateOfMeanMarketSizeGrowth: 0
+RateOfPersistenceInDemand: 0.97
+STOCHASTIC: 0
+StartupWealth: 0
+ThresholdNetWealthForSurvival: 0
+TimeHorizon: 5000
+TypeOfCycle: None
+WaveAmplitude: 2
+
+Executing 1 simulations
+
+[SIM 1] STARTING SIMULATION
+[SIM 1][PERIOD 1] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 2] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 3] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 4] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 5] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 6] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 7] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 8] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 9] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 10] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 11] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 12] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 13] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 14] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 15] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 16] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 17] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 18] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 19] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 20] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 21] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 22] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 23] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 24] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 25] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 26] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 27] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 28] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 29] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 30] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 31] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 32] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 33] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 34] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 35] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 36] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 37] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 38] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 39] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 40] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 41] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 42] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 43] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 44] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 45] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 46] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 47] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 48] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 49] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 50] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 51] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 52] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 53] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 54] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 55] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 56] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 57] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 58] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 59] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 60] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 61] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 62] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 63] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 64] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 65] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 66] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 67] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 68] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 69] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 70] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 71] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 72] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 73] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 74] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 75] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 76] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 77] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 78] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 79] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 80] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 81] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 82] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 83] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 84] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 85] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 86] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 87] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 88] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 89] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 90] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 91] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 92] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 93] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 94] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 95] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 96] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 97] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 98] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 99] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 100] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 101] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 102] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 103] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 104] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 105] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 106] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 107] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 108] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 109] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 110] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 111] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 112] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 113] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 114] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 115] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 116] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 117] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 118] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 119] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 120] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 121] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 122] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 123] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 124] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 125] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 126] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 127] --------------------- PROCESSING PERIOD ---------------------
+[SIM 1][PERIOD 128] --------------------- PROCESSING PERIOD ---------------------
+Error
+Traceback (most recent call last):
+  File "/Users/jdimas/GitHub/ACEModel/Simulation.py", line 22, in runSimulation
+    industry.processPeriod()
+  File "/Users/jdimas/GitHub/ACEModel/model/industry.py", line 39, in processPeriod
+    self.updateActiveIncumbents()
+  File "/Users/jdimas/GitHub/ACEModel/model/industry.py", line 197, in updateActiveIncumbents
+    firm.updateProfits()
+  File "/Users/jdimas/GitHub/ACEModel/model/firm.py", line 54, in updateProfits
+    assert self.profits == self.output ** 2 / self.industry.demand.marketSize - Parameters.FixedProductionCost
+AssertionError
+Error
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/multiprocessing/pool.py", line 119, in worker
+    result = (True, func(*args, **kwds))
+  File "/Users/jdimas/GitHub/ACEModel/Simulation.py", line 34, in runSimulation
+    raise e
+  File "/Users/jdimas/GitHub/ACEModel/Simulation.py", line 22, in runSimulation
+    industry.processPeriod()
+  File "/Users/jdimas/GitHub/ACEModel/model/industry.py", line 39, in processPeriod
+    self.updateActiveIncumbents()
+  File "/Users/jdimas/GitHub/ACEModel/model/industry.py", line 197, in updateActiveIncumbents
+    firm.updateProfits()
+  File "/Users/jdimas/GitHub/ACEModel/model/firm.py", line 54, in updateProfits
+    assert self.profits == self.output ** 2 / self.industry.demand.marketSize - Parameters.FixedProductionCost
+AssertionError
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/jdimas/GitHub/ACEModel/Simulation.py", line 62, in <module>
+    multiAggregateData.addListOfResults(listOfResults) # Add result to the aggregate list (this will be used to calculate the means)
+  File "/Users/jdimas/GitHub/ACEModel/model/aggregate_data.py", line 147, in addListOfResults
+    for result in listOfResults:
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/multiprocessing/pool.py", line 699, in next
+    raise value
+AssertionError

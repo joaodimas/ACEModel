@@ -1,6 +1,6 @@
-from model.util.Random import Random
-from model.util.Combinatorics import Combinatorics
-from model.Parameters import Parameters
+from model.util.random import Random
+from model.util.combinatorics import Combinatorics
+from model.parameters import Parameters
 
 
 
@@ -32,6 +32,8 @@ class Technology:
 
         self.magnitudeOfChange = magnitudeOfChange
 
+        return self
+
     def changeRandomly(self):
         selectionPoint = Random.random()
         # print('selectionPoint: {:.50f}'.format(selectionPoint))
@@ -40,13 +42,15 @@ class Technology:
         #print('magnitudeOfChange: {:d}'.format(self.magnitudeOfChange))
         # assert self.magnitudeOfChange == 0
         if self.magnitudeOfChange == 0:
-            return
+            return self
 
         # Put all tasks in a list to be sorted out randomly
         allTasks = range(1,Parameters.NumberOfTasks)
         for taskToFlip in Random.sample(allTasks, self.magnitudeOfChange):
             self.flipTask(taskToFlip)
             # Logger.trace("[SIM {:d}]Task changed: {:d}".format(taskToFlip))
+
+        return self
 
     def selectMagnitudeFromUniformDist(self, selectionPoint):
         #print('selectMagnitudeFromUniformDist')
@@ -62,6 +66,8 @@ class Technology:
         taskToFlip = Random.randint(1, Parameters.NumberOfTasks)
         self.flipTask(taskToFlip)
 
+        return self
+
     def flipTask(self, task):
         #print('flipTask: {:d}'.format(task))
         #print("BEFORE: self.tasks:\n{:b}".format(self.tasks))
@@ -73,9 +79,13 @@ class Technology:
         #print("AFTER: self.tasks:\n{:b}".format(self.tasks))
         self.taskChanged = task
 
+        return self
+
     def copyOneRandomTask(self, otherTech):
         taskToCopy = Random.randint(1, Parameters.NumberOfTasks)
         self.copyTask(otherTech, taskToCopy)
+
+        return self
 
     def copyTask(self, otherTech, task):
         bitToCopy = Parameters.NumberOfTasks - task
@@ -115,3 +125,5 @@ class Technology:
             self.taskChanged = task
         else:
             self.taskChanged = 0
+
+        return self
