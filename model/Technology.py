@@ -69,6 +69,8 @@ class Technology:
         return self
 
     def flipTask(self, task):
+        assert task <= Parameters.NumberOfTasks
+        
         #print('flipTask: {:d}'.format(task))
         #print("BEFORE: self.tasks:\n{:b}".format(self.tasks))
         bitToFlip = Parameters.NumberOfTasks - task
@@ -88,6 +90,8 @@ class Technology:
         return self
 
     def copyTask(self, otherTech, task):
+        assert task <= Parameters.NumberOfTasks
+
         bitToCopy = Parameters.NumberOfTasks - task
         mask = 2 ** bitToCopy
         

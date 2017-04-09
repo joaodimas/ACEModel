@@ -109,5 +109,4 @@ class TestFirm(unittest.TestCase):
             self.assertEqual(firmB.firmId, competitorToBeSelected)
 
     def setUp(self):
-        timestamp = datetime.datetime.now()
-        Logger.initialize(timestamp)
+        Logger.initialize(datetime.datetime.now())

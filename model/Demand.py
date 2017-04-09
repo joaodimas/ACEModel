@@ -19,3 +19,15 @@ class Demand:
         competitors = len(self.industry.activeSurvivorsOfPreviousPeriod) + 1
         expEqPrice = (1 / (competitors + 1)) * (Parameters.DemandIntercept + sumOfMC)
         return expEqPrice
+
+    @classmethod
+    def calculatePrice(cls, nmbOfFirms, demandIntercept, sumOfMC):
+        return 1 / (nmbOfFirms + 1) * (demandIntercept + sumOfMC)
+
+    @classmethod
+    def calculateFirmOutput(cls, marketSize, nmbFirms, demandIntercept, sumOfMC, firmMC):
+        return marketSize * (1 / (nmbFirms + 1) * (demandIntercept + sumOfMC) - firmMC)
+
+    @classmethod
+    def calculateAggregateOutput(cls, marketSize, nmbFirms, demandIntercept, sumOfMC):
+        return 1 / (nmbFirms + 1) * (nmbFirms * marketSize * demandIntercept - marketSize * sumOfMC)
