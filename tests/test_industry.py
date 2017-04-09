@@ -92,6 +92,25 @@ class TestIndustry(unittest.TestCase):
              trueProfits = (Parameters.DemandIntercept - industry.industryOutput / industry.demand.marketSize) * firm.output - Parameters.FixedProductionCost - firm.MC * firm.output
              self.assertTrue(Math.isEquivalent(firm.profits, trueProfits))
 
+        self.assertEqual(len(industry.inactiveFirms), 17)
+        industry.updateInactiveIncumbents()
+        for firm in industry.inactiveFirms:
+            self.assertEqual(firm.profits, -Parameters.FixedProductionCost)
+            self.assertEqual(firm.wealth, -Parameters.FixedProductionCost)
+
+        industry.updateTotalProfits()
+        self.assertTrue(Math.isEquivalent(industry.totalProfits, 9690.24131))
+
+        industry.processExitDecisions()
+        self.assertEqual(industry.nmbExitingFirms, 24) # 7 of the active firms had losses
+
+        for firm in industry.incumbentFirms:
+            self.assertTrue(not firm.exiting or firm.firmId in range(17,41)) # Firms with Id between 17 and 40 had marginal cost above profitable.
+
+        industry.processFirmsExiting()
+        for firm in industry.survivorsOfCurrentPeriod:
+            self.assertTrue(firm.firmId in range(1,17)) # Only firms with Id between 1 and 16 survive.
+
 
     def setUp(self):
         Logger.initialize(datetime.datetime.now())

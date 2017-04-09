@@ -38,6 +38,9 @@ class Industry:
         # Now we have only the incumbents that are willing to produce
         self.updateActiveIncumbents()
 
+        # Update wealth of inactive firms (they'll lose the fixed cost)
+        self.updateInactiveIncumbents()
+
         # Update weighted MC (used for posterior analysis)
         self.updateWeightedMC()
 
@@ -66,9 +69,6 @@ class Industry:
 
         # Calculate Total Surplus
         self.updateTS()
-
-        # Update wealth of inactive firms (they'll lose the fixed cost)
-        self.updateInactiveIncumbents()
         
         # Incumbent firms decide if exit (die) or not
         self.processExitDecisions()
