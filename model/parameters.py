@@ -1,8 +1,8 @@
 class Parameters:
 
     # SYSTEM CONFIG
-    # LogLevel = {"Console": [], "File": ["INFO"]}
-    LogLevel = {"Console": ["INFO"], "File": ["INFO"]}
+    LogLevel = {"Console": [], "File": ["INFO"]}
+    #LogLevel = {"Console": ["INFO"], "File": ["INFO"]}
     EnableProfiling = False
     NumberOfParallelProcesses = 72 # Set this to 3x the number of CPUs. Parallelism is only used if multiple simulations are performaed (NumberOfSimulations > 1). Otherwise, only 1 process will be started.
     STOCHASTIC = 0
@@ -10,7 +10,7 @@ class Parameters:
     
 
     # MODEL PARAMETERS
-    NumberOfSimulations = 1 # Number of independent replications. A dataset with the means for each period and variable will be saved.
+    NumberOfSimulations = 500 # Number of independent replications. A dataset with the means for each period and variable will be saved.
 
     # Basic
     NumberOfTasks = 96
@@ -27,8 +27,8 @@ class Parameters:
     InitialAttractionForImitation = 10
     TimeHorizon = 5000
     MeanMarketSize = 4
-    RateOfChangeInTechEnv = 0.2
-    MaxMagnituteOfChangeInTechEnv = 16 # Don't try a number too close to NumberOfTasks because there is not enough decimal precision to handle the shocks.
+    RateOfChangeInTechEnv = 0.1
+    MaxMagnituteOfChangeInTechEnv = 8 # Don't try a number too close to NumberOfTasks because there is not enough decimal precision to handle the shocks.
 
 
     PeriodStartOfTechChange = 0
