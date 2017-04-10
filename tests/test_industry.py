@@ -11,8 +11,7 @@ from model.util.logger import Logger
 
 class TestIndustry(unittest.TestCase):
 
-    def test_ProcessPeriod(self):
-        print('')
+    def test_ProcessPeriod_noPreviousIncumbents(self):
         industry = Industry(1)
         optTasks = industry.currentOptimalTech.tasks
         industry.nextPeriod()
