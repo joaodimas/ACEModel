@@ -10,7 +10,7 @@ class Parameters:
     
 
     # MODEL PARAMETERS
-    NumberOfSimulations = 500 # Number of independent replications. A dataset with the means for each period and variable will be saved.
+    NumberOfSimulations = 50 # Number of independent replications. A dataset with the means for each period and variable will be saved.
 
     # Basic
     NumberOfTasks = 96
