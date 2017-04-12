@@ -58,11 +58,11 @@ class Logger:
 
 
         cls.logger = logging.getLogger("ACEModel")
-        if("TRACE" in Parameters.LogLevel["Console"] or "TRACE" in Parameters.LogLevel["File"]):
+        if ("Console" in Parameters.LogLevel and "TRACE" in Parameters.LogLevel["Console"]) or ("File" in Parameters.LogLevel and "TRACE" in Parameters.LogLevel["File"]):
             cls.logger.setLevel(logging.TRACE)
-        elif("DEBUG" in Parameters.LogLevel["Console"] or "DEBUG" in Parameters.LogLevel["File"]):
+        elif ("Console" in Parameters.LogLevel and "DEBUG" in Parameters.LogLevel["Console"]) or ("File" in Parameters.LogLevel and "DEBUG" in Parameters.LogLevel["File"]):
             cls.logger.setLevel(logging.DEBUG)
-        elif("INFO" in Parameters.LogLevel["Console"] or "INFO" in Parameters.LogLevel["File"]):
+        elif ("Console" in Parameters.LogLevel and "INFO" in Parameters.LogLevel["Console"]) or ("File" in Parameters.LogLevel and "INFO" in Parameters.LogLevel["File"]):
             cls.logger.setLevel(logging.INFO)
         else:
             cls.logger.setLevel(logging.WARNING)
@@ -72,12 +72,12 @@ class Logger:
         # create a logging format
         formatter = logging.Formatter('%(message)s')
 
-        if len(Parameters.LogLevel["Console"]) > 0:
+        if "Console" in Parameters.LogLevel and len(Parameters.LogLevel["Console"]) > 0:
             handler = logging.StreamHandler()
             handler.setFormatter(formatter)
             cls.logger.addHandler(handler)
             # create a TRACE console handler
-            if"TRACE" in Parameters.LogLevel["Console"]:
+            if "TRACE" in Parameters.LogLevel["Console"]:
                 handler.setLevel(logging.TRACE)
             elif "DEBUG" in Parameters.LogLevel["Console"]:
                 handler.setLevel(logging.DEBUG)
@@ -87,22 +87,23 @@ class Logger:
                 handler.setLevel(logging.WARNING)
 
         # create an INFO file handler
-        if("INFO" in Parameters.LogLevel["File"]):
-            handler = logging.FileHandler(os.path.join(THIS_FOLDER, "../../data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+".INFO.log"))
-            handler.setLevel(logging.INFO)
-            handler.setFormatter(formatter)
-            cls.logger.addHandler(handler)
+        if "File" in Parameters.LogLevel:
+            if("INFO" in Parameters.LogLevel["File"]):
+                handler = logging.FileHandler(os.path.join(THIS_FOLDER, "../../data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+".INFO.log"))
+                handler.setLevel(logging.INFO)
+                handler.setFormatter(formatter)
+                cls.logger.addHandler(handler)
 
-        # create a DEBUG file handler
-        if("DEBUG" in Parameters.LogLevel["File"]):
-            handler = logging.FileHandler(os.path.join(THIS_FOLDER, "../../data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+".DEBUG.log"))
-            handler.setLevel(logging.DEBUG)
-            handler.setFormatter(formatter)
-            cls.logger.addHandler(handler)
+            # create a DEBUG file handler
+            if("DEBUG" in Parameters.LogLevel["File"]):
+                handler = logging.FileHandler(os.path.join(THIS_FOLDER, "../../data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+".DEBUG.log"))
+                handler.setLevel(logging.DEBUG)
+                handler.setFormatter(formatter)
+                cls.logger.addHandler(handler)
 
-        # create a TRACE file handler
-        if("TRACE" in Parameters.LogLevel["File"]):
-            handler = logging.FileHandler(os.path.join(THIS_FOLDER, "../../data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+".TRACE.log"))
-            handler.setLevel(logging.TRACE)
-            handler.setFormatter(formatter)
-            cls.logger.addHandler(handler)
+            # create a TRACE file handler
+            if("TRACE" in Parameters.LogLevel["File"]):
+                handler = logging.FileHandler(os.path.join(THIS_FOLDER, "../../data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+".TRACE.log"))
+                handler.setLevel(logging.TRACE)
+                handler.setFormatter(formatter)
+                cls.logger.addHandler(handler)
