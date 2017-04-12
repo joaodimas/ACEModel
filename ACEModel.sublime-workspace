@@ -1,0 +1,1130 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"partia",
+				"partial_runSimulation\tstatement"
+			],
+			[
+				"list",
+				"listOfResults\tparam"
+			],
+			[
+				"Num",
+				"NumberOfSimulations\tstatement"
+			],
+			[
+				"result",
+				"resultQueue\tstatement"
+			],
+			[
+				"rele",
+				"release"
+			],
+			[
+				"process",
+				"processResults"
+			],
+			[
+				"Indus",
+				"IndustrySimulation\tclass"
+			],
+			[
+				"multi",
+				"multiAggregateData\tstatement"
+			],
+			[
+				"ind",
+				"industry"
+			],
+			[
+				"sim",
+				"simulate"
+			],
+			[
+				"Industry",
+				"IndustrySimulation"
+			],
+			[
+				"Period",
+				"PeriodOfHalfTurn\tstatement"
+			],
+			[
+				"Atomic",
+				"AtomicCounter\tclass"
+			],
+			[
+				"proce",
+				"processResearch"
+			],
+			[
+				"IS",
+				"isEnabledForTrace\tfunction"
+			],
+			[
+				"prev",
+				"prevTechnology"
+			],
+			[
+				"previous",
+				"previousOptimal\tstatement"
+			],
+			[
+				"current",
+				"currentPeriod\tstatement"
+			],
+			[
+				"gene",
+				"generateStochasticCycle\tfunction"
+			],
+			[
+				"totalInvest",
+				"totalInvestmentInResearch\tstatement"
+			],
+			[
+				"total",
+				"totalInvestmentInResearch"
+			],
+			[
+				"totalIn",
+				"totalInvestmentInInnovation"
+			],
+			[
+				"Tech",
+				"Technology"
+			],
+			[
+				"taskTo",
+				"taskToCopy"
+			],
+			[
+				"flip",
+				"flipRandomTask"
+			],
+			[
+				"exitin",
+				"exitingFirms\tstatement"
+			],
+			[
+				"sur",
+				"survivorsOfPreviousPeriod\tstatement"
+			],
+			[
+				"prob",
+				"probOfBeingObserved\tstatement"
+			],
+			[
+				"av",
+				"averageProximityToOptimalTech"
+			],
+			[
+				"indu",
+				"industry\tparam"
+			],
+			[
+				"activeSurviv",
+				"activeSurvivorsOfPreviousPeriod\tstatement"
+			],
+			[
+				"Imi",
+				"ImitationCost\tstatement"
+			],
+			[
+				"attrac",
+				"attractionForImitation\tstatement"
+			],
+			[
+				"attraction",
+				"attractionForNoResearch\tstatement"
+			],
+			[
+				"we",
+				"wealth\tstatement"
+			],
+			[
+				"attract",
+				"attractionForInnovation\tstatement"
+			],
+			[
+				"Cost",
+				"InnovationCost\tstatement"
+			],
+			[
+				"old",
+				"oldTechnology\tstatement"
+			],
+			[
+				"getProbOf",
+				"getProbOfInnovation"
+			],
+			[
+				"getProb",
+				"getProbOfResearch\tfunction"
+			],
+			[
+				"firm",
+				"firmId\tstatement"
+			],
+			[
+				"Inno",
+				"InnovationCost\tstatement"
+			],
+			[
+				"att",
+				"attractionForNoRD\tstatement"
+			],
+			[
+				"attr",
+				"attractionForRD\tstatement"
+			],
+			[
+				"Initial",
+				"InitialAttractionForImitation\tstatement"
+			],
+			[
+				"market",
+				"marketSize"
+			],
+			[
+				"RateO",
+				"RateOfPersistenceInDemand"
+			],
+			[
+				"out",
+				"output"
+			],
+			[
+				"in",
+				"incumbentFirms"
+			],
+			[
+				"incumbe",
+				"incumbentFirms"
+			],
+			[
+				"calcu",
+				"calculateHIndex"
+			],
+			[
+				"active",
+				"activeIncumbentFirms"
+			],
+			[
+				"Lo",
+				"LogLevel\tstatement"
+			],
+			[
+				"consol",
+				"consoleTrace\tstatement"
+			],
+			[
+				"tech",
+				"currentOptimalTech\tstatement"
+			],
+			[
+				"magni",
+				"magnitudeOfChange"
+			],
+			[
+				"indus",
+				"industryOutput"
+			],
+			[
+				"youn",
+				"youngestAge"
+			],
+			[
+				"survivors",
+				"survivorsOfPreviousPeriod"
+			],
+			[
+				"Nu",
+				"NumberOfTasks\tstatement"
+			],
+			[
+				"youngest",
+				"youngestAge\tstatement"
+			],
+			[
+				"currentSum",
+				"currentSumOfHammingDistances\tstatement"
+			],
+			[
+				"currentSumO",
+				"currentSumOfHammingDistances"
+			],
+			[
+				"ne",
+				"newTech"
+			],
+			[
+				"inactive",
+				"inactiveIncumbentFirms\tstatement"
+			],
+			[
+				"inac",
+				"inactiveIncumbentFirms"
+			],
+			[
+				"survivor",
+				"survivorsOfCurrentPeriod\tstatement"
+			],
+			[
+				"surviv",
+				"survivorsOfCurrentPeriod\tstatement"
+			],
+			[
+				"curr",
+				"currentPeriod\tstatement"
+			],
+			[
+				"updateExp",
+				"updateExpPrice"
+			],
+			[
+				"survi",
+				"survivorsOfPreviousPeriod\tstatement"
+			],
+			[
+				"previ",
+				"previousPeriodSurvivors\tstatement"
+			],
+			[
+				"nextPErio",
+				"nextPeriodIncumbentFirms\tstatement"
+			],
+			[
+				"exp",
+				"expWealthAfter"
+			],
+			[
+				"potentia",
+				"potentialEntrants\tstatement"
+			],
+			[
+				"incumbent",
+				"incumbentFirms\tstatement"
+			],
+			[
+				"acti",
+				"activeIncumbentFirms\tstatement"
+			],
+			[
+				"sum",
+				"currentSumOfMC\tstatement"
+			],
+			[
+				"class",
+				"classmethod\tclass"
+			],
+			[
+				"Number",
+				"NumberOfPeriods\tstatement"
+			],
+			[
+				"exit",
+				"exitingFirms\tstatement"
+			],
+			[
+				"ente",
+				"enteringFirms\tstatement"
+			],
+			[
+				"Firm",
+				"FirmStatus\tclass"
+			],
+			[
+				"outs",
+				"outsiderFirms"
+			],
+			[
+				"e",
+				"exitingFirms"
+			],
+			[
+				"decide",
+				"decideIfLeaves\tfunction"
+			],
+			[
+				"deci",
+				"decideIfEnters\tfunction"
+			],
+			[
+				"descri",
+				"describeActiveFirms\tfunction"
+			],
+			[
+				"p",
+				"processPeriod\tfunction"
+			],
+			[
+				"getExp",
+				"getExpProfits"
+			],
+			[
+				"getEx",
+				"getExpectedEquilibriumPrice\tfunction"
+			],
+			[
+				"cur",
+				"currentSumOfMarginalCosts\tstatement"
+			],
+			[
+				"cu",
+				"currentSumOfMarginalCosts\tstatement"
+			],
+			[
+				"curre",
+				"currentSumOfMarginalCosts\tstatement"
+			],
+			[
+				"firms",
+				"activeFirms\tstatement"
+			],
+			[
+				"getEqui",
+				"getEquilibriumOutputRate\tfunction"
+			],
+			[
+				"Fi",
+				"FixedCost\tstatement"
+			],
+			[
+				"Dem",
+				"DemandIntercept\tstatement"
+			],
+			[
+				"tec",
+				"technology\tstatement"
+			],
+			[
+				"get",
+				"generateRandomTechnology\tfunction"
+			],
+			[
+				"nu",
+				"num2"
+			],
+			[
+				"input",
+				"input{file}\tlatex-document"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/LaTeXing/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXing/LaTeX.sublime-build",
+					"Clean up Files"
+				]
+			],
+			[
+				"Packages/LaTeXing/LaTeX.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 147.0,
+		"last_filter": "push",
+		"selected_items":
+		[
+			[
+				"push",
+				"git: push"
+			],
+			[
+				"stage",
+				"git: quick stage"
+			],
+			[
+				"stack",
+				"Automatic Backups: Step backward in history"
+			],
+			[
+				"quick s",
+				"git: quick stage"
+			],
+			[
+				"qui",
+				"git: quick stage"
+			],
+			[
+				"STAGE",
+				"git: quick stage"
+			],
+			[
+				"git stage",
+				"git: quick stage"
+			],
+			[
+				"pull",
+				"git: pull"
+			],
+			[
+				"GIT STAGE",
+				"git: quick stage"
+			],
+			[
+				"comit",
+				"git: commit"
+			],
+			[
+				"git pull",
+				"git: pull"
+			],
+			[
+				"status",
+				"git: status"
+			],
+			[
+				"pus",
+				"git: push"
+			],
+			[
+				"git status",
+				"git: status"
+			],
+			[
+				"git",
+				"git: rebase"
+			],
+			[
+				"git reset",
+				"git: reset"
+			],
+			[
+				"commit",
+				"git: quick commit"
+			],
+			[
+				"reset",
+				"git: reset"
+			],
+			[
+				"anaconda",
+				"Anaconda: Enable linting on this file"
+			],
+			[
+				"show all",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"nex",
+				"Anaconda: Next lint error"
+			],
+			[
+				"next",
+				"SublimeLinter: Next Error"
+			],
+			[
+				"next error",
+				"SublimeLinter: Next Error"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git ",
+				"git: remote remove"
+			],
+			[
+				"git igno",
+				"git: ignore current file"
+			],
+			[
+				"quick st",
+				"git: quick stage"
+			],
+			[
+				"ST",
+				"git: quick stage"
+			],
+			[
+				"pu",
+				"git: push"
+			],
+			[
+				"stage and",
+				"git: quick stage current file and commit"
+			],
+			[
+				"git:stage",
+				"git: quick stage"
+			],
+			[
+				"git:qui",
+				"git: quick commit"
+			],
+			[
+				"git:push",
+				"git: push"
+			],
+			[
+				"git: commit",
+				"git: quick commit"
+			],
+			[
+				"gitbut",
+				"github: create pull request"
+			],
+			[
+				"git:",
+				"git: commit"
+			],
+			[
+				"git: ",
+				"github: open repo"
+			],
+			[
+				"git: quick s",
+				"git: quick stage current file and commit"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Remove Package"
+			],
+			[
+				"package control",
+				"Package Control: List Packages"
+			],
+			[
+				"build",
+				"Build: Custom Quick Build"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"Package control: inst",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/jdimas/GitHub/ACEModel"
+	],
+	"file_history":
+	[
+		"/Users/jdimas/GitHub/ACEModel/data/Chapter 4/500 replications/DIV.gph",
+		"/Users/jdimas/GitHub/ACEModel/WaitingSemaphore.py",
+		"/Users/jdimas/GitHub/ACEModel/Parameters.py",
+		"/Users/jdimas/GitHub/ACEModel/Logger.py",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-30T21h05m06s.INFO.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-30T20h22m51s.INFO.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-30T16h45m56s.INFO.log",
+		"/Users/jdimas/GitHub/ACEModel/ExportToCSV.py",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-30T15h29m59s.INFO.log",
+		"/Users/jdimas/GitHub/ACEModel/Description.py",
+		"/Users/jdimas/GitHub/ACEModel/Firm.py",
+		"/Users/jdimas/GitHub/ACEModel/BusinessCycles.py",
+		"/Users/jdimas/GitHub/ACEModel/Technology.py",
+		"/Users/jdimas/GitHub/ACEModel/Shocks.py",
+		"/Users/jdimas/GitHub/ACEModel/Industry.py",
+		"/Users/jdimas/GitHub/ACEModel/Simulation.py",
+		"/Users/jdimas/GitHub/ACEModel/.gitignore",
+		"/Users/jdimas/GitHub/ACEModel/data/Validating means of 5 simulations.xlsx",
+		"/Users/jdimas/GitHub/ACEModel/AggregateData.py",
+		"/Users/jdimas/GitHub/ACEModel/MultiAggregateData.py",
+		"/Users/jdimas/GitHub/ACEModel/Demand.py",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-24T15h01m22s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/Atomic.py",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-24T14h56m14s.AGGREGATE.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-24T14h57m10s.AGGREGATE.log",
+		"/Users/jdimas/GitHub/ACEModel/AtomicSum.py",
+		"/Users/jdimas/GitHub/ACEModel/AtomicCounter.py",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-23T18h42m46s.AGGREGATE.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-23T18h37m42s.AGGREGATE.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-23T18h37m42s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-23T18h30m07s.AGGREGATE.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-23T18h30m07s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-22T16h29m05s.INFO.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-21T19h39m59s.INFO.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-21T17h05m07s.INFO.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-21T17h05m07s.AGGREGATE.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-21T17h05m07s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-20T19h35m43s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-21T16h10m48s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-21T16h05m51s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-20T17h36m04s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-20T17h39m32s.DETAILED.log",
+		"/Users/jdimas/GitHub/ACEModel/untitled.py",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-19T18h36m32s.AGGREGATE.log",
+		"/Users/jdimas/GitHub/ACEModel/data/ACEModel.2017-03-19T18h36m32s.INFO.log",
+		"/Users/jdimas/GitHub/ACEModel/UpdateAndRun.sh",
+		"/Users/jdimas/GitHub/ACEModel/PerformanceTests.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/Testes.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/ExportToDTA.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/Parameters.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/Technology.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/Logger.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/AggregateData.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/ExportToCSV.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/Industry.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/Shocks.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/Firm.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/Demand.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/Testes",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/DetailedData.py",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/Anaconda/Default (OSX).sublime-keymap",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/data/ACEModel.2017-03-16T20h21m28s.log",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/Local History/settings/LocalHistory.sublime-settings",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/User/LocalHistory.sublime-settings",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/User/Automatic Backups.sublime-settings",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/Automatic Backups/Automatic Backups.sublime-settings",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/Automatic Backups/Default (OSX).sublime-keymap",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/Pretty JSON/Pretty JSON.sublime-settings",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/data/ACEModel.2017-03-16T15h33m19s.log",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/ACEModel.sublime-project",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/Data.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/Thing.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/data/ACEModel.2017-03-15T10h55m18s.json",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/data/ACEModel.2017-03-15T10h49m11s.json",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/data/ACEModel.2017-03-15T10h51m30s.json",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/data2017-03-15T10:41:29.369432.json",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/data.json",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/data.txt",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/FirmStatus.py",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/.project",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/User/ACEModel.sublime-build",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel/ACEModel.sublime-build",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/Software/MagnumSolo.cpp",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/Software/untitled.cpp",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/Software/Firm.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/Software/Industry.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/Software/Simulation.py",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/MagnumSolo.cpp",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/untitled.cpp",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/User/BufferScroll.sublime-settings",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/BufferScroll/BufferScroll.sublime-settings",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/HelloWorld.py",
+		"/Users/jdimas/Google Drive/APE/LaTeX/HelloWorld.tex",
+		"/Users/jdimas/Google Drive/APE/LaTeX/Sections/section-1.tex",
+		"/Users/jdimas/Google Drive/APE/LaTeX/Sections/fim.tex",
+		"/Users/jdimas/Google Drive/APE/LaTeX/Sections/inicio.tex",
+		"/Users/jdimas/Google Drive/APE/LaTeX/preamble.tex",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/Sections/section-1.tex",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/Sections/section-2.tex",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/preamble.tex",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/Sections/inicio.tex",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/Sections/fim.tex",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/HelloWorld.tex",
+		"/Users/jdimas/Downloads/migas62a73f88b061af13b4949361bc5f46b88b/Modern.Family.2009/SRT/Modern.Family.2e01-TheOldWagon.DVDRip.XviD-REWARD.srt",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/User/LaTeXing.sublime-settings",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/LaTeXing/LaTeXing.sublime-settings",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/section-2.tex",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/section-1.tex",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/HelloWorld.sublime-project",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/LatexEquationPreview/Default (OSX).sublime-keymap",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/User/latex_equation_preview.sublime-settings",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/LatexEquationPreview/latex_equation_preview.sublime-settings",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/HelloWorld.tex",
+		"/Users/jdimas/Google Drive/PSME/Material/Thesis/HelloWorld",
+		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/LaTeXing/LaTeX.sublime-build",
+		"/Users/jdimas/Desktop/secchi.bib",
+		"/Users/jdimas/Downloads/smiles/js/smiles.js",
+		"/Users/jdimas/Google Drive/test.png"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/jdimas/GitHub/ACEModel,-*/data/*",
+			"/Users/jdimas/GitHub/ACEModel",
+			"/Users/jdimas/GitHub/ACEModel,-*/backup/*",
+			"/Users/jdimas/Google Drive/PSME/Material/Thesis/ACEModel",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"threads",
+			"is full",
+			"Waiting result from pipe by processResult()",
+			"Acquiring a semaphore to create a Pipe",
+			"Semaphore File released. Count:",
+			"Semaphore File released",
+			"File semaphore released",
+			"Error",
+			"Pipe semaphore released.",
+			"[SIM 106]",
+			"\\[SIM 14\\]",
+			"Waiting result from pipe by main process",
+			"Simulation completed",
+			"pipe",
+			"Result sent",
+			"released",
+			"Semaphore",
+			"\", \\(industry.currentPeriod, ",
+			"\", industry.currentPeriod\\)",
+			"\\[SIM {:d}\\]\\[FIRM {:d}\\]",
+			"\", \\(self.firmId",
+			", \\(self.industry.currentPeriod",
+			"\\\", self.currentPeriod\\)",
+			"\", self.currentPeriod\\)",
+			", \\(self.currentPeriod,",
+			", (self.currentPeriod,",
+			"Logger.info\\(\"",
+			"Logger.debug\\(\"",
+			"Logger.trace\\(\"",
+			"MaxMagnituteOfTechChange",
+			"RateOfTechChange",
+			"ImitationCost",
+			"InnovationCost",
+			"FixedCost",
+			"MinimumWealthForSurvival",
+			"NumberOfPeriods",
+			"in",
+			".sum",
+			".count",
+			".sum",
+			".add\\(",
+			".increment\\(\\)",
+			"AtomicSum\\(\\)",
+			"AtomicCounter\\(\\)",
+			"nmbEnteringFirms.",
+			"nmbEnteringFirms",
+			"\\(self.firmId\\)\\)",
+			", \\(industry.currentPeriod\\)\\)",
+			", \\(self.currentPeriod\\)\\)",
+			"stochastic",
+			".format\\(",
+			"level",
+			".format\\(",
+			".format(",
+			"Deciding",
+			"Previous technology",
+			"Technology to imitate",
+			"PeriodStartOfDemandCycles",
+			"updateEqPrice",
+			"%d",
+			"self.period",
+			"period",
+			"Average proximity to optimal tech: 100.00%",
+			"logger",
+			"self.logger.",
+			"cls.logger.",
+			"self.logger.",
+			"self.logger",
+			"Technology.logger.",
+			"self.logger",
+			"Firm(",
+			"{:b}",
+			"New technology:",
+			"0",
+			"generateRandomWithMaxDistance",
+			"flipBit",
+			"Task to change: 1\\n",
+			"Task to change: 1",
+			"width",
+			"Task to change",
+			"ound NO PROFITABLE FIRM to immitate",
+			"nmbProfitableFirms",
+			"industryOutput",
+			"getExpEqPrice",
+			"clear",
+			"survivorsOfCurrentPeriod",
+			"updateSumOfActiveSurvivorsMC",
+			"sumOfActiveSurvivorsMC",
+			"activeIncumbents",
+			"sumOfActiveSurvivorsMC",
+			"deadFirms",
+			"RD",
+			"\", \"",
+			"\", ",
+			"Previous market size",
+			"getPrice",
+			"InitialMarketSize",
+			"self.logger",
+			" logger.",
+			"logging.getLogger().trace(",
+			"logging.debug(",
+			"logging.info(",
+			"Logger.trace(",
+			"Logger.debug(",
+			"Logger.info(",
+			"file",
+			"info",
+			"Logger.debug",
+			"Logger.",
+			"Logger.log",
+			"debug",
+			"print",
+			"print(",
+			"PROCESSING PERIOD 200",
+			"currentOptimalTech",
+			"NO TECHNO",
+			"technology",
+			"FIRM 4001",
+			"FIRM 4001:",
+			"results of period 100",
+			"processing period 100",
+			"results of period 100:",
+			"period: 100",
+			"previousPeriodIncumbentFirms",
+			"technological shock",
+			"\\n",
+			"\"\\n\"",
+			"\"\\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"processes",
+			"\", \\(industry.simulation, industry.currentPeriod, ",
+			"\", \\(industry.simulation, industry.currentPeriod\\)\\)",
+			"\\[SIM {:d}\\]\\[PERIOD {:d}\\]\\[FIRM {:d}\\]",
+			"\", \\(self.industry.simulation, self.industry.currentPeriod, self.firmId",
+			", \\(self.industry.simulation, self.industry.currentPeriod",
+			"\\\", \\(self.simulation, self.currentPeriod\\)\\)",
+			"\", \\(self.simulation, self.currentPeriod\\)\\)",
+			", \\(self.simulation, self.currentPeriod,",
+			", (self.simulation, self.currentPeriod,",
+			"Logger.info\\(\"[SIM {:d}]",
+			"Logger.debug\\(\"[SIM {:d}]",
+			"Logger.trace\\(\"[SIM {:d}]",
+			"MaxMagnituteOfChangeInTechEnv",
+			"RateOfChangeInTechEnv",
+			"FixedCostOfImitation",
+			"FixedCostOfInnovation",
+			"FixedProductionCost",
+			"ThresholdNetWealthForSurvival",
+			"TimeHorizon",
+			"",
+			" += ",
+			" += 1",
+			"0",
+			"self.firmId\\)",
+			", industry.currentPeriod\\)",
+			", self.currentPeriod\\)",
+			", \\(",
+			", (",
+			"PeriodsOfConstantDemand",
+			"{:d}",
+			"self.currentPeriod",
+			"Logger.",
+			"Technology.logger",
+			"1",
+			"Research",
+			"\",\\n\"",
+			"\",\\n",
+			"MeanMarketSize",
+			"cls.logger",
+			" self.logger.",
+			"logger.trace(",
+			"logger.debug(",
+			"logger.info(",
+			"logging.getLogger().trace(",
+			"logging.debug(",
+			"logging.info(",
+			"console",
+			"trace",
+			"debug",
+			"Logger.trace",
+			"trace",
+			"Logger.debug",
+			"Logger.debug(",
+			" ",
+			"",
+			"\",\\n\"",
+			"\"\\n\"",
+			"",
+			",\\n",
+			"",
+			"Logger",
+			"\\\\\": \" \\+ ",
+			"\\n                    \"\\\\\"",
+			"\\n                    \"\\\\",
+			"\\n                    \"\\\"",
+			"\", \"\\n",
+			"profits",
+			"mc",
+			"self",
+			"\\\\par\\n",
+			"\\\\par\\n ",
+			"\\n\\\\par"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.GitSavvy":
+	{
+		"height": 112.0
+	},
+	"output.exec":
+	{
+		"height": 221.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.show_commit_info":
+	{
+		"height": 112.0
+	},
+	"pinned_build_system": "Packages/User/ACEModel.sublime-build",
+	"project": "ACEModel.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 317.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

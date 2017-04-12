@@ -1,3 +1,4 @@
+import itertools
 from model.util.random import Random
 from model.util.combinatorics import Combinatorics
 from model.parameters import Parameters
@@ -20,27 +21,11 @@ class Technology:
 
     def getTasksStr(self):
         return format(self.tasks, '0' + str(Parameters.NumberOfTasks) + 'b')
-    
-    def transformRandomlyWithMaxDistance(self, maxDistance):
-        # From 0 to the distance, choose randomly the magnitude of change (hamming distance between the current and the next technology)
-        magnitudeOfChange = Random.randint(0, maxDistance)
-        # Put all tasks in a list to be sorted out randomly
-        allTasks = range(1,Parameters.NumberOfTasks)
-        for taskToFlip in Random.sample(allTasks, magnitudeOfChange):
-            self.flipTask(taskToFlip)
-            # Logger.trace("[SIM {:d}]Task changed: {:d}".format(taskToFlip))
-
-        self.magnitudeOfChange = magnitudeOfChange
-
-        return self
 
     def changeRandomly(self):
         selectionPoint = Random.random()
-        # print('selectionPoint: {:.50f}'.format(selectionPoint))
-        # assert selectionPoint - (1/97 - 0.0000001) < 0.00001
         self.magnitudeOfChange = self.selectMagnitudeFromUniformDist(selectionPoint)
-        #print('magnitudeOfChange: {:d}'.format(self.magnitudeOfChange))
-        # assert self.magnitudeOfChange == 0
+
         if self.magnitudeOfChange == 0:
             return self
 
@@ -48,12 +33,10 @@ class Technology:
         allTasks = range(1,Parameters.NumberOfTasks)
         for taskToFlip in Random.sample(allTasks, self.magnitudeOfChange):
             self.flipTask(taskToFlip)
-            # Logger.trace("[SIM {:d}]Task changed: {:d}".format(taskToFlip))
 
         return self
 
     def selectMagnitudeFromUniformDist(self, selectionPoint):
-        #print('selectMagnitudeFromUniformDist')
         probs = Combinatorics.getProbabilitiesOfDrawingSize(Parameters.NumberOfTasks, 0, Parameters.MaxMagnituteOfChangeInTechEnv)
         cumulative = 0
         while True:
@@ -71,14 +54,11 @@ class Technology:
     def flipTask(self, task):
         assert task <= Parameters.NumberOfTasks
         
-        #print('flipTask: {:d}'.format(task))
-        #print("BEFORE: self.tasks:\n{:b}".format(self.tasks))
         bitToFlip = Parameters.NumberOfTasks - task
         mask = 2 ** bitToFlip
         newTasks = self.tasks ^ mask
 
         self.tasks = newTasks
-        #print("AFTER: self.tasks:\n{:b}".format(self.tasks))
         self.taskChanged = task
 
         return self

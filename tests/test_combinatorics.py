@@ -1,9 +1,61 @@
 # Command: python3.6 -m unittest tests.TestCombinatorics
 
-import unittest
+import unittest, itertools, math
 from model.util.combinatorics import Combinatorics
+from model.util.math import Math
 
 class TestCombinatorics(unittest.TestCase):
+
+    def test_2_getProbabilitiesOfDrawingSize(self):
+        numberOfTasks = 96
+        maxDistance = 4
+        minDistance = 0
+        probs = Combinatorics.getProbabilitiesOfDrawingSize(numberOfTasks, minDistance, maxDistance)
+
+        tasks = list(range(1, numberOfTasks+1))
+        allTechs = []
+        totalNmbCombs = 0
+        for d in range(minDistance, maxDistance+1):
+            combs = list(itertools.combinations(tasks, d))
+            allTechs.append(combs)
+            totalNmbCombs += len(combs)
+
+        trueTotalNmbCombs = 0
+        for x in range(minDistance, maxDistance+1):
+            trueTotalNmbCombs += math.factorial(numberOfTasks) / (math.factorial(x) * math.factorial(numberOfTasks - x))
+
+        self.assertEquivalent(totalNmbCombs, trueTotalNmbCombs)
+
+        for x in range(minDistance, maxDistance+1):
+            p = [p for d, p in probs if d == x][0]
+            trueP = len(allTechs[x])/totalNmbCombs
+            self.assertEquivalent(p, trueP)
+            trueP = math.factorial(numberOfTasks) / (math.factorial(x) * math.factorial(numberOfTasks - x)) / trueTotalNmbCombs
+            self.assertEquivalent(p, trueP)
+            trueP = math.factorial(numberOfTasks) / math.factorial(x) / math.factorial(numberOfTasks - x) / trueTotalNmbCombs
+            self.assertEquivalent(p, trueP)
+
+        # With distance 8
+
+        maxDistance = 8
+        probs = Combinatorics.getProbabilitiesOfDrawingSize(numberOfTasks, minDistance, maxDistance)
+
+        sumOfP = 0
+        for d, p in probs:
+            sumOfP += p
+        self.assertEqual(sumOfP, 1)
+
+        tasks = list(range(1, numberOfTasks+1))
+
+        trueTotalNmbCombs = 0
+        for x in range(minDistance, maxDistance+1):
+            trueTotalNmbCombs += math.factorial(numberOfTasks) / (math.factorial(x) * math.factorial(numberOfTasks - x))
+
+        for x in range(minDistance, maxDistance+1):
+            p = [p for d, p in probs if d == x][0]
+            trueP = math.factorial(numberOfTasks) / math.factorial(x) / math.factorial(numberOfTasks - x) / trueTotalNmbCombs
+            self.assertEquivalent(p, trueP)
+
 
     def test_getProbabilitiesOfDrawingSize(self):
         numberOfTasks = 10
@@ -90,7 +142,8 @@ class TestCombinatorics(unittest.TestCase):
                 selection = r
         self.assertEqual(selection, 0)
 
-
+    def assertEquivalent(self, a, b):   
+        self.assertTrue(Math.isEquivalent(a, b), msg='{0}, {1}'.format(a, b))
 
 
 

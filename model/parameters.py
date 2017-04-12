@@ -1,10 +1,10 @@
 class Parameters:
 
     # SYSTEM CONFIG
-    LogLevel = {"Console": [], "File": ["INFO"]}
-    #LogLevel = {"Console": ["INFO"], "File": ["INFO"]}
+    #LogLevel = {"Console": ["INFO"], "File": ["INFO", "DEBUG", "TRACE"]}
+    LogLevel = {"Console": ["INFO"], "File": ["INFO"]}
     EnableProfiling = False
-    NumberOfParallelProcesses = 72 # Set this to 3x the number of CPUs. Parallelism is only used if multiple simulations are performaed (NumberOfSimulations > 1). Otherwise, only 1 process will be started.
+    NumberOfParallelProcesses = 72 # Set this to 3x the number of CPUs. Parallelism is only used if multiple simulations are performed (NumberOfSimulations > 1). Otherwise, only 1 process will be started.
     STOCHASTIC = 0
     DETERMINISTIC = 1
     
@@ -48,6 +48,7 @@ class Parameters:
     
 
     # BASELINE PARAMETERS - Chapter 4 of Chang's book
+    # NumberOfSimulations = 500
     # NumberOfTasks = 96
     # NumberOfPotentialEntrants = 40
     # StartupWealth = 0
