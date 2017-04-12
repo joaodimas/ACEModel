@@ -2,7 +2,7 @@ class Parameters:
 
     # SYSTEM CONFIG
     #LogLevel = {"Console": ["INFO"], "File": ["INFO", "DEBUG", "TRACE"]}
-    LogLevel = {"Console": ["INFO"], "File": ["INFO"]}
+    LogLevel = {"Console": ["INFO"]}
     EnableProfiling = False
     NumberOfParallelProcesses = 72 # Set this to 3x the number of CPUs. Parallelism is only used if multiple simulations are performed (NumberOfSimulations > 1). Otherwise, only 1 process will be started.
     STOCHASTIC = 0
