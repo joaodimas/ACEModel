@@ -9,3 +9,4 @@ rm ./data/ACEModel*
 git add .
 git commit -m "Results"
 git push
+sudo poweroff
