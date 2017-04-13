@@ -25,7 +25,7 @@ class Parameters:
     InitialAttractionForNoResearch = 10
     InitialAttractionForInnovation = 10
     InitialAttractionForImitation = 10
-    TimeHorizon = 5000
+    TimeHorizon = 3000
     MeanMarketSize = 4
     RateOfChangeInTechEnv = 0.1
     MaxMagnituteOfChangeInTechEnv = 20 # Don't try a number too close to NumberOfTasks because there is not enough decimal precision to handle the shocks.
