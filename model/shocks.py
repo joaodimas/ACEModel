@@ -18,7 +18,7 @@ class Shocks:
                 Logger.trace("Previous technology:{:0{:d}b}", (previousOptimal.tasks, Parameters.NumberOfTasks), industry=industry)
                 industry.currentOptimalTech.changeRandomly()
                 Logger.trace("New technology:{:0{:d}b}", (industry.currentOptimalTech.tasks, Parameters.NumberOfTasks), industry=industry)
-                assert previousOptimal.calculateHammingDistance(industry.currentOptimalTech) == industry.currentOptimalTech.magnitudeOfChange
+               #assert previousOptimal.calculateHammingDistance(industry.currentOptimalTech) == industry.currentOptimalTech.magnitudeOfChange
                 Logger.trace("Magnitude of change: {:d}", (industry.currentOptimalTech.magnitudeOfChange), industry=industry)
             else:
                 Logger.trace("NO TECHNOLOGICAL SHOCK.", industry=industry)

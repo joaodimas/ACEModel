@@ -230,7 +230,7 @@ class Industry:
         if nmbFirms >= 2:
             sumOfHammingDist = 0
             pairs = list(itertools.combinations(self.incumbentFirms, 2))
-            assert len(pairs) == nmbFirms * (nmbFirms - 1) / 2
+           #assert len(pairs) == nmbFirms * (nmbFirms - 1) / 2
             for firmA, firmB in pairs:
                 sumOfHammingDist += firmA.technology.calculateHammingDistance(firmB.technology)
 

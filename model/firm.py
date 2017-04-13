@@ -46,13 +46,13 @@ class Firm :
         self.output = self.industry.demand.marketSize * (self.industry.demand.eqPrice - self.MC)
 
         # Assert that the result is the same as in the Chang's book
-        assert Math.isEquivalent(self.output, self.industry.demand.marketSize * (1 / (len(self.industry.activeFirms) + 1) * (Parameters.DemandIntercept + self.industry.sumOfActiveFirmsMC) - self.MC))
+       #assert Math.isEquivalent(self.output, self.industry.demand.marketSize * (1 / (len(self.industry.activeFirms) + 1) * (Parameters.DemandIntercept + self.industry.sumOfActiveFirmsMC) - self.MC))
 
         return self.output
 
     def updateProfits(self):
         self.profits = self.output * (self.industry.demand.eqPrice - self.MC) - Parameters.FixedProductionCost
-        assert Math.isEquivalent(self.profits, (self.output ** 2 / self.industry.demand.marketSize - Parameters.FixedProductionCost))
+       #assert Math.isEquivalent(self.profits, (self.output ** 2 / self.industry.demand.marketSize - Parameters.FixedProductionCost))
 
         return self.profits
 
@@ -224,7 +224,7 @@ class Firm :
                 Logger.trace("[FIRM {:d}] Competitor {:d} was observed. Point in CDF: {:.3f}", (self.firmId, firm.firmId, pointInCDF), industry=self.industry)
                 return firm
             cdf = cdf + probOfBeingObserved
-            assert 0 <= cdf <= 1
+           #assert 0 <= cdf <= 1
 
     # Calculate the probability of engaging in R&D (innovation OR imitation) according to the attraction values.
     def getProbOfResearch(self):

@@ -52,7 +52,7 @@ class Technology:
         return self
 
     def flipTask(self, task):
-        assert task <= Parameters.NumberOfTasks
+       #assert task <= Parameters.NumberOfTasks
         
         bitToFlip = Parameters.NumberOfTasks - task
         mask = 2 ** bitToFlip
@@ -70,7 +70,7 @@ class Technology:
         return self
 
     def copyTask(self, otherTech, task):
-        assert task <= Parameters.NumberOfTasks
+       #assert task <= Parameters.NumberOfTasks
 
         bitToCopy = Parameters.NumberOfTasks - task
         mask = 2 ** bitToCopy
