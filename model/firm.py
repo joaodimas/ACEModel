@@ -51,8 +51,8 @@ class Firm :
         return self.output
 
     def updateProfits(self):
-        self.profits = self.output * (self.industry.demand.eqPrice - self.MC) - Parameters.FixedProductionCost
-       #assert Math.isEquivalent(self.profits, (self.output ** 2 / self.industry.demand.marketSize - Parameters.FixedProductionCost))
+        self.profits = self.output * (self.industry.demand.eqPrice - self.MC) - Parameters.FixedProductionCost - self.investmentInResearch
+        assert Math.isEquivalent(self.profits, (self.output ** 2 / self.industry.demand.marketSize - Parameters.FixedProductionCost - self.investmentInResearch))
 
         return self.profits
 
@@ -120,7 +120,6 @@ class Firm :
                     self.industry.nmbImitating += 1
                     self.industry.totalInvestmentInImitation += self.investmentInResearch
 
-                self.wealth -= self.investmentInResearch
                 self.industry.totalInvestmentInResearch += self.investmentInResearch
                 self.industry.nmbResearching += 1
                 Logger.trace("[FIRM {:d}] Completed R&D. Wealth: {:.2f}; Attraction to R&D: {:.2f}; Attraction to Not-R&D: {:.2f}; Attraction to Innovation: {:.2f}; Attraction to Imitation: {:.2f}.", (self.firmId, self.wealth, self.attractionForResearch, self.attractionForNoResearch, self.attractionForInnovation, self.attractionForImitation), industry=self.industry)

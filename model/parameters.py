@@ -10,7 +10,7 @@ class Parameters:
     
 
     # MODEL PARAMETERS
-    NumberOfSimulations = 100 # Number of independent replications. A dataset with the means for each period and variable will be saved.
+    NumberOfSimulations = 500 # Number of independent replications. A dataset with the means for each period and variable will be saved.
 
     # Basic
     NumberOfTasks = 96
@@ -25,10 +25,10 @@ class Parameters:
     InitialAttractionForNoResearch = 10
     InitialAttractionForInnovation = 10
     InitialAttractionForImitation = 10
-    TimeHorizon = 3000
+    TimeHorizon = 5000
     MeanMarketSize = 4
     RateOfChangeInTechEnv = 0.1
-    MaxMagnituteOfChangeInTechEnv = 20 # Don't try a number too close to NumberOfTasks because there is not enough decimal precision to handle the shocks.
+    MaxMagnituteOfChangeInTechEnv = 8 # Don't try a number too close to NumberOfTasks because there is not enough decimal precision to handle the shocks.
 
 
     PeriodStartOfTechChange = 0
