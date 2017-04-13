@@ -12,7 +12,8 @@ class Demand:
         sumOfMC = self.industry.sumOfActiveFirmsMC
         competitors = len(self.industry.activeFirms)
         self.eqPrice = (1 / (competitors + 1)) * (Parameters.DemandIntercept + sumOfMC)
-        return self.eqPrice
+        # return self.eqPrice
+        return 46
 
     def getExpEqPrice(self, potentialEntrant):
         sumOfMC = self.industry.sumOfActiveSurvivorsMC + potentialEntrant.MC
