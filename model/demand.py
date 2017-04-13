@@ -11,8 +11,7 @@ class Demand:
     def updateEqPrice(self):
         sumOfMC = self.industry.sumOfActiveFirmsMC
         competitors = len(self.industry.activeFirms)
-        # self.eqPrice = (1 / (competitors + 1)) * (Parameters.DemandIntercept + sumOfMC)
-        self.eqPrice = 46
+        self.eqPrice = (1 / (competitors + 1)) * (Parameters.DemandIntercept + sumOfMC)
         return self.eqPrice
 
     def getExpEqPrice(self, potentialEntrant):
