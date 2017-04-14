@@ -41,13 +41,13 @@ class Industry:
         # Update wealth of inactive firms (they'll lose the fixed cost)
         self.updateInactiveIncumbents()
 
+        self.updateMarketShares()
+
         # Update weighted MC (used for posterior analysis)
         self.updateWeightedMC()
 
         # Update the average proximity to optimal technology
         self.updateAvgProximityToOptTech()
-
-        self.updateMarketShares()
 
         # Calculate Herfindahl-Hirschmann Index
         self.updateHIndex()
@@ -202,11 +202,23 @@ class Industry:
                 self.nmbProfitableFirms += 1
         Logger.trace("Updating {:d} active firms: OK!", (len(self.activeFirms)), industry=self)
 
+    def updateInactiveIncumbents(self):
+        Logger.trace("Updating {:d} inactive firms: Processing...", (len(self.inactiveFirms)), industry=self)
+        for firm in self.inactiveFirms:
+            firm.updateProfits()
+            firm.updateWealth()
+            firm.prevTechnology = Technology(firm.technology.tasks)
+        Logger.trace("Updating {:d} inactive firms: OK!", (len(self.inactiveFirms)), industry=self) 
+
+    def updateMarketShares(self):
+        for firm in self.incumbentFirms:
+            firm.marketShare = firm.output / self.industryOutput
+
     def updateWeightedMC(self): 
         self.weightedMC = 0
         if self.industryOutput != 0:
             for firm in self.activeFirms:
-                self.weightedMC += firm.MC * firm.output / self.industryOutput
+                self.weightedMC += firm.MC * firm.marketShare
 
     def updateAvgProximityToOptTech(self):
         self.totalDistanceOfOptimalTech = 0
@@ -214,10 +226,6 @@ class Industry:
             self.totalDistanceOfOptimalTech += firm.techDistToOptimal 
             
         self.averageProximityToOptimalTech = 1 - (self.totalDistanceOfOptimalTech / (len(self.activeFirms) * Parameters.NumberOfTasks))
-
-    def updateMarketShares(self):
-        for firm in self.incumbentFirms:
-            firm.marketShare = firm.output / self.industryOutput
 
     # Herfindahl-Hirschmann Index
     def updateHIndex(self):
@@ -244,10 +252,11 @@ class Industry:
             self.degreeOfTechDiv = 0    
 
     def updateGiniCoefficient(self):
-        a = 0
+        self.incumbentFirms = sorted(self.incumbentFirms, key=lambda firm: firm.marketShare)
         nmbIncumbents = len(self.incumbentFirms)
-        for i, firm in enumerate(self.incumbentFirms):
-            a += (i + 1) * firm.output / self.industryOutput
+        a = 0
+        for i, firm in enumerate(self.incumbentFirms, start=1):
+            a += i * firm.marketShare
 
         self.gini = 2 * a / nmbIncumbents - (nmbIncumbents + 1) / nmbIncumbents 
 
@@ -255,7 +264,7 @@ class Industry:
     def updatePCM(self):
         self.PCM = 0
         for firm in self.incumbentFirms:
-            self.PCM += firm.output / self.industryOutput * (self.demand.eqPrice - firm.MC) / self.demand.eqPrice
+            self.PCM += firm.marketShare * (self.demand.eqPrice - firm.MC) / self.demand.eqPrice
 
     # Consumer Surplus
     def updateCS(self):
@@ -269,14 +278,6 @@ class Industry:
     # Total Surplus
     def updateTS(self):
         self.TS = self.CS + self.totalProfits                                  
-
-    def updateInactiveIncumbents(self):
-        Logger.trace("Updating {:d} inactive firms: Processing...", (len(self.inactiveFirms)), industry=self)
-        for firm in self.inactiveFirms:
-            firm.updateProfits()
-            firm.updateWealth()
-            firm.prevTechnology = Technology(firm.technology.tasks)
-        Logger.trace("Updating {:d} inactive firms: OK!", (len(self.inactiveFirms)), industry=self) 
 
     def processExitDecisions(self):
         Logger.trace("Exit decisions: Processing...", industry=self)
