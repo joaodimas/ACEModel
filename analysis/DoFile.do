@@ -1,6 +1,6 @@
 clear
 
-global baseName = "ACEModel.2017-04-14T10h53m31s[MEAN]"
+global baseName = "ACEModel.2017-04-15T09h48m42s[MEAN]"
 import delimited "/Users/jdimas/GitHub/ACEModel/data/Chapter 4/$baseName.csv"
 
 set graphics off
