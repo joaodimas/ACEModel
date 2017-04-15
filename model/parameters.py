@@ -28,7 +28,7 @@ class Parameters:
     TimeHorizon = 5000
     MeanMarketSize = 4
     RateOfChangeInTechEnv = 0.1
-    MaxMagnituteOfChangeInTechEnv = 8 # Don't try a number too close to NumberOfTasks because there is not enough decimal precision to handle the shocks.
+    MaxMagnituteOfChangeInTechEnv = 10 # Don't try a number too close to NumberOfTasks because there is not enough decimal precision to handle the shocks.
 
 
     PeriodStartOfTechChange = 0
