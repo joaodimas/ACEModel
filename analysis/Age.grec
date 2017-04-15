@@ -1,0 +1,79 @@
+StataFileTM:00001:01100:GREC:                          :
+00004:00004:00001:
+*! classname: twowaygraph_g
+*! family: twoway
+*! date: 15 Apr 2017
+*! time: 18:39:20
+*! graph_scheme: s2color
+*! naturallywhite: 1
+*! end
+
+// File created by Graph Editor Recorder.
+// Edit only if you know what you are doing.
+
+.legend.plotregion1.label[1].text = {}
+.legend.plotregion1.label[1].text.Arrpush Avg. age
+// label[1] edits
+
+.legend.plotregion1.label[2].text = {}
+.legend.plotregion1.label[2].text.Arrpush Max. age
+// label[2] edits
+
+.legend.plotregion1.label[3].text = {}
+.legend.plotregion1.label[3].text.Arrpush Min. age
+// label[3] edits
+
+// key[2] edits
+
+// key[2] edits
+
+.legend.plotregion1.key[2].view.style.editstyle line(color(ebblue)) editcopy
+// view color
+
+// key[2] color
+
+// key[2] color
+
+.legend.plotregion1.key[2].view.style.editstyle line(color(lime)) editcopy
+// view color
+
+// key[2] color
+
+// key[2] color
+
+.legend.plotregion1.key[2].view.style.editstyle line(color(midgreen)) editcopy
+// view color
+
+// key[3] color
+
+// key[3] color
+
+.legend.plotregion1.key[3].view.style.editstyle line(color(maroon)) editcopy
+// view color
+
+// key[2] color
+
+// key[2] color
+
+.legend.plotregion1.key[2].view.style.editstyle line(color(dkgreen)) editcopy
+// view color
+
+// key[2] color
+
+// key[2] color
+
+.legend.plotregion1.key[2].view.style.editstyle line(color(forest_green)) editcopy
+// view color
+
+// key[1] color
+
+// key[1] color
+
+.legend.plotregion1.key[1].view.style.editstyle line(color(ebblue)) editcopy
+// view color
+
+.yaxis1.title.style.editstyle size(vlarge) editcopy
+// title size
+
+
+// <end>
