@@ -27,7 +27,7 @@ class Parameters:
     InitialAttractionForImitation = 10
     TimeHorizon = 5000
     MeanMarketSize = 4
-    RateOfChangeInTechEnv = 0.1
+    RateOfChangeInTechEnv = 0.0
     MaxMagnituteOfChangeInTechEnv = 8 # Don't try a number too close to NumberOfTasks because there is not enough decimal precision to handle the shocks.
 
 
@@ -47,7 +47,8 @@ class Parameters:
     PeriodOfHalfTurn = 500
     
 
-    # BASELINE PARAMETERS - Chapter 4 of Chang's book
+    # ---------------- CHAPTER 4 of Chang's book -----------------------
+    # 
     # NumberOfSimulations = 500
     # NumberOfTasks = 96
     # NumberOfPotentialEntrants = 40
@@ -65,6 +66,33 @@ class Parameters:
     # MeanMarketSize = 4
     # RateOfChangeInTechEnv = 0.1
     # MaxMagnituteOfChangeInTechEnv = 8
+    # 
+    # ------------------------------------------------------------------
+
+
+
+    # ---------------- CHAPTER 5 of Chang's book -----------------------
+    # 
+    # NumberOfSimulations = 500
+    # NumberOfTasks = 96
+    # NumberOfPotentialEntrants = 40
+    # StartupWealth = 0
+    # ThresholdNetWealthForSurvival = 0 
+    # DemandIntercept = 300
+    # FixedProductionCost = 200
+    # FixedCostOfInnovation = 100
+    # FixedCostOfImitation = 50
+    # InitialAttractionForResearch = 10
+    # InitialAttractionForNoResearch = 10
+    # InitialAttractionForInnovation = 10
+    # InitialAttractionForImitation = 10
+    # TimeHorizon = 5000
+    # MeanMarketSize = 4
+    # RateOfChangeInTechEnv = 0.0   # <----------- NO TECH CHANGE
+    # MaxMagnituteOfChangeInTechEnv = 8
+    # 
+    # ------------------------------------------------------------------
+
 
 
     @classmethod
