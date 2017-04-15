@@ -4,7 +4,7 @@ cd /home/jdimas/GitHub/ACEModel
 git pull
 ./simulation.py
 rm ./data/*.log
-mv ./data/ACEModel.2017*MEAN* ./data/Chapter\ 4/
+mv ./data/ACEModel.2017*MEAN* ./data/New_results
 rm ./data/ACEModel*
 git add .
 git commit -m "Results"
