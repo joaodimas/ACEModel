@@ -31,7 +31,7 @@ class Logger:
     @classmethod
     def format(cls, message, args, industry):
         if(industry != None):
-            message = "[SIM {:d}][PERIOD {:d}] " + message
+            message = "[SIM {:03d}][PERIOD {:04d}] " + message
             if(isinstance(args, tuple)):
                 args = (industry.simulation, industry.currentPeriod) + args
             elif(args != None):
