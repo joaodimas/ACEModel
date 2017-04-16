@@ -1,6 +1,3 @@
-clear all
-macro drop _all
-
 global baseName = "ACEModel.2017-04-15T10h59m23s[MEAN]"
 global folder = "Chapter 5/500 replications"
 global firstPeriod = 1
@@ -14,6 +11,7 @@ global aspectRatio = 0.6
 
 
 import delimited "/Users/jdimas/GitHub/ACEModel/data/$folder/$baseName.csv"
+
 tsset period
 
 gen ratio_res = firmsres / firms

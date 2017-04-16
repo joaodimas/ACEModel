@@ -1,6 +1,6 @@
 from model.parameters import Parameters
 
-class AggregateData:
+class TimeSeriesData:
     def __init__(self, industry):
         self.parameters = Parameters.getParameters()
         self.periods = []
@@ -138,7 +138,7 @@ class PeriodData:
                     self.magtechshock
                  ]
 
-class MultiAggregateData:
+class MultiTimeSeriesData:
     def __init__(self):
         self.listOfSimulations = []
         self.nmbSimulations = 0

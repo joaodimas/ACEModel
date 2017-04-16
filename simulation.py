@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys, time, cProfile, io, pstats, datetime, multiprocessing, functools
-from model.aggregate_data import MultiAggregateData
+from model.timeseries_data import MultiTimeSeriesData
 from model.industry import Industry
 from model.description import Description
 from model.parameters import Parameters
@@ -15,7 +15,7 @@ def runSimulation(index, timestamp):
         Logger.info("[SIM {:d}] STARTING SIMULATION", number)
         simulationStartTime = time.time()
 
-        industry = Industry(number)
+        industry = Industry(number, timestamp)
 
         # Simulate
         for p in range(Parameters.TimeHorizon):
@@ -25,10 +25,15 @@ def runSimulation(index, timestamp):
         simulationEndTime = time.time()
 
         Logger.info("[SIM {:d}] Simulation completed in {:.2f} seconds", (number, simulationEndTime - simulationStartTime))
-        Logger.info("[SIM {:d}] Saving...", number)
-        ExportToCSV.export(industry.data, timestamp, number)
-        Logger.info("[SIM {:d}] Returning results to main thread...", number)
-        return industry.data.getFlatData()
+        Logger.info("[SIM {:d}] Saving time-series...", number)
+        ExportToCSV.export(industry.timeSeriesData, timestamp, number)
+
+        for crossSectionalData in industry.crossSectionalData.periods:
+            Logger.info("[SIM {:d}] Saving cross-sectional data for period {:d}...", (number, crossSectionalData.period))
+            ExportToCSV.export(crossSectionalData, timestamp, number, crossSectionalData.period)
+
+        Logger.info("[SIM {:d}] Returning time-series to main thread...", number)
+        return industry.timeSeriesData.getFlatData()
     except Exception as e:
         Logger.logger.exception("Error")
         raise e
@@ -48,7 +53,7 @@ if __name__ == '__main__':
     Logger.info(Parameters.describe())
 
     try:
-        multiAggregateData = MultiAggregateData()
+        multiTimeSeriesData = MultiTimeSeriesData()
         Logger.info("Executing {:d} simulations\n", Parameters.NumberOfSimulations)
         
         if(Parameters.NumberOfParallelProcesses > Parameters.NumberOfSimulations):
@@ -59,13 +64,13 @@ if __name__ == '__main__':
         partial_runSimulation = functools.partial(runSimulation, timestamp=timestamp) # Run simulations
         listOfResults = pool.imap_unordered(partial_runSimulation, range(Parameters.NumberOfSimulations)) # Obtain results
 
-        multiAggregateData.addListOfResults(listOfResults) # Add result to the aggregate list (this will be used to calculate the means)
+        multiTimeSeriesData.addListOfResults(listOfResults) # Add result to the aggregate list (this will be used to calculate the means)
  
         aggregateEndTime = time.time()
         Logger.info("All {:d} simulations completed in {:.2f} seconds", (Parameters.NumberOfSimulations, aggregateEndTime - aggregateStartTime))
         # Save data
         Logger.info("Saving data...")
-        ExportToCSV.export(multiAggregateData, timestamp)
+        ExportToCSV.export(multiTimeSeriesData, timestamp)
         Logger.info("ALL PROCESSES FINISHED!")
 
     except Exception as e:

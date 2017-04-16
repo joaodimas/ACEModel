@@ -15,6 +15,9 @@ class Firm :
         self.status = FirmStatus.POTENTIAL_ENTRANT
         self.wealth = Parameters.StartupWealth
         self.prevWealth = 0
+        self.prevProfits = 0
+        self.prevOutput = 0
+        self.prevRevenues = 0
         self.profits = 0
         self.expProfits = 0
         self.expPrice = 0
@@ -22,6 +25,8 @@ class Firm :
         self.output = 0
         self.entering = False
         self.exiting = False
+        self.innovating = False
+        self.imitating = False
         self.age = 0
         self.investmentInResearch = 0
         self.attractionForResearch = Parameters.InitialAttractionForResearch
@@ -31,6 +36,13 @@ class Firm :
 
     def getDescription(self):
         return "id: " + str(self.firmId)
+
+    def storePrevData(self):
+        self.prevOutput = self.output
+        self.prevProfits = self.profits
+        self.prevMC = self.MC
+        self.prevWealth = self.wealth
+        self.prevRevenues = self.revenues
 
     def updateMarginalCost(self):
         self.techDistToOptimal = self.technology.calculateHammingDistance(self.industry.currentOptimalTech)
@@ -51,7 +63,9 @@ class Firm :
         return self.output
 
     def updateProfits(self):
+        self.revenues = self.output * self.industry.demand.eqPrice
         self.profits = self.output * (self.industry.demand.eqPrice - self.MC) - Parameters.FixedProductionCost - self.investmentInResearch
+        assert Math.isEquivalent(self.revenues - (self.output * self.MC + Parameters.FixedProductionCost + self.investmentInResearch), self.profits)
         assert Math.isEquivalent(self.profits, (self.output ** 2 / self.industry.demand.marketSize - Parameters.FixedProductionCost - self.investmentInResearch))
 
         return self.profits
@@ -102,6 +116,8 @@ class Firm :
 
     def processResearch(self):
         Logger.trace("[FIRM {:d}] Deciding about R&D. Wealth: {:.2f}; Attraction to R&D: {:.2f}; Attraction to Not-R&D: {:.2f}; Attraction to Innovation: {:.2f}; Attraction to Imitation: {:.2f}.", (self.firmId, self.wealth, self.attractionForResearch, self.attractionForNoResearch, self.attractionForInnovation, self.attractionForImitation), industry=self.industry)
+        self.innovating = False
+        self.imitating = False
         self.updateMarginalCost() # Update marginal cost after a possible technological shock.
         # Only consider R&D if we have enough wealth
         if self.wealth >= max(Parameters.FixedCostOfImitation, Parameters.FixedCostOfInnovation):
@@ -132,6 +148,7 @@ class Firm :
             Logger.trace("[FIRM {:d}] No wealth to pursue R&D. Wealth: {:.2f}", (self.firmId, self.wealth), industry=self.industry)
 
     def processInnovation(self):
+        self.innovating = True
         oldTechnology = Technology(self.technology.tasks)
         oldMC = self.MC
   
@@ -155,6 +172,7 @@ class Firm :
         return Parameters.FixedCostOfInnovation
 
     def processImitation(self):
+        self.imitating = True
         oldTechnology = Technology(self.technology.tasks)
         oldMC = self.MC
         firmToImitate = self.selectFirmToImitate()

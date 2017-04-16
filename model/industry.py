@@ -2,7 +2,8 @@ import itertools
 from model.util.logger import Logger
 from model.firm import Firm
 from model.demand import Demand
-from model.aggregate_data import AggregateData
+from model.timeseries_data import TimeSeriesData
+from model.crosssectional_data import MultiCrossSectionalData
 from model.parameters import Parameters
 from model.shocks import Shocks
 from model.firm import FirmStatus
@@ -22,6 +23,8 @@ class Industry:
         
         # Process all external shocks that were added to the file Shocks.py.
         Shocks.processShocks(self)
+
+        self.storeFirmsPrevData()
 
         # Each survivor will decide by doing or not R&D
         self.processResearch()
@@ -76,8 +79,11 @@ class Industry:
         # Update average age and oldest firm
         self.updateAgeStats()
 
-        # Store data
-        self.data.storeCurrentPeriod()
+        # Store time-series data
+        self.timeSeriesData.storeCurrentPeriod()
+
+        # Store cross-sectional data
+        self.crossSectionalData.storeCurrentPeriod()
 
         # Process firms exiting
         self.processFirmsExiting()
@@ -104,6 +110,10 @@ class Industry:
         self.currentOptimalTech.magnitudeOfChange = 0
         self.clearFirmsStatus()
         self.refreshPoolOfPotentialEntrants()
+
+    def storeFirmsPrevData(self):
+        for firm in self.incumbentFirms:
+            firm.storePrevData()
 
     def processResearch(self):
         self.nmbResearching = 0
@@ -145,7 +155,6 @@ class Industry:
         for firm in self.activeFirms:
             firm.status = FirmStatus.ACTIVE_INCUMBENT
             firm.updateMarginalCost()
-            #firm.updateExpWealthAfterThisPeriod()
 
     def processShutdownDecisions(self):
         # If there are too many active incumbents, the price will be low. In this case, some active incumbents might decide to not produce. 
@@ -238,13 +247,8 @@ class Industry:
         if nmbFirms >= 2:
             sumOfHammingDist = 0
             pairs = list(itertools.combinations(self.incumbentFirms, 2))
-           #assert len(pairs) == nmbFirms * (nmbFirms - 1) / 2
             for firmA, firmB in pairs:
                 sumOfHammingDist += firmA.technology.calculateHammingDistance(firmB.technology)
-
-            # for firmA in self.incumbentFirms:
-            #     for firmB in [firm for firm in self.incumbentFirms if firm.firmId != firmA.firmId]:
-            #         sumOfHammingDist += firmA.technology.calculateHammingDistance(firmB.technology)
 
             meanHammingDist = sumOfHammingDist / len(pairs)
             self.degreeOfTechDiv = meanHammingDist / Parameters.NumberOfTasks
@@ -342,13 +346,15 @@ class Industry:
         self.lastUsedId += 1
         return self.lastUsedId
  
-    def __init__(self, simulation):
+    def __init__(self, simulation, timestamp):
         self.simulation = simulation
+        self.timestamp = timestamp
         self.lastUsedId = 0
         self.currentPeriod = 0
         self.demand = Demand(self)
         self.survivorsOfCurrentPeriod = []
         self.activeSurvivorsOfCurrentPeriod = []
         self.sumOfActiveSurvivorsMC = 0
-        self.data = AggregateData(self)
+        self.timeSeriesData = TimeSeriesData(self)
+        self.crossSectionalData = MultiCrossSectionalData(self)
         self.currentOptimalTech = Technology.generateRandomTechnology()
