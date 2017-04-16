@@ -9,12 +9,13 @@ class Parameters:
     
 
     # MODEL PARAMETERS
-    NumberOfSimulations = 1 # Number of independent replications. A dataset with the means for each period and variable will be saved.
-    # NumberOfSimulations = 500
+    # NumberOfSimulations = 1 # Number of independent replications. A dataset with the means for each period and variable will be saved.
+    # PeriodsToSaveCrossSectionalData = [1, 10, 50, 100, 1000, 5000]
+    NumberOfSimulations = 500
+    PeriodsToSaveCrossSectionalData = []
 
     # ---------------- CHAPTER 4 of Chang's book -----------------------
     # 
-    NumberOfSimulations = 500
     NumberOfTasks = 96
     NumberOfPotentialEntrants = 40
     StartupWealth = 0
@@ -39,7 +40,6 @@ class Parameters:
 
     # ---------------- CHAPTER 5 of Chang's book -----------------------
     # 
-    # NumberOfSimulations = 500
     # NumberOfTasks = 96
     # NumberOfPotentialEntrants = 40
     # StartupWealth = 0
@@ -60,7 +60,6 @@ class Parameters:
     # 
     # ------------------------------------------------------------------
 
-    PeriodsToSaveCrossSectionalData = [1, 10, 50, 100, 1000, 5000]
     PeriodStartOfTechChange = 0
     RateOfMeanMarketSizeGrowth = 0
     # Business Cycles

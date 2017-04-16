@@ -1,8 +1,11 @@
-global baseName = "ACEModel.2017-04-15T10h59m23s[MEAN]"
-global folder = "Chapter 5/500 replications"
+clear all
+macro drop _all
+
+global baseName = "ACEModel.2017-04-16T18h39m22s[1][TIMESERIES]"
+global folder = "Chapter_4/1_replication"
 global firstPeriod = 1
-global lastPeriod = 68
-global xAxisDelta = 10
+global lastPeriod = 5000
+global xAxisDelta = 1000
 global xAxisBegin = $firstPeriod - 1
 global xAxisEnd = $lastPeriod
 global period = "in $firstPeriod/$lastPeriod"

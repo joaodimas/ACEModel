@@ -12,7 +12,7 @@ from model.util.export_to_csv import ExportToCSV
 def runSimulation(index, timestamp):
     try:
         number = index + 1
-        Logger.info("[SIM {:d}] STARTING SIMULATION", number)
+        Logger.info("[SIM {:03d}] STARTING SIMULATION", number)
         simulationStartTime = time.time()
 
         industry = Industry(number, timestamp)
@@ -24,15 +24,15 @@ def runSimulation(index, timestamp):
         
         simulationEndTime = time.time()
 
-        Logger.info("[SIM {:d}] Simulation completed in {:.2f} seconds", (number, simulationEndTime - simulationStartTime))
-        Logger.info("[SIM {:d}] Saving time-series...", number)
+        Logger.info("[SIM {:03d}] Simulation completed in {:.2f} seconds", (number, simulationEndTime - simulationStartTime))
+        Logger.info("[SIM {:03d}] Saving time-series...", number)
         ExportToCSV.export(industry.timeSeriesData, timestamp, number)
 
         for crossSectionalData in industry.crossSectionalData.periods:
-            Logger.info("[SIM {:d}] Saving cross-sectional data for period {:d}...", (number, crossSectionalData.period))
+            Logger.info("[SIM {:03d}] Saving cross-sectional data for period {:d}...", (number, crossSectionalData.period))
             ExportToCSV.export(crossSectionalData, timestamp, number, crossSectionalData.period)
 
-        Logger.info("[SIM {:d}] Returning time-series to main thread...", number)
+        Logger.info("[SIM {:03d}] Returning time-series to main thread...", number)
         return industry.timeSeriesData.getFlatData()
     except Exception as e:
         Logger.logger.exception("Error")
