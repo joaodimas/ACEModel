@@ -1,8 +1,8 @@
 clear all
 macro drop _all
 
-global baseName = "ACEModel.2017-04-16T19h34m05s[MEAN][TIMESERIES]"
-global folder = "Chapter_4/500_replications"
+global baseName = "ACEModel.2017-04-16T19h49m17s[1][TIMESERIES]"
+global folder = "Chapter_5/1_replication/Time series"
 global firstPeriod = 1
 global lastPeriod = 5000
 global xAxisDelta = 1000
