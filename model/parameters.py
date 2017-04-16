@@ -1,7 +1,6 @@
 class Parameters:
 
     # SYSTEM CONFIG
-    #LogLevel = {"Console": ["INFO"], "File": ["INFO", "DEBUG", "TRACE"]}
     LogLevel = {"Console": ["INFO"]}
     EnableProfiling = False
     NumberOfParallelProcesses = 72 # Set this to 3x the number of CPUs. Parallelism is only used if multiple simulations are performed (NumberOfSimulations > 1). Otherwise, only 1 process will be started.
@@ -11,9 +10,11 @@ class Parameters:
 
     # MODEL PARAMETERS
     NumberOfSimulations = 1 # Number of independent replications. A dataset with the means for each period and variable will be saved.
-    PeriodsToSaveCrossSectionalData = [1, 10, 50, 100, 1000, 5000]
+    # NumberOfSimulations = 500
 
-    # Basic
+    # ---------------- CHAPTER 4 of Chang's book -----------------------
+    # 
+    NumberOfSimulations = 500
     NumberOfTasks = 96
     NumberOfPotentialEntrants = 40
     StartupWealth = 0
@@ -29,44 +30,8 @@ class Parameters:
     TimeHorizon = 5000
     MeanMarketSize = 4
     RateOfChangeInTechEnv = 0.1
-    MaxMagnituteOfChangeInTechEnv = 8 # Don't try a number too close to NumberOfTasks because there is not enough decimal precision to handle the shocks.
-
-
-    PeriodStartOfTechChange = 0
-    RateOfMeanMarketSizeGrowth = 0
-
-    # Business Cycles
+    MaxMagnituteOfChangeInTechEnv = 8
     TypeOfCycle = None  # Options: None, DETERMINISTIC, STOCHASTIC. None implies a constant Market Size
-    PeriodsOfConstantDemand = 2000
-
-    # Business Cycles - STOCHASTIC
-    MinMarketSize = 0.1
-    RateOfPersistenceInDemand = 0.97
-
-    # Business Cycles - DETERMINISTIC
-    WaveAmplitude = 2
-    PeriodOfHalfTurn = 500
-    
-
-    # ---------------- CHAPTER 4 of Chang's book -----------------------
-    # 
-    # NumberOfSimulations = 500
-    # NumberOfTasks = 96
-    # NumberOfPotentialEntrants = 40
-    # StartupWealth = 0
-    # ThresholdNetWealthForSurvival = 0 
-    # DemandIntercept = 300
-    # FixedProductionCost = 200
-    # FixedCostOfInnovation = 100
-    # FixedCostOfImitation = 50
-    # InitialAttractionForResearch = 10
-    # InitialAttractionForNoResearch = 10
-    # InitialAttractionForInnovation = 10
-    # InitialAttractionForImitation = 10
-    # TimeHorizon = 5000
-    # MeanMarketSize = 4
-    # RateOfChangeInTechEnv = 0.1
-    # MaxMagnituteOfChangeInTechEnv = 8
     # 
     # ------------------------------------------------------------------
 
@@ -91,11 +56,22 @@ class Parameters:
     # MeanMarketSize = 4
     # RateOfChangeInTechEnv = 0.0   # <----------- NO TECH CHANGE
     # MaxMagnituteOfChangeInTechEnv = 8
+    # TypeOfCycle = None  # Options: None, DETERMINISTIC, STOCHASTIC. None implies a constant Market Size
     # 
     # ------------------------------------------------------------------
 
-
-
+    PeriodsToSaveCrossSectionalData = [1, 10, 50, 100, 1000, 5000]
+    PeriodStartOfTechChange = 0
+    RateOfMeanMarketSizeGrowth = 0
+    # Business Cycles
+    PeriodsOfConstantDemand = 2000
+    # Business Cycles - STOCHASTIC
+    MinMarketSize = 0.1
+    RateOfPersistenceInDemand = 0.97
+    # Business Cycles - DETERMINISTIC
+    WaveAmplitude = 2
+    PeriodOfHalfTurn = 500
+    
     @classmethod
     def describe(cls):
         desc = "----- PARAMETERS -----\n"
@@ -112,14 +88,3 @@ class Parameters:
         for member in members:
             parameters[member] = getattr(obj, member)
         return parameters
-
-    def toJSON(self):
-        return ("{"
-                    "NumberOfTasks: " + self.NumberOfTasks + ", "
-                    "FixedProductionCost: " + self.FixedProductionCost + ", "
-                    "DemandIntercept: " + self.DemandIntercept + ", "
-                    "MeanMarketSize: " + self.MeanMarketSize + ", "
-                    "ThresholdNetWealthForSurvival: " + self.ThresholdNetWealthForSurvival + ", "
-                    "NumberOfFirms: " + self.NumberOfFirms + ", "
-                    "TimeHorizon: " + self.TimeHorizon + "}"                   
-               )
