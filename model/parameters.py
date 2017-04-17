@@ -9,12 +9,36 @@ class Parameters:
     
 
     # MODEL PARAMETERS
-    # NumberOfSimulations = 1 # Number of independent replications. A dataset with the means for each period and variable will be saved.
-    # PeriodsToSaveCrossSectionalData = [1, 10, 50, 100, 1000, 5000]
-    NumberOfSimulations = 500
-    PeriodsToSaveCrossSectionalData = []
+    NumberOfSimulations = 1 # Number of independent replications. A dataset with the means for each period and variable will be saved.
+    PeriodsToSaveCrossSectionalData = [5000]
+    # NumberOfSimulations = 500
+    # PeriodsToSaveCrossSectionalData = []
 
     # ---------------- CHAPTER 4 of Chang's book -----------------------
+    # 
+    NumberOfTasks = 96
+    NumberOfPotentialEntrants = 40
+    StartupWealth = 0
+    ThresholdNetWealthForSurvival = 0 
+    DemandIntercept = 300
+    FixedProductionCost = 200
+    FixedCostOfInnovation = 100
+    FixedCostOfImitation = 50
+    InitialAttractionForResearch = 10
+    InitialAttractionForNoResearch = 10
+    InitialAttractionForInnovation = 10
+    InitialAttractionForImitation = 10
+    TimeHorizon = 5000
+    MeanMarketSize = 50
+    RateOfChangeInTechEnv = 0.1
+    MaxMagnituteOfChangeInTechEnv = 8
+    TypeOfCycle = None  # Options: None, DETERMINISTIC, STOCHASTIC. None implies a constant Market Size
+    # 
+    # ------------------------------------------------------------------
+
+
+
+    # ---------------- CHAPTER 5 of Chang's book -----------------------
     # 
     # NumberOfTasks = 96
     # NumberOfPotentialEntrants = 40
@@ -30,33 +54,9 @@ class Parameters:
     # InitialAttractionForImitation = 10
     # TimeHorizon = 5000
     # MeanMarketSize = 4
-    # RateOfChangeInTechEnv = 0.1
+    # RateOfChangeInTechEnv = 0.0   # <----------- NO TECH CHANGE
     # MaxMagnituteOfChangeInTechEnv = 8
     # TypeOfCycle = None  # Options: None, DETERMINISTIC, STOCHASTIC. None implies a constant Market Size
-    # 
-    # ------------------------------------------------------------------
-
-
-
-    # ---------------- CHAPTER 5 of Chang's book -----------------------
-    # 
-    NumberOfTasks = 96
-    NumberOfPotentialEntrants = 40
-    StartupWealth = 0
-    ThresholdNetWealthForSurvival = 0 
-    DemandIntercept = 300
-    FixedProductionCost = 200
-    FixedCostOfInnovation = 100
-    FixedCostOfImitation = 50
-    InitialAttractionForResearch = 10
-    InitialAttractionForNoResearch = 10
-    InitialAttractionForInnovation = 10
-    InitialAttractionForImitation = 10
-    TimeHorizon = 5000
-    MeanMarketSize = 4
-    RateOfChangeInTechEnv = 0.0   # <----------- NO TECH CHANGE
-    MaxMagnituteOfChangeInTechEnv = 8
-    TypeOfCycle = None  # Options: None, DETERMINISTIC, STOCHASTIC. None implies a constant Market Size
     # 
     # ------------------------------------------------------------------
 

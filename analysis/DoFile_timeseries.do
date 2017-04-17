@@ -17,16 +17,40 @@ import delimited "/Users/jdimas/GitHub/ACEModel/data/$folder/$baseName.csv"
 
 tsset period
 
+gen log_period = ln(period)
 gen ratio_res = firmsres / firms
 gen ratio_profitable_firms = profitablefirms / firms
-lowess firmsimi period, nograph generate(smooth_firmsimi)
-lowess firmsinn period, nograph generate(smooth_firmsinn)
-lowess firmsres period, nograph generate(smooth_firmsres)
-lowess firms period, nograph generate(smooth_firms)
 gen share_cs = cs / ts
 replace share_cs = 1 if share_cs > 1
 
 set graphics off
+
+
+// Generating graph for Aggregate output
+
+tsline totoutput $period
+
+gr_edit .yaxis1.title.text = {"Aggregate output"}
+gr_edit .xaxis1.title.text = {"$xAxisTitle"}
+gr_edit .yaxis1.reset_rule 7, tickset(major) ruletype(suggest) 
+gr_edit .yaxis1.title.style.editstyle size(vlarge) editcopy
+gr_edit .yaxis1.title.style.editstyle margin(right) editcopy
+gr_edit .yaxis1.style.editstyle majorstyle(tickstyle(textstyle(size(vlarge)))) editcopy
+gr_edit .yaxis1.style.editstyle majorstyle(tickangle(horizontal)) editcopy
+gr_edit .xaxis1.reset_rule $xAxisBegin $xAxisEnd $xAxisDelta , tickset(major) ruletype(range) 
+gr_edit .xaxis1.title.style.editstyle size(vlarge) editcopy
+gr_edit .xaxis1.title.style.editstyle margin(top) editcopy
+gr_edit .xaxis1.style.editstyle majorstyle(tickstyle(textstyle(size(vlarge)))) editcopy
+gr_edit .style.editstyle boxstyle(shadestyle(color(white))) editcopy
+gr_edit .style.editstyle boxstyle(linestyle(color(white))) editcopy
+gr_edit .plotregion1.style.editstyle margin(medium) editcopy
+gr_edit .SetAspectRatio $aspectRatio
+
+global suffixAggOutput = "Aggregate_output"
+graph save Graph "/Users/jdimas/GitHub/ACEModel/data/$folder/$baseName.$suffixAggOutput.gph", replace
+
+// End
+
 
 // Generating graph for Aggregate Profits
 
@@ -419,7 +443,7 @@ graph save Graph "/Users/jdimas/GitHub/ACEModel/data/$folder/$baseName.$suffixHH
 
 // End
 
-tsline smooth_firmsres smooth_firmsinn smooth_firmsimi smooth_firms $period
+tsline firmsres firmsinn firmsimi firms $period
 
 gr_edit .yaxis1.title.text = {"No. firms"}
 gr_edit .xaxis1.title.text = {"$xAxisTitle"}
@@ -451,6 +475,10 @@ graph save Graph "/Users/jdimas/GitHub/ACEModel/data/$folder/$baseName.$suffixRD
 
 // Exporting graphs do PNG
 set graphics on
+
+graph use "/Users/jdimas/GitHub/ACEModel/data/$folder/$baseName.$suffixAggOutput.gph"
+graph export "/Users/jdimas/GitHub/ACEModel/data/$folder/$baseName.$suffixAggOutput.png", as(png) replace
+
 graph use "/Users/jdimas/GitHub/ACEModel/data/$folder/$baseName.$suffixAggProfits.gph"
 graph export "/Users/jdimas/GitHub/ACEModel/data/$folder/$baseName.$suffixAggProfits.png", as(png) replace
 

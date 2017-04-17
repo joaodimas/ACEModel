@@ -1,0 +1,40 @@
+StataFileTM:00001:01100:GREC:                          :
+00004:00004:00001:
+*! classname: twowaygraph_g
+*! family: twoway
+*! date: 17 Apr 2017
+*! time: 18:47:47
+*! graph_scheme: s2color
+*! naturallywhite: 1
+*! end
+
+// File created by Graph Editor Recorder.
+// Edit only if you know what you are doing.
+
+.xaxis1.reset_rule , tickset(major) ruletype(minmax) 
+// xaxis1 edits
+
+.xaxis1.reset_rule 4, tickset(major) ruletype(suggest) 
+// xaxis1 edits
+
+.xaxis1.add_ticks 1 `""', tickset(major)
+// xaxis1 edits
+
+.xaxis1.add_ticks 10 `""', tickset(major)
+// xaxis1 edits
+
+.xaxis1.add_ticks 100 `""', tickset(major)
+// xaxis1 edits
+
+.xaxis1.add_ticks 1000 `""', tickset(major)
+// xaxis1 edits
+
+.xaxis1.major.num_rule_ticks = 2
+.xaxis1.edit_tick 2 5000 `"5000"', custom tickset(major) editstyle(tickstyle(show_labels(no)) tickstyle(show_ticks(no)) )
+// xaxis1 edits
+
+.xaxis1.reset_rule 4, tickset(major) ruletype(suggest) 
+// xaxis1 edits
+
+
+// <end>
