@@ -2,7 +2,6 @@ from model.parameters import Parameters
 
 class TimeSeriesData:
     def __init__(self, industry):
-        self.parameters = Parameters.getParameters()
         self.periods = []
         self.industry = industry
 

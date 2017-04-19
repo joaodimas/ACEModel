@@ -46,7 +46,7 @@ class Logger:
         return message
 
     @classmethod
-    def initialize(cls, timestamp):
+    def initialize(cls, timestamp, loglevel):
 
         #Add custom level TRACE
         logging.TRACE = 9 
@@ -58,11 +58,11 @@ class Logger:
 
 
         cls.logger = logging.getLogger("ACEModel")
-        if ("Console" in Parameters.LogLevel and "TRACE" in Parameters.LogLevel["Console"]) or ("File" in Parameters.LogLevel and "TRACE" in Parameters.LogLevel["File"]):
+        if ("Console" in loglevel and "TRACE" in loglevel["Console"]) or ("File" in loglevel and "TRACE" in loglevel["File"]):
             cls.logger.setLevel(logging.TRACE)
-        elif ("Console" in Parameters.LogLevel and "DEBUG" in Parameters.LogLevel["Console"]) or ("File" in Parameters.LogLevel and "DEBUG" in Parameters.LogLevel["File"]):
+        elif ("Console" in loglevel and "DEBUG" in loglevel["Console"]) or ("File" in loglevel and "DEBUG" in loglevel["File"]):
             cls.logger.setLevel(logging.DEBUG)
-        elif ("Console" in Parameters.LogLevel and "INFO" in Parameters.LogLevel["Console"]) or ("File" in Parameters.LogLevel and "INFO" in Parameters.LogLevel["File"]):
+        elif ("Console" in loglevel and "INFO" in loglevel["Console"]) or ("File" in loglevel and "INFO" in loglevel["File"]):
             cls.logger.setLevel(logging.INFO)
         else:
             cls.logger.setLevel(logging.WARNING)
@@ -72,37 +72,37 @@ class Logger:
         # create a logging format
         formatter = logging.Formatter('%(message)s')
 
-        if "Console" in Parameters.LogLevel and len(Parameters.LogLevel["Console"]) > 0:
+        if "Console" in loglevel and len(loglevel["Console"]) > 0:
             handler = logging.StreamHandler()
             handler.setFormatter(formatter)
             cls.logger.addHandler(handler)
             # create a TRACE console handler
-            if "TRACE" in Parameters.LogLevel["Console"]:
+            if "TRACE" in loglevel["Console"]:
                 handler.setLevel(logging.TRACE)
-            elif "DEBUG" in Parameters.LogLevel["Console"]:
+            elif "DEBUG" in loglevel["Console"]:
                 handler.setLevel(logging.DEBUG)
-            elif "INFO" in Parameters.LogLevel["Console"]:
+            elif "INFO" in loglevel["Console"]:
                 handler.setLevel(logging.INFO)
             else:
                 handler.setLevel(logging.WARNING)
 
         # create an INFO file handler
-        if "File" in Parameters.LogLevel:
-            if("INFO" in Parameters.LogLevel["File"]):
+        if "File" in loglevel:
+            if("INFO" in loglevel["File"]):
                 handler = logging.FileHandler(os.path.join(THIS_FOLDER, "../../data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+".INFO.log"))
                 handler.setLevel(logging.INFO)
                 handler.setFormatter(formatter)
                 cls.logger.addHandler(handler)
 
             # create a DEBUG file handler
-            if("DEBUG" in Parameters.LogLevel["File"]):
+            if("DEBUG" in loglevel["File"]):
                 handler = logging.FileHandler(os.path.join(THIS_FOLDER, "../../data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+".DEBUG.log"))
                 handler.setLevel(logging.DEBUG)
                 handler.setFormatter(formatter)
                 cls.logger.addHandler(handler)
 
             # create a TRACE file handler
-            if("TRACE" in Parameters.LogLevel["File"]):
+            if("TRACE" in loglevel["File"]):
                 handler = logging.FileHandler(os.path.join(THIS_FOLDER, "../../data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+".TRACE.log"))
                 handler.setLevel(logging.TRACE)
                 handler.setFormatter(formatter)

@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 
-import sys, time, cProfile, io, pstats, datetime, multiprocessing, functools
+import os, sys, time, cProfile, io, pstats, datetime, multiprocessing, functools
 from model.timeseries_data import MultiTimeSeriesData
 from model.industry import Industry
 from model.description import Description
 from model.parameters import Parameters
 from model.util.logger import Logger
 from model.util.export_to_csv import ExportToCSV
+
+
+class SystemConfig:
+    LogLevel = {"Console": ["INFO"]}
+    EnableProfiling = False
+    NumberOfParallelProcesses = 72 # Set this to 3x the number of CPUs. Parallelism is only used if multiple simulations are performed (NumberOfIndependentReplications > 1). Otherwise, only 1 process will be started.
 
 
 def runSimulation(index, timestamp):
@@ -41,38 +47,56 @@ def runSimulation(index, timestamp):
         raise e
 
 
+def describeModelParameters():
+    parameters = {}
+    obj = Parameters()
+    members = [attr for attr in dir(obj) if not callable(getattr(obj, attr)) and not attr.startswith("__")]
+    for member in members:
+        parameters[member] = getattr(obj, member)
+
+    desc = ""
+    for key, value in parameters.items():
+        desc += key + ": " + str(value) + "\n"
+
+    return desc
+
+
 if __name__ == '__main__':
 
     pr = None
-    if(Parameters.EnableProfiling):
+    if(SystemConfig.EnableProfiling):
         pr = cProfile.Profile()
         pr.enable()
 
     timestamp = datetime.datetime.now()
     aggregateStartTime = time.time()
-    Logger.initialize(timestamp)
+    Logger.initialize(timestamp, SystemConfig.LogLevel)
     Logger.info(sys.version_info)
-    Logger.info(Parameters.describe())
+    parameters = describeModelParameters()
+    Logger.info(parameters)
+    THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+    with open(os.path.join(THIS_FOLDER, "./data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+".params.txt"), "w", newline='') as f:
+        print(parameters, file=f)
 
     try:
         multiTimeSeriesData = MultiTimeSeriesData()
-        Logger.info("Executing {:d} simulations\n", Parameters.NumberOfSimulations)
+        Logger.info("Executing {:d} simulations\n", Parameters.NumberOfIndependentReplications)
         
-        if(Parameters.NumberOfParallelProcesses > Parameters.NumberOfSimulations):
-            Parameters.NumberOfParallelProcesses = Parameters.NumberOfSimulations
+        if(SystemConfig.NumberOfParallelProcesses > Parameters.NumberOfIndependentReplications):
+            SystemConfig.NumberOfParallelProcesses = Parameters.NumberOfIndependentReplications
 
         processes = []
-        pool = multiprocessing.Pool(Parameters.NumberOfParallelProcesses)
+        pool = multiprocessing.Pool(SystemConfig.NumberOfParallelProcesses)
         partial_runSimulation = functools.partial(runSimulation, timestamp=timestamp) # Run simulations
-        listOfResults = pool.imap_unordered(partial_runSimulation, range(Parameters.NumberOfSimulations)) # Obtain results
+        listOfResults = pool.imap_unordered(partial_runSimulation, range(Parameters.NumberOfIndependentReplications)) # Obtain results
 
         multiTimeSeriesData.addListOfResults(listOfResults) # Add result to the aggregate list (this will be used to calculate the means)
  
         aggregateEndTime = time.time()
-        Logger.info("All {:d} simulations completed in {:.2f} seconds", (Parameters.NumberOfSimulations, aggregateEndTime - aggregateStartTime))
+        Logger.info("All {:d} simulations completed in {:.2f} seconds", (Parameters.NumberOfIndependentReplications, aggregateEndTime - aggregateStartTime))
         # Save data
         Logger.info("Saving data...")
-        if(Parameters.NumberOfSimulations > 1):
+        if(Parameters.NumberOfIndependentReplications > 1):
             ExportToCSV.export(multiTimeSeriesData, timestamp)
         Logger.info("ALL PROCESSES FINISHED!")
 
@@ -80,11 +104,9 @@ if __name__ == '__main__':
         Logger.logger.exception("Error")
         raise e
 
-    if(Parameters.EnableProfiling):
+    if(SystemConfig.EnableProfiling):
         pr.disable()
         with io.StringIO() as s:
             ps = pstats.Stats(pr, stream=s).sort_stats('tottime')
             ps.print_stats()
             Logger.info(s.getvalue())
-      
-
