@@ -1,0 +1,25 @@
+InitialAttractionForResearch: 10
+TypeOfCycle: CycleType.STOCHASTIC
+NumberOfPotentialEntrants: 40
+FixedProductionCost: 200
+MaxMagnituteOfChangeInTechEnv: 8
+NumberOfTasks: 96
+DemandIntercept: 300
+InitialAttractionForImitation: 10
+PeriodRangeToSavePanelData: [2100, 2140]
+TimeHorizon: 5000
+PeriodsToSaveCrossSectionalData: [2100, 5000]
+RateOfChangeInTechEnv: 0.1
+NumberOfIndependentReplications: 1
+PeriodStartOfTechnologicalShocks: 0
+MinMarketSize: 0.1
+StartupWealth: 0
+PeriodsOfConstantDemand: 2000
+MeanMarketSize: 32
+FixedCostOfInnovation: 100
+InitialAttractionForNoResearch: 10
+InitialAttractionForInnovation: 10
+RateOfPersistenceInDemand: 0.95
+FixedCostOfImitation: 50
+ThresholdNetWealthForSurvival: 0
+
