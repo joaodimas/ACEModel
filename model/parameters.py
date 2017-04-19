@@ -4,8 +4,8 @@ class Parameters:
 
     # MODEL PARAMETERS
     NumberOfIndependentReplications = 1 # Number of independent replications. A dataset with the means for each period and variable will be saved.
-    PeriodsToSaveCrossSectionalData = [5000]
-    PeriodRangeToSavePanelData = [4961, 5000]
+    PeriodsToSaveCrossSectionalData = [2100, 5000]
+    PeriodRangeToSavePanelData = [2100, 2140]
 
 
     # ---------------- CHAPTER 4 of Chang's book -----------------------
@@ -71,7 +71,7 @@ class Parameters:
     InitialAttractionForInnovation = 10
     InitialAttractionForImitation = 10
     TimeHorizon = 5000
-    MeanMarketSize = 512
+    MeanMarketSize = 32
     RateOfChangeInTechEnv = 0.1
     PeriodStartOfTechnologicalShocks = 0
     MaxMagnituteOfChangeInTechEnv = 8

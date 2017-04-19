@@ -9,17 +9,14 @@ class CrossSectionalData:
         self.period = industry.currentPeriod
         self.addData()
 
-    def addData(self):
-            self.data = [self.getHeader()]
-
-            for firm in sorted(self.industry.incumbentFirms, key=lambda firm: firm.firmId):
-                assert Math.isEquivalent(firm.profits, firm.wealth - firm.prevWealth)
-                self.data.append([
+    @classmethod
+    def getFirmFlatData(cls, firm):
+        return [
                     firm.firmId,
-                    self.industry.currentPeriod,
+                    firm.industry.currentPeriod,
                     firm.age,
                     firm.status.value,
-                    self.industry.demand.eqPrice,
+                    firm.industry.demand.eqPrice,
                     1 - (firm.techDistToOptimal / Parameters.NumberOfTasks),
                     firm.MC,
                     firm.marketShare,
@@ -35,19 +32,24 @@ class CrossSectionalData:
                     firm.prevWealth,
                     firm.profits,
                     firm.prevProfits,
-                    (firm.profits / firm.prevProfits - 1) if firm.prevProfits > 0 and firm.profits > 0 else 0,
                     firm.output,
                     firm.prevOutput,
-                    (firm.output / firm.prevOutput - 1) if firm.prevOutput > 0 else 0,
                     firm.revenues,
                     firm.prevRevenues,
-                    (firm.revenues / firm.prevRevenues - 1) if firm.prevRevenues > 0 else 0,
-                    (firm.industry.demand.eqPrice - firm.MC) / firm.industry.demand.eqPrice
-                ])
+                    firm.technology.tasks
+                ]
+
+    def addData(self):
+            self.data = [CrossSectionalData.getHeader()]
+
+            for firm in sorted(self.industry.incumbentFirms, key=lambda firm: firm.firmId):
+                assert Math.isEquivalent(firm.profits, firm.wealth - firm.prevWealth)
+                self.data.append(CrossSectionalData.getFirmFlatData(firm))
 
             assert len(self.data) == len(self.industry.incumbentFirms) + 1
 
-    def getHeader(self):
+    @classmethod
+    def getHeader(cls):
         return [
             "firm_id",
             "period",
@@ -69,14 +71,11 @@ class CrossSectionalData:
             "previous_wealth",
             "profits",
             "previous_profits",
-            "profits_growthrate",
             "output",
             "previous_output",
-            "output_growthrate",
             "revenues",
             "previous_revenues",
-            "revenues_growthrate",
-            "pcm"
+            "technology"
         ]
 
     def getFlatData(self):

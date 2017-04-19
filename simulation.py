@@ -11,12 +11,19 @@ from model.util.export_to_csv import ExportToCSV
 
 class SystemConfig:
     LogLevel = {"Console": ["INFO"]}
-    EnableProfiling = False
+    EnableProfilingMainThread = False
+    EnableProfilingWorker = False
     NumberOfParallelProcesses = 72 # Set this to 3x the number of CPUs. Parallelism is only used if multiple simulations are performed (NumberOfIndependentReplications > 1). Otherwise, only 1 process will be started.
 
 
 def runSimulation(index, timestamp):
     try:
+
+        pr = None
+        if(SystemConfig.EnableProfilingWorker):
+            pr = cProfile.Profile()
+            pr.enable()
+
         number = index + 1
         Logger.info("[SIM {:03d}] STARTING SIMULATION", number)
         simulationStartTime = time.time()
@@ -41,6 +48,14 @@ def runSimulation(index, timestamp):
             ExportToCSV.exportCrosssectionalData(crossSectionalData, timestamp, number, crossSectionalData.period)
 
         Logger.info("[SIM {:03d}] Returning time-series to main thread...", number)
+
+        if(SystemConfig.EnableProfilingWorker):
+            pr.disable()
+            with io.StringIO() as s:
+                ps = pstats.Stats(pr, stream=s).sort_stats('tottime')
+                ps.print_stats()
+                Logger.info(s.getvalue())
+
         return industry.timeSeriesData.getFlatData()
     except Exception as e:
         Logger.logger.exception("Error")
@@ -64,7 +79,7 @@ def describeModelParameters():
 if __name__ == '__main__':
 
     pr = None
-    if(SystemConfig.EnableProfiling):
+    if(SystemConfig.EnableProfilingMainThread):
         pr = cProfile.Profile()
         pr.enable()
 
@@ -104,7 +119,7 @@ if __name__ == '__main__':
         Logger.logger.exception("Error")
         raise e
 
-    if(SystemConfig.EnableProfiling):
+    if(SystemConfig.EnableProfilingMainThread):
         pr.disable()
         with io.StringIO() as s:
             ps = pstats.Stats(pr, stream=s).sort_stats('tottime')
