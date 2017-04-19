@@ -71,7 +71,7 @@ class Parameters:
     InitialAttractionForInnovation = 10
     InitialAttractionForImitation = 10
     TimeHorizon = 5000
-    MeanMarketSize = 32
+    MeanMarketSize = 512
     RateOfChangeInTechEnv = 0.1
     PeriodStartOfTechnologicalShocks = 0
     MaxMagnituteOfChangeInTechEnv = 8
