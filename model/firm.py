@@ -118,6 +118,7 @@ class Firm :
         Logger.trace("[FIRM {:d}] Deciding about R&D. Wealth: {:.2f}; Attraction to R&D: {:.2f}; Attraction to Not-R&D: {:.2f}; Attraction to Innovation: {:.2f}; Attraction to Imitation: {:.2f}.", (self.firmId, self.wealth, self.attractionForResearch, self.attractionForNoResearch, self.attractionForInnovation, self.attractionForImitation), industry=self.industry)
         self.innovating = False
         self.imitating = False
+        self.investmentInResearch = 0
         self.updateMarginalCost() # Update marginal cost after a possible technological shock.
         # Only consider R&D if we have enough wealth
         if self.wealth >= max(Parameters.FixedCostOfImitation, Parameters.FixedCostOfInnovation):

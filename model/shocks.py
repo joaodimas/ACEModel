@@ -11,7 +11,7 @@ class Shocks:
         Logger.trace("External shocks: Processing...", industry=industry)
         # Technological shock: Every period the optimal technology changes with a probability = Parameters.RateOfChangeInTechEnv.
         # The new optimal will have a maximum hamming distance from previous optimum = Parameters.MaxMagnituteOfChangeInTechEnv.
-        if(Parameters.RateOfChangeInTechEnv > 0 and industry.currentPeriod >= Parameters.PeriodStartOfTechChange):
+        if(Parameters.PeriodStartOfTechChange is not None and industry.currentPeriod >= Parameters.PeriodStartOfTechChange):
             if(Random.random() < Parameters.RateOfChangeInTechEnv):
                 Logger.trace("HIT BY A TECHNOLOGICAL SHOCK!", industry=industry)
                 previousOptimal = Technology(industry.currentOptimalTech.tasks)
@@ -24,30 +24,13 @@ class Shocks:
                 Logger.trace("NO TECHNOLOGICAL SHOCK.", industry=industry)
 
 
-        # Average market size growths at a constant rate
-        # Parameters.MeanMarketSize *= (1 + Parameters.RateOfMeanMarketSizeGrowth)
-
-        # Demand shock: every period there is a change in the market size
-        if(industry.currentPeriod > Parameters.PeriodsOfConstantDemand):
+        # Demand shock: every period starting at (Parameters.PeriodsOfConstantDemand + 1) there is a change in the market size
+        if(Parameters.TypeOfCycle is not None and industry.currentPeriod > Parameters.PeriodsOfConstantDemand):
             if(Parameters.TypeOfCycle == Parameters.STOCHASTIC):
                 BusinessCycles.generateStochasticCycle(industry)
             elif(Parameters.TypeOfCycle == Parameters.DETERMINISTIC):
                 BusinessCycles.generateDeterministicCycle(industry)
 
-        # else:
-            # industry.demand.marketSize = Parameters.MeanMarketSize
 
-
-        # Shock 2: No potential entrants after period 100.
-        # if(industry.currentPeriod >= 100):
-        #     industry.potentialEntrants = []
-
-
-        # Shock 3: At period 50, all potential entrants have technology with distance 40 from the optimal
-        # if(industry.currentPeriod >= 100):
-        #     Logger.trace("[SIM {:d}]HIT BY EFFICIENT NEW ENTRANTS!")
-        #     industry.potentialEntrants = []
-        #     for x in range(Parameters.NumberOfPotentialEntrants):
-        #         industry.potentialEntrants.append(Firm(industry.newFirmId(), industry, industry.currentOptimalTech.generateRandomWithMaxDistance(40)))
         Logger.trace("External shocks: OK!", industry=industry)
 

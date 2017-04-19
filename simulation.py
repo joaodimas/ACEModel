@@ -26,11 +26,13 @@ def runSimulation(index, timestamp):
 
         Logger.info("[SIM {:03d}] Simulation completed in {:.2f} seconds", (number, simulationEndTime - simulationStartTime))
         Logger.info("[SIM {:03d}] Saving time-series...", number)
-        ExportToCSV.export(industry.timeSeriesData, timestamp, number)
+        ExportToCSV.exportTimeSeriesData(industry.timeSeriesData, timestamp, number)
+        Logger.info("[SIM {:03d}] Saving panel data...", number)
+        ExportToCSV.exportPanelData(industry.panelData, timestamp, number)
 
         for crossSectionalData in industry.crossSectionalData.periods:
             Logger.info("[SIM {:03d}] Saving cross-sectional data for period {:d}...", (number, crossSectionalData.period))
-            ExportToCSV.export(crossSectionalData, timestamp, number, crossSectionalData.period)
+            ExportToCSV.exportCrosssectionalData(crossSectionalData, timestamp, number, crossSectionalData.period)
 
         Logger.info("[SIM {:03d}] Returning time-series to main thread...", number)
         return industry.timeSeriesData.getFlatData()
@@ -70,7 +72,8 @@ if __name__ == '__main__':
         Logger.info("All {:d} simulations completed in {:.2f} seconds", (Parameters.NumberOfSimulations, aggregateEndTime - aggregateStartTime))
         # Save data
         Logger.info("Saving data...")
-        ExportToCSV.export(multiTimeSeriesData, timestamp)
+        if(Parameters.NumberOfSimulations > 1):
+            ExportToCSV.export(multiTimeSeriesData, timestamp)
         Logger.info("ALL PROCESSES FINISHED!")
 
     except Exception as e:

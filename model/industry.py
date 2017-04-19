@@ -4,6 +4,7 @@ from model.firm import Firm
 from model.demand import Demand
 from model.timeseries_data import TimeSeriesData
 from model.crosssectional_data import MultiCrossSectionalData
+from model.panel_data import PanelData
 from model.parameters import Parameters
 from model.shocks import Shocks
 from model.firm import FirmStatus
@@ -84,6 +85,8 @@ class Industry:
 
         # Store cross-sectional data
         self.crossSectionalData.storeCurrentPeriod()
+
+        self.panelData.storeCurrentPeriod()
 
         # Process firms exiting
         self.processFirmsExiting()
@@ -357,4 +360,5 @@ class Industry:
         self.sumOfActiveSurvivorsMC = 0
         self.timeSeriesData = TimeSeriesData(self)
         self.crossSectionalData = MultiCrossSectionalData(self)
+        self.panelData = PanelData(self)
         self.currentOptimalTech = Technology.generateRandomTechnology()

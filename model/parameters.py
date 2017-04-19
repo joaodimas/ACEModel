@@ -1,38 +1,40 @@
 class Parameters:
 
-    # SYSTEM CONFIG
+    # ------ SYSTEM CONFIG - BEGIN
     LogLevel = {"Console": ["INFO"]}
     EnableProfiling = False
     NumberOfParallelProcesses = 72 # Set this to 3x the number of CPUs. Parallelism is only used if multiple simulations are performed (NumberOfSimulations > 1). Otherwise, only 1 process will be started.
     STOCHASTIC = 0
     DETERMINISTIC = 1
+    # ------ SYSTEM CONFIG - END
     
 
     # MODEL PARAMETERS
     NumberOfSimulations = 1 # Number of independent replications. A dataset with the means for each period and variable will be saved.
     PeriodsToSaveCrossSectionalData = [5000]
-    # NumberOfSimulations = 500
-    # PeriodsToSaveCrossSectionalData = []
+    PeriodRangeToSavePanelData = [4961, 5000]
+
 
     # ---------------- CHAPTER 4 of Chang's book -----------------------
     # 
-    NumberOfTasks = 96
-    NumberOfPotentialEntrants = 40
-    StartupWealth = 0
-    ThresholdNetWealthForSurvival = 0 
-    DemandIntercept = 300
-    FixedProductionCost = 200
-    FixedCostOfInnovation = 100
-    FixedCostOfImitation = 50
-    InitialAttractionForResearch = 10
-    InitialAttractionForNoResearch = 10
-    InitialAttractionForInnovation = 10
-    InitialAttractionForImitation = 10
-    TimeHorizon = 5000
-    MeanMarketSize = 50
-    RateOfChangeInTechEnv = 0.1
-    MaxMagnituteOfChangeInTechEnv = 8
-    TypeOfCycle = None  # Options: None, DETERMINISTIC, STOCHASTIC. None implies a constant Market Size
+    # NumberOfTasks = 96
+    # NumberOfPotentialEntrants = 40
+    # StartupWealth = 0
+    # ThresholdNetWealthForSurvival = 0 
+    # DemandIntercept = 300
+    # FixedProductionCost = 200
+    # FixedCostOfInnovation = 100
+    # FixedCostOfImitation = 50
+    # InitialAttractionForResearch = 10
+    # InitialAttractionForNoResearch = 10
+    # InitialAttractionForInnovation = 10
+    # InitialAttractionForImitation = 10
+    # TimeHorizon = 5000
+    # MeanMarketSize = 4
+    # RateOfChangeInTechEnv = 0.1
+    # PeriodStartOfTechChange = 0
+    # MaxMagnituteOfChangeInTechEnv = 8
+    # TypeOfCycle = None  # <----------- NO BUSINESS CYCLES
     # 
     # ------------------------------------------------------------------
 
@@ -54,22 +56,42 @@ class Parameters:
     # InitialAttractionForImitation = 10
     # TimeHorizon = 5000
     # MeanMarketSize = 4
-    # RateOfChangeInTechEnv = 0.0   # <----------- NO TECH CHANGE
-    # MaxMagnituteOfChangeInTechEnv = 8
-    # TypeOfCycle = None  # Options: None, DETERMINISTIC, STOCHASTIC. None implies a constant Market Size
+    # PeriodStartOfTechChange = None    # <----------- NO TECH CHANGE
+    # TypeOfCycle = None  # <----------- NO BUSINESS CYCLES
     # 
     # ------------------------------------------------------------------
 
+
+
+    # ---------------- CHAPTER 8 of Chang's book -----------------------
+    # 
+    NumberOfTasks = 96
+    NumberOfPotentialEntrants = 40
+    StartupWealth = 0
+    ThresholdNetWealthForSurvival = 0 
+    DemandIntercept = 300
+    FixedProductionCost = 200
+    FixedCostOfInnovation = 100
+    FixedCostOfImitation = 50
+    InitialAttractionForResearch = 10
+    InitialAttractionForNoResearch = 10
+    InitialAttractionForInnovation = 10
+    InitialAttractionForImitation = 10
+    TimeHorizon = 5000
+    MeanMarketSize = 32
+    RateOfChangeInTechEnv = 0.1
     PeriodStartOfTechChange = 0
-    RateOfMeanMarketSizeGrowth = 0
-    # Business Cycles
+    MaxMagnituteOfChangeInTechEnv = 8
+    TypeOfCycle = STOCHASTIC  # <----------- STOCHASTIC BUSINESS CYCLES
     PeriodsOfConstantDemand = 2000
-    # Business Cycles - STOCHASTIC
     MinMarketSize = 0.1
-    RateOfPersistenceInDemand = 0.97
-    # Business Cycles - DETERMINISTIC
-    WaveAmplitude = 2
-    PeriodOfHalfTurn = 500
+    RateOfPersistenceInDemand = 0.95
+    # 
+    # ------------------------------------------------------------------
+
+    # Config of deterministic business cycles. Only used if TypeOfCycle = DETERMINISTIC
+    # WaveAmplitude = 2
+    # PeriodOfHalfTurn = 500
     
     @classmethod
     def describe(cls):

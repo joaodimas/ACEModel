@@ -1,21 +1,28 @@
 from model.parameters import Parameters
-from model.util.logger import Logger
-from model.util.math import Math
 
-class CrossSectionalData:
+
+class PanelData:
 
     def __init__(self, industry):
-        self.parameters = Parameters.getParameters()
+        self.firms = None
+        self.periods = []
         self.industry = industry
-        self.period = industry.currentPeriod
-        self.addData()
 
-    def addData(self):
-            self.data = [self.getHeader()]
+    def storeCurrentPeriod(self):
 
-            for firm in sorted(self.industry.incumbentFirms, key=lambda firm: firm.firmId):
-                assert Math.isEquivalent(firm.profits, firm.wealth - firm.prevWealth)
-                self.data.append([
+        if Parameters.PeriodRangeToSavePanelData is not None and len(Parameters.PeriodRangeToSavePanelData) == 2 and Parameters.PeriodRangeToSavePanelData[0] <= self.industry.currentPeriod <= Parameters.PeriodRangeToSavePanelData[1]:
+
+            if self.firms is None:
+                self.firms = []
+                for firm in self.industry.incumbentFirms:
+                    self.firms.append(firm.firmId)
+
+            periodData = []
+            for firm in self.industry.incumbentFirms:
+                if firm.firmId not in self.firms:
+                    continue
+
+                periodData.append([
                     firm.firmId,
                     self.industry.currentPeriod,
                     firm.age,
@@ -46,7 +53,21 @@ class CrossSectionalData:
                     (firm.industry.demand.eqPrice - firm.MC) / firm.industry.demand.eqPrice
                 ])
 
-            assert len(self.data) == len(self.industry.incumbentFirms) + 1
+            self.periods.append(periodData)
+
+    def getFlatData(self):
+        if self.periods is None:
+            return None
+
+        flatData = [self.getHeader()]
+        lastPeriod = self.periods[-1]
+
+        for firmA in sorted(lastPeriod, key=lambda firm: firm[0]):
+            for periodData in self.periods:
+                firmData = [firmB for firmB in periodData if firmB[0] == firmA[0]]
+                flatData.extend(firmData)
+
+        return flatData
 
     def getHeader(self):
         return [
@@ -79,19 +100,4 @@ class CrossSectionalData:
             "revenues_growthrate",
             "pcm"
         ]
-
-    def getFlatData(self):
-        return self.data
-
-class MultiCrossSectionalData:
-
-    def __init__(self, industry):
-        self.periods = []
-        self.industry = industry
-
-    def storeCurrentPeriod(self):
-        if self.industry.currentPeriod in Parameters.PeriodsToSaveCrossSectionalData:
-            Logger.debug("Storing current period {:d}. Incumbent firms: {:d}", (self.industry.currentPeriod, len(self.industry.incumbentFirms)), self.industry)
-            self.periods.append(CrossSectionalData(self.industry))
-
 
