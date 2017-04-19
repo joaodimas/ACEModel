@@ -70,7 +70,7 @@ class Parameters:
     InitialAttractionForNoResearch = 10
     InitialAttractionForInnovation = 10
     InitialAttractionForImitation = 10
-    TimeHorizon = 5000
+    TimeHorizon = 100
     MeanMarketSize = 32
     RateOfChangeInTechEnv = 0.1
     PeriodStartOfTechnologicalShocks = 0

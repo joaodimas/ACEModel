@@ -5,7 +5,7 @@ class PanelData:
 
     def __init__(self, industry):
         self.firms = None
-        self.periods = []
+        self.periods = None
         self.industry = industry
 
     def storeCurrentPeriod(self):
@@ -16,6 +16,9 @@ class PanelData:
                 self.firms = []
                 for firm in self.industry.incumbentFirms:
                     self.firms.append(firm.firmId)
+
+            if self.periods is None:
+                self.periods = []
 
             periodData = []
             for firm in self.industry.incumbentFirms:
