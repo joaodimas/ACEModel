@@ -5,7 +5,6 @@ from model.util.math import Math
 class CrossSectionalData:
 
     def __init__(self, industry):
-        self.parameters = Parameters.getParameters()
         self.industry = industry
         self.period = industry.currentPeriod
         self.addData()
