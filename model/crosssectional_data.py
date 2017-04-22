@@ -36,7 +36,8 @@ class CrossSectionalData:
                     firm.prevOutput,
                     firm.revenues,
                     firm.prevRevenues,
-                    firm.technology.tasks
+                    firm.technology.tasks,
+                    firm.industry.currentOptimalTech.magnitudeOfChange
                 ]
 
     def addData(self):
@@ -75,7 +76,8 @@ class CrossSectionalData:
             "previous_output",
             "revenues",
             "previous_revenues",
-            "technology"
+            "technology",
+            "magtechshock"
         ]
 
     def getFlatData(self):
