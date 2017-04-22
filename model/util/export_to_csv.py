@@ -44,4 +44,8 @@ class ExportToCSV:
         with open(os.path.join(THIS_FOLDER, "../../data/ACEModel."+timestamp.strftime("%Y-%m-%dT%Hh%Mm%Ss")+suffix+".csv"), "w", newline='') as f:
             writer = csv.writer(f, dialect='excel')
             writer.writerows(flatData)
+
+        with open(os.path.join(THIS_FOLDER, "../../data/ACEModel.[LATEST]"+suffix+".csv"), "w", newline='') as f:
+            writer = csv.writer(f, dialect='excel')
+            writer.writerows(flatData)
     

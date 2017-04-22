@@ -234,10 +234,10 @@ class Industry:
 
     def updateAvgProximityToOptTech(self):
         self.totalDistanceOfOptimalTech = 0
-        for firm in self.activeFirms:
+        for firm in self.incumbentFirms:
             self.totalDistanceOfOptimalTech += firm.techDistToOptimal 
             
-        self.averageProximityToOptimalTech = 1 - (self.totalDistanceOfOptimalTech / (len(self.activeFirms) * Parameters.NumberOfTasks))
+        self.averageProximityToOptimalTech = 1 - (self.totalDistanceOfOptimalTech / (len(self.incumbentFirms) * Parameters.NumberOfTasks))
 
     # Herfindahl-Hirschmann Index
     def updateHIndex(self):
