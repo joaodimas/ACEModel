@@ -65,7 +65,8 @@ class Firm :
     def updateProfits(self):
         self.revenues = self.output * self.industry.demand.eqPrice
         self.profits = self.output * (self.industry.demand.eqPrice - self.MC) - Parameters.FixedProductionCost - self.investmentInResearch
-        assert Math.isEquivalent(self.revenues - (self.output * self.MC + Parameters.FixedProductionCost + self.investmentInResearch), self.profits)
+        if not Math.isEquivalent(self.revenues - (self.output * self.MC + Parameters.FixedProductionCost + self.investmentInResearch), self.profits):
+            Logger.info("INCONSISTENT PROFITS: revenues: {:.5f}, output: {:.5f}, MC: {:.5f}, investmentInResearch: {:.5f}", (self.revenues, self.output, self.MC, self.investmentInResearch))
         assert Math.isEquivalent(self.profits, (self.output ** 2 / self.industry.demand.marketSize - Parameters.FixedProductionCost - self.investmentInResearch))
 
         return self.profits

@@ -24,18 +24,26 @@ class Shocks:
             else:
                 Logger.trace("NO TECHNOLOGICAL SHOCK.", industry=industry)
 
+        # Constant growth in the mean market size
+        if hasattr(Parameters, 'PeriodStartOfGrowth') and industry.currentPeriod >= Parameters.PeriodStartOfGrowth:
+            oldMeanMarketSize = industry.demand.meanMarketSize
+            industry.demand.meanMarketSize *= 1 + Parameters.RateOfGrowthInMeanMarketSize
+            industry.demand.marketSize += industry.demand.meanMarketSize - oldMeanMarketSize
+            industry.demand.minMarketSize *= 1 + Parameters.RateOfGrowthInMeanMarketSize
+            industry.demand.whiteNoise *= 1 + Parameters.RateOfGrowthInMeanMarketSize
 
-        # Demand shock: every period starting at (Parameters.PeriodsOfConstantDemand + 1) there is a change in the market size
-        if industry.currentPeriod > Parameters.PeriodsOfConstantDemand:
+
+        # Demand shock: every period starting at (Parameters.PeriodStartOfCycles + 1) there is a change in the market size
+        if industry.currentPeriod >= Parameters.PeriodStartOfCycles:
             if Parameters.TypeOfCycle == CycleType.STOCHASTIC:
                 Logger.trace("STOCHASTIC BUSINESS CYCLE", (industry.simulation, industry.currentPeriod))
                 prevMktSize = industry.demand.marketSize
-                industry.demand.marketSize = max(Parameters.MinMarketSize, (1 - Parameters.RateOfPersistenceInDemand) * Parameters.MeanMarketSize + Parameters.RateOfPersistenceInDemand * industry.demand.marketSize + Random.uniform(-0.5, 0.5))
+                industry.demand.marketSize = max(industry.demand.minMarketSize, (1 - Parameters.RateOfPersistenceInDemand) * industry.demand.meanMarketSize + Parameters.RateOfPersistenceInDemand * industry.demand.marketSize + Random.uniform(-industry.demand.whiteNoise, industry.demand.whiteNoise))
                 Logger.trace("Previous market size: {:.2f}; New market size: {:.2f}", (industry.simulation, industry.currentPeriod, prevMktSize, industry.demand.marketSize))
             elif Parameters.TypeOfCycle == CycleType.DETERMINISTIC:
                 Logger.trace("DETERMINISTIC BUSINESS CYCLE", (industry.simulation, industry.currentPeriod))
                 prevMktSize = industry.demand.marketSize
-                industry.demand.marketSize = Parameters.MeanMarketSize + Parameters.WaveAmplitude * math.sin(math.pi / Parameters.PeriodOfHalfTurn * industry.currentPeriod)
+                industry.demand.marketSize = industry.demand.meanMarketSize + Parameters.WaveAmplitude * math.sin(math.pi / Parameters.PeriodOfHalfTurn * industry.currentPeriod)
                 Logger.trace("Previous market size: {:.2f}; New market size: {:.2f}", (industry.simulation, industry.currentPeriod, prevMktSize, industry.demand.marketSize))
 
         Logger.trace("External shocks: OK!", industry=industry)

@@ -4,6 +4,134 @@
 		"selected_items":
 		[
 			[
+				"mean",
+				"meanMarketSize"
+			],
+			[
+				"re",
+				"revenues\tstatement"
+			],
+			[
+				"PEriodSta",
+				"PeriodStartOfGrowth\tstatement"
+			],
+			[
+				"cur",
+				"currentMeanMarketSize\tstatement"
+			],
+			[
+				"RateOf",
+				"RateOfGrowthInMeanMarketSize\tstatement"
+			],
+			[
+				"get",
+				"getFirmFlatData\tfunction"
+			],
+			[
+				"business",
+				"business_cycles\tmodule"
+			],
+			[
+				"wri",
+				"writeFile\tfunction"
+			],
+			[
+				"Period",
+				"PeriodRangeToSavePanelData"
+			],
+			[
+				"in",
+				"industry\tstatement"
+			],
+			[
+				"att",
+				"attractionForImitation\tstatement"
+			],
+			[
+				"attrac",
+				"attractionForResearch\tstatement"
+			],
+			[
+				"imi",
+				"imitating\tstatement"
+			],
+			[
+				"cros",
+				"crossSectionalData"
+			],
+			[
+				"crossse",
+				"crosssectional_data\tmodule"
+			],
+			[
+				"times",
+				"timestamp\tparam"
+			],
+			[
+				"is",
+				"isEquivalent\tfunction"
+			],
+			[
+				"period",
+				"periodData\tstatement"
+			],
+			[
+				"mark",
+				"marketShare"
+			],
+			[
+				"sum",
+				"sumOfP\tstatement"
+			],
+			[
+				"true",
+				"trueTotalNmbCombs\tstatement"
+			],
+			[
+				"assertEq",
+				"assertEquivalent\tfunction"
+			],
+			[
+				"min",
+				"minDistance\tstatement"
+			],
+			[
+				"max",
+				"maxDistance\tstatement"
+			],
+			[
+				"da",
+				"datetime\tclass"
+			],
+			[
+				"indus",
+				"industry\tstatement"
+			],
+			[
+				"updateSumOf",
+				"updateSumOfActiveSurvivorsMC\tfunction"
+			],
+			[
+				"totalI",
+				"totalInvestmentInImitation\tstatement"
+			],
+			[
+				"totalIn",
+				"totalInvestmentInInnovation\tstatement"
+			],
+			[
+				"append",
+				"appendFakeRandom\tfunction"
+			],
+			[
+				"indu",
+				"industry\tstatement"
+			],
+			[
+				"exp",
+				"expOutput\tstatement"
+			],
+			[
 				"partia",
 				"partial_runSimulation\tstatement"
 			],
@@ -48,10 +176,6 @@
 				"IndustrySimulation"
 			],
 			[
-				"Period",
-				"PeriodOfHalfTurn\tstatement"
-			],
-			[
 				"Atomic",
 				"AtomicCounter\tclass"
 			],
@@ -88,10 +212,6 @@
 				"totalInvestmentInResearch"
 			],
 			[
-				"totalIn",
-				"totalInvestmentInInnovation"
-			],
-			[
 				"Tech",
 				"Technology"
 			],
@@ -120,20 +240,12 @@
 				"averageProximityToOptimalTech"
 			],
 			[
-				"indu",
-				"industry\tparam"
-			],
-			[
 				"activeSurviv",
 				"activeSurvivorsOfPreviousPeriod\tstatement"
 			],
 			[
 				"Imi",
 				"ImitationCost\tstatement"
-			],
-			[
-				"attrac",
-				"attractionForImitation\tstatement"
 			],
 			[
 				"attraction",
@@ -172,10 +284,6 @@
 				"InnovationCost\tstatement"
 			],
 			[
-				"att",
-				"attractionForNoRD\tstatement"
-			],
-			[
 				"attr",
 				"attractionForRD\tstatement"
 			],
@@ -194,10 +302,6 @@
 			[
 				"out",
 				"output"
-			],
-			[
-				"in",
-				"incumbentFirms"
 			],
 			[
 				"incumbe",
@@ -226,10 +330,6 @@
 			[
 				"magni",
 				"magnitudeOfChange"
-			],
-			[
-				"indus",
-				"industryOutput"
 			],
 			[
 				"youn",
@@ -296,10 +396,6 @@
 				"nextPeriodIncumbentFirms\tstatement"
 			],
 			[
-				"exp",
-				"expWealthAfter"
-			],
-			[
 				"potentia",
 				"potentialEntrants\tstatement"
 			],
@@ -310,10 +406,6 @@
 			[
 				"acti",
 				"activeIncumbentFirms\tstatement"
-			],
-			[
-				"sum",
-				"currentSumOfMC\tstatement"
 			],
 			[
 				"class",
@@ -368,10 +460,6 @@
 				"getExpectedEquilibriumPrice\tfunction"
 			],
 			[
-				"cur",
-				"currentSumOfMarginalCosts\tstatement"
-			],
-			[
 				"cu",
 				"currentSumOfMarginalCosts\tstatement"
 			],
@@ -400,10 +488,6 @@
 				"technology\tstatement"
 			],
 			[
-				"get",
-				"generateRandomTechnology\tfunction"
-			],
-			[
 				"nu",
 				"num2"
 			],
@@ -415,6 +499,77 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "model/parameters.py",
+			"settings":
+			{
+				"buffer_size": 4071,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "model/firm.py",
+			"settings":
+			{
+				"buffer_size": 15534,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "model/util/logger.py",
+			"settings":
+			{
+				"buffer_size": 4485,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "model/shocks.py",
+			"settings":
+			{
+				"buffer_size": 3803,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "model/industry.py",
+			"settings":
+			{
+				"buffer_size": 14977,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "model/timeseries_data.py",
+			"settings":
+			{
+				"buffer_size": 6460,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "model/crosssectional_data.py",
+			"settings":
+			{
+				"buffer_size": 3442,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "model/demand.py",
+			"settings":
+			{
+				"buffer_size": 1534,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -455,10 +610,18 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 147.0,
-		"last_filter": "push",
+		"height": 67.0,
+		"last_filter": "enable linting",
 		"selected_items":
 		[
+			[
+				"enable linting",
+				"Anaconda: Enable linting on this file"
+			],
+			[
+				"disable linting",
+				"Anaconda: Disable linting on this file"
+			],
 			[
 				"push",
 				"git: push"
@@ -664,10 +827,44 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/jdimas/GitHub/ACEModel"
+		"/Users/jdimas/GitHub/ACEModel",
+		"/Users/jdimas/GitHub/ACEModel/data",
+		"/Users/jdimas/GitHub/ACEModel/model",
+		"/Users/jdimas/GitHub/ACEModel/model/util",
+		"/Users/jdimas/GitHub/ACEModel/tests"
 	],
 	"file_history":
 	[
+		"/Users/jdimas/Library/Application Support/Alfred 3/Alfred.alfredpreferences/workflows/user.workflow.06A83327-DFCF-42E1-9293-437FF21C4979/info.plist",
+		"/Users/jdimas/Downloads/iCalendar.ics",
+		"/Users/jdimas/GitHub/ACEModel/model/crosssectional_data.py",
+		"/Users/jdimas/GitHub/ACEModel/model/util/export_to_csv.py",
+		"/Users/jdimas/GitHub/ACEModel/model/industry.py",
+		"/Users/jdimas/GitHub/ACEModel/model/parameters.py",
+		"/Users/jdimas/Documents/ProgramasRFB/IRPF2017/TryLock2017.txt",
+		"/Users/jdimas/Google Drive/test.txt",
+		"/Users/jdimas/GitHub/ACEModel/model/test.py",
+		"/Users/jdimas/GitHub/ACEModel/model/shocks.py",
+		"/Users/jdimas/GitHub/ACEModel/model/panel_data.py",
+		"/Users/jdimas/GitHub/ACEModel/simulation.py",
+		"/Users/jdimas/GitHub/ACEModel/model/timeseries_data.py",
+		"/Users/jdimas/GitHub/ACEModel/model/firm.py",
+		"/Users/jdimas/GitHub/ACEModel/model/cycle_type.py",
+		"/Users/jdimas/GitHub/ACEModel/model/util/logger.py",
+		"/Users/jdimas/GitHub/ACEModel/model/business_cycles.py",
+		"/Users/jdimas/GitHub/ACEModel/data/MeanMktSize32/ACEModel.2017-04-19T13h49m07s.params.txt",
+		"/Users/jdimas/GitHub/ACEModel/model/technology.py",
+		"/Users/jdimas/GitHub/ACEModel/UpdateRunCommit.sh",
+		"/Users/jdimas/GitHub/ACEModel/UpdateRunCommitShutdown.sh",
+		"/Users/jdimas/GitHub/ACEModel/UploadResults.sh",
+		"/Users/jdimas/GitHub/ACEModel/model/demand.py",
+		"/Users/jdimas/GitHub/ACEModel/model/aggregate_data.py",
+		"/Users/jdimas/GitHub/ACEModel/model/util/__init__.py",
+		"/Users/jdimas/GitHub/ACEModel/model/__init__.py",
+		"/Users/jdimas/GitHub/ACEModel/tests/test_combinatorics.py",
+		"/Users/jdimas/GitHub/ACEModel/model/util/combinatorics.py",
+		"/Users/jdimas/GitHub/ACEModel/tests/test_technology.py",
+		"/Users/jdimas/GitHub/ACEModel/tests/test_industry.py",
 		"/Users/jdimas/GitHub/ACEModel/data/Chapter 4/500 replications/DIV.gph",
 		"/Users/jdimas/GitHub/ACEModel/WaitingSemaphore.py",
 		"/Users/jdimas/GitHub/ACEModel/Parameters.py",
@@ -765,33 +962,11 @@
 		"/Users/jdimas/Google Drive/APE/LaTeX/HelloWorld.tex",
 		"/Users/jdimas/Google Drive/APE/LaTeX/Sections/section-1.tex",
 		"/Users/jdimas/Google Drive/APE/LaTeX/Sections/fim.tex",
-		"/Users/jdimas/Google Drive/APE/LaTeX/Sections/inicio.tex",
-		"/Users/jdimas/Google Drive/APE/LaTeX/preamble.tex",
-		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/Sections/section-1.tex",
-		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/Sections/section-2.tex",
-		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/preamble.tex",
-		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/Sections/inicio.tex",
-		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/Sections/fim.tex",
-		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/HelloWorld.tex",
-		"/Users/jdimas/Downloads/migas62a73f88b061af13b4949361bc5f46b88b/Modern.Family.2009/SRT/Modern.Family.2e01-TheOldWagon.DVDRip.XviD-REWARD.srt",
-		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/User/LaTeXing.sublime-settings",
-		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/LaTeXing/LaTeXing.sublime-settings",
-		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/section-2.tex",
-		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/section-1.tex",
-		"/Users/jdimas/Google Drive/PSME/Material/Thesis/LaTeX/HelloWorld.sublime-project",
-		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/LatexEquationPreview/Default (OSX).sublime-keymap",
-		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/User/latex_equation_preview.sublime-settings",
-		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/LatexEquationPreview/latex_equation_preview.sublime-settings",
-		"/Users/jdimas/Google Drive/PSME/Material/Thesis/HelloWorld.tex",
-		"/Users/jdimas/Google Drive/PSME/Material/Thesis/HelloWorld",
-		"/Users/jdimas/Library/Application Support/Sublime Text 3/Packages/LaTeXing/LaTeX.sublime-build",
-		"/Users/jdimas/Desktop/secchi.bib",
-		"/Users/jdimas/Downloads/smiles/js/smiles.js",
-		"/Users/jdimas/Google Drive/test.png"
+		"/Users/jdimas/Google Drive/APE/LaTeX/Sections/inicio.tex"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -810,6 +985,41 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"minMarket",
+			"PeriodsOfConstantDemand",
+			"industry.currentMeanMarketSize",
+			"Parameters.MeanMarketSize",
+			"averageProximityToOptimalTech",
+			"NumberOfTasks",
+			"96",
+			"97",
+			"96",
+			"updateMarginalCost",
+			"Parameters.getParameters()",
+			"Cycle.DETERMINISTIC",
+			"Cycle.STOCHASTIC",
+			"from model.business_cycles import Cycle",
+			"PeriodStartOfTechChange",
+			"System",
+			"Parameters.LogLevel",
+			"NumberOfSimulations",
+			"SystemConfig.NumberOfSimulations",
+			"Parameters.",
+			"self.",
+			"toJSON",
+			"self.data",
+			"updateExpWealthAfterThisPeriod",
+			"model.aggregate_data",
+			"AggregateData",
+			"updateWealth",
+			"updateEqPrice",
+			"#assert ",
+			" assert ",
+			"assert",
+			"transformRandomlyWithMaxDistance",
+			"self.",
+			"sumOfPrevIncumbentsMC",
+			"numberOfPrevIncumbents",
 			"threads",
 			"is full",
 			"Waiting result from pipe by processResult()",
@@ -902,42 +1112,7 @@
 			"sumOfActiveSurvivorsMC",
 			"deadFirms",
 			"RD",
-			"\", \"",
-			"\", ",
-			"Previous market size",
-			"getPrice",
-			"InitialMarketSize",
-			"self.logger",
-			" logger.",
-			"logging.getLogger().trace(",
-			"logging.debug(",
-			"logging.info(",
-			"Logger.trace(",
-			"Logger.debug(",
-			"Logger.info(",
-			"file",
-			"info",
-			"Logger.debug",
-			"Logger.",
-			"Logger.log",
-			"debug",
-			"print",
-			"print(",
-			"PROCESSING PERIOD 200",
-			"currentOptimalTech",
-			"NO TECHNO",
-			"technology",
-			"FIRM 4001",
-			"FIRM 4001:",
-			"results of period 100",
-			"processing period 100",
-			"results of period 100:",
-			"period: 100",
-			"previousPeriodIncumbentFirms",
-			"technological shock",
-			"\\n",
-			"\"\\n\"",
-			"\"\\n"
+			"\", \""
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -945,6 +1120,25 @@
 		"regex": false,
 		"replace_history":
 		[
+			"PeriodStartOfCycles",
+			"industry.demand.meanMarketSize",
+			"industry.currentMeanMarketSize",
+			"CycleType.DETERMINISTIC",
+			"CycleType.STOCHASTIC",
+			"from model.cycle_type import CycleType",
+			"PeriodStartOfTechnologicalShocks",
+			"loglevel",
+			"NumberOfIndependentReplications",
+			"Parameters.NumberOfSimulations",
+			"SystemConfig.",
+			"",
+			"self.timeSeriesData",
+			"model.timeseries_data",
+			"TimeSeriesData",
+			"#assert ",
+			"industry.",
+			"trueSumOfPrevIncumbentsMC",
+			"trueNumberOfPrevIncumbents",
 			"processes",
 			"\", \\(industry.simulation, industry.currentPeriod, ",
 			"\", \\(industry.simulation, industry.currentPeriod\\)\\)",
@@ -1028,8 +1222,370 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "model/parameters.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4071,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1192,
+								1192
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"bs_sintax": "python",
+							"buffer_scroll_name": "8bd338c5",
+							"git_savvy.file_path": "/Users/jdimas/GitHub/ACEModel/model/parameters.py",
+							"git_savvy.repo_path": "/Users/jdimas/GitHub/ACEModel",
+							"spell_check": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "model/firm.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15534,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2909,
+								2909
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"bs_sintax": "python",
+							"buffer_scroll_name": "35fbcf2d",
+							"git_savvy.file_path": "/Users/jdimas/GitHub/ACEModel/model/firm.py",
+							"git_savvy.repo_path": "/Users/jdimas/GitHub/ACEModel",
+							"spell_check": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "model/util/logger.py",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 4485,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								253,
+								253
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "python",
+							"buffer_scroll_name": "92130474",
+							"git_savvy.file_path": "/Users/jdimas/GitHub/ACEModel/model/util/logger.py",
+							"git_savvy.repo_path": "/Users/jdimas/GitHub/ACEModel",
+							"spell_check": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "model/shocks.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3803,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								979,
+								1111
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"bs_sintax": "python",
+							"buffer_scroll_name": "a9f8b277",
+							"git_savvy.file_path": "/Users/jdimas/GitHub/ACEModel/model/shocks.py",
+							"git_savvy.repo_path": "/Users/jdimas/GitHub/ACEModel",
+							"spell_check": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 46.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "model/industry.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14977,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14976,
+								14976
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"bs_sintax": "python",
+							"buffer_scroll_name": "ff9ca7e4",
+							"git_savvy.file_path": "/Users/jdimas/GitHub/ACEModel/model/industry.py",
+							"git_savvy.repo_path": "/Users/jdimas/GitHub/ACEModel",
+							"spell_check": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5494.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "model/timeseries_data.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6460,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4041,
+								4041
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"bs_sintax": "python",
+							"buffer_scroll_name": "51bb2e19",
+							"git_savvy.file_path": "/Users/jdimas/GitHub/ACEModel/model/timeseries_data.py",
+							"git_savvy.repo_path": "/Users/jdimas/GitHub/ACEModel",
+							"spell_check": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 94.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "model/crosssectional_data.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3442,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1643,
+								1657
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"bs_sintax": "python",
+							"buffer_scroll_name": "0806374b",
+							"git_savvy.file_path": "/Users/jdimas/GitHub/ACEModel/model/crosssectional_data.py",
+							"git_savvy.repo_path": "/Users/jdimas/GitHub/ACEModel",
+							"spell_check": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 183.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "model/demand.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1534,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								293,
+								293
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"bs_sintax": "python",
+							"buffer_scroll_name": "88f27fae",
+							"git_savvy.file_path": "/Users/jdimas/GitHub/ACEModel/model/demand.py",
+							"git_savvy.repo_path": "/Users/jdimas/GitHub/ACEModel",
+							"spell_check": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1080,11 +1636,11 @@
 	{
 		"height": 112.0
 	},
-	"pinned_build_system": "Packages/User/ACEModel.sublime-build",
+	"pinned_build_system": "Anaconda Python Builder",
 	"project": "ACEModel.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1122,7 +1678,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 317.0,
+	"side_bar_width": 257.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

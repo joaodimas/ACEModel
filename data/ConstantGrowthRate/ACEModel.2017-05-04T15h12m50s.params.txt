@@ -1,0 +1,28 @@
+DemandIntercept: 300
+FixedCostOfImitation: 50
+FixedCostOfInnovation: 100
+FixedProductionCost: 200
+InitialAttractionForImitation: 10
+InitialAttractionForInnovation: 10
+InitialAttractionForNoResearch: 10
+InitialAttractionForResearch: 10
+MaxMagnituteOfChangeInTechEnv: 8
+MeanMarketSize: 4
+MinMarketSize: 0.1
+NumberOfIndependentReplications: 1
+NumberOfPotentialEntrants: 40
+NumberOfTasks: 96
+PeriodRangeToSavePanelData: [2960, 3000]
+PeriodStartOfCycles: 501
+PeriodStartOfGrowth: 2921
+PeriodStartOfTechnologicalShocks: 0
+PeriodsToSaveCrossSectionalData: [2920, 3000]
+RateOfChangeInTechEnv: 0.1
+RateOfGrowthInMeanMarketSize: 0.03
+RateOfPersistenceInDemand: 0.97
+StartupWealth: 0
+ThresholdNetWealthForSurvival: 0
+TimeHorizon: 3000
+TypeOfCycle: CycleType.STOCHASTIC
+WhiteNoise: 0.5
+

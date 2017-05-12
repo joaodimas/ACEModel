@@ -12,6 +12,7 @@ class TimeSeriesData:
         return [
                     "period",
                     "mktsize",
+                    "meanmktsize",
                     "entries",
                     "exits",
                     "surviv",
@@ -44,7 +45,7 @@ class TimeSeriesData:
                     "price",
                     "totoutput",
                     "avgoutput",
-                    "magtechshock"
+                    "magtechshock",
                 ]
 
     def getFlatData(self):
@@ -64,6 +65,7 @@ class PeriodData:
     def __init__(self, industry):
         self.period = industry.currentPeriod
         self.mktsize = industry.demand.marketSize
+        self.meanmktsize = industry.demand.meanMarketSize
         self.entries = industry.nmbEnteringFirms
         self.exits = industry.nmbExitingFirms  
         self.survivorsFromThisPeriod = len(industry.incumbentFirms) - industry.nmbExitingFirms
@@ -102,6 +104,7 @@ class PeriodData:
         return [
                     self.period,
                     self.mktsize,
+                    self.meanmktsize,
                     self.entries,
                     self.exits,
                     self.survivorsFromThisPeriod,

@@ -38,7 +38,9 @@ class CrossSectionalData:
                     firm.prevRevenues,
                     firm.technology.tasks,
                     firm.industry.currentOptimalTech.magnitudeOfChange,
-                    firm.industry.degreeOfTechDiv
+                    firm.industry.degreeOfTechDiv,
+                    firm.industry.demand.marketSize,
+                    firm.industry.demand.meanMarketSize
                 ]
 
     def addData(self):
@@ -79,7 +81,9 @@ class CrossSectionalData:
             "previous_revenues",
             "technology",
             "mag_tech_shock",
-            "deg_tech_div"
+            "deg_tech_div",
+            "mkt_size",
+            "mean_mkt_size"
         ]
 
     def getFlatData(self):

@@ -3,7 +3,10 @@ from model.parameters import Parameters
 class Demand:
 
     def __init__(self, industry):
-        self.marketSize = Parameters.MeanMarketSize
+        self.meanMarketSize = Parameters.MeanMarketSize
+        self.marketSize = self.meanMarketSize
+        self.minMarketSize = Parameters.MinMarketSize
+        self.whiteNoise = Parameters.WhiteNoise
         self.industry = industry
         self.eqPrice = 0
         

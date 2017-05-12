@@ -1,11 +1,11 @@
 clear all
 macro drop _all
 
-global baseName = "ACEModel.2017-04-16T20h10m08s[MEAN][TIMESERIES]"
-global folder = "Chapter_5/500_replications/Time series"
+global baseName = "ACEModel.2017-04-28T10h26m33s[1][TIMESERIES]"
+global folder = "NoFixedCosts/Time-series"
 global firstPeriod = 1
-global lastPeriod = 68
-global xAxisDelta = 10
+global lastPeriod = 500
+global xAxisDelta = 100
 global xAxisBegin = $firstPeriod - 1
 global xAxisEnd = $lastPeriod
 global period = "in $firstPeriod/$lastPeriod"
