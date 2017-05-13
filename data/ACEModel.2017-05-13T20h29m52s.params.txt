@@ -9,7 +9,7 @@ InitialAttractionToResearch: 10
 InitialOptimalTechnologies: 1
 IntervalBeforeAddingNewOptimal: 1000
 MaxMagnituteOfChangeInTechEnv: 8
-MaximumOptimalTechnologies: 1
+MaximumOptimalTechnologies: 5
 MeanMarketSize: 4
 MinMarketSize: 0.1
 NumberOfIndependentReplications: 1
@@ -24,6 +24,6 @@ RateOfPersistenceInDemand: 0.97
 StartupWealth: 0
 ThresholdNetWealthForSurvival: 0
 TimeHorizon: 5000
-TypeOfCycle: CycleType.STOCHASTIC
+TypeOfCycle: CycleType.NONE
 WhiteNoise: 0.5
 

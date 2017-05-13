@@ -1,90 +1,80 @@
 import random
 
 class Random:
- 
-    # Used for testing
-    fakeRandom = None
-    fakeRandInt = None
-    fakeGetRandBits = None
-    fakeSample = None
-    fakeUniform = None
 
-    @classmethod
-    def random(cls):
-        if cls.fakeRandom is not None and len(cls.fakeRandom) > 0:
-            return cls.fakeRandom.pop(0)
+    def __init__(self):
+        # Used for testing
+        self.fakeRandom = None
+        self.fakeRandInt = None
+        self.fakeGetRandBits = None
+        self.fakeSample = None
+        self.fakeUniform = None
+
+    def random(self):
+        if self.fakeRandom is not None and len(self.fakeRandom) > 0:
+            return self.fakeRandom.pop(0)
 
         return random.random()
 
-    @classmethod
-    def randint(cls, min, max):
-        if cls.fakeRandInt is not None and len(cls.fakeRandInt) > 0:
-            return cls.fakeRandInt.pop(0)
+    def randint(self, min, max):
+        if self.fakeRandInt is not None and len(self.fakeRandInt) > 0:
+            return self.fakeRandInt.pop(0)
 
         return random.randint(min, max)
 
-    @classmethod
-    def getrandbits(cls, bits):
-        if cls.fakeGetRandBits is not None and len(cls.fakeGetRandBits) > 0:
-            return cls.fakeGetRandBits.pop(0)
+    def getrandbits(self, bits):
+        if self.fakeGetRandBits is not None and len(self.fakeGetRandBits) > 0:
+            return self.fakeGetRandBits.pop(0)
 
         return random.getrandbits(bits)
 
-    @classmethod
-    def sample(cls, population, k):
-        if cls.fakeSample is not None and len(cls.fakeSample) > 0:
-            return cls.fakeSample.pop(0)
+    def sample(self, population, k):
+        if self.fakeSample is not None and len(self.fakeSample) > 0:
+            return self.fakeSample.pop(0)
         
         return random.sample(population, k)
-
-    @classmethod
-    def uniform(cls, a, b):
-        if cls.fakeUniform is not None and len(cls.fakeUniform) > 0:
-            return cls.fakeUniform.pop(0)
+    
+    def uniform(self, a, b):
+        if self.fakeUniform is not None and len(self.fakeUniform) > 0:
+            return self.fakeUniform.pop(0)
 
         return random.uniform(a, b)
 
-    @classmethod
-    def appendFakeRandom(cls, number):
-        if(cls.fakeRandom is None):
-            cls.fakeRandom = []
-        cls.fakeRandom.append(number)
+    def appendFakeRandom(self, number):
+        if(self.fakeRandom is None):
+            self.fakeRandom = []
+        self.fakeRandom.append(number)
+    
+    def appendFakeRandInt(self, number):
+        if(self.fakeRandInt is None):
+            self.fakeRandInt = []
+        self.fakeRandInt.append(number)
 
-    @classmethod
-    def appendFakeRandInt(cls, number):
-        if(cls.fakeRandInt is None):
-            cls.fakeRandInt = []
-        cls.fakeRandInt.append(number)
+    def appendFakeGetRandBits(self, number):
+        if(self.fakeGetRandBits is None):
+            self.fakeGetRandBits = []
+        self.fakeGetRandBits.append(number)
 
-    @classmethod
-    def appendFakeGetRandBits(cls, number):
-        if(cls.fakeGetRandBits is None):
-            cls.fakeGetRandBits = []
-        cls.fakeGetRandBits.append(number)
+    def appendFakeSample(self, numbers):
+        if(self.fakeSample is None):
+            self.fakeSample = []
+        self.fakeSample.append(list(numbers))
 
-    @classmethod
-    def appendFakeSample(cls, numbers):
-        if(cls.fakeSample is None):
-            cls.fakeSample = []
-        cls.fakeSample.append(list(numbers))
+    def appendFakeUniform(self, number):
+        if(self.fakeUniform is None):
+            self.fakeUniform = []
+        self.fakeUniform.append(number)
 
-    @classmethod
-    def appendFakeUniform(cls, number):
-        if(cls.fakeUniform is None):
-            cls.fakeUniform = []
-        cls.fakeUniform.append(number)
+    def noFakes(self):
+        return  ((self.fakeRandom is None or len(self.fakeRandom) == 0) and
+                (self.fakeRandInt is None or len(self.fakeRandInt) == 0) and
+                (self.fakeGetRandBits is None or len(self.fakeGetRandBits) == 0) and
+                (self.fakeSample is None or len(self.fakeSample) == 0))
 
-    @classmethod
-    def noFakes(cls):
-        return  ((cls.fakeRandom is None or len(cls.fakeRandom) == 0) and
-                (cls.fakeRandInt is None or len(cls.fakeRandInt) == 0) and
-                (cls.fakeGetRandBits is None or len(cls.fakeGetRandBits) == 0) and
-                (cls.fakeSample is None or len(cls.fakeSample) == 0))
-
-    @classmethod
-    def clearAllFakes(cls):
-        cls.fakeRandom = None
-        cls.fakeRandInt = None
-        cls.fakeGetRandBits = None
-        cls.fakeSample = None
-        cls.fakeUniform = None
+    
+    def clearAllFakes(self):
+        self.fakeRandom = None
+        self.fakeRandInt = None
+        self.fakeGetRandBits = None
+        self.fakeSample = None
+        self.fakeUniform = None

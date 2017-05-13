@@ -46,7 +46,7 @@ class TimeSeriesData:
                     "price",
                     "totoutput",
                     "avgoutput",
-                    "magtechshock",
+                    "avgmagtechshock",
                 ]
 
     def getFlatData(self):
@@ -138,7 +138,7 @@ class PeriodData:
                     self.price,
                     self.industryOutput,
                     self.averageOutput,
-                    self.magtechshock
+                    self.avgmagtechshock
                  ]
 
 class MultiTimeSeriesData:

@@ -87,6 +87,7 @@ if __name__ == '__main__':
     aggregateStartTime = time.time()
     Logger.initialize(timestamp, SystemConfig.LogLevel)
     Logger.info(sys.version_info)
+    Parameters.setInitialParameters()
     parameters = describeModelParameters()
     Logger.info(parameters)
     THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))

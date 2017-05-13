@@ -5,7 +5,6 @@ from model.firm import Firm
 from model.exogenous_effects import ExogenousEffects
 from model.technology import Technology
 from model.demand import Demand
-from model.util.random import Random
 from model.util.math import Math
 from model.util.logger import Logger
 from simulation import SystemConfig
@@ -17,7 +16,6 @@ class TestIndustry(unittest.TestCase):
     #  (1) potential entrants are miscalculating expected profits when deciding to enter;
     #  (2) incumbents are miscalculating expected profits when deciding to shutdown;
     def test_ProcessPeriod_entryDecisions_previousIncumbents(self):
-        self.assertTrue(Random.noFakes())
         Parameters.MaximumOptimalTechnologies = 1
         industry = Industry(1)
         industry.nextPeriod()
@@ -27,7 +25,7 @@ class TestIndustry(unittest.TestCase):
         trueNumberOfPrevIncumbents = 13
         trueSumOfPrevIncumbentsMC = 135.416667
         for x in range(trueNumberOfPrevIncumbents):
-            technology = Technology(optTasks)
+            technology = Technology(industry, optTasks)
             for x in range(10):
                 technology = technology.flipTask(x+1)
             firm = Firm(x+1, industry, technology)
@@ -46,16 +44,16 @@ class TestIndustry(unittest.TestCase):
         # Therefore, we expect that only the 23 most efficient firms, from a total of 40, will enter the market.
         industry.nextPeriod()
 
-        Random.appendFakeRandom(1) # Higher than tech change rate => No shock.
+        industry.random.appendFakeRandom(1) # Higher than tech change rate => No shock.
         ExogenousEffects.process(industry)
-        Random.clearAllFakes()
+        industry.random.clearAllFakes()
         
         self.assertEqual(optTasks, industry.currentOptimalTechs[0].tasks) # No shock indeed.
 
         for x in range(trueNumberOfPrevIncumbents): # No firm will perform R&D
-            Random.appendFakeRandom(1)
+            industry.random.appendFakeRandom(1)
         industry.processResearch()
-        Random.clearAllFakes()
+        industry.random.clearAllFakes()
         self.assertEqual(industry.nmbResearching, 0)
         self.assertEqual(industry.nmbImitating, 0)
         self.assertEqual(industry.nmbInnovating, 0)
@@ -72,7 +70,7 @@ class TestIndustry(unittest.TestCase):
         sumOfMC = 0
         sumOfExpOutput = 0
         for x in range(40):
-            firm = Firm(x+101, industry, Technology(optTasks)) # The Ids will start at 101 so they don't repeat with the previous incumbents.
+            firm = Firm(x+101, industry, Technology(industry, optTasks)) # The Ids will start at 101 so they don't repeat with the previous incumbents.
             for t in range(x):
                 firm.technology.flipTask(t+1)
 
@@ -213,7 +211,6 @@ class TestIndustry(unittest.TestCase):
 
 
     def test_ProcessPeriod_entryDecisions_noPreviousIncumbents(self):
-        self.assertTrue(Random.noFakes())
         Parameters.MaximumOptimalTechnologies = 1
         Parameters.TypeOfCycle = None
         Parameters.DemandIntercept = 300
@@ -239,20 +236,18 @@ class TestIndustry(unittest.TestCase):
         sumOfMC = 0
         sumOfExpOutput = 0
 
-        print("Optimal tech:\n{:096b}".format(optTasks))
+        # print("Optimal tech:\n{:096b}".format(optTasks))
 
         for x in range(40):
-            firm = Firm(x+1, industry, Technology(optTasks))
-            print("Firm {:d}".format(firm.firmId))
-            print("Technology before flipping task:\n{:096b}".format(firm.technology.tasks))
+            firm = Firm(x+1, industry, Technology(industry, optTasks))
+            # print("Firm {:d}".format(firm.firmId))
+            # print("Technology before flipping task:\n{:096b}".format(firm.technology.tasks))
             for t in range(x):
-                print("Flipping task {:d}".format(t+1))
+                # print("Flipping task {:d}".format(t+1))
                 firm.technology.flipTask(t+1)
 
-            if x == 0:
-                industry.potentialEntrants.append(firm)
-                firm.decideIfEnters()
-            print("Technology:\n{:096b}".format(firm.technology.tasks))
+            industry.potentialEntrants.append(firm)
+            firm.decideIfEnters()
             #print("Technology:\n{:096b}\nMC:{:.2f}\nExp price:{:.2f}\nExp output:{:.2f}".format(firm.technology.tasks, firm.MC, firm.expPrice, firm.expOutput))
 
             self.assertEqual(industry.sumOfActiveSurvivorsMC, 0)
@@ -267,9 +262,6 @@ class TestIndustry(unittest.TestCase):
             sumOfMC += firm.MC
             sumOfExpOutput += firm.expOutput
             self.assertEqual(firm.techDistToOptimal, x)
-            firm.techDistToOptimal = None
-            if firm.MC == 20:
-                print("Firm {:d} has MC 20".format(firm.firmId))
             self.assertEquivalent(firm.MC, x/96*100)
             self.assertEqual(firm.expPrice, 1/2*(Parameters.DemandIntercept + firm.MC))  
 
@@ -346,7 +338,5 @@ class TestIndustry(unittest.TestCase):
 
     def setUp(self):
         Logger.initialize(datetime.datetime.now(), SystemConfig.LogLevel)
-
-    def tearDown(self):
-        Random.clearAllFakes()
+        Parameters.setInitialParameters()
     

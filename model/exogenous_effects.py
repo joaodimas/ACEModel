@@ -25,7 +25,7 @@ class ExogenousEffects:
         # Technological shock: Every period the optimal technology changes with a probability = Parameters.RateOfChangeInTechEnv.
         # The new optimal will have a maximum hamming distance from previous optimum = Parameters.MaxMagnituteOfChangeInTechEnv.
         if Parameters.PeriodStartOfTechnologicalShocks is not None and industry.currentPeriod >= Parameters.PeriodStartOfTechnologicalShocks:
-            if Random.random() < Parameters.RateOfChangeInTechEnv:
+            if industry.random.random() < Parameters.RateOfChangeInTechEnv:
                 Logger.trace("HIT BY A TECHNOLOGICAL SHOCK!", industry=industry)
                 
                 for tech in industry.currentOptimalTechs:
@@ -65,7 +65,7 @@ class ExogenousEffects:
                 if Parameters.TypeOfCycle == CycleType.STOCHASTIC:
                     Logger.trace("STOCHASTIC BUSINESS CYCLE", (industry.simulationNumber, industry.currentPeriod))
                     prevMktSize = industry.demand.marketSize
-                    industry.demand.marketSize = max(industry.demand.minMarketSize, (1 - Parameters.RateOfPersistenceInDemand) * industry.demand.meanMarketSize + Parameters.RateOfPersistenceInDemand * industry.demand.marketSize + Random.uniform(-industry.demand.whiteNoise, industry.demand.whiteNoise))
+                    industry.demand.marketSize = max(industry.demand.minMarketSize, (1 - Parameters.RateOfPersistenceInDemand) * industry.demand.meanMarketSize + Parameters.RateOfPersistenceInDemand * industry.demand.marketSize + industry.random.uniform(-industry.demand.whiteNoise, industry.demand.whiteNoise))
                     Logger.trace("Previous market size: {:.2f}; New market size: {:.2f}", (industry.simulationNumber, industry.currentPeriod, prevMktSize, industry.demand.marketSize))
                 elif Parameters.TypeOfCycle == CycleType.DETERMINISTIC:
                     Logger.trace("DETERMINISTIC BUSINESS CYCLE", (industry.simulationNumber, industry.currentPeriod))

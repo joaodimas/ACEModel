@@ -1,5 +1,4 @@
 import unittest, datetime
-from model.util.random import Random
 from model.util.logger import Logger
 from model.firm import Firm
 from model.technology import Technology
@@ -16,20 +15,22 @@ class TestDemand(unittest.TestCase):
         Parameters.DemandIntercept = 300
         Parameters.MaximumOptimalTechnologies = 1
         optimalTech = 0b10101
-        Random.appendFakeGetRandBits(optimalTech) # Will be obtained by Industry's constructor to define optimal tech.
         industry = Industry(1)
+        industry.currentOptimalTechs = []
+        industry.random.appendFakeGetRandBits(optimalTech) # Will be obtained by Industry's constructor to define optimal tech.
+        industry.addNewOptimalTech()
         industry.nextPeriod()
         self.assertEqual(industry.currentOptimalTechs[0].tasks, optimalTech)
         
-        firm1 = Firm(1, industry, Technology(0b00000)) # Dist = 3
+        firm1 = Firm(1, industry, Technology(industry=industry, tasks=0b00000)) # Dist = 3
         industry.activeFirms.append(firm1)
         self.assertEqual(firm1.updateMarginalCost(), 60)
 
-        firm2 = Firm(2, industry, Technology(0b10000)) # Dist = 2
+        firm2 = Firm(2, industry, Technology(industry=industry, tasks=0b10000)) # Dist = 2
         self.assertEqual(firm2.updateMarginalCost(), 40)
         industry.activeFirms.append(firm2)
         
-        firm3 = Firm(3, industry, Technology(0b10100)) # Dist = 1
+        firm3 = Firm(3, industry, Technology(industry=industry, tasks=0b10100)) # Dist = 1
         self.assertEqual(firm3.updateMarginalCost(), 20)
         industry.activeFirms.append(firm3)
 
@@ -41,3 +42,4 @@ class TestDemand(unittest.TestCase):
 
     def setUp(self):
         Logger.initialize(datetime.datetime.now(), SystemConfig.LogLevel)
+        Parameters.setInitialParameters()

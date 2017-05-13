@@ -1,5 +1,4 @@
 from enum import Enum
-from model.util.random import Random
 from model.util.logger import Logger
 from model.util.math import Math
 from model.parameters import Parameters
@@ -131,9 +130,9 @@ class Firm :
         # Only consider R&D if we have enough wealth
         if self.wealth >= max(Parameters.FixedCostOfImitation, Parameters.FixedCostOfInnovation):
             # Decide if it will do R&D
-            if(Random.random() < self.getProbToResearch()):
+            if(self.industry.random.random() < self.getProbToResearch()):
                 # Decide if it will innovate
-                if(Random.random() < self.getProbToInnovate()):
+                if(self.industry.random.random() < self.getProbToInnovate()):
                     Logger.trace("[FIRM {:d}] Decided to INNOVATE. Prob of R&D: {:.2f}; Prob of Innovation: {:.2f}.", (self.firmId, self.getProbToResearch(), self.getProbToInnovate()), industry=self.industry)
                     self.investmentInResearch = self.innovate()
                     self.industry.nmbInnovating += 1
@@ -158,7 +157,7 @@ class Firm :
 
     def innovate(self):
         self.innovating = True
-        oldTechnology = Technology(self.technology.tasks)
+        oldTechnology = Technology(self.industry, self.technology.tasks)
         oldMC = self.MC
   
         self.technology.flipRandomTask()
@@ -182,7 +181,7 @@ class Firm :
 
     def imitate(self):
         self.imitating = True
-        oldTechnology = Technology(self.technology.tasks)
+        oldTechnology = Technology(self.industry, self.technology.tasks)
         oldMC = self.MC
 
         Logger.trace("[FIRM {:d}] Selecting a firm to imitage...", (self.firmId), industry=self.industry)
@@ -220,7 +219,7 @@ class Firm :
     # More profitable competitors have a higher likelihood of being observed by this firm.
     # This function uses the Roulette Wheel Algorithm (more info: http://geneticalgorithms.ai-depot.com/Tutorial/Overview.html)
     def selectCompetitorFromRouletteWheel(self):
-        pointInCDF = Random.random()
+        pointInCDF = self.industry.random.random()
         Logger.trace("[FIRM {:d}] Point in CDF: {:.3f}", (self.firmId, pointInCDF), industry=self.industry)
 
         otherFirms = [firm for firm in self.industry.profitableFirmsPrevPeriod if firm.firmId != self.firmId]

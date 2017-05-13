@@ -9,6 +9,7 @@ from model.parameters import Parameters
 from model.exogenous_effects import ExogenousEffects
 from model.firm import FirmStatus
 from model.technology import Technology
+from model.util.random import Random
 
 class Industry:
 
@@ -212,7 +213,7 @@ class Industry:
             firm.updateProfits()
             firm.updateWealth()
             self.industryOutput += firm.output
-            firm.prevTechnology = Technology(firm.technology.tasks)
+            firm.prevTechnology = Technology(self, firm.technology.tasks)
             if(firm.profits > 0):
                 self.nmbProfitableFirms += 1
         Logger.trace("Updating {:d} active firms: OK!", (len(self.activeFirms)), industry=self)
@@ -222,7 +223,7 @@ class Industry:
         for firm in self.inactiveFirms:
             firm.updateProfits()
             firm.updateWealth()
-            firm.prevTechnology = Technology(firm.technology.tasks)
+            firm.prevTechnology = Technology(self, firm.technology.tasks)
         Logger.trace("Updating {:d} inactive firms: OK!", (len(self.inactiveFirms)), industry=self) 
 
     def updateMarketShares(self):
@@ -346,14 +347,14 @@ class Industry:
     def refreshPoolOfPotentialEntrants(self):
         self.potentialEntrants = []
         for x in range(Parameters.NumberOfPotentialEntrants):
-            self.potentialEntrants.append(Firm(self.newFirmId(), self, Technology.generateRandomTechnology()))
+            self.potentialEntrants.append(Firm(self.newFirmId(), self, Technology(industry=self).generateRandomTasks()))
 
     def newFirmId(self):
         self.lastUsedId += 1
         return self.lastUsedId
 
     def addNewOptimalTech(self):
-        self.currentOptimalTechs.append(Technology.generateRandomTechnology(techId=len(self.currentOptimalTechs)+1))
+        self.currentOptimalTechs.append(Technology(industry=self, techId=len(self.currentOptimalTechs)+1).generateRandomTasks())
  
     def __init__(self, simulationNumber):
         self.simulationNumber = simulationNumber
@@ -366,6 +367,7 @@ class Industry:
         self.timeSeriesData = TimeSeriesData(self)
         self.crossSectionalData = MultiCrossSectionalData(self)
         self.panelData = PanelData(self)
+        self.random = Random()
 
         self.currentOptimalTechs = []
         for x in range(Parameters.InitialOptimalTechnologies):

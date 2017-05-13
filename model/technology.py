@@ -1,4 +1,3 @@
-from model.util.random import Random
 from model.util.combinatorics import Combinatorics
 from model.parameters import Parameters
 
@@ -6,15 +5,16 @@ from model.parameters import Parameters
 
 class Technology:
 
-    def __init__(self, tasks, techId=None):
+    def __init__(self, industry, tasks=None, techId=None):
+        self.industry = industry
         self.techId = techId
         self.tasks = tasks
         self.magnitudeOfChange = 0
 
-    @classmethod
-    def generateRandomTechnology(cls, techId=None):
-        tasks = Random.getrandbits(Parameters.NumberOfTasks)
-        return Technology(tasks, techId=techId)
+    def generateRandomTasks(self):
+        self.tasks = self.industry.random.getrandbits(Parameters.NumberOfTasks)
+
+        return self
 
     def calculateHammingDistance(self, otherTechnology):
         return bin(self.tasks ^ otherTechnology.tasks).count('1')
@@ -23,7 +23,7 @@ class Technology:
         return format(self.tasks, '0' + str(Parameters.NumberOfTasks) + 'b')
 
     def changeRandomly(self):
-        selectionPoint = Random.random()
+        selectionPoint = self.industry.random.random()
         self.magnitudeOfChange = self.selectMagnitudeFromUniformDist(selectionPoint)
 
         if self.magnitudeOfChange == 0:
@@ -31,7 +31,7 @@ class Technology:
 
         # Put all tasks in a list to be sorted out randomly
         allTasks = range(1,Parameters.NumberOfTasks)
-        for taskToFlip in Random.sample(allTasks, self.magnitudeOfChange):
+        for taskToFlip in self.industry.random.sample(allTasks, self.magnitudeOfChange):
             self.flipTask(taskToFlip)
 
         return self
@@ -46,7 +46,7 @@ class Technology:
                 return r
 
     def flipRandomTask(self):
-        taskToFlip = Random.randint(1, Parameters.NumberOfTasks)
+        taskToFlip = self.industry.random.randint(1, Parameters.NumberOfTasks)
         self.flipTask(taskToFlip)
 
         return self
@@ -54,8 +54,8 @@ class Technology:
     def flipTask(self, task):
        #assert task <= Parameters.NumberOfTasks
         
-        bitToFlip = Parameters.NumberOfTasks - task
-        mask = 2 ** bitToFlip
+        # bitToFlip = Parameters.NumberOfTasks - task
+        mask = 2 ** (task - 1)
         newTasks = self.tasks ^ mask
 
         self.tasks = newTasks
@@ -64,7 +64,9 @@ class Technology:
         return self
 
     def copyOneRandomTask(self, otherTech):
-        taskToCopy = Random.randint(1, Parameters.NumberOfTasks)
+        assert(self.tasks is not None)
+        assert(otherTech.tasks is not None)
+        taskToCopy = self.industry.random.randint(1, Parameters.NumberOfTasks)
         self.copyTask(otherTech, taskToCopy)
 
         return self
@@ -72,8 +74,8 @@ class Technology:
     def copyTask(self, otherTech, task):
        #assert task <= Parameters.NumberOfTasks
 
-        bitToCopy = Parameters.NumberOfTasks - task
-        mask = 2 ** bitToCopy
+        # bitToCopy = Parameters.NumberOfTasks - task
+        mask = 2 ** (task - 1)
         
         # Example: bitToCopy = 2
         # Mask 1: 00000100
