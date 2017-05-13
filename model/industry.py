@@ -355,8 +355,8 @@ class Industry:
     def addNewOptimalTech(self):
         self.currentOptimalTechs.append(Technology.generateRandomTechnology(techId=len(self.currentOptimalTechs)+1))
  
-    def __init__(self, simulationNumber):
-        self.simulationNumber = simulationNumber
+    def __init__(self, simulation):
+        self.simulation = simulation
         self.lastUsedId = 0
         self.currentPeriod = 0
         self.demand = Demand(self)

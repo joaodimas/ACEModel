@@ -8,7 +8,6 @@ from model.demand import Demand
 from model.util.random import Random
 from model.util.math import Math
 from model.util.logger import Logger
-from model.util.export_to_csv import ExportToCSV
 from simulation import SystemConfig
 
 class TestIndustry(unittest.TestCase):
@@ -159,6 +158,7 @@ class TestIndustry(unittest.TestCase):
             self.assertEqual(firm.profits, -Parameters.FixedProductionCost)
             self.assertEqual(firm.wealth, -Parameters.FixedProductionCost)
 
+        industry.updateMarketShares()
 
         industry.updateWeightedMC()
 
@@ -199,8 +199,6 @@ class TestIndustry(unittest.TestCase):
         self.assertEquivalent(industry.totalProfits, 5195.04920)
         self.assertEqual(industry.nmbExitingFirms, 11) # 11 of the active firms had losses
 
-        industry.data.storeCurrentPeriod()
-
         industry.processFirmsExiting()
 
         for firm in industry.survivorsOfCurrentPeriod:
@@ -209,10 +207,6 @@ class TestIndustry(unittest.TestCase):
         industry.updateSumOfActiveSurvivorsMC()
 
         self.assertEquivalent(industry.sumOfActiveSurvivorsMC, 204.166667)
-
-        industry.updateAgesOfSurvivors()
-
-        ExportToCSV.export(industry.data, self.timestamp, 1)
 
         # All hyphotesis rejected.
 
