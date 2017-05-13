@@ -8,6 +8,14 @@ from simulation import SystemConfig
 
 class TestTechnology(unittest.TestCase):
 
+
+    def test_flipTask(self):
+        self.assertEqual(Parameters.NumberOfTasks, 96)
+        tech = Technology(0)
+        self.assertEqual(tech.tasks, 0)
+        tech.flipTask(1)
+        self.assertEqual(tech.tasks, 1)
+
     def test_copyTask(self):
         techA = Technology(2 ** Parameters.NumberOfTasks - 1)
         for taskToCopy in range(1, Parameters.NumberOfTasks + 1):

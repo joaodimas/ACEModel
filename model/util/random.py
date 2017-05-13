@@ -75,6 +75,13 @@ class Random:
         cls.fakeUniform.append(number)
 
     @classmethod
+    def noFakes(cls):
+        return  ((cls.fakeRandom is None or len(cls.fakeRandom) == 0) and
+                (cls.fakeRandInt is None or len(cls.fakeRandInt) == 0) and
+                (cls.fakeGetRandBits is None or len(cls.fakeGetRandBits) == 0) and
+                (cls.fakeSample is None or len(cls.fakeSample) == 0))
+
+    @classmethod
     def clearAllFakes(cls):
         cls.fakeRandom = None
         cls.fakeRandInt = None

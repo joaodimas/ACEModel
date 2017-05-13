@@ -17,6 +17,7 @@ class TestIndustry(unittest.TestCase):
     #  (1) potential entrants are miscalculating expected profits when deciding to enter;
     #  (2) incumbents are miscalculating expected profits when deciding to shutdown;
     def test_ProcessPeriod_entryDecisions_previousIncumbents(self):
+        self.assertTrue(Random.noFakes())
         Parameters.MaximumOptimalTechnologies = 1
         industry = Industry(1)
         industry.nextPeriod()
@@ -212,13 +213,18 @@ class TestIndustry(unittest.TestCase):
 
 
     def test_ProcessPeriod_entryDecisions_noPreviousIncumbents(self):
+        self.assertTrue(Random.noFakes())
         Parameters.MaximumOptimalTechnologies = 1
+        Parameters.TypeOfCycle = None
+        Parameters.DemandIntercept = 300
+        Parameters.PeriodStartOfTechnologicalShocks = 99999
         industry = Industry(1)
+        industry.currentOptimalTechs[0].tasks = 0
         optTasks = industry.currentOptimalTechs[0].tasks
         industry.nextPeriod()
 
-        Random.appendFakeRandom(1) # Higher than tech change rate => No shock.
         ExogenousEffects.process(industry)
+        self.assertEqual(industry.demand.marketSize, 4) # No business cycles
         self.assertEqual(optTasks, industry.currentOptimalTechs[0].tasks) # No shock indeed.
         self.assertEqual(len(industry.survivorsOfPreviousPeriod), 0) # No firm yet.
 
@@ -232,19 +238,41 @@ class TestIndustry(unittest.TestCase):
 
         sumOfMC = 0
         sumOfExpOutput = 0
+
+        print("Optimal tech:\n{:096b}".format(optTasks))
+
         for x in range(40):
             firm = Firm(x+1, industry, Technology(optTasks))
+            print("Firm {:d}".format(firm.firmId))
+            print("Technology before flipping task:\n{:096b}".format(firm.technology.tasks))
             for t in range(x):
+                print("Flipping task {:d}".format(t+1))
                 firm.technology.flipTask(t+1)
 
-            industry.potentialEntrants.append(firm)
-            firm.decideIfEnters()
+            if x == 0:
+                industry.potentialEntrants.append(firm)
+                firm.decideIfEnters()
+            print("Technology:\n{:096b}".format(firm.technology.tasks))
+            #print("Technology:\n{:096b}\nMC:{:.2f}\nExp price:{:.2f}\nExp output:{:.2f}".format(firm.technology.tasks, firm.MC, firm.expPrice, firm.expOutput))
+
+            self.assertEqual(industry.sumOfActiveSurvivorsMC, 0)
+            self.assertEqual(len(industry.activeSurvivorsOfPreviousPeriod), 0)
+            self.assertEqual(firm.expPrice, (300 + firm.MC)/2)
+            if firm.firmId is 1: 
+                self.assertEquivalent(firm.MC, 0)
+                self.assertEquivalent(firm.expPrice, 150)
+                self.assertEquivalent(firm.expOutput, 600)
+            
+            self.assertTrue(firm.entering)
             sumOfMC += firm.MC
             sumOfExpOutput += firm.expOutput
             self.assertEqual(firm.techDistToOptimal, x)
             firm.techDistToOptimal = None
+            if firm.MC == 20:
+                print("Firm {:d} has MC 20".format(firm.firmId))
             self.assertEquivalent(firm.MC, x/96*100)
             self.assertEqual(firm.expPrice, 1/2*(Parameters.DemandIntercept + firm.MC))  
+
             self.assertEqual(firm.expPrice, Demand.calculatePrice(1, Parameters.DemandIntercept, firm.MC))
             self.assertEquivalent(firm.expOutput, industry.demand.marketSize*(1/(1+1)*(Parameters.DemandIntercept+firm.MC)-firm.MC))
             self.assertEquivalent(firm.expOutput, Demand.calculateFirmOutput(industry.demand.marketSize, 1, Parameters.DemandIntercept, firm.MC, firm.MC))
@@ -259,6 +287,7 @@ class TestIndustry(unittest.TestCase):
             firm.expWealth = None
 
         self.assertEquivalent(sumOfMC, 812.50000)
+        self.assertEquivalent(len(industry.currentOptimalTechs), 1)
         self.assertEquivalent(sumOfExpOutput, 22375.00000)
         self.assertEquivalent(Demand.calculatePrice(40, Parameters.DemandIntercept, sumOfMC), 27.13414)
         
@@ -317,4 +346,7 @@ class TestIndustry(unittest.TestCase):
 
     def setUp(self):
         Logger.initialize(datetime.datetime.now(), SystemConfig.LogLevel)
+
+    def tearDown(self):
+        Random.clearAllFakes()
     

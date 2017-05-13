@@ -60,14 +60,15 @@ class ExogenousEffects:
     @classmethod
     def businessCycle(cls, industry):
         # Demand shock: every period starting at (Parameters.PeriodStartOfCycles + 1) there is a change in the market size
-        if industry.currentPeriod >= Parameters.PeriodStartOfCycles:
-            if Parameters.TypeOfCycle == CycleType.STOCHASTIC:
-                Logger.trace("STOCHASTIC BUSINESS CYCLE", (industry.simulationNumber, industry.currentPeriod))
-                prevMktSize = industry.demand.marketSize
-                industry.demand.marketSize = max(industry.demand.minMarketSize, (1 - Parameters.RateOfPersistenceInDemand) * industry.demand.meanMarketSize + Parameters.RateOfPersistenceInDemand * industry.demand.marketSize + Random.uniform(-industry.demand.whiteNoise, industry.demand.whiteNoise))
-                Logger.trace("Previous market size: {:.2f}; New market size: {:.2f}", (industry.simulationNumber, industry.currentPeriod, prevMktSize, industry.demand.marketSize))
-            elif Parameters.TypeOfCycle == CycleType.DETERMINISTIC:
-                Logger.trace("DETERMINISTIC BUSINESS CYCLE", (industry.simulationNumber, industry.currentPeriod))
-                prevMktSize = industry.demand.marketSize
-                industry.demand.marketSize = industry.demand.meanMarketSize + Parameters.WaveAmplitude * math.sin(math.pi / Parameters.PeriodOfHalfTurn * industry.currentPeriod)
-                Logger.trace("Previous market size: {:.2f}; New market size: {:.2f}", (industry.simulationNumber, industry.currentPeriod, prevMktSize, industry.demand.marketSize))
+        if hasattr(Parameters, 'TypeOfCycle'):
+            if industry.currentPeriod >= Parameters.PeriodStartOfCycles:
+                if Parameters.TypeOfCycle == CycleType.STOCHASTIC:
+                    Logger.trace("STOCHASTIC BUSINESS CYCLE", (industry.simulationNumber, industry.currentPeriod))
+                    prevMktSize = industry.demand.marketSize
+                    industry.demand.marketSize = max(industry.demand.minMarketSize, (1 - Parameters.RateOfPersistenceInDemand) * industry.demand.meanMarketSize + Parameters.RateOfPersistenceInDemand * industry.demand.marketSize + Random.uniform(-industry.demand.whiteNoise, industry.demand.whiteNoise))
+                    Logger.trace("Previous market size: {:.2f}; New market size: {:.2f}", (industry.simulationNumber, industry.currentPeriod, prevMktSize, industry.demand.marketSize))
+                elif Parameters.TypeOfCycle == CycleType.DETERMINISTIC:
+                    Logger.trace("DETERMINISTIC BUSINESS CYCLE", (industry.simulationNumber, industry.currentPeriod))
+                    prevMktSize = industry.demand.marketSize
+                    industry.demand.marketSize = industry.demand.meanMarketSize + Parameters.WaveAmplitude * math.sin(math.pi / Parameters.PeriodOfHalfTurn * industry.currentPeriod)
+                    Logger.trace("Previous market size: {:.2f}; New market size: {:.2f}", (industry.simulationNumber, industry.currentPeriod, prevMktSize, industry.demand.marketSize))

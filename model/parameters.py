@@ -29,7 +29,7 @@ class Parameters:
     RateOfChangeInTechEnv = 0.1
     PeriodStartOfTechnologicalShocks = 0
     MaxMagnituteOfChangeInTechEnv = 8
-    TypeOfCycle = CycleType.STOCHASTIC  # <----------- NO BUSINESS CYCLES
+    TypeOfCycle = CycleType.NONE  # <----------- NO BUSINESS CYCLES
     PeriodStartOfCycles = 0
     MinMarketSize = 0.1
     RateOfPersistenceInDemand = 0.97
