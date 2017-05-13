@@ -1,4 +1,3 @@
-import itertools
 from model.util.random import Random
 from model.util.combinatorics import Combinatorics
 from model.parameters import Parameters
@@ -7,14 +6,15 @@ from model.parameters import Parameters
 
 class Technology:
 
-    def __init__(self, tasks):
+    def __init__(self, tasks, techId=None):
+        self.techId = techId
         self.tasks = tasks
         self.magnitudeOfChange = 0
 
     @classmethod
-    def generateRandomTechnology(cls):
+    def generateRandomTechnology(cls, techId=None):
         tasks = Random.getrandbits(Parameters.NumberOfTasks)
-        return Technology(tasks)
+        return Technology(tasks, techId=techId)
 
     def calculateHammingDistance(self, otherTechnology):
         return bin(self.tasks ^ otherTechnology.tasks).count('1')

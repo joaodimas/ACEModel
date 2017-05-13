@@ -28,7 +28,7 @@ def runSimulation(index, timestamp):
         Logger.info("[SIM {:03d}] STARTING SIMULATION", number)
         simulationStartTime = time.time()
 
-        industry = Industry(number, timestamp)
+        industry = Industry(number)
 
         # Simulate
         for p in range(Parameters.TimeHorizon):

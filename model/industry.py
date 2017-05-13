@@ -6,7 +6,7 @@ from model.timeseries_data import TimeSeriesData
 from model.crosssectional_data import MultiCrossSectionalData
 from model.panel_data import PanelData
 from model.parameters import Parameters
-from model.shocks import Shocks
+from model.exogenous_effects import ExogenousEffects
 from model.firm import FirmStatus
 from model.technology import Technology
 
@@ -22,8 +22,8 @@ class Industry:
         Logger.trace("", industry=self)
         Logger.info("--------------------- PROCESSING PERIOD ---------------------", industry=self)
         
-        # Process all external shocks that were added to the file Shocks.py.
-        Shocks.processShocks(self)
+        # Process all external shocks that were added to the file ExogenousEffects.py.
+        ExogenousEffects.process(self)
 
         self.storeFirmsPrevData()
 
@@ -110,7 +110,10 @@ class Industry:
         self.nmbEnteringFirms = 0
         self.nmbExitingFirms = 0
         self.nmbProfitableFirms = 0
-        self.currentOptimalTech.magnitudeOfChange = 0
+
+        for tech in self.currentOptimalTechs:
+            tech.magnitudeOfChange = 0
+            
         self.clearFirmsStatus()
         self.refreshPoolOfPotentialEntrants()
 
@@ -348,10 +351,12 @@ class Industry:
     def newFirmId(self):
         self.lastUsedId += 1
         return self.lastUsedId
+
+    def addNewOptimalTech(self):
+        self.currentOptimalTechs.append(Technology.generateRandomTechnology(techId=len(self.currentOptimalTechs)+1))
  
-    def __init__(self, simulation, timestamp):
-        self.simulation = simulation
-        self.timestamp = timestamp
+    def __init__(self, simulationNumber):
+        self.simulationNumber = simulationNumber
         self.lastUsedId = 0
         self.currentPeriod = 0
         self.demand = Demand(self)
@@ -361,4 +366,7 @@ class Industry:
         self.timeSeriesData = TimeSeriesData(self)
         self.crossSectionalData = MultiCrossSectionalData(self)
         self.panelData = PanelData(self)
-        self.currentOptimalTech = Technology.generateRandomTechnology()
+
+        self.currentOptimalTechs = []
+        for x in range(Parameters.InitialOptimalTechnologies):
+            self.addNewOptimalTech()

@@ -1,3 +1,4 @@
+from functools import reduce
 from model.parameters import Parameters
 from model.util.logger import Logger
 from model.util.math import Math
@@ -17,6 +18,7 @@ class CrossSectionalData:
                     firm.age,
                     firm.status.value,
                     firm.industry.demand.eqPrice,
+                    firm.closerTech.techId,
                     1 - (firm.techDistToOptimal / Parameters.NumberOfTasks),
                     firm.MC,
                     firm.marketShare,
@@ -24,10 +26,10 @@ class CrossSectionalData:
                     1 if firm.innovating or firm.imitating else 0,
                     1 if firm.innovating else 0,
                     1 if firm.imitating else 0,
-                    firm.attractionForResearch,
-                    firm.attractionForNoResearch,
-                    firm.attractionForInnovation,
-                    firm.attractionForImitation,
+                    firm.attractionToResearch,
+                    firm.attractionToNotResearch,
+                    firm.attractionToInnovate,
+                    firm.attractionToImitate,
                     firm.wealth,
                     firm.prevWealth,
                     firm.profits,
@@ -37,7 +39,7 @@ class CrossSectionalData:
                     firm.revenues,
                     firm.prevRevenues,
                     firm.technology.tasks,
-                    firm.industry.currentOptimalTech.magnitudeOfChange,
+                    sum([tech.magnitudeOfChange for tech in firm.industry.currentOptimalTechs]) / len(firm.industry.currentOptimalTechs),
                     firm.industry.degreeOfTechDiv,
                     firm.industry.demand.marketSize,
                     firm.industry.demand.meanMarketSize
@@ -60,6 +62,7 @@ class CrossSectionalData:
             "age",
             "status",
             "price",
+            "closer_tech",
             "prox_opt_tech",
             "mc",
             "mkt_share",
@@ -68,7 +71,7 @@ class CrossSectionalData:
             "innovating",
             "imitating",
             "attraction_res",
-            "attraction_no_res",
+            "attraction_not_res",
             "attraction_inn",
             "attraction_imi",
             "wealth",

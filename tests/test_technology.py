@@ -4,6 +4,7 @@ from model.util.random import Random
 from model.util.combinatorics import Combinatorics
 from model.technology import Technology
 from model.parameters import Parameters
+from simulation import SystemConfig
 
 class TestTechnology(unittest.TestCase):
 
@@ -109,5 +110,4 @@ class TestTechnology(unittest.TestCase):
         Parameters.MaxMagnituteOfChangeInTechEnv = oldMaxMagnitudeOfTechChange
 
     def setUp(self):
-        timestamp = datetime.datetime.now()
-        Logger.initialize(timestamp)
+        Logger.initialize(datetime.datetime.now(), SystemConfig.LogLevel)

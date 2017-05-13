@@ -1,5 +1,4 @@
 import logging, os, numbers
-from model.parameters import Parameters
 
 class Logger:
 
@@ -33,11 +32,11 @@ class Logger:
         if(industry != None):
             message = "[SIM {:03d}][PERIOD {:04d}] " + message
             if(isinstance(args, tuple)):
-                args = (industry.simulation, industry.currentPeriod) + args
+                args = (industry.simulationNumber, industry.currentPeriod) + args
             elif(args != None):
-                args = (industry.simulation, industry.currentPeriod, args)
+                args = (industry.simulationNumber, industry.currentPeriod, args)
             else:
-                args = (industry.simulation, industry.currentPeriod)
+                args = (industry.simulationNumber, industry.currentPeriod)
         if(isinstance(args, tuple)):
             message = message.format(*args)
         elif(isinstance(args, numbers.Number)):

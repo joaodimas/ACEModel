@@ -5,6 +5,7 @@ from model.firm import Firm
 from model.technology import Technology
 from model.industry import Industry
 from model.parameters import Parameters
+from simulation import SystemConfig
 
 class TestDemand(unittest.TestCase):
 
@@ -13,11 +14,12 @@ class TestDemand(unittest.TestCase):
         # q = s * ((1 / (m + 1)) * (a + sumOfMC) - c)
         Parameters.NumberOfTasks = 5
         Parameters.DemandIntercept = 300
+        Parameters.MaximumOptimalTechnologies = 1
         optimalTech = 0b10101
         Random.appendFakeGetRandBits(optimalTech) # Will be obtained by Industry's constructor to define optimal tech.
         industry = Industry(1)
         industry.nextPeriod()
-        self.assertEqual(industry.currentOptimalTech.tasks, optimalTech)
+        self.assertEqual(industry.currentOptimalTechs[0].tasks, optimalTech)
         
         firm1 = Firm(1, industry, Technology(0b00000)) # Dist = 3
         industry.activeFirms.append(firm1)
@@ -38,5 +40,4 @@ class TestDemand(unittest.TestCase):
         self.assertEqual(industry.demand.eqPrice, 105)
 
     def setUp(self):
-        timestamp = datetime.datetime.now()
-        Logger.initialize(timestamp)
+        Logger.initialize(datetime.datetime.now(), SystemConfig.LogLevel)

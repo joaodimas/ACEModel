@@ -1,3 +1,4 @@
+from functools import reduce
 from model.parameters import Parameters
 
 class TimeSeriesData:
@@ -98,7 +99,7 @@ class PeriodData:
         self.price = industry.demand.eqPrice
         self.industryOutput = industry.industryOutput
         self.averageOutput = self.industryOutput / self.activeIncumbents if self.activeIncumbents != 0 else 0
-        self.magtechshock = industry.currentOptimalTech.magnitudeOfChange
+        self.avgmagtechshock = sum([tech.magnitudeOfChange for tech in industry.currentOptimalTechs]) / len(industry.currentOptimalTechs)
 
     def getFlatData(self):
         return [

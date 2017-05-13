@@ -4,8 +4,8 @@ class Parameters:
 
     # MODEL PARAMETERS
     NumberOfIndependentReplications = 1 # Number of independent replications. A dataset with the means for each period and variable will be saved.
-    PeriodsToSaveCrossSectionalData = [2920, 3000]
-    PeriodRangeToSavePanelData = [2960, 3000]
+    PeriodsToSaveCrossSectionalData = [5000]
+    PeriodRangeToSavePanelData = [4960, 5000]
 
 
     # ---------------- TESTS -----------------------
@@ -18,22 +18,26 @@ class Parameters:
     FixedProductionCost = 200
     FixedCostOfInnovation = 100
     FixedCostOfImitation = 50
-    InitialAttractionForResearch = 10
-    InitialAttractionForNoResearch = 10
-    InitialAttractionForInnovation = 10
-    InitialAttractionForImitation = 10
-    TimeHorizon = 3000
+    InitialAttractionToResearch = 10
+    InitialAttractionToNotResearch = 10
+    InitialAttractionToInnovate = 10
+    InitialAttractionToImitate = 10
+    TimeHorizon = 5000
     MeanMarketSize = 4
-    RateOfGrowthInMeanMarketSize = 0.03
-    PeriodStartOfGrowth = 2921
+    #RateOfGrowthInMeanMarketSize = 0
+    #PeriodStartOfGrowth = 2921
     RateOfChangeInTechEnv = 0.1
     PeriodStartOfTechnologicalShocks = 0
     MaxMagnituteOfChangeInTechEnv = 8
     TypeOfCycle = CycleType.STOCHASTIC  # <----------- NO BUSINESS CYCLES
-    PeriodStartOfCycles = 501
+    PeriodStartOfCycles = 0
     MinMarketSize = 0.1
     RateOfPersistenceInDemand = 0.97
     WhiteNoise = 0.5
+
+    MaximumOptimalTechnologies = 1
+    InitialOptimalTechnologies = 1
+    IntervalBeforeAddingNewOptimal = 1000
     # 
     # ------------------------------------------------------------------
 
@@ -48,10 +52,10 @@ class Parameters:
     # FixedProductionCost = 200
     # FixedCostOfInnovation = 100
     # FixedCostOfImitation = 50
-    # InitialAttractionForResearch = 10
-    # InitialAttractionForNoResearch = 10
-    # InitialAttractionForInnovation = 10
-    # InitialAttractionForImitation = 10
+    # InitialAttractionToResearch = 10
+    # InitialAttractionToNotResearch = 10
+    # InitialAttractionToInnovate = 10
+    # InitialAttractionToImitate = 10
     # TimeHorizon = 5000
     # MeanMarketSize = 4
     # RateOfChangeInTechEnv = 0.1
@@ -76,10 +80,10 @@ class Parameters:
     # FixedProductionCost = 200
     # FixedCostOfInnovation = 100
     # FixedCostOfImitation = 50
-    # InitialAttractionForResearch = 10
-    # InitialAttractionForNoResearch = 10
-    # InitialAttractionForInnovation = 10
-    # InitialAttractionForImitation = 10
+    # InitialAttractionToResearch = 10
+    # InitialAttractionToNotResearch = 10
+    # InitialAttractionToInnovate = 10
+    # InitialAttractionToImitate = 10
     # TimeHorizon = 5000
     # MeanMarketSize = 4
     # PeriodStartOfTechnologicalShocks = None    # <----------- NO TECH CHANGE
@@ -99,10 +103,10 @@ class Parameters:
     # FixedProductionCost = 200
     # FixedCostOfInnovation = 100
     # FixedCostOfImitation = 50
-    # InitialAttractionForResearch = 10
-    # InitialAttractionForNoResearch = 10
-    # InitialAttractionForInnovation = 10
-    # InitialAttractionForImitation = 10
+    # InitialAttractionToResearch = 10
+    # InitialAttractionToNotResearch = 10
+    # InitialAttractionToInnovate = 10
+    # InitialAttractionToImitate = 10
     # TimeHorizon = 5000
     # MeanMarketSize = 4
     # RateOfChangeInTechEnv = 0.1

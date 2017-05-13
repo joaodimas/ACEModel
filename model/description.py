@@ -24,7 +24,7 @@ class Description:
         Logger.debug("Exiting firms after this period: {:d}", (industry.nmbExitingFirms), industry=industry)
         Logger.debug("Survivors after this period: {:d}", (len(industry.incumbentFirms) - industry.nmbExitingFirms), industry=industry)
         Logger.debug("Weighted marginal cost: {:.2f}", (industry.weightedMC), industry=industry)
-        Logger.debug("Average proximity to optimal tech: {:.2%}", (1 - (industry.sumOfActiveFirmsMC / len(industry.activeFirms) / 100) if len(industry.activeFirms) != 0 else 0), industry=industry)
+        Logger.debug("Average proximity to optimal tech: {:.2%}", (industry.averageProximityToOptimalTech), industry=industry)
         Logger.debug("DIV: {:.2f}", (industry.degreeOfTechDiv), industry=industry)
         Logger.debug("Price: {:.2f}", (industry.demand.eqPrice), industry=industry)
         Logger.debug("Total investment in R&D: {:.2f}", (industry.totalInvestmentInResearch), industry=industry)
@@ -36,6 +36,9 @@ class Description:
         Logger.debug("Market size: {:.2f}", (industry.demand.marketSize), industry=industry)
         Logger.debug("Industry output: {:.2f}", (industry.industryOutput), industry=industry)
         Logger.debug("Average output: {:.2f}", (industry.industryOutput / len(industry.activeFirms) if len(industry.activeFirms) != 0 else 0), industry=industry)
+        Logger.debug("Average magnitude of technological shock: {:.2f}", (sum([tech.magnitudeOfChange for tech in industry.currentOptimalTechs]) / len(industry.currentOptimalTechs)), industry=industry)
+        for tech in industry.currentOptimalTechs:
+            Logger.debug("Magnitude of shock in Tech {:d}: {:d}", (tech), industry=industry)
 
     @classmethod
     def describeActiveIncumbentFirms(cls, industry):
@@ -63,6 +66,7 @@ class Description:
         Logger.trace("Status after this period: {}", (firm.status.name), industry=firm.industry)
         Logger.trace("Wealth before this period: {:.2f}", (firm.prevWealth), industry=firm.industry)
         Logger.trace("Wealth after this period: {:.2f}", (firm.wealth), industry=firm.industry)
+        Logger.trace("Closer technology: {:.2f}", (firm.closerTech.techId), industry=firm.industry)
         Logger.trace("Hamming dist. to optimal: {:d}", (firm.techDistToOptimal), industry=firm.industry)
         Logger.trace("Proximity to optimal: {:.2%}", (1 - (firm.techDistToOptimal / Parameters.NumberOfTasks)), industry=firm.industry)
         Logger.trace("MC: {:.2f}", (firm.MC), industry=firm.industry)
@@ -73,3 +77,7 @@ class Description:
         Logger.trace("PCM: {:.2f}", ((firm.industry.demand.eqPrice - firm.MC) / firm.industry.demand.eqPrice), industry=firm.industry)
         Logger.trace("Expected profits in this period: {:.2f}", (firm.expProfits), industry=firm.industry)
         Logger.trace("Expected wealth after this period: {:.2f}", (firm.prevWealth + firm.expProfits), industry=firm.industry)
+        Logger.trace("Attraction to research: {:d}", (firm.attractionToResearch), industry=firm.industry)
+        Logger.trace("Attraction to not research: {:d}", (firm.attractionToNotResearch), industry=firm.industry)
+        Logger.trace("Attraction to innovate: {:d}", (firm.attractionToInnovate), industry=firm.industry)
+        Logger.trace("Attraction to imitate: {:d}", (firm.attractionToImitate), industry=firm.industry)

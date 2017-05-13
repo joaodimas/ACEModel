@@ -2,13 +2,14 @@ import unittest, datetime
 from model.industry import Industry
 from model.parameters import Parameters
 from model.firm import Firm
-from model.shocks import Shocks
+from model.exogenous_effects import ExogenousEffects
 from model.technology import Technology
 from model.demand import Demand
 from model.util.random import Random
 from model.util.math import Math
 from model.util.logger import Logger
 from model.util.export_to_csv import ExportToCSV
+from simulation import SystemConfig
 
 class TestIndustry(unittest.TestCase):
 
@@ -17,9 +18,10 @@ class TestIndustry(unittest.TestCase):
     #  (1) potential entrants are miscalculating expected profits when deciding to enter;
     #  (2) incumbents are miscalculating expected profits when deciding to shutdown;
     def test_ProcessPeriod_entryDecisions_previousIncumbents(self):
+        Parameters.MaximumOptimalTechnologies = 1
         industry = Industry(1)
         industry.nextPeriod()
-        optTasks = industry.currentOptimalTech.tasks
+        optTasks = industry.currentOptimalTechs[0].tasks
 
         prevIncumbentsMC = 100*10/96
         trueNumberOfPrevIncumbents = 13
@@ -45,10 +47,10 @@ class TestIndustry(unittest.TestCase):
         industry.nextPeriod()
 
         Random.appendFakeRandom(1) # Higher than tech change rate => No shock.
-        Shocks.processShocks(industry)
+        ExogenousEffects.process(industry)
         Random.clearAllFakes()
         
-        self.assertEqual(optTasks, industry.currentOptimalTech.tasks) # No shock indeed.
+        self.assertEqual(optTasks, industry.currentOptimalTechs[0].tasks) # No shock indeed.
 
         for x in range(trueNumberOfPrevIncumbents): # No firm will perform R&D
             Random.appendFakeRandom(1)
@@ -216,13 +218,14 @@ class TestIndustry(unittest.TestCase):
 
 
     def test_ProcessPeriod_entryDecisions_noPreviousIncumbents(self):
+        Parameters.MaximumOptimalTechnologies = 1
         industry = Industry(1)
-        optTasks = industry.currentOptimalTech.tasks
+        optTasks = industry.currentOptimalTechs[0].tasks
         industry.nextPeriod()
 
         Random.appendFakeRandom(1) # Higher than tech change rate => No shock.
-        Shocks.processShocks(industry)
-        self.assertEqual(optTasks, industry.currentOptimalTech.tasks) # No shock indeed.
+        ExogenousEffects.process(industry)
+        self.assertEqual(optTasks, industry.currentOptimalTechs[0].tasks) # No shock indeed.
         self.assertEqual(len(industry.survivorsOfPreviousPeriod), 0) # No firm yet.
 
         industry.processResearch()
@@ -319,6 +322,5 @@ class TestIndustry(unittest.TestCase):
         self.assertTrue(Math.isEquivalent(a, b), msg='{0}, {1}'.format(a, b))
 
     def setUp(self):
-        self.timestamp = datetime.datetime.now()
-        Logger.initialize(self.timestamp)
+        Logger.initialize(datetime.datetime.now(), SystemConfig.LogLevel)
     

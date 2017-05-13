@@ -9,6 +9,7 @@ from model.technology import Technology
 from model.parameters import Parameters
 from model.util.random import Random
 from model.util.logger import Logger
+from simulation import SystemConfig
 
 class TestFirm(unittest.TestCase):
 
@@ -41,11 +42,12 @@ class TestFirm(unittest.TestCase):
         # Firm (self, firmId, industry, technology)
         Parameters.NumberOfTasks = 5
         Parameters.MeanMarketSize = 4
+        Parameters.MaximumOptimalTechnologies = 1
         optimalTech = 0b10101
         Random.appendFakeGetRandBits(optimalTech) # Will be obtained by Industry's constructor to define optimal tech.
         industry = Industry(1)
         industry.nextPeriod()
-        self.assertEqual(industry.currentOptimalTech.tasks, optimalTech)
+        self.assertEqual(industry.currentOptimalTechs[0].tasks, optimalTech)
         
         firm1 = Firm(1, industry, Technology(0b00000)) # Dist = 3
         self.assertEqual(firm1.updateMarginalCost(), 60)
@@ -100,13 +102,15 @@ class TestFirm(unittest.TestCase):
         firmA = Firm(numberOfOtherCompetitors+1, industry, Technology.generateRandomTechnology())
         industry.profitableFirmsPrevPeriod.append(firmA)
 
+        Random.clearAllFakes()
         for competitorToBeSelected in range(1, numberOfOtherCompetitors+1):
             pointInCDFBefore = 100 * (competitorToBeSelected) * (competitorToBeSelected - 1) / 2 / sumOfProfits
             pointInCDFAfter = 100 * (competitorToBeSelected + 1) * competitorToBeSelected / 2 / sumOfProfits
             middlePoint = (pointInCDFAfter + pointInCDFBefore) / 2
-            firmB = firmA.selectCompetitorFromRouletteWheel(middlePoint)
+            Random.appendFakeRandom(middlePoint)
+            firmB = firmA.selectCompetitorFromRouletteWheel()
             self.assertIsNotNone(firmB)
             self.assertEqual(firmB.firmId, competitorToBeSelected)
 
     def setUp(self):
-        Logger.initialize(datetime.datetime.now())
+        Logger.initialize(datetime.datetime.now(), SystemConfig.LogLevel)
