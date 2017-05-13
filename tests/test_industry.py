@@ -8,7 +8,6 @@ from model.demand import Demand
 from model.util.random import Random
 from model.util.math import Math
 from model.util.logger import Logger
-from model.util.export_to_csv import ExportToCSV
 from simulation import SystemConfig
 
 class TestIndustry(unittest.TestCase):
