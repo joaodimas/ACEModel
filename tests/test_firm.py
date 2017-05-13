@@ -9,6 +9,7 @@ from model.technology import Technology
 from model.parameters import Parameters
 from model.util.random import Random
 from model.util.logger import Logger
+from simulation import SystemConfig
 
 class TestFirm(unittest.TestCase):
 
@@ -109,4 +110,4 @@ class TestFirm(unittest.TestCase):
             self.assertEqual(firmB.firmId, competitorToBeSelected)
 
     def setUp(self):
-        Logger.initialize(datetime.datetime.now())
+        Logger.initialize(datetime.datetime.now(), SystemConfig.LogLevel)

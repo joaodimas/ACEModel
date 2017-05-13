@@ -5,6 +5,7 @@ from model.firm import Firm
 from model.technology import Technology
 from model.industry import Industry
 from model.parameters import Parameters
+from simulation import SystemConfig
 
 class TestDemand(unittest.TestCase):
 
@@ -38,5 +39,4 @@ class TestDemand(unittest.TestCase):
         self.assertEqual(industry.demand.eqPrice, 105)
 
     def setUp(self):
-        timestamp = datetime.datetime.now()
-        Logger.initialize(timestamp)
+        Logger.initialize(datetime.datetime.now(), SystemConfig.LogLevel)

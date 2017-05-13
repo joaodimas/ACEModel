@@ -349,9 +349,8 @@ class Industry:
         self.lastUsedId += 1
         return self.lastUsedId
  
-    def __init__(self, simulation, timestamp):
+    def __init__(self, simulation):
         self.simulation = simulation
-        self.timestamp = timestamp
         self.lastUsedId = 0
         self.currentPeriod = 0
         self.demand = Demand(self)
