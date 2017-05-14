@@ -120,7 +120,7 @@ class Industry:
 
     def storeFirmsPrevData(self):
         for firm in self.incumbentFirms:
-            firm.storePrevData()
+            firm.storePreviousData()
 
     def processResearch(self):
         self.nmbResearching = 0
@@ -258,6 +258,9 @@ class Industry:
                 sumOfHammingDist += firmA.technology.calculateHammingDistance(firmB.technology)
 
             meanHammingDist = sumOfHammingDist / len(pairs)
+            Logger.trace("Sum of hamming distance: {:.2f}", (sumOfHammingDist), industry = self)
+            Logger.trace("Number of pairs: {:d}", (len(pairs)), industry = self)
+            Logger.trace("Mean hamming distance: {:.2f}", (meanHammingDist), industry = self)
             self.degreeOfTechDiv = meanHammingDist / Parameters.NumberOfTasks
         else:
             self.degreeOfTechDiv = 0    

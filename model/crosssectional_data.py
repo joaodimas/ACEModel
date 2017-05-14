@@ -1,4 +1,3 @@
-from functools import reduce
 from model.parameters import Parameters
 from model.util.logger import Logger
 from model.util.math import Math
@@ -18,7 +17,7 @@ class CrossSectionalData:
                     firm.age,
                     firm.status.value,
                     firm.industry.demand.eqPrice,
-                    firm.closerTech.techId,
+                    firm.closestTech.techId,
                     1 - (firm.techDistToOptimal / Parameters.NumberOfTasks),
                     firm.MC,
                     firm.marketShare,

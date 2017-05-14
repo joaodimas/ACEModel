@@ -8,7 +8,7 @@ class Parameters:
         # MODEL PARAMETERS
         cls.NumberOfIndependentReplications = 1 # Number of independent replications. A dataset with the means for each period and variable will be saved.
         cls.PeriodsToSaveCrossSectionalData = [5000]
-        cls.PeriodRangeToSavePanelData = [4960, 5000]
+        cls.PeriodRangeToSavePanelData = [4920, 5000]
 
 
         # ---------------- TESTS -----------------------
@@ -32,11 +32,11 @@ class Parameters:
         cls.RateOfChangeInTechEnv = 0.1
         cls.PeriodStartOfTechnologicalShocks = 0
         cls.MaxMagnituteOfChangeInTechEnv = 8
-        cls.TypeOfCycle = CycleType.NONE  # <----------- NO BUSINESS CYCLES
-        cls.PeriodStartOfCycles = 0
-        cls.MinMarketSize = 0.1
-        cls.RateOfPersistenceInDemand = 0.97
-        cls.WhiteNoise = 0.5
+        cls.TypeOfCycle = None  # <----------- NO BUSINESS CYCLES
+        # cls.PeriodStartOfCycles = 0
+        # cls.MinMarketSize = 0.1
+        # cls.RateOfPersistenceInDemand = 0.97
+        # cls.CycleWhiteNoise = 0.5
 
         cls.MaximumOptimalTechnologies = 5
         cls.InitialOptimalTechnologies = 1

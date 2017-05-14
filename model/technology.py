@@ -73,7 +73,7 @@ class Technology:
 
     def copyTask(self, otherTech, task):
        #assert task <= Parameters.NumberOfTasks
-
+        self.taskToCopy = task
         # bitToCopy = Parameters.NumberOfTasks - task
         mask = 2 ** (task - 1)
         

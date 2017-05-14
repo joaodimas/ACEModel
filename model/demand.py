@@ -5,8 +5,9 @@ class Demand:
     def __init__(self, industry):
         self.meanMarketSize = Parameters.MeanMarketSize
         self.marketSize = self.meanMarketSize
-        self.minMarketSize = Parameters.MinMarketSize
-        self.whiteNoise = Parameters.WhiteNoise
+        if hasattr(Parameters, "TypeOfCycle") and Parameters.TypeOfCycle is not None:
+            self.minMarketSize = Parameters.MinMarketSize
+            self.cycleWhiteNoise = Parameters.CycleWhiteNoise
         self.industry = industry
         self.eqPrice = 0
         

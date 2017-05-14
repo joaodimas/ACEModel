@@ -30,11 +30,11 @@ class ExogenousEffects:
                 
                 for tech in industry.currentOptimalTechs:
                     Logger.trace("Changing optimal technology {:d}", (tech.techId), industry=industry)
-                    Logger.trace("Previous technology:{:0{:d}b}", (tech.tasks, Parameters.NumberOfTasks), industry=industry)
+                    Logger.trace("Previous technology: {:0{:d}b}", (tech.tasks, Parameters.NumberOfTasks), industry=industry)
                     
                     tech.changeRandomly()
                     
-                    Logger.trace("New technology:{:0{:d}b}", (tech.tasks, Parameters.NumberOfTasks), industry=industry)
+                    Logger.trace("New technology:      {:0{:d}b}", (tech.tasks, Parameters.NumberOfTasks), industry=industry)
                     Logger.trace("Magnitude of change: {:d}", (tech.magnitudeOfChange), industry=industry)
 
             else:
@@ -43,7 +43,7 @@ class ExogenousEffects:
     @classmethod
     def addNewOptimalTechnology(cls, industry):
         # Adding new optimal technology
-        if hasattr(Parameters, 'IntervalBeforeAddingNewOptimal') and Parameters.IntervalBeforeAddingNewOptimal > 0 and industry.currentPeriod % Parameters.IntervalBeforeAddingNewOptimal == 1 and len(industry.currentOptimalTechs) < Parameters.MaximumOptimalTechnologies:
+        if hasattr(Parameters, 'IntervalBeforeAddingNewOptimal') and Parameters.IntervalBeforeAddingNewOptimal > 0 and industry.currentPeriod >= Parameters.IntervalBeforeAddingNewOptimal and industry.currentPeriod % Parameters.IntervalBeforeAddingNewOptimal == 1 and len(industry.currentOptimalTechs) < Parameters.MaximumOptimalTechnologies:
             industry.addNewOptimalTech()
             Logger.info("New optimal tech added to industry.", industry=industry)
 
@@ -55,17 +55,17 @@ class ExogenousEffects:
             industry.demand.meanMarketSize *= 1 + Parameters.RateOfGrowthInMeanMarketSize
             industry.demand.marketSize += industry.demand.meanMarketSize - oldMeanMarketSize
             industry.demand.minMarketSize *= 1 + Parameters.RateOfGrowthInMeanMarketSize
-            industry.demand.whiteNoise *= 1 + Parameters.RateOfGrowthInMeanMarketSize
+            industry.demand.cycleWhiteNoise *= 1 + Parameters.RateOfGrowthInMeanMarketSize
 
     @classmethod
     def businessCycle(cls, industry):
         # Demand shock: every period starting at (Parameters.PeriodStartOfCycles + 1) there is a change in the market size
-        if hasattr(Parameters, 'TypeOfCycle'):
+        if hasattr(Parameters, 'TypeOfCycle') and Parameters.TypeOfCycle is not None:
             if industry.currentPeriod >= Parameters.PeriodStartOfCycles:
                 if Parameters.TypeOfCycle == CycleType.STOCHASTIC:
                     Logger.trace("STOCHASTIC BUSINESS CYCLE", (industry.simulationNumber, industry.currentPeriod))
                     prevMktSize = industry.demand.marketSize
-                    industry.demand.marketSize = max(industry.demand.minMarketSize, (1 - Parameters.RateOfPersistenceInDemand) * industry.demand.meanMarketSize + Parameters.RateOfPersistenceInDemand * industry.demand.marketSize + industry.random.uniform(-industry.demand.whiteNoise, industry.demand.whiteNoise))
+                    industry.demand.marketSize = max(industry.demand.minMarketSize, (1 - Parameters.RateOfPersistenceInDemand) * industry.demand.meanMarketSize + Parameters.RateOfPersistenceInDemand * industry.demand.marketSize + industry.random.uniform(-industry.demand.cycleWhiteNoise, industry.demand.cycleWhiteNoise))
                     Logger.trace("Previous market size: {:.2f}; New market size: {:.2f}", (industry.simulationNumber, industry.currentPeriod, prevMktSize, industry.demand.marketSize))
                 elif Parameters.TypeOfCycle == CycleType.DETERMINISTIC:
                     Logger.trace("DETERMINISTIC BUSINESS CYCLE", (industry.simulationNumber, industry.currentPeriod))

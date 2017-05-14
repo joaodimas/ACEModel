@@ -12,9 +12,31 @@ from simulation import SystemConfig
 
 class TestFirm(unittest.TestCase):
 
+    def test_selectClosestOptimalTech(self):
+        Parameters.NumberOfTasks = 10
+        optimalTech1 = 0b0000000000
+        optimalTech2 = 0b0001000011
+        optimalTech3 = 0b0001000110
+
+        industry = Industry(1)
+        industry.currentOptimalTechs = []
+        industry.random.appendFakeGetRandBits(optimalTech1)
+        industry.random.appendFakeGetRandBits(optimalTech2)
+        industry.random.appendFakeGetRandBits(optimalTech3)
+        industry.addNewOptimalTech()
+        industry.addNewOptimalTech()
+        industry.addNewOptimalTech()
+
+        firm = Firm(1, industry, Technology(industry, tasks=0b1000000000))
+        self.assertEqual(firm.selectClosestOptimalTech().techId, 1)
+
+        firm.technology.tasks = 0b0001000001
+        self.assertEqual(firm.selectClosestOptimalTech().techId, 2)
+
+        firm.technology.tasks = 0b0001000100
+        self.assertEqual(firm.selectClosestOptimalTech().techId, 3)
+
     def test_updateMarginalCost(self):
-        # Firm (self, firmId, industry, technology)
-        oldNumberOfTasks = Parameters.NumberOfTasks
         Parameters.NumberOfTasks = 10
         optimalTech = 0b0000000000
 
@@ -36,11 +58,9 @@ class TestFirm(unittest.TestCase):
                 firm.updateMarginalCost()
                 self.assertEqual(firm.MC, 100*dist/Parameters.NumberOfTasks)
 
-        Parameters.NumberOfTasks = oldNumberOfTasks
 
     def test_updateOutput(self):
 
-        # Firm (self, firmId, industry, technology)
         Parameters.NumberOfTasks = 5
         Parameters.MeanMarketSize = 4
         Parameters.MaximumOptimalTechnologies = 1

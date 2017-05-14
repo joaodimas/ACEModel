@@ -36,7 +36,7 @@ class Firm :
     def getDescription(self):
         return "id: " + str(self.firmId)
 
-    def storePrevData(self):
+    def storePreviousData(self):
         self.prevOutput = self.output
         self.prevProfits = self.profits
         self.prevMC = self.MC
@@ -44,17 +44,21 @@ class Firm :
         self.prevRevenues = self.revenues
 
     def updateMarginalCost(self):
-        self.techDistToOptimal = Parameters.NumberOfTasks
-        self.closerTech = None
-        for tech in self.industry.currentOptimalTechs:
-            newDist = self.technology.calculateHammingDistance(tech)
-            if newDist < self.techDistToOptimal:
-                self.techDistToOptimal = newDist
-                self.closerTech = tech
+        self.selectClosestOptimalTech()        
 
         self.MC = 100 * self.techDistToOptimal / Parameters.NumberOfTasks
 
         return self.MC
+
+    def selectClosestOptimalTech(self):
+        self.techDistToOptimal = Parameters.NumberOfTasks
+        self.closestTech = None
+        for tech in self.industry.currentOptimalTechs:
+            newDist = self.technology.calculateHammingDistance(tech)
+            if newDist < self.techDistToOptimal:
+                self.techDistToOptimal = newDist
+                self.closestTech = tech
+        return self.closestTech
 
     def getTotalCost(self, quantity):
         return Parameters.FixedProductionCost + quantity * self.MC
@@ -71,8 +75,6 @@ class Firm :
     def updateProfits(self):
         self.revenues = self.output * self.industry.demand.eqPrice
         self.profits = self.output * (self.industry.demand.eqPrice - self.MC) - Parameters.FixedProductionCost - self.investmentInResearch
-        if not Math.isEquivalent(self.revenues - (self.output * self.MC + Parameters.FixedProductionCost + self.investmentInResearch), self.profits):
-            Logger.info("INCONSISTENT PROFITS: revenues: {:.5f}, output: {:.5f}, MC: {:.5f}, investmentInResearch: {:.5f}", (self.revenues, self.output, self.MC, self.investmentInResearch))
         assert Math.isEquivalent(self.profits, (self.output ** 2 / self.industry.demand.marketSize - Parameters.FixedProductionCost - self.investmentInResearch))
 
         return self.profits
@@ -99,26 +101,26 @@ class Firm :
         if(self.expWealth > Parameters.ThresholdNetWealthForSurvival):
             self.entering = True
             self.status = FirmStatus.ACTIVE_INCUMBENT
-            Logger.trace("[FIRM {:d}] Potential entrant decided to ENTER. Expected price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Current wealth: {:.2f}; Exp. Wealth: {:.2f}.", (self.firmId, self.expPrice, self.MC, self.expOutput, self.expProfits, self.wealth, self.expWealth), industry=self.industry)
+            Logger.trace("[FIRM {:d}] Potential entrant decided to ENTER.     Expected price: {:.2f}; Closest tech: {:d}; MC: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Current wealth: {:.2f}; Exp. Wealth: {:.2f}.", (self.firmId, self.expPrice, self.closestTech.techId, self.MC, self.expOutput, self.expProfits, self.wealth, self.expWealth), industry=self.industry)
         else:
-            Logger.trace("[FIRM {:d}] Potential entrant decided to NOT ENTER. Expected price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Current wealth: {:.2f}; Exp. Wealth: {:.2f}.", (self.firmId, self.expPrice, self.MC, self.expOutput, self.expProfits, self.wealth, self.expWealth), industry=self.industry)
+            Logger.trace("[FIRM {:d}] Potential entrant decided to NOT ENTER. Expected price: {:.2f}; Closest tech: {:d}; MC: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Current wealth: {:.2f}; Exp. Wealth: {:.2f}.", (self.firmId, self.expPrice, self.closestTech.techId, self.MC, self.expOutput, self.expProfits, self.wealth, self.expWealth), industry=self.industry)
   
         return self.entering
 
     def decideIfExits(self):
         if(self.wealth < Parameters.ThresholdNetWealthForSurvival):
             self.exiting = True
-            Logger.trace("[FIRM {:d}] Decided to EXIT. Price: {:.2f}; Exp. Price: {:.2f}; MC: {:.2f}; Exp. Output: {:.2f}; Output: {:.2f}; Exp. Profits: {:.2f}; Profits: {:.2f}; Wealth: {:.2f}.", (self.firmId, self.industry.demand.eqPrice, self.expPrice, self.MC, self.expOutput, self.output, self.expProfits, self.profits, self.wealth), industry=self.industry)
+            Logger.trace("[FIRM {:d}] Decided to EXIT. Price: {:.2f}; Exp. Price when entering: {:.2f}; MC: {:.2f}; Exp. Output when entering: {:.2f}; Output: {:.2f}; Exp. Profits when entering: {:.2f}; Profits: {:.2f}; Wealth: {:.2f}.", (self.firmId, self.industry.demand.eqPrice, self.expPrice, self.MC, self.expOutput, self.output, self.expProfits, self.profits, self.wealth), industry=self.industry)
         return self.exiting
 
     def decideIfDeactivates(self):
         
         if(self.updateOutput() <= 0): # Yes. This firm doesn't want to produce. It will be deactivated.
             self.deactivating = True
-            Logger.trace("[FIRM {:d}] Decided to DEACTIVATE. Price: {:.2f}; MC: {:.2f}; Exp. Price: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Wealth: {:.2f}.", (self.firmId, self.industry.demand.eqPrice, self.MC, self.expPrice, self.expOutput, self.expProfits, self.wealth), industry=self.industry)
+            Logger.trace("[FIRM {:d}] Decided to DEACTIVATE. Price: {:.2f}; MC: {:.2f}; Exp. Price when entering: {:.2f}; Exp. Output when entering: {:.2f}; Exp. Profits when entering: {:.2f}; Wealth: {:.2f}.", (self.firmId, self.industry.demand.eqPrice, self.MC, self.expPrice, self.expOutput, self.expProfits, self.wealth), industry=self.industry)
         else:
             self.deactivating = False
-            Logger.trace("[FIRM {:d}] Decided to NOT DEACTIVATE. Price: {:.2f}; MC: {:.2f}; Exp. Price: {:.2f}; Exp. Output: {:.2f}; Exp. Profits: {:.2f}; Wealth: {:.2f}.", (self.firmId, self.industry.demand.eqPrice, self.MC, self.expPrice, self.expOutput, self.expProfits, self.wealth), industry=self.industry)
+            Logger.trace("[FIRM {:d}] Decided to NOT DEACTIVATE. Price: {:.2f}; MC: {:.2f}; Exp. Price when entering: {:.2f}; Exp. Output when entering: {:.2f}; Exp. Profits when entering: {:.2f}; Wealth: {:.2f}.", (self.firmId, self.industry.demand.eqPrice, self.MC, self.expPrice, self.expOutput, self.expProfits, self.wealth), industry=self.industry)
         return self.deactivating
 
     def processResearch(self):
@@ -163,7 +165,7 @@ class Firm :
         self.technology.flipRandomTask()
         Logger.trace("[FIRM {:d}] Modified task {:d}", (self.firmId, self.technology.taskChanged), industry=self.industry)
         Logger.trace("[FIRM {:d}] Before: {:0{:d}b}", (self.firmId, oldTechnology.tasks, Parameters.NumberOfTasks), industry=self.industry)
-        Logger.trace("[FIRM {:d}] After: {:0{:d}b}", (self.firmId, self.technology.tasks, Parameters.NumberOfTasks), industry=self.industry)
+        Logger.trace("[FIRM {:d}] After:  {:0{:d}b}", (self.firmId, self.technology.tasks, Parameters.NumberOfTasks), industry=self.industry)
         
         # If new tehnology is more efficient, adopt it.
         if(self.updateMarginalCost() < oldMC):
@@ -184,18 +186,19 @@ class Firm :
         oldTechnology = Technology(self.industry, self.technology.tasks)
         oldMC = self.MC
 
-        Logger.trace("[FIRM {:d}] Selecting a firm to imitage...", (self.firmId), industry=self.industry)
+        Logger.trace("[FIRM {:d}] Selecting a firm to imitate...", (self.firmId), industry=self.industry)
         # The point in the CDF from which we select a firm to be observed
         firmToImitate = self.selectCompetitorFromRouletteWheel()
         
         if(firmToImitate != None):
-            Logger.trace("[FIRM {:d}] Current technology: {:0{:d}b}", (self.firmId, self.technology.tasks, Parameters.NumberOfTasks), industry=self.industry)
+            Logger.trace("[FIRM {:d}] Current technology:    {:0{:d}b}", (self.firmId, self.technology.tasks, Parameters.NumberOfTasks), industry=self.industry)
             Logger.trace("[FIRM {:d}] Technology to imitate: {:0{:d}b}", (self.firmId, firmToImitate.prevTechnology.tasks, Parameters.NumberOfTasks), industry=self.industry)
             
             self.technology.copyOneRandomTask(firmToImitate.prevTechnology)
             
-            Logger.trace("[FIRM {:d}] Task copied: {:d}", (self.firmId, self.technology.taskChanged), industry=self.industry)
-            Logger.trace("[FIRM {:d}] New technology: {:0{:d}b}", (self.firmId, self.technology.tasks, Parameters.NumberOfTasks), industry=self.industry) 
+            Logger.trace("[FIRM {:d}] Task to copy: {:d}", (self.firmId, self.technology.taskToCopy), industry=self.industry)
+            Logger.trace("[FIRM {:d}] Task changed: {:d}", (self.firmId, self.technology.taskChanged), industry=self.industry)
+            Logger.trace("[FIRM {:d}] New technology:        {:0{:d}b}", (self.firmId, self.technology.tasks, Parameters.NumberOfTasks), industry=self.industry) 
 
             self.updateMarginalCost()
         else:
