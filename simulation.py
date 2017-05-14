@@ -10,7 +10,7 @@ from model.util.export_to_csv import ExportToCSV
 
 
 class SystemConfig:
-    LogLevel = {"Console": ["INFO"], "File": ["TRACE"]}
+    LogLevel = {"Console": ["INFO"]}
     EnableProfilingMainThread = False
     EnableProfilingWorker = False
     NumberOfParallelProcesses = 72 # Set this to 3x the number of CPUs. Parallelism is only used if multiple simulations are performed (NumberOfIndependentReplications > 1). Otherwise, only 1 process will be started.
