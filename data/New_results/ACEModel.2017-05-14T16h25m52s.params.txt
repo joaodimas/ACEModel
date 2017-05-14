@@ -1,0 +1,25 @@
+PeriodStartOfTechnologicalShocks: 0
+InitialOptimalTechnologies: 1
+FixedCostOfInnovation: 100
+MeanMarketSize: 4
+InitialAttractionToResearch: 10
+PeriodsToSaveCrossSectionalData: []
+FixedProductionCost: 200
+MaxMagnituteOfChangeInTechEnv: 8
+NumberOfIndependentReplications: 500
+InitialAttractionToInnovate: 10
+TypeOfCycle: None
+ThresholdNetWealthForSurvival: 0
+RateOfChangeInTechEnv: 0.1
+FixedCostOfImitation: 50
+TimeHorizon: 5000
+InitialAttractionToImitate: 10
+MaximumOptimalTechnologies: 1
+InitialAttractionToNotResearch: 10
+NumberOfTasks: 96
+NumberOfPotentialEntrants: 40
+PeriodRangeToSavePanelData: []
+DemandIntercept: 300
+IntervalBeforeAddingNewOptimal: 1000
+StartupWealth: 0
+
