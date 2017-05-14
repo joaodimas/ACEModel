@@ -113,7 +113,7 @@ if __name__ == '__main__':
         # Save data
         Logger.info("Saving data...")
         if(Parameters.NumberOfIndependentReplications > 1):
-            ExportToCSV.export(multiTimeSeriesData, timestamp)
+            ExportToCSV.exportTimeSeriesData(multiTimeSeriesData, timestamp)
         Logger.info("ALL PROCESSES FINISHED!")
 
     except Exception as e:
