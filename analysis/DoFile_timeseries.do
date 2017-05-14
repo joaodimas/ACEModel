@@ -1,11 +1,11 @@
 clear all
 macro drop _all
 
-global baseName = "ACEModel.2017-05-14T12h08m51s[1][TIMESERIES]"
-global folder = ""
+global baseName = "ACEModel.2017-05-14T12h46m39s[MEAN][TIMESERIES]"
+global folder = "MultipleOptimal_NoCycles"
 global firstPeriod = 1
-global lastPeriod = 500
-global xAxisDelta = 100
+global lastPeriod = 5000
+global xAxisDelta = 1000
 global xAxisBegin = $firstPeriod - 1
 global xAxisEnd = $lastPeriod
 global period = "in $firstPeriod/$lastPeriod"
@@ -340,7 +340,7 @@ graph save Graph "/Users/jdimas/GitHub/ACEModel/data/$folder/$baseName.$suffixRa
 
 tsline costshareinn $period
 
-gr_edit .yaxis1.title.text = {"% invested in innovation"}
+gr_edit .yaxis1.title.text = {"% of R&D invested in innovation"}
 gr_edit .xaxis1.title.text = {"$xAxisTitle"}
 gr_edit .yaxis1.reset_rule 6, tickset(major) ruletype(suggest) 
 gr_edit .yaxis1.title.style.editstyle size(large) editcopy
