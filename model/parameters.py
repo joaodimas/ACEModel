@@ -6,9 +6,9 @@ class Parameters:
     def setInitialParameters(cls):
         
         # MODEL PARAMETERS
-        cls.NumberOfIndependentReplications = 10 # Number of independent replications. A dataset with the means for each period and variable will be saved.
-        cls.PeriodsToSaveCrossSectionalData = [100]
-        cls.PeriodRangeToSavePanelData = [60, 100]
+        cls.NumberOfIndependentReplications = 500 # Number of independent replications. A dataset with the means for each period and variable will be saved.
+        cls.PeriodsToSaveCrossSectionalData = []
+        cls.PeriodRangeToSavePanelData = []
 
 
         # ---------------- TESTS -----------------------
@@ -25,7 +25,7 @@ class Parameters:
         cls.InitialAttractionToNotResearch = 10
         cls.InitialAttractionToInnovate = 10
         cls.InitialAttractionToImitate = 10
-        cls.TimeHorizon = 100
+        cls.TimeHorizon = 5000
         cls.MeanMarketSize = 4
         #RateOfGrowthInMeanMarketSize = 0
         #PeriodStartOfGrowth = 2921
