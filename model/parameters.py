@@ -38,9 +38,12 @@ class Parameters:
         # cls.RateOfPersistenceInDemand = 0.97
         # cls.CycleWhiteNoise = 0.5
 
-        cls.MaximumOptimalTechnologies = 5
+        cls.MaximumOptimalTechnologies = 1
         cls.InitialOptimalTechnologies = 1
         cls.IntervalBeforeAddingNewOptimal = 1000
+
+        cls.IntervalOfLargeTechnologicalShocks = 10
+        cls.ScaleOfLargeTechnologicalShocks = 3
         # 
         # ------------------------------------------------------------------
 

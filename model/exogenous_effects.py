@@ -24,10 +24,19 @@ class ExogenousEffects:
     def technologicalShock(cls, industry):
         # Technological shock: Every period the optimal technology changes with a probability = Parameters.RateOfChangeInTechEnv.
         # The new optimal will have a maximum hamming distance from previous optimum = Parameters.MaxMagnituteOfChangeInTechEnv.
-        if Parameters.PeriodStartOfTechnologicalShocks is not None and industry.currentPeriod >= Parameters.PeriodStartOfTechnologicalShocks:
-            if industry.random.random() < Parameters.RateOfChangeInTechEnv:
-                Logger.trace("HIT BY A TECHNOLOGICAL SHOCK!", industry=industry)
-                
+        if hasattr(Parameters, "PeriodStartOfTechnologicalShocks") and Parameters.PeriodStartOfTechnologicalShocks is not None and industry.currentPeriod >= Parameters.PeriodStartOfTechnologicalShocks:
+            if hasattr(Parameters, "IntervalOfLargeTechnologicalShocks") and Parameters.IntervalOfLargeTechnologicalShocks is not None and industry.currentPeriod >= Parameters.IntervalOfLargeTechnologicalShocks and industry.currentPeriod % Parameters.IntervalOfLargeTechnologicalShocks is 1:
+                Logger.trace("HIT BY A LARGE TECHNOLOGICAL SHOCK!", industry=industry)
+                for tech in industry.currentOptimalTechs:
+                    Logger.trace("Changing optimal technology {:d}", (tech.techId), industry=industry)
+                    Logger.trace("Previous technology: {:0{:d}b}", (tech.tasks, Parameters.NumberOfTasks), industry=industry)
+                   
+                    tech.changeRandomly(maxMagnitudeOfChange=Parameters.ScaleOfLargeTechnologicalShocks * Parameters.MaxMagnituteOfChangeInTechEnv)
+                    
+                    Logger.trace("New technology:      {:0{:d}b}", (tech.tasks, Parameters.NumberOfTasks), industry=industry)
+                    Logger.trace("Magnitude of change: {:d}", (tech.magnitudeOfChange), industry=industry)
+            elif industry.random.random() < Parameters.RateOfChangeInTechEnv:
+                Logger.trace("HIT BY A NORMAL TECHNOLOGICAL SHOCK!", industry=industry)
                 for tech in industry.currentOptimalTechs:
                     Logger.trace("Changing optimal technology {:d}", (tech.techId), industry=industry)
                     Logger.trace("Previous technology: {:0{:d}b}", (tech.tasks, Parameters.NumberOfTasks), industry=industry)
@@ -36,7 +45,6 @@ class ExogenousEffects:
                     
                     Logger.trace("New technology:      {:0{:d}b}", (tech.tasks, Parameters.NumberOfTasks), industry=industry)
                     Logger.trace("Magnitude of change: {:d}", (tech.magnitudeOfChange), industry=industry)
-
             else:
                 Logger.trace("NO TECHNOLOGICAL SHOCK.", industry=industry)
 

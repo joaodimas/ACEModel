@@ -1,8 +1,8 @@
 clear all
 macro drop _all
 
-global baseName = "ACEModel.2017-05-14T12h46m39s[MEAN][TIMESERIES]"
-global folder = "MultipleOptimal_NoCycles"
+global baseName = "ACEModel.2017-05-14T16h44m25s[MEAN][TIMESERIES]"
+global folder = "New_Results"
 global firstPeriod = 1
 global lastPeriod = 5000
 global xAxisDelta = 1000

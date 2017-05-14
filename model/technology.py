@@ -22,9 +22,9 @@ class Technology:
     def getTasksStr(self):
         return format(self.tasks, '0' + str(Parameters.NumberOfTasks) + 'b')
 
-    def changeRandomly(self):
+    def changeRandomly(self, maxMagnitudeOfChange=None):
         selectionPoint = self.industry.random.random()
-        self.magnitudeOfChange = self.selectMagnitudeFromUniformDist(selectionPoint)
+        self.magnitudeOfChange = self.selectMagnitudeFromUniformDist(selectionPoint, maxMagnitudeOfChange)
 
         if self.magnitudeOfChange == 0:
             return self
@@ -36,8 +36,10 @@ class Technology:
 
         return self
 
-    def selectMagnitudeFromUniformDist(self, selectionPoint):
-        probs = Combinatorics.getProbabilitiesOfDrawingSize(Parameters.NumberOfTasks, 0, Parameters.MaxMagnituteOfChangeInTechEnv)
+    def selectMagnitudeFromUniformDist(self, selectionPoint, maxMagnitudeOfChange=None):
+        if maxMagnitudeOfChange is None:
+            maxMagnitudeOfChange = Parameters.MaxMagnituteOfChangeInTechEnv
+        probs = Combinatorics.getProbabilitiesOfDrawingSize(Parameters.NumberOfTasks, 0, maxMagnitudeOfChange)
         cumulative = 0
         while True:
             r, prob = probs.pop(0)
