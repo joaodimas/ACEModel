@@ -6,7 +6,7 @@ class Parameters:
     def setInitialParameters(cls):
         
         # MODEL PARAMETERS
-        cls.NumberOfIndependentReplications = 1 # Number of independent replications. A dataset with the means for each period and variable will be saved.
+        cls.NumberOfIndependentReplications = 500 # Number of independent replications. A dataset with the means for each period and variable will be saved.
         cls.PeriodsToSaveCrossSectionalData = [5000]
         cls.PeriodRangeToSavePanelData = [4920, 5000]
 
