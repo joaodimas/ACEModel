@@ -1,11 +1,11 @@
 clear all
 macro drop _all
 
-global baseName = "ACEModel.2017-05-14T16h44m25s[MEAN][TIMESERIES]"
-global folder = "New_Results"
-global firstPeriod = 1
+global baseName = "ACEModel.2017-05-14T16h25m52s[MEAN][TIMESERIES]"
+global folder = "Chapter_4_Shocks_NoCycles/500_replications/Time series"
+global firstPeriod = 4951
 global lastPeriod = 5000
-global xAxisDelta = 1000
+global xAxisDelta = 10
 global xAxisBegin = $firstPeriod - 1
 global xAxisEnd = $lastPeriod
 global period = "in $firstPeriod/$lastPeriod"
@@ -24,6 +24,31 @@ gen share_cs = cs / ts
 replace share_cs = 1 if share_cs > 1
 
 set graphics off
+
+// Generating graph for Entries
+
+tsline entries exits avgmagtechshock $period
+
+gr_edit .yaxis1.title.text = {"Aggregate output"}
+gr_edit .xaxis1.title.text = {"$xAxisTitle"}
+gr_edit .yaxis1.reset_rule 7, tickset(major) ruletype(suggest) 
+gr_edit .yaxis1.title.style.editstyle size(vlarge) editcopy
+gr_edit .yaxis1.title.style.editstyle margin(right) editcopy
+gr_edit .yaxis1.style.editstyle majorstyle(tickstyle(textstyle(size(vlarge)))) editcopy
+gr_edit .yaxis1.style.editstyle majorstyle(tickangle(horizontal)) editcopy
+gr_edit .xaxis1.reset_rule $xAxisBegin $xAxisEnd $xAxisDelta , tickset(major) ruletype(range) 
+gr_edit .xaxis1.title.style.editstyle size(vlarge) editcopy
+gr_edit .xaxis1.title.style.editstyle margin(top) editcopy
+gr_edit .xaxis1.style.editstyle majorstyle(tickstyle(textstyle(size(vlarge)))) editcopy
+gr_edit .style.editstyle boxstyle(shadestyle(color(white))) editcopy
+gr_edit .style.editstyle boxstyle(linestyle(color(white))) editcopy
+gr_edit .plotregion1.style.editstyle margin(medium) editcopy
+gr_edit .SetAspectRatio $aspectRatio
+
+global suffixAggOutput = "Aggregate_output"
+graph save Graph "/Users/jdimas/GitHub/ACEModel/data/$folder/$baseName.$suffixAggOutput.gph", replace
+
+// End
 
 
 // Generating graph for Aggregate output
