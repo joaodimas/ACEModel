@@ -1,3 +1,11 @@
+"""
+Agent-based model based in Chang (2015), "Computational Industrial Economics: A generative approach to dynamic analysis in industrial organization". Additional features are described in my master thesis for Panthéon-Sorbonne MSc in Economics.
+
+Author: João Dimas (joaohenriqueavila@gmail.com)
+Supervisor: Prof. Angelo Secchi (Paris 1, PSE)
+
+"""
+
 import math
 from model.util.random import Random
 from model.util.logger import Logger
@@ -23,7 +31,6 @@ class ExogenousEffects:
     @classmethod
     def technologicalShock(cls, industry):
         # Technological shock: Every period the optimal technology changes with a probability = Parameters.RateOfChangeInTechEnv.
-        # The new optimal will have a maximum hamming distance from previous optimum = Parameters.MaxMagnituteOfChangeInTechEnv.
         if hasattr(Parameters, "PeriodStartOfTechnologicalShocks") and Parameters.PeriodStartOfTechnologicalShocks is not None and industry.currentPeriod >= Parameters.PeriodStartOfTechnologicalShocks:
             if hasattr(Parameters, "IntervalOfLargeTechnologicalShocks") and Parameters.IntervalOfLargeTechnologicalShocks is not None and industry.currentPeriod >= Parameters.IntervalOfLargeTechnologicalShocks and industry.currentPeriod % Parameters.IntervalOfLargeTechnologicalShocks is 1:
                 Logger.trace("HIT BY A LARGE TECHNOLOGICAL SHOCK!", industry=industry)

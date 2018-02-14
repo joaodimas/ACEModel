@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+"""
+Agent-based model based in Chang (2015), "Computational Industrial Economics: A generative approach to dynamic analysis in industrial organization". Additional features are described in my master thesis for Panthéon-Sorbonne MSc in Economics.
+
+Author: João Dimas (joaohenriqueavila@gmail.com)
+Supervisor: Prof. Angelo Secchi (Paris 1, PSE)
+
+"""
 
 import os, sys, time, cProfile, io, pstats, datetime, multiprocessing, functools
 from model.timeseries_data import MultiTimeSeriesData
@@ -10,12 +17,13 @@ from model.util.export_to_csv import ExportToCSV
 
 
 class SystemConfig:
-    LogLevel = {"Console": ["INFO"]}
+    LogLevel = {"Console": ["INFO"], "File":["TRACE"]}
     EnableProfilingMainThread = False
     EnableProfilingWorker = False
     NumberOfParallelProcesses = 72 # Set this to 3x the number of CPUs. Parallelism is only used if multiple simulations are performed (NumberOfIndependentReplications > 1). Otherwise, only 1 process will be started.
 
 
+# Function called for each independent replication. It will be executed by a worker. 
 def runSimulation(index, timestamp):
     try:
 

@@ -1,3 +1,11 @@
+"""
+Agent-based model based in Chang (2015), "Computational Industrial Economics: A generative approach to dynamic analysis in industrial organization". Additional features are described in my master thesis for Panthéon-Sorbonne MSc in Economics.
+
+Author: João Dimas (joaohenriqueavila@gmail.com)
+Supervisor: Prof. Angelo Secchi (Paris 1, PSE)
+
+"""
+
 import itertools
 from model.util.logger import Logger
 from model.firm import Firm
@@ -373,5 +381,8 @@ class Industry:
         self.random = Random()
 
         self.currentOptimalTechs = []
-        for x in range(Parameters.InitialOptimalTechnologies):
+        if hasattr(Parameters, "InitialOptimalTechnologies"):
+            for x in range(Parameters.InitialOptimalTechnologies):
+                self.addNewOptimalTech()
+        else:
             self.addNewOptimalTech()
