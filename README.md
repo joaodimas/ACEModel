@@ -1,7 +1,5 @@
 # ACEModel
 
-## Replication and Study of an Agent-Based Model of Industry Competition with R&D
-
 This repository contains the Python implementation of the agent-based model described in the master's thesis:
 
 **Replication and Study of an Agent-Based Model of Industry Competition with R&D**  
